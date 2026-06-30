@@ -31,7 +31,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 9vh 7vw;
+    /* asymmetric vertical padding nudges the centered block a touch below middle */
+    padding: 13vh 7vw 7vh;
   }
 
   main {
@@ -49,7 +50,7 @@
   p + p { margin-top: 1.7em; }
 
   .coda {
-    color: var(--ink-quiet);
+    color: var(--ink);
     font-weight: 380;
   }
 
@@ -85,6 +86,19 @@
 
   @media (prefers-reduced-motion: reduce) {
     main { animation: none; }
+  }
+
+  @media (max-width: 600px) {
+    body { padding: 11vh 8vw 8vh; }
+    p { line-height: 1.5; }
+    p + p { margin-top: 1.5em; }
+    .follow a { padding-bottom: 2px; }
+  }
+
+  /* short landscape phones: keep everything on-screen */
+  @media (max-height: 480px) {
+    body { padding: 8vh 7vw; }
+    p + p { margin-top: 1.3em; }
   }
 </style>
 </head>
