@@ -53,6 +53,31 @@
     font-weight: 380;
   }
 
+  .follow {
+    font-size: clamp(0.98rem, 0.86rem + 0.5vw, 1.18rem);
+    line-height: 1.5;
+    color: var(--ink-quiet);
+  }
+
+  .follow a {
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(231, 236, 247, 0.35);
+    padding-bottom: 1px;
+    transition: border-color 0.2s ease, opacity 0.2s ease;
+  }
+
+  .follow a:hover,
+  .follow a:focus-visible {
+    border-bottom-color: var(--ink);
+  }
+
+  .follow a:focus-visible {
+    outline: 2px solid var(--ink);
+    outline-offset: 3px;
+    border-radius: 1px;
+  }
+
   @keyframes rise {
     from { opacity: 0; transform: translateY(14px); }
     to   { opacity: 1; transform: translateY(0); }
@@ -66,6 +91,7 @@
 <body>
   <main>
     <p>Laplace is an applied research lab working on the future of financial world models. We are a group of researchers, engineers, and technologists inventing at the edge of what&rsquo;s useful and possible.</p>
+    <p class="follow">Keep up with the journey by following <a href="https://x.com/arrrrrryaa" target="_blank" rel="noopener">Arya</a> and <a href="https://x.com/brrrrrrucee" target="_blank" rel="noopener">Bruce</a>.</p>
     <p class="coda">We have much to learn, try, and build.</p>
   </main>
 </body>
