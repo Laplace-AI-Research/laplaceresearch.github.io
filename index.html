@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Laplace</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,380;8..60,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #002c82;
+    --ink: #e7ecf7;
+    --ink-quiet: rgba(231, 236, 247, 0.62);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html, body { height: 100%; }
+
+  body {
+    background-color: var(--bg);
+    /* barely-there depth so the field doesn't read as a flat default; center stays #002c82 */
+    background-image: radial-gradient(115% 115% at 50% 28%, #01368f 0%, #002c82 58%);
+    color: var(--ink);
+    font-family: "Source Serif 4", Georgia, "Times New Roman", serif;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    min-height: 100vh;
+    min-height: 100svh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 9vh 7vw;
+  }
+
+  main {
+    max-width: 34rem;
+    animation: rise 1.2s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  p {
+    font-weight: 400;
+    font-size: clamp(1.28rem, 1rem + 1.35vw, 1.88rem);
+    line-height: 1.56;
+    letter-spacing: -0.004em;
+  }
+
+  p + p { margin-top: 1.7em; }
+
+  .coda {
+    color: var(--ink-quiet);
+    font-weight: 380;
+  }
+
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    main { animation: none; }
+  }
+</style>
+</head>
+<body>
+  <main>
+    <p>Laplace is an applied research lab working on the future of financial world models. We are a group of researchers, engineers, and technologists inventing at the edge of what&rsquo;s useful and possible.</p>
+    <p class="coda">We have much to learn, try, and build.</p>
+  </main>
+</body>
+</html>
