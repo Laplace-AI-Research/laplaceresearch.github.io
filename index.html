@@ -14,11 +14,8 @@
     --ink: #e7ecf7;
     --ink-quiet: rgba(231, 236, 247, 0.62);
   }
-
   * { margin: 0; padding: 0; box-sizing: border-box; }
-
   html, body { height: 100%; }
-
   body {
     background-color: var(--bg);
     /* barely-there depth so the field doesn't read as a flat default; center stays #002c82 */
@@ -30,37 +27,32 @@
     min-height: 100vh;
     min-height: 100svh;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     /* asymmetric vertical padding nudges the centered block a touch below middle */
     padding: 13vh 7vw 7vh;
   }
-
   main {
     max-width: 34rem;
     animation: rise 1.2s cubic-bezier(0.16, 1, 0.3, 1) both;
   }
-
   p {
     font-weight: 400;
     font-size: clamp(1.28rem, 1rem + 1.35vw, 1.88rem);
     line-height: 1.56;
     letter-spacing: -0.004em;
   }
-
   p + p { margin-top: 1.7em; }
-
   .coda {
     color: var(--ink);
     font-weight: 380;
   }
-
   .follow {
     font-size: clamp(0.98rem, 0.86rem + 0.5vw, 1.18rem);
     line-height: 1.5;
     color: var(--ink-quiet);
   }
-
   .follow a {
     color: var(--ink);
     text-decoration: none;
@@ -68,38 +60,67 @@
     padding-bottom: 1px;
     transition: border-color 0.2s ease, opacity 0.2s ease;
   }
-
   .follow a:hover,
   .follow a:focus-visible {
     border-bottom-color: var(--ink);
   }
-
   .follow a:focus-visible {
     outline: 2px solid var(--ink);
     outline-offset: 3px;
     border-radius: 1px;
   }
-
   @keyframes rise {
     from { opacity: 0; transform: translateY(14px); }
     to   { opacity: 1; transform: translateY(0); }
   }
-
   @media (prefers-reduced-motion: reduce) {
     main { animation: none; }
+    .socials { animation: none; }
   }
-
   @media (max-width: 600px) {
     body { padding: 11vh 8vw 8vh; }
     p { line-height: 1.5; }
     p + p { margin-top: 1.5em; }
     .follow a { padding-bottom: 2px; }
   }
-
   /* short landscape phones: keep everything on-screen */
   @media (max-height: 480px) {
     body { padding: 8vh 7vw; }
     p + p { margin-top: 1.3em; }
+  }
+
+  /* --- social icons --- */
+  .socials {
+    width: 100%;
+    max-width: 34rem;
+    margin-top: 3rem;
+    display: flex;
+    justify-content: flex-start;
+    gap: 1.1rem;
+    animation: rise 1.2s cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-delay: 0.15s;
+  }
+  .socials a {
+    display: inline-flex;
+    color: var(--ink-quiet);
+    transition: color 0.2s ease, opacity 0.2s ease;
+  }
+  .socials a:hover,
+  .socials a:focus-visible {
+    color: var(--ink);
+  }
+  .socials a:focus-visible {
+    outline: 2px solid var(--ink);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+  .socials svg {
+    width: 1.15rem;
+    height: 1.15rem;
+    flex-shrink: 0;
+  }
+  @media (max-width: 600px) {
+    .socials { margin-top: 2.25rem; gap: 1rem; }
   }
 </style>
 </head>
@@ -109,5 +130,13 @@
     <p class="follow">Keep up with the journey by following <a href="https://x.com/arrrrrryaa" target="_blank" rel="noopener">Arya</a> and <a href="https://x.com/brrrrrrucee" target="_blank" rel="noopener">Bruce</a>.</p>
     <p class="coda">We have much to learn, try, and build.</p>
   </main>
+  <nav class="socials" aria-label="Follow Laplace">
+    <a href="https://x.com/laplaceaires" target="_blank" rel="noopener" aria-label="Laplace on X">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+    </a>
+    <a href="https://linkedin.com/company/laplaceairesearch" target="_blank" rel="noopener" aria-label="Laplace on LinkedIn">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.446-2.136 2.94v5.666H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 1 1 0-4.125 2.062 2.062 0 0 1 0 4.125zM7.114 20.452H3.558V9h3.556v11.452z"/></svg>
+    </a>
+  </nav>
 </body>
 </html>
