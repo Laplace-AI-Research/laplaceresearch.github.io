@@ -66,6 +66,9 @@
     line-height: 1.62;
   }
   ul.points li + li {
+    margin-top: 0.55em;
+  }
+  ul.links li + li {
     margin-top: 0.3em;
   }
   a {
@@ -116,20 +119,22 @@
     <h1>Laplace Research</h1>
     <p class="tagline">Foundation models for calibrated forecasting</p>
 
-    <p class="body-text">Laplace&rsquo;s mission is to build models that reason under uncertainty well enough to forecast the world. To do so, we focus on solving two core problems:</p>
+    <p class="body-text">A forecast is only useful if you know how much to trust it. Models now produce predictions at scale, and almost none of them arrive with confidence you can take at face value. Laplace is our attempt at closing that gap.</p>
+
+    <p class="body-text">Two problems stand in the way, and we work on both:</p>
 
     <ul class="points">
-      <li>Aggregating resolved forecasting data across markets, history, and expert judgment</li>
-      <li>Understanding the internal mechanisms that produce calibrated belief</li>
+      <li>Aggregating resolved forecasting data across markets, history, and expert judgment. Resolution is the only signal that says whether a stated probability was honest.</li>
+      <li>Understanding the internal mechanisms that produce calibrated belief, so that calibration becomes something we can build toward rather than something we notice afterward.</li>
     </ul>
 
-    <p class="body-text">Each step forward on these axes tightens the loop between prediction and interpretation: better data sharpens calibration, and understanding why a model is calibrated tells us what data to collect next.</p>
+    <p class="body-text">The two tighten each other. Better data sharpens calibration, and understanding why a model is calibrated tells us which data to collect next.</p>
+
+    <p class="body-text">If this works, the result is not simply better forecasts. It is that judgment can be spent on choosing which questions matter, rather than on second-guessing the answers.</p>
 
     <p class="body-text">We&rsquo;re a small team working out of the Bay Area. If you&rsquo;re working on forecasting, calibration, or interpretability, <a href="https://x.com/laplaceaires" target="_blank" rel="noopener">reach out</a>.</p>
 
-    <p class="body-text">Want to keep up with the journey? Follow us here:</p>
-
-    <ul class="points">
+    <ul class="points links">
       <li><a href="https://x.com/laplaceaires" target="_blank" rel="noopener">Laplace Research on X</a></li>
       <li><a href="https://brucenh.com" target="_blank" rel="noopener">Bruce Nshuti Hirwa</a></li>
       <li><a href="https://aryasomu.com" target="_blank" rel="noopener">Arya Somu</a></li>
