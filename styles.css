@@ -48,7 +48,7 @@ html:not(.fonts-loading) #maincontent {
 
 h1 {
   margin: 0 0 0.4rem;
-  color: var(--page-text);
+  color: #02338a;
   font-family: "EB Garamond", "Times New Roman", serif;
   font-size: clamp(2.15rem, 5vw, 2.9rem);
   font-weight: 400;
