@@ -1,147 +1,78 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Laplace Research</title>
-<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Crect%20width='32'%20height='32'%20fill='%23002c82'/%3E%3C/svg%3E">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;700&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --bg: #f5f5f5;
-    --ink: #1a1a1a;
-    --ink-quiet: rgba(26, 26, 26, 0.62);
-    --rule: rgba(26, 26, 26, 0.14);
-    --brand: #002c82;
-  }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  html, body { height: 100%; }
-  body {
-    background-color: var(--bg);
-    color: var(--ink);
-    font-family: "IBM Plex Sans", -apple-system, "Segoe UI", Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
-    min-height: 100vh;
-    min-height: 100svh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 13vh 7vw 4vh;
-  }
-  main {
-    width: 100%;
-    max-width: 40rem;
-    animation: rise 1.1s cubic-bezier(0.16, 1, 0.3, 1) both;
-  }
-  h1 {
-    font-family: "IBM Plex Sans", -apple-system, "Segoe UI", Arial, sans-serif;
-    font-weight: 700;
-    font-size: clamp(2.2rem, 1.6rem + 2.4vw, 2.9rem);
-    letter-spacing: -0.01em;
-    margin-bottom: 0.4em;
-    color: var(--brand);
-  }
-  .tagline {
-    font-size: 1.06rem;
-    color: var(--ink);
-    margin-bottom: 1.9em;
-  }
-  p.body-text {
-    font-size: 1rem;
-    line-height: 1.62;
-    letter-spacing: -0.001em;
-  }
-  p.body-text + p.body-text,
-  p.body-text + ul,
-  ul + p.body-text {
-    margin-top: 1.5em;
-  }
-  ul.points {
-    list-style: disc;
-    padding-left: 1.3em;
-    font-size: 1rem;
-    line-height: 1.62;
-  }
-  ul.points li + li {
-    margin-top: 0.55em;
-  }
-  ul.links li + li {
-    margin-top: 0.3em;
-  }
-  a {
-    color: var(--ink);
-    text-decoration: underline;
-    text-underline-offset: 2px;
-    text-decoration-color: rgba(26, 26, 26, 0.35);
-    transition: text-decoration-color 0.2s ease;
-  }
-  a:hover, a:focus-visible {
-    color: var(--brand);
-    text-decoration-color: var(--brand);
-  }
-  a:focus-visible {
-    outline: 2px solid var(--brand);
-    outline-offset: 2px;
-    border-radius: 1px;
-  }
-  .divider {
-    width: 100%;
-    max-width: 40rem;
-    border: none;
-    border-top: 1px solid var(--rule);
-    margin: 2.75rem 0 1.25rem;
-  }
-  footer {
-    position: fixed;
-    right: 1.5rem;
-    bottom: 1.25rem;
-    font-size: 0.82rem;
-    color: var(--brand);
-  }
-  @keyframes rise {
-    from { opacity: 0; transform: translateY(12px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    main { animation: none; }
-  }
-  @media (max-width: 600px) {
-    body { padding: 11vh 7vw 3vh; }
-    footer { position: static; margin-top: 3rem; }
-  }
-</style>
-</head>
-<body>
-  <main>
-    <h1>Laplace Research</h1>
-    <p class="tagline">Foundation models for calibrated forecasting</p>
+  <head>
+    <meta charset="utf-8" />
+    <title>Laplace Research</title>
+    <meta
+      name="description"
+      content="A neo lab where we are attempting to solve forecasting."
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/icon.svg" />
+    <script>
+      document.documentElement.classList.add("fonts-loading");
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=EB+Garamond:ital,wght@0,400;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/src/styles.css" />
+  </head>
 
-    <p class="body-text">A forecast is only useful if you know how much to trust it. Models now produce predictions at scale, and almost none of them arrive with confidence you can take at face value. Laplace is our attempt at closing that gap.</p>
+  <body>
+    <main id="maincontent">
+      <h1>
+        <a class="brand-link" href="/">laplace research</a>
+      </h1>
+      <p class="tagline">Foundation models for calibrated forecasting</p>
 
-    <p class="body-text">Two problems stand in the way, and we work on both:</p>
+      <p class="section-tight">
+        A forecast is only useful if you know how much to trust it. Models now produce predictions at scale, and almost none of them arrive with confidence you can take at face value. Laplace is our attempt at closing that gap.<br />
+        Two problems stand in the way, and we work on both:
+      </p>
+      <ul class="roles">
+        <li>Aggregating resolved forecasting data across markets, history, and expert judgment</li>
+        <li>Understanding the internal mechanisms that produce calibrated belief</li>
+      </ul>
 
-    <ul class="points">
-      <li>Aggregating resolved forecasting data across markets, history, and expert judgment. Resolution is the only signal that says whether a stated probability was honest.</li>
-      <li>Understanding the internal mechanisms that produce calibrated belief, so that calibration becomes something we can build toward rather than something we notice afterward.</li>
-    </ul>
+      <p class="after-list">
+        The two tighten each other. Better data sharpens calibration, and understanding why a model is calibrated tells us which data to collect next.
+      </p>
 
-    <p class="body-text">The two tighten each other. Better data sharpens calibration, and understanding why a model is calibrated tells us which data to collect next.</p>
+      <p>
+        If this works, the result is not simply better forecasts. It is that judgment can be spent on choosing which questions matter, rather than on second-guessing the answers.
+      </p>
 
-    <p class="body-text">If this works, the result is not simply better forecasts. It is that judgment can be spent on choosing which questions matter, rather than on second-guessing the answers.</p>
+      <p class="section-tight">If you'd like to learn more about what we do, reach us individually at:</p>
+      <ul class="roles">
+        <li>
+          <a
+            href="https:/brucenh.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Bruce's Homepage</a
+          >
+        </li>
+        <li>
+          <a
+            href="https://aryasomu.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Arya's Homepage</a
+          >
+        </li>
+      </ul>
+    </main>
 
-    <p class="body-text">We&rsquo;re a small team working out of the Bay Area. If you&rsquo;re working on forecasting, calibration, or interpretability, <a href="https://x.com/laplaceaires" target="_blank" rel="noopener">reach out</a>.</p>
+    <footer class="site-footer">
+      <div class="site-footer-inner">
+        <span>&copy; 2026 Laplace Research, Inc. All rights reserved.</span>
+      </div>
+    </footer>
 
-    <ul class="points links">
-      <li><a href="https://x.com/laplaceaires" target="_blank" rel="noopener">Laplace Research on X</a></li>
-      <li><a href="https://brucenh.com" target="_blank" rel="noopener">Bruce Nshuti Hirwa</a></li>
-      <li><a href="https://aryasomu.com" target="_blank" rel="noopener">Arya Somu</a></li>
-    </ul>
-
-    <hr class="divider">
-  </main>
-  <footer>&copy; 2026 Laplace Research, Inc. All rights reserved.</footer>
-</body>
+    <script crossorigin="anonymous" src="//unpkg.com/same-runtime/dist/index.global.js"></script>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
 </html>
