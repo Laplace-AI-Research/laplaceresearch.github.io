@@ -11,6 +11,13 @@
     <link rel="icon" type="image/svg+xml" href="/icon.svg" />
     <script>
       document.documentElement.classList.add("fonts-loading");
+      var revealMain = function () {
+        document.documentElement.classList.remove("fonts-loading");
+      };
+      if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(revealMain);
+      }
+      setTimeout(revealMain, 1500);
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -72,7 +79,5 @@
       </div>
     </footer>
 
-    <script crossorigin="anonymous" src="//unpkg.com/same-runtime/dist/index.global.js"></script>
-    <script type="module" src="/src/main.ts"></script>
   </body>
 </html>
