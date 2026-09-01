@@ -5,110 +5,212 @@
     <title>Laplace Research</title>
     <meta
       name="description"
-      content="A neo lab where we are attempting to solve forecasting."
+      content="Foundation models for calibrated forecasting."
     />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#060910" />
+
     <link rel="icon" href="/favicon.ico" sizes="32x32" />
     <link rel="icon" type="image/png" href="/favicon-96.png" sizes="96x96" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    <script>
-      document.documentElement.classList.add("fonts-loading");
-      var revealMain = function () {
-        document.documentElement.classList.remove("fonts-loading");
-      };
-      if (document.fonts && document.fonts.ready) {
-        document.fonts.ready.then(revealMain);
-      }
-      setTimeout(revealMain, 1500);
-    </script>
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Laplace Research" />
+    <meta
+      property="og:description"
+      content="Foundation models for calibrated forecasting."
+    />
+    <meta property="og:url" content="https://laplaceresearch.org/" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=EB+Garamond:ital,wght@0,400;1,400&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500&display=swap"
       rel="stylesheet"
     />
+    <link rel="preload" as="image" href="assets/ridgeline.jpg" />
     <link rel="stylesheet" href="styles.css" />
   </head>
 
   <body>
-    <main id="maincontent">
-      <header class="masthead">
-        <div class="masthead-text">
-          <h1>
-            <a class="brand-link" href="/">laplace research</a>
+    <main class="site" id="site">
+      <div class="scene" aria-hidden="true"></div>
+      <div class="veil" aria-hidden="true"></div>
+
+      <div class="frame">
+        <header class="topbar">
+          <a class="mark" href="/" aria-label="Laplace Research home">
+            <img src="assets/mark.png" alt="" width="16" height="16" />
+          </a>
+
+          <p class="clock label">
+            <span id="clock">00:00:00</span><span class="zone">UTC</span>
+          </p>
+
+          <nav class="nav" aria-label="Sections">
+            <button
+              class="label text-button"
+              type="button"
+              data-open="info"
+              aria-controls="panel-info"
+              aria-expanded="false"
+            >
+              Info
+            </button>
+            <button
+              class="label text-button"
+              type="button"
+              data-open="releases"
+              aria-controls="panel-releases"
+              aria-expanded="false"
+            >
+              Releases
+            </button>
+          </nav>
+        </header>
+
+        <section class="stage">
+          <h1 class="statement">
+            Foundation models<br />for calibrated forecasting
           </h1>
-          <p class="tagline">Foundation models for calibrated forecasting</p>
-        </div>
-        <img
-          class="masthead-mark"
-          src="/logo.png"
-          width="256"
-          height="249"
-          alt="Laplace Research"
-        />
-      </header>
 
-      <p>
-        A forecast is only useful if you know how much to trust it. Models now produce predictions at scale, and almost none of them arrive with confidence you can take at face value. Laplace is our attempt at closing that gap.
-      </p>
-      <p class="section-tight">
-        Two problems stand in the way, and we work on both:
-      </p>
-      <ul class="roles">
-        <li>Aggregating resolved forecasting data across markets, history, and expert judgment</li>
-        <li>Understanding the internal mechanisms that produce calibrated belief</li>
-      </ul>
+          <article class="panel" id="panel-info" data-panel="info" hidden>
+            <div class="prose">
+              <p style="--step: 1">
+                A forecast is only useful if you know how much to trust it.
+                Models now produce predictions at scale, and almost none of them
+                arrive with confidence you can take at face value. Laplace is
+                our attempt at closing that gap.
+              </p>
+              <p style="--step: 2">
+                Two problems stand in the way, and we work on both: aggregating
+                resolved forecasting data across markets, history, and expert
+                judgment, and understanding the internal mechanisms that produce
+                calibrated belief.
+              </p>
+              <p style="--step: 3">
+                The two tighten each other. Better data sharpens calibration,
+                and understanding why a model is calibrated tells us which data
+                to collect next.
+              </p>
+              <p style="--step: 4">
+                If this works, the result is not simply better forecasts. It is
+                that judgment can be spent on choosing which questions matter,
+                rather than on second-guessing the answers.
+              </p>
+              <p style="--step: 5">
+                Laplace Research was co-founded by
+                <a
+                  href="https://aryasomu.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Arya Somu</a
+                >, Chief Scientist, and
+                <a
+                  href="https://brucenh.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Bruce Nshuti Hirwa</a
+                >, Chief Technology Officer. Reach us at
+                <a href="mailto:arya@laplaceresearch.org"
+                  >arya@laplaceresearch.org</a
+                >
+                and
+                <a href="mailto:bruce@laplaceresearch.org"
+                  >bruce@laplaceresearch.org</a
+                >.
+              </p>
+            </div>
+            <button class="label text-button back" type="button" data-close>
+              <span aria-hidden="true">&#8592;</span> Back
+            </button>
+          </article>
 
-      <p class="after-list">
-        The two tighten each other. Better data sharpens calibration, and understanding why a model is calibrated tells us which data to collect next.
-      </p>
+          <article
+            class="panel panel-releases"
+            id="panel-releases"
+            data-panel="releases"
+            hidden
+          >
+            <div class="prose">
+              <p class="lede" style="--step: 1">
+                Weights and code for the Tarot-Draw family are published on
+                Hugging Face and GitHub.
+              </p>
 
-      <p>
-        If this works, the result is not simply better forecasts. It is that judgment can be spent on choosing which questions matter, rather than on second-guessing the answers.
-      </p>
+              <ul class="releases">
+                <li style="--step: 2">
+                  <span class="rel-name">Tarot-Draw 1.7B</span>
+                  <span class="rel-date">29 Aug 2026</span>
+                  <span class="rel-links">
+                    <a
+                      href="https://huggingface.co/Laplace-AI-Research/tarot-draw-1-7b"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      >Hugging Face</a
+                    >
+                    <a
+                      href="https://github.com/Laplace-AI-Research/tarot-draw-1-7b"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      >GitHub</a
+                    >
+                  </span>
+                </li>
+                <li style="--step: 3">
+                  <span class="rel-name">Tarot-Draw 8B</span>
+                  <span class="rel-date">28 Aug 2026</span>
+                  <span class="rel-links">
+                    <a
+                      href="https://huggingface.co/Laplace-AI-Research/tarot-draw-8b"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      >Hugging Face</a
+                    >
+                    <a
+                      href="https://github.com/Laplace-AI-Research/tarot-draw-8b"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      >GitHub</a
+                    >
+                  </span>
+                </li>
+                <li style="--step: 4">
+                  <span class="rel-name">Tarot-Draw 4B</span>
+                  <span class="rel-date">28 Aug 2026</span>
+                  <span class="rel-links">
+                    <a
+                      href="https://huggingface.co/Laplace-AI-Research/tarot-draw-4b"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      >Hugging Face</a
+                    >
+                    <a
+                      href="https://github.com/Laplace-AI-Research/tarot-draw-4b"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      >GitHub</a
+                    >
+                  </span>
+                </li>
+              </ul>
+            </div>
+            <button class="label text-button back" type="button" data-close>
+              <span aria-hidden="true">&#8592;</span> Back
+            </button>
+          </article>
+        </section>
 
-      <p>
-        Laplace Research was Co-Founded by <a href="https://aryasomu.com" target="_blank" rel="noopener noreferrer">Arya Somu</a>, our Chief Scientist and <a href="https://brucenh.com" target="_blank" rel="noopener noreferrer">Bruce Nshuti Hirwa</a>, our Chief Technology Officer.
-      </p>
-
-      <p class="section-tight">Releases</p>
-      <ul class="roles">
-        <li>
-          Tarot-Draw 4B (08/28/26):
-          <a href="https://huggingface.co/Laplace-AI-Research/tarot-draw-4b" target="_blank" rel="noopener noreferrer">Hugging Face</a>
-          ·
-          <a href="https://github.com/Laplace-AI-Research/tarot-draw-4b" target="_blank" rel="noopener noreferrer">GitHub</a>
-        </li>
-        <li>
-          Tarot-Draw 8B (08/28/26):
-          <a href="https://huggingface.co/Laplace-AI-Research/tarot-draw-8b" target="_blank" rel="noopener noreferrer">Hugging Face</a>
-          ·
-          <a href="https://github.com/Laplace-AI-Research/tarot-draw-8b" target="_blank" rel="noopener noreferrer">GitHub</a>
-        </li>
-        <li>
-          Tarot-Draw 1.7B (08/29/26):
-          <a href="https://huggingface.co/Laplace-AI-Research/tarot-draw-1-7b" target="_blank" rel="noopener noreferrer">Hugging Face</a>
-          ·
-          <a href="https://github.com/Laplace-AI-Research/tarot-draw-1-7b" target="_blank" rel="noopener noreferrer">GitHub</a>
-        </li>
-      </ul>
-
-      <p class="section-tight after-list">If you'd like to learn more about what we do, reach us individually at:</p>
-      <ul class="roles">
-        <li>
-          <a href="mailto:arya@laplaceresearch.org">arya@laplaceresearch.org</a>
-        </li>
-        <li>
-          <a href="mailto:bruce@laplaceresearch.org">bruce@laplaceresearch.org</a>
-        </li>
-      </ul>
+        <footer class="baseline">
+          <span class="label">Laplace Research, Inc.</span>
+          <span class="label">&copy; 2026</span>
+          <a class="label" href="mailto:inquiries@laplaceresearch.org"
+            >inquiries@laplaceresearch.org</a
+          >
+        </footer>
+      </div>
     </main>
 
-    <footer class="site-footer">
-      <div class="site-footer-inner">
-        <span>&copy; 2026 Laplace Research, Inc. All rights reserved.</span>
-      </div>
-    </footer>
-
+    <script src="app.js"></script>
   </body>
 </html>
