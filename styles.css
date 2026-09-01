@@ -211,7 +211,7 @@ a {
 
 .mark img {
   display: block;
-  width: 28px;
+  width: 56px;
   height: auto;
 }
 
@@ -469,7 +469,7 @@ a {
   }
 
   .mark img {
-    width: 24px;
+    width: 44px;
   }
 
   .clock {
