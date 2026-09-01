@@ -90,18 +90,37 @@
     if (event.key === "Escape") close();
   });
 
-  /* --- clock --- */
+  /* --- clock: New York, with the zone label following daylight saving --- */
   var clock = document.getElementById("clock");
+  var zone = document.getElementById("zone");
+  var ZONE = "America/New_York";
+
   var format = new Intl.DateTimeFormat("en-GB", {
     hour: "2-digit",
     minute: "2-digit",
     second: "2-digit",
     hour12: false,
-    timeZone: "UTC",
+    timeZone: ZONE,
   });
 
+  var labelFormat = new Intl.DateTimeFormat("en-US", {
+    timeZone: ZONE,
+    timeZoneName: "short",
+  });
+
+  function label(date) {
+    var part = labelFormat
+      .formatToParts(date)
+      .find(function (p) {
+        return p.type === "timeZoneName";
+      });
+    return part ? part.value : "ET";
+  }
+
   function tick() {
-    clock.textContent = format.format(new Date());
+    var now = new Date();
+    clock.textContent = format.format(now);
+    zone.textContent = label(now);
   }
 
   tick();

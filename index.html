@@ -7,8 +7,12 @@
       name="description"
       content="Foundation models for calibrated forecasting."
     />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#060910" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <!-- matches the sky at the top of the plate so browser chrome blends in -->
+    <meta name="theme-color" content="#1a253a" />
 
     <link rel="icon" href="/favicon.ico" sizes="32x32" />
     <link rel="icon" type="image/png" href="/favicon-96.png" sizes="96x96" />
@@ -44,7 +48,7 @@
           </a>
 
           <p class="clock label">
-            <span id="clock">00:00:00</span><span class="zone">UTC</span>
+            <span id="clock">00:00:00</span><span class="zone" id="zone">ET</span>
           </p>
 
           <nav class="nav" aria-label="Sections">
