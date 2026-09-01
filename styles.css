@@ -262,6 +262,98 @@ a {
   justify-content: center;
 }
 
+/* ---------- announcement ---------- */
+
+.announce {
+  position: absolute;
+  top: clamp(26px, 6vh, 60px);
+  left: 50%;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  margin: 0;
+  padding: 7px 13px 7px 11px;
+  border: 1px solid rgba(255, 255, 255, 0.17);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(11px) saturate(1.2);
+  -webkit-backdrop-filter: blur(11px) saturate(1.2);
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 12px;
+  line-height: 1.25;
+  letter-spacing: -0.012em;
+  white-space: nowrap;
+  cursor: pointer;
+  /* held back a beat after the page reveal so it reads as an arrival */
+  opacity: 0;
+  transform: translateX(-50%) translateY(-7px);
+  transition:
+    opacity 520ms ease,
+    transform 620ms var(--enter),
+    filter 420ms ease,
+    border-color 200ms ease,
+    background-color 200ms ease;
+}
+
+.is-ready .announce {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+  transition-delay: 620ms;
+}
+
+.announce:hover {
+  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.announce:focus-visible {
+  outline: 1px solid rgba(255, 255, 255, 0.9);
+  outline-offset: 4px;
+}
+
+.announce-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #a9c6ff;
+  box-shadow: 0 0 7px rgba(169, 198, 255, 0.9);
+  animation: announce-pulse 2.6s ease-in-out infinite;
+}
+
+@keyframes announce-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.42;
+  }
+}
+
+.announce-sizes {
+  padding-left: 9px;
+  border-left: 1px solid rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.62);
+}
+
+.announce-arrow {
+  color: rgba(255, 255, 255, 0.6);
+  transition: transform 220ms var(--enter);
+}
+
+.announce:hover .announce-arrow {
+  transform: translateX(3px);
+}
+
+/* leaves with the headline when a panel opens */
+.site.is-open .announce {
+  opacity: 0;
+  filter: blur(7px);
+  transform: translateX(-50%) translateY(-14px);
+  pointer-events: none;
+  transition-delay: 0ms;
+}
+
 .statement {
   position: absolute;
   margin: 0;
@@ -510,6 +602,17 @@ a {
   .clock {
     /* the three-up header gets tight on small screens */
     font-size: 11px;
+  }
+
+  .announce {
+    top: clamp(20px, 4.5vh, 44px);
+    gap: 8px;
+    padding: 6px 12px 6px 10px;
+    font-size: 11.5px;
+  }
+
+  .announce-sizes {
+    display: none;
   }
 
   .statement {
