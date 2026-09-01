@@ -536,6 +536,8 @@ a {
 
 .baseline > :first-child {
   justify-self: start;
+  /* the silhouette overhangs this cell, so it must not be clipped */
+  overflow: visible;
 }
 
 .baseline > :nth-child(2) {
@@ -544,6 +546,52 @@ a {
 
 .baseline > :last-child {
   justify-self: end;
+}
+
+/* ---------- the New York easter egg ---------- */
+
+.place {
+  position: relative;
+  display: inline-block;
+}
+
+.place-text {
+  display: inline-block;
+  transition:
+    opacity 260ms ease,
+    filter 300ms ease,
+    transform 340ms var(--enter);
+}
+
+.place-map {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  height: 30px;
+  width: auto;
+  fill: rgba(255, 255, 255, 0.9);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-50%) scale(0.86);
+  transform-origin: left center;
+  transition:
+    opacity 300ms ease,
+    transform 420ms var(--enter);
+}
+
+/* pointer devices only — a touch tap would leave it stuck mid-swap */
+@media (hover: hover) {
+  .place:hover .place-text {
+    opacity: 0;
+    filter: blur(4px);
+    transform: translateY(-3px);
+  }
+
+  .place:hover .place-map {
+    opacity: 1;
+    transform: translateY(-50%) scale(1);
+    transition-delay: 60ms;
+  }
 }
 
 /* ---------- responsive ---------- */
