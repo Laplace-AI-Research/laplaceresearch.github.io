@@ -533,29 +533,62 @@ a {
   letter-spacing: -0.01em;
 }
 
+/* the two marks are defined once at the top of the document */
+.icon-defs {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+.icon {
+  display: block;
+  fill: currentColor;
+}
+
+/* optically matched: the octocat is a solid disc, the face is open line work,
+   so the face needs a point more to carry the same weight */
+.icon--gh {
+  width: 16px;
+  height: 16px;
+}
+
+.icon--hf {
+  width: 17px;
+  height: 17px;
+}
+
 .rel-links {
   grid-area: links;
   display: flex;
-  gap: 18px;
+  gap: 2px;
+  /* pulls the icon edge back onto the rule, not the hit area's edge */
+  margin-right: -8px;
   white-space: nowrap;
 }
 
 .rel-links a {
-  color: rgba(255, 255, 255, 0.86);
-  font-size: 12px;
-  letter-spacing: -0.01em;
-  text-decoration: none;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.32);
-  padding-bottom: 1px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  color: rgba(255, 255, 255, 0.62);
   transition:
     color 180ms ease,
-    border-color 180ms ease;
+    background-color 180ms ease;
 }
 
 .rel-links a:hover {
   color: #fff;
-  border-color: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.1);
   opacity: 1;
+}
+
+.rel-links a:focus-visible {
+  outline: 1px solid rgba(255, 255, 255, 0.9);
+  outline-offset: 1px;
 }
 
 /* ---------- baseline ---------- */
@@ -577,8 +610,6 @@ a {
 
 .baseline > :first-child {
   justify-self: start;
-  /* the silhouette overhangs this cell, so it must not be clipped */
-  overflow: visible;
 }
 
 .baseline > :nth-child(2) {
@@ -587,52 +618,6 @@ a {
 
 .baseline > :last-child {
   justify-self: end;
-}
-
-/* ---------- the New York easter egg ---------- */
-
-.place {
-  position: relative;
-  display: inline-block;
-}
-
-.place-text {
-  display: inline-block;
-  transition:
-    opacity 260ms ease,
-    filter 300ms ease,
-    transform 340ms var(--enter);
-}
-
-.place-map {
-  position: absolute;
-  top: 50%;
-  left: 0;
-  height: 30px;
-  width: auto;
-  fill: rgba(255, 255, 255, 0.9);
-  opacity: 0;
-  pointer-events: none;
-  transform: translateY(-50%) scale(0.86);
-  transform-origin: left center;
-  transition:
-    opacity 300ms ease,
-    transform 420ms var(--enter);
-}
-
-/* pointer devices only — a touch tap would leave it stuck mid-swap */
-@media (hover: hover) {
-  .place:hover .place-text {
-    opacity: 0;
-    filter: blur(4px);
-    transform: translateY(-3px);
-  }
-
-  .place:hover .place-map {
-    opacity: 1;
-    transform: translateY(-50%) scale(1);
-    transition-delay: 60ms;
-  }
 }
 
 /* ---------- responsive ---------- */
@@ -725,7 +710,9 @@ a {
   }
 
   .rel-links {
-    margin-top: 7px;
+    margin-top: 3px;
+    margin-left: -8px;
+    margin-right: 0;
   }
 
   .baseline {
