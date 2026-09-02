@@ -371,6 +371,35 @@ a {
     transform 420ms ease;
 }
 
+/* headline reel — see spinHeadline() in app.js */
+.statement .glyph {
+  display: inline-block;
+  text-align: center;
+  white-space: pre;
+  /* a wide random glyph may overhang its slot; the slot itself never moves */
+}
+
+.statement .glyph.is-spinning {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.statement .glyph.is-set {
+  animation: glyph-set 300ms var(--enter) both;
+}
+
+@keyframes glyph-set {
+  from {
+    opacity: 0.45;
+    filter: blur(2.5px);
+    transform: translateY(-2px);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+    transform: none;
+  }
+}
+
 .site.is-open .statement {
   opacity: 0;
   filter: blur(7px);
