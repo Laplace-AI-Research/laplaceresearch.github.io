@@ -39,6 +39,18 @@ a {
   font: inherit;
 }
 
+::selection {
+  background: #41414d;
+  color: #fff;
+  text-shadow: none;
+}
+
+::-moz-selection {
+  background: #41414d;
+  color: #fff;
+  text-shadow: none;
+}
+
 .sr-only {
   position: absolute;
   width: 1px;
