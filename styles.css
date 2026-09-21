@@ -192,18 +192,21 @@ a {
 }
 
 .text-button,
+.nav a,
 .baseline a,
 .prose a {
   transition: opacity 180ms ease;
 }
 
 .text-button:hover,
+.nav a:hover,
 .baseline a:hover,
 .prose a:hover {
   opacity: 0.56;
 }
 
 .text-button:focus-visible,
+.nav a:focus-visible,
 .baseline a:focus-visible,
 .prose a:focus-visible,
 .mark:focus-visible {
@@ -260,7 +263,13 @@ a {
 
 .nav {
   display: flex;
+  align-items: center;
   gap: 20px;
+}
+
+.nav a {
+  color: var(--ink-soft);
+  text-decoration: none;
 }
 
 /* ---------- centre ---------- */
@@ -524,6 +533,19 @@ a {
   transform: translateX(3px);
 }
 
+.research-index-link {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 18px;
+  color: rgba(255, 255, 255, 0.72) !important;
+  font-size: 13px;
+  text-decoration: none !important;
+}
+
+.research-index-link span {
+  color: rgba(255, 255, 255, 0.48);
+}
+
 .releases {
   margin: 0;
   padding: 0;
@@ -697,8 +719,7 @@ a {
   }
 
   .clock {
-    /* the three-up header gets tight on small screens */
-    font-size: 11px;
+    display: none;
   }
 
   .announce {

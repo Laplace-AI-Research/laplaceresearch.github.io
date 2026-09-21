@@ -26,23 +26,84 @@
     <link rel="icon" href="/favicon.ico" sizes="32x32" />
     <link rel="icon" type="image/png" href="/favicon-96.png" sizes="96x96" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="canonical" href="https://laplaceresearch.org/" />
 
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Laplace Research" />
     <meta property="og:title" content="Laplace Research" />
     <meta
       property="og:description"
       content="Foundation models for calibrated forecasting."
     />
     <meta property="og:url" content="https://laplaceresearch.org/" />
+    <meta
+      property="og:image"
+      content="https://laplaceresearch.org/assets/laplace-social.png"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="Laplace Research over a blue-grey mountain landscape"
+    />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Laplace Research" />
+    <meta
+      name="twitter:description"
+      content="Foundation models for calibrated forecasting."
+    />
+    <meta
+      name="twitter:image"
+      content="https://laplaceresearch.org/assets/laplace-social.png"
+    />
+    <meta
+      name="twitter:image:alt"
+      content="Laplace Research over a blue-grey mountain landscape"
+    />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Laplace Research",
+        "url": "https://laplaceresearch.org/",
+        "logo": "https://laplaceresearch.org/assets/mark.png",
+        "description": "Foundation models for calibrated forecasting.",
+        "email": "inquiries@laplaceresearch.org",
+        "foundingLocation": {
+          "@type": "Place",
+          "name": "New York, NY"
+        },
+        "founder": [
+          {
+            "@type": "Person",
+            "name": "Arya Somu",
+            "jobTitle": "Chief Scientist",
+            "url": "https://aryasomu.com/"
+          },
+          {
+            "@type": "Person",
+            "name": "Bruce Nshuti Hirwa",
+            "jobTitle": "Chief Technology Officer",
+            "url": "https://brucenh.com/"
+          }
+        ],
+        "sameAs": [
+          "https://github.com/Laplace-AI-Research",
+          "https://huggingface.co/Laplace-AI-Research"
+        ]
+      }
+    </script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500&amp;display=swap"
       rel="stylesheet"
     />
     <link rel="preload" as="image" href="assets/ridgeline.jpg" />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles.css?v=20260921" />
   </head>
 
   <body>
@@ -70,6 +131,7 @@
           </p>
 
           <nav class="nav" aria-label="Sections">
+            <a class="label" href="/research/">Research</a>
             <button
               class="label text-button"
               type="button"
@@ -151,6 +213,9 @@
                 <a href="mailto:bruce@laplaceresearch.org"
                   >bruce@laplaceresearch.org</a
                 >.
+              </p>
+              <p style="--step: 6">
+                <a href="/about/">Read more about Laplace Research</a>.
               </p>
             </div>
             <button class="label text-button back" type="button" data-close>
@@ -255,6 +320,9 @@
                   </span>
                 </li>
               </ul>
+              <a class="research-index-link" href="/research/" style="--step: 6">
+                View all research <span aria-hidden="true">&#8594;</span>
+              </a>
             </div>
             <button class="label text-button back" type="button" data-close>
               <span aria-hidden="true">&#8592;</span> Back

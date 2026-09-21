@@ -26,15 +26,74 @@
       content="Three forecasting models, trained on the same 81,870 questions."
     />
     <meta property="og:url" content="https://laplaceresearch.org/tarot-draw/" />
+    <meta
+      property="og:image"
+      content="https://laplaceresearch.org/assets/tarot-draw-social.png"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="Tarot-Draw over a blue-grey mountain landscape"
+    />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Tarot-Draw" />
+    <meta
+      name="twitter:description"
+      content="Three forecasting models, trained on the same 81,870 questions."
+    />
+    <meta
+      name="twitter:image"
+      content="https://laplaceresearch.org/assets/tarot-draw-social.png"
+    />
+    <meta
+      name="twitter:image:alt"
+      content="Tarot-Draw over a blue-grey mountain landscape"
+    />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "Tarot-Draw",
+        "description": "Three forecasting models trained on the same 81,870 questions. A controlled look at what model size changes, and what it does not.",
+        "datePublished": "2026-08-29",
+        "dateModified": "2026-09-21",
+        "mainEntityOfPage": "https://laplaceresearch.org/tarot-draw/",
+        "image": "https://laplaceresearch.org/assets/tarot-draw-social.png",
+        "author": [
+          {
+            "@type": "Person",
+            "name": "Arya Somu",
+            "url": "https://aryasomu.com/"
+          },
+          {
+            "@type": "Person",
+            "name": "Bruce Nshuti Hirwa",
+            "url": "https://brucenh.com/"
+          }
+        ],
+        "publisher": {
+          "@type": "Organization",
+          "name": "Laplace Research",
+          "url": "https://laplaceresearch.org/",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://laplaceresearch.org/assets/mark.png"
+          }
+        }
+      }
+    </script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500&amp;display=swap"
       rel="stylesheet"
     />
     <link rel="preload" as="image" href="../assets/ridgeline.jpg" />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles.css?v=20260921" />
   </head>
 
   <body>
@@ -45,7 +104,11 @@
         <img src="../assets/mark.png" alt="" width="38" height="37" />
         <span>Laplace Research</span>
       </a>
-      <a class="home-link" href="/">Research home</a>
+      <nav class="page-nav" aria-label="Primary navigation">
+        <a href="/research/">Research</a>
+        <a href="/about/">About</a>
+        <a href="/">Home</a>
+      </nav>
     </header>
 
     <main>
@@ -62,6 +125,12 @@
             Three forecasting models trained on the same 81,870 questions. A
             controlled look at what model size changes, and what it does not.
           </p>
+          <p class="byline">
+            By
+            <a href="https://aryasomu.com/" target="_blank" rel="noopener noreferrer">Arya Somu</a>
+            and
+            <a href="https://brucenh.com/" target="_blank" rel="noopener noreferrer">Bruce Nshuti Hirwa</a>
+          </p>
           <div class="primary-links" aria-label="Release links">
             <a
               href="https://huggingface.co/collections/Laplace-AI-Research/tarot-draw-family"
@@ -70,10 +139,8 @@
               >Model collection <span aria-hidden="true">&#8599;</span></a
             >
             <a
-              href="https://github.com/Laplace-AI-Research"
-              target="_blank"
-              rel="noopener noreferrer"
-              >Code and evidence <span aria-hidden="true">&#8599;</span></a
+              href="#artifacts"
+              >Code and evidence <span aria-hidden="true">&#8595;</span></a
             >
           </div>
         </div>
@@ -246,7 +313,7 @@
             </p>
           </div>
 
-          <div class="model-table">
+          <div class="model-table" id="artifacts">
             <div class="model-row model-row-head" aria-hidden="true">
               <span>Model</span>
               <span>Best fit</span>
@@ -369,6 +436,35 @@
               under CC BY-NC 4.0. Verification and inference code are Apache
               2.0. The training corpus is documented, not redistributed.
             </p>
+            <dl class="publication-details">
+              <div>
+                <dt>Version</dt>
+                <dd>1.0</dd>
+              </div>
+              <div>
+                <dt>Published</dt>
+                <dd>29 August 2026</dd>
+              </div>
+              <div>
+                <dt>Authors</dt>
+                <dd>Arya Somu; Bruce Nshuti Hirwa</dd>
+              </div>
+              <div>
+                <dt>Publisher</dt>
+                <dd>Laplace Research</dd>
+              </div>
+            </dl>
+
+            <div class="citation-block">
+              <h3>Cite this release</h3>
+              <pre><code>@misc{somu2026tarotdraw,
+  title     = {Tarot-Draw},
+  author    = {Somu, Arya and Hirwa, Bruce Nshuti},
+  year      = {2026},
+  publisher = {Laplace Research},
+  url       = {https://laplaceresearch.org/tarot-draw/}
+}</code></pre>
+            </div>
             <p class="closing-links">
               <a
                 href="https://huggingface.co/collections/Laplace-AI-Research/tarot-draw-family"
@@ -393,8 +489,11 @@
         <img src="../assets/mark.png" alt="" width="38" height="37" />
         <span>Laplace Research</span>
       </a>
-      <p>New York, NY</p>
-      <a href="mailto:inquiries@laplaceresearch.org">Inquiries</a>
+      <nav aria-label="Footer navigation">
+        <a href="/research/">Research</a>
+        <a href="/about/">About</a>
+        <a href="mailto:inquiries@laplaceresearch.org">Inquiries</a>
+      </nav>
     </footer>
   </body>
 </html>
