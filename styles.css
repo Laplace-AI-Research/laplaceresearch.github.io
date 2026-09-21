@@ -295,6 +295,7 @@ a {
   line-height: 1.25;
   letter-spacing: -0.012em;
   white-space: nowrap;
+  text-decoration: none;
   cursor: pointer;
   /* held back a beat after the page reveal so it reads as an arrival */
   opacity: 0;
@@ -499,6 +500,28 @@ a {
 
 .lede {
   color: rgba(255, 255, 255, 0.72);
+}
+
+.release-story {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 0 23px;
+  padding: 11px 0 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+  color: rgba(255, 255, 255, 0.92) !important;
+  font-size: 13px;
+  text-decoration: none !important;
+}
+
+.release-story span {
+  color: rgba(255, 255, 255, 0.58);
+  transition: transform 220ms var(--enter);
+}
+
+.release-story:hover span {
+  transform: translateX(3px);
 }
 
 .releases {
