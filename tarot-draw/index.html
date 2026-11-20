@@ -11,7 +11,8 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, viewport-fit=cover"
     />
-    <meta name="theme-color" content="#0a0c10" />
+    <meta name="theme-color" content="#fbfbf9" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0e1014" media="(prefers-color-scheme: dark)" />
 
     <link rel="canonical" href="https://laplaceresearch.org/tarot-draw/" />
     <link rel="icon" href="../favicon.ico" sizes="32x32" />
@@ -89,11 +90,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500&amp;display=swap"
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500&amp;family=Geist+Mono&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400;1,8..60,400&amp;display=swap"
       rel="stylesheet"
     />
-    <link rel="preload" as="image" href="../assets/ridgeline.jpg" />
-    <link rel="stylesheet" href="styles.css?v=20261119" />
+    <link rel="stylesheet" href="/site.css?v=20261119" />
   </head>
 
   <body>
@@ -111,16 +111,16 @@
     </header>
 
     <main>
-      <header class="release-header shell grid">
-        <div class="release-meta">
+      <header class="page-hero shell grid">
+        <div class="page-label release-date">
           <p>Model release</p>
           <p><time datetime="2026-08-29">29 August 2026</time></p>
           <p>8 minute read</p>
         </div>
 
-        <div class="release-intro">
+        <div class="page-intro">
           <h1>Tarot-Draw</h1>
-          <p class="dek">
+          <p class="page-dek">
             Three forecasting models trained on the same 81,870 questions. A
             controlled look at what model size changes, and what it does not.
           </p>
@@ -130,8 +130,9 @@
             and
             <a href="https://brucenh.com/" target="_blank" rel="noopener noreferrer">Bruce Nshuti Hirwa</a>
           </p>
-          <div class="primary-links" aria-label="Release links">
+          <nav class="release-links" aria-label="Release links">
             <a
+              class="primary"
               href="https://huggingface.co/collections/Laplace-AI-Research/tarot-draw-family"
               target="_blank"
               rel="noopener noreferrer"
@@ -141,21 +142,9 @@
               href="#artifacts"
               >Code and evidence <span aria-hidden="true">&#8595;</span></a
             >
-          </div>
+          </nav>
         </div>
 
-        <figure class="hero-figure">
-          <img
-            src="../assets/ridgeline.jpg"
-            alt="Layered mountain ridges receding into a blue-grey horizon"
-            width="2000"
-            height="1125"
-          />
-          <figcaption>
-            Tarot-Draw estimates a probability from the text of a question and
-            its resolution date. It does not retrieve news or observe a market.
-          </figcaption>
-        </figure>
 
         <dl class="release-facts">
           <div>
@@ -178,7 +167,7 @@
       </header>
 
       <article id="article" class="article shell">
-        <section class="article-section grid" aria-labelledby="overview-title">
+        <section class="content-section grid" aria-labelledby="overview-title">
           <p class="section-label">Overview</p>
           <div class="section-body">
             <h2 id="overview-title">What Tarot-Draw is</h2>
@@ -219,7 +208,7 @@
           </div>
         </section>
 
-        <section class="article-section grid" aria-labelledby="experiment-title">
+        <section class="content-section grid" aria-labelledby="experiment-title">
           <p class="section-label">Experiment</p>
           <div class="section-body">
             <h2 id="experiment-title">One variable: model size</h2>
@@ -252,39 +241,52 @@
             </p>
           </div>
 
-          <figure class="results-figure">
+          <div class="wide-body">
+            <figure class="figure" aria-labelledby="fig-murphy-title">
+            <div class="figure-head">
+              <p class="figure-title" id="fig-murphy-title">Where the Brier score comes from</p>
+              <p class="figure-sub">Murphy decomposition on the development split (n = 3,000), both panels in Brier units on the same scale. Calibration error is near zero at every size; resolution is what the 1.7B gives up.</p>
+            </div>
+            <div class="panels" style="--panels: 2">
+              <div class="panel"><p class="panel-title">Resolution <span>· higher is better</span></p><ul class="chart-rows has-values" style="--label-w: 112px"><li class="chart-row"><span class="row-label">Tarot-Draw 8B</span><span class="track" style="--ticks: 2"><span class="bar" style="--v: 0.8975" tabindex="0" role="img" aria-label="Tarot-Draw 8B: Resolution 0.0718" data-tip-title="Tarot-Draw 8B" data-tip="Resolution 0.0718"></span><span class="bar-value" style="--v: 0.8975">0.0718</span></span></li><li class="chart-row"><span class="row-label">Tarot-Draw 4B</span><span class="track" style="--ticks: 2"><span class="bar" style="--v: 0.8850" tabindex="0" role="img" aria-label="Tarot-Draw 4B: Resolution 0.0708" data-tip-title="Tarot-Draw 4B" data-tip="Resolution 0.0708"></span><span class="bar-value" style="--v: 0.8850">0.0708</span></span></li><li class="chart-row"><span class="row-label">Tarot-Draw 1.7B</span><span class="track" style="--ticks: 2"><span class="bar" style="--v: 0.7412" tabindex="0" role="img" aria-label="Tarot-Draw 1.7B: Resolution 0.0593" data-tip-title="Tarot-Draw 1.7B" data-tip="Resolution 0.0593"></span><span class="bar-value" style="--v: 0.7412">0.0593</span></span></li></ul><div class="axis has-values" aria-hidden="true" style="--label-w: 112px"><span style="--t: 0">0</span><span style="--t: 0.5">0.04</span><span style="--t: 1">0.08</span></div></div>
+              <div class="panel"><p class="panel-title">Calibration error <span>· lower is better</span></p><ul class="chart-rows has-values" style="--label-w: 112px"><li class="chart-row"><span class="row-label">Tarot-Draw 8B</span><span class="track" style="--ticks: 2"><span class="bar" style="--v: 0.0125" tabindex="0" role="img" aria-label="Tarot-Draw 8B: Calibration error 0.0010" data-tip-title="Tarot-Draw 8B" data-tip="Calibration error 0.0010"></span><span class="bar-value" style="--v: 0.0125">0.0010</span></span></li><li class="chart-row"><span class="row-label">Tarot-Draw 4B</span><span class="track" style="--ticks: 2"><span class="bar" style="--v: 0.0087" tabindex="0" role="img" aria-label="Tarot-Draw 4B: Calibration error 0.0007" data-tip-title="Tarot-Draw 4B" data-tip="Calibration error 0.0007"></span><span class="bar-value" style="--v: 0.0087">0.0007</span></span></li><li class="chart-row"><span class="row-label">Tarot-Draw 1.7B</span><span class="track" style="--ticks: 2"><span class="bar" style="--v: 0.0050" tabindex="0" role="img" aria-label="Tarot-Draw 1.7B: Calibration error 0.0004" data-tip-title="Tarot-Draw 1.7B" data-tip="Calibration error 0.0004"></span><span class="bar-value" style="--v: 0.0050">0.0004</span></span></li></ul><div class="axis has-values" aria-hidden="true" style="--label-w: 112px"><span style="--t: 0">0</span><span style="--t: 0.5">0.04</span><span style="--t: 1">0.08</span></div></div>
+            </div>
+          </figure>
+          </div>
+
+          <figure class="results-figure wide-body">
             <figcaption>
               Development split, n = 3,000. Lower Brier and calibration are
               better; higher resolution is better.
             </figcaption>
             <div class="table-scroll" tabindex="0" role="region" aria-label="Development results table">
-              <table>
+              <table class="data-table">
                 <thead>
                   <tr>
                     <th scope="col">Model</th>
-                    <th scope="col">Dev Brier</th>
-                    <th scope="col">Calibration</th>
-                    <th scope="col">Resolution</th>
+                    <th scope="col" class="num">Dev Brier</th>
+                    <th scope="col" class="num">Calibration</th>
+                    <th scope="col" class="num">Resolution</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
                     <th scope="row">Tarot-Draw 8B</th>
-                    <td>0.1674</td>
-                    <td>0.0010</td>
-                    <td>0.0718</td>
+                    <td class="num">0.1674</td>
+                    <td class="num">0.0010</td>
+                    <td class="num">0.0718</td>
                   </tr>
                   <tr class="recommended-row">
-                    <th scope="row">Tarot-Draw 4B <span>Recommended</span></th>
-                    <td>0.1684</td>
-                    <td>0.0007</td>
-                    <td>0.0708</td>
+                    <th scope="row">Tarot-Draw 4B <span class="tag">Recommended</span></th>
+                    <td class="num">0.1684</td>
+                    <td class="num">0.0007</td>
+                    <td class="num">0.0708</td>
                   </tr>
                   <tr>
                     <th scope="row">Tarot-Draw 1.7B</th>
-                    <td>0.1803</td>
-                    <td>0.0004</td>
-                    <td>0.0593</td>
+                    <td class="num">0.1803</td>
+                    <td class="num">0.0004</td>
+                    <td class="num">0.0593</td>
                   </tr>
                 </tbody>
               </table>
@@ -297,7 +299,7 @@
           </figure>
         </section>
 
-        <section class="article-section grid" aria-labelledby="family-title">
+        <section class="content-section grid" aria-labelledby="family-title">
           <p class="section-label">The family</p>
           <div class="section-body">
             <h2 id="family-title">Choosing a model</h2>
@@ -312,7 +314,7 @@
             </p>
           </div>
 
-          <div class="model-table" id="artifacts">
+          <div class="model-list" id="artifacts">
             <div class="model-row model-row-head" aria-hidden="true">
               <span>Model</span>
               <span>Best fit</span>
@@ -354,7 +356,7 @@
           </div>
         </section>
 
-        <section class="article-section grid" aria-labelledby="evidence-title">
+        <section class="content-section grid" aria-labelledby="evidence-title">
           <p class="section-label">Evidence</p>
           <div class="section-body">
             <h2 id="evidence-title">A result you can inspect</h2>
@@ -382,7 +384,7 @@
           </div>
         </section>
 
-        <section class="article-section grid" aria-labelledby="limits-title">
+        <section class="content-section grid" aria-labelledby="limits-title">
           <p class="section-label">Limits</p>
           <div class="section-body">
             <h2 id="limits-title">Where the prior stops</h2>
@@ -426,7 +428,7 @@
           </div>
         </section>
 
-        <section class="article-section release-section grid" aria-labelledby="release-title">
+        <section class="content-section grid" aria-labelledby="release-title">
           <p class="section-label">Release</p>
           <div class="section-body">
             <h2 id="release-title">Models, code, and terms</h2>
@@ -456,15 +458,15 @@
 
             <div class="citation-block">
               <h3>Cite this release</h3>
-              <pre><code>@misc{somu2026tarotdraw,
+              <pre class="citation-bib"><code>@misc{somu2026tarotdraw,
   title     = {Tarot-Draw},
-  author    = {Somu, Arya and Hirwa, Bruce Nshuti},
+  author    = {Somu, Arya and Nshuti Hirwa, Bruce},
   year      = {2026},
   publisher = {Laplace Research},
   url       = {https://laplaceresearch.org/tarot-draw/}
 }</code></pre>
             </div>
-            <p class="closing-links">
+            <p class="release-links">
               <a
                 href="https://huggingface.co/collections/Laplace-AI-Research/tarot-draw-family"
                 target="_blank"
@@ -499,5 +501,6 @@
         <a href="mailto:inquiries@laplaceresearch.org">Inquiries</a>
       </nav>
     </footer>
+    <script src="/figures.js?v=20261119" defer></script>
   </body>
 </html>

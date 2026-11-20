@@ -8,7 +8,8 @@
       content="Model releases and research from Laplace Research."
     />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <meta name="theme-color" content="#0a0c10" />
+    <meta name="theme-color" content="#fbfbf9" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0e1014" media="(prefers-color-scheme: dark)" />
 
     <link rel="canonical" href="https://laplaceresearch.org/research/" />
     <link rel="icon" href="../favicon.ico" sizes="32x32" />
@@ -63,14 +64,14 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500&amp;display=swap"
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500&amp;family=Geist+Mono&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400;1,8..60,400&amp;display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="../institutional.css?v=20261119" />
+    <link rel="stylesheet" href="/site.css?v=20261119" />
   </head>
 
   <body>
-    <a class="skip-link" href="#releases">Skip to releases</a>
+    <a class="skip-link" href="#releases">Skip to research</a>
 
     <header class="site-header shell">
       <a class="identity" href="/" aria-label="Laplace Research home">
@@ -87,7 +88,7 @@
       <header class="page-hero shell grid">
         <p class="page-label">Research</p>
         <div class="page-intro">
-          <h1>Releases</h1>
+          <h1>Research</h1>
           <p class="page-dek">
             Models, evaluations, and the evidence needed to inspect their claims.
           </p>
@@ -98,14 +99,18 @@
         <p class="section-label">2026</p>
         <div class="research-list">
           <article class="research-row">
-            <p class="research-date"><time datetime="2026-11-19">19 November 2026</time></p>
+            <p class="research-date">
+              <time datetime="2026-11-19">19 Nov 2026</time>
+              <span class="research-type">Benchmark &middot; Models</span>
+            </p>
             <div class="research-copy">
-              <h2><a href="/convictionbench/">ConvictionBench</a></h2>
+              <h2><a href="/convictionbench/">ConvictionBench: Evidence-Sensitive Belief Revision in Language Models</a></h2>
               <p>
                 A benchmark for how language models revise their answers under
                 evidence and social pressure, released with the Laplace
                 Conviction Series: three experimental Qwen3-1.7B LoRA adapters.
               </p>
+              <p class="research-authors">Arya Somu, Bruce Nshuti Hirwa</p>
               <p class="research-note">
                 Benchmark and adapters first released <time datetime="2026-11-10">10 November 2026</time>.
               </p>
@@ -117,7 +122,10 @@
             </div>
           </article>
           <article class="research-row">
-            <p class="research-date"><time datetime="2026-08-29">29 August 2026</time></p>
+            <p class="research-date">
+              <time datetime="2026-08-29">29 Aug 2026</time>
+              <span class="research-type">Models</span>
+            </p>
             <div class="research-copy">
               <h2><a href="/tarot-draw/">Tarot-Draw</a></h2>
               <p>
@@ -125,6 +133,7 @@
                 questions. A controlled study of what model size changes, and
                 what it does not.
               </p>
+              <p class="research-authors">Arya Somu, Bruce Nshuti Hirwa</p>
             </div>
             <div class="research-links">
               <a href="/tarot-draw/">Read release</a>

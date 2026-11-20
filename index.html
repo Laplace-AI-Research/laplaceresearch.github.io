@@ -5,23 +5,10 @@
     <title>Laplace Research</title>
     <meta
       name="description"
-      content="Foundation models for calibrated forecasting."
+      content="Laplace Research builds foundation models for calibrated forecasting and studies why their confidence can be trusted."
     />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
-    />
-    <!-- matches the sky at the top of the plate so browser chrome blends in -->
-    <meta name="theme-color" content="#1a253a" />
-
-    <!-- Added to the Home Screen it runs with no browser chrome at all,
-         so the plate really does reach every edge. -->
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="mobile-web-app-capable" content="yes" />
-    <meta
-      name="apple-mobile-web-app-status-bar-style"
-      content="black-translucent"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#0b0d11" />
 
     <link rel="icon" href="/favicon.ico" sizes="32x32" />
     <link rel="icon" type="image/png" href="/favicon-96.png" sizes="96x96" />
@@ -31,36 +18,18 @@
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Laplace Research" />
     <meta property="og:title" content="Laplace Research" />
-    <meta
-      property="og:description"
-      content="Foundation models for calibrated forecasting."
-    />
+    <meta property="og:description" content="Foundation models for calibrated forecasting." />
     <meta property="og:url" content="https://laplaceresearch.org/" />
-    <meta
-      property="og:image"
-      content="https://laplaceresearch.org/assets/laplace-social.png"
-    />
+    <meta property="og:image" content="https://laplaceresearch.org/assets/laplace-social.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta
-      property="og:image:alt"
-      content="Laplace Research over a blue-grey mountain landscape"
-    />
+    <meta property="og:image:alt" content="Laplace Research over a blue-grey mountain landscape" />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Laplace Research" />
-    <meta
-      name="twitter:description"
-      content="Foundation models for calibrated forecasting."
-    />
-    <meta
-      name="twitter:image"
-      content="https://laplaceresearch.org/assets/laplace-social.png"
-    />
-    <meta
-      name="twitter:image:alt"
-      content="Laplace Research over a blue-grey mountain landscape"
-    />
+    <meta name="twitter:description" content="Foundation models for calibrated forecasting." />
+    <meta name="twitter:image" content="https://laplaceresearch.org/assets/laplace-social.png" />
+    <meta name="twitter:image:alt" content="Laplace Research over a blue-grey mountain landscape" />
 
     <script type="application/ld+json">
       {
@@ -99,16 +68,15 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500&amp;display=swap"
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500&amp;family=Geist+Mono&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400;1,8..60,400&amp;display=swap"
       rel="stylesheet"
     />
-    <link rel="preload" as="image" href="assets/ridgeline.jpg" />
-    <link rel="stylesheet" href="styles.css?v=20261119-4" />
+    <link rel="stylesheet" href="/site.css?v=20261119" />
   </head>
 
   <body>
-    <main class="site" id="site">
-      <svg class="icon-defs" aria-hidden="true" focusable="false">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <svg class="icon-defs" aria-hidden="true" focusable="false">
         <symbol id="icon-hf" viewBox="0 0 24 24">
           <path d="M12.025 1.13c-5.77 0-10.449 4.647-10.449 10.378 0 1.112.178 2.181.503 3.185.064-.222.203-.444.416-.577a.96.96 0 0 1 .524-.15c.293 0 .584.124.84.284.278.173.48.408.71.694.226.282.458.611.684.951v-.014c.017-.324.106-.622.264-.874s.403-.487.762-.543c.3-.047.596.06.787.203s.31.313.4.467c.15.257.212.468.233.542.01.026.653 1.552 1.657 2.54.616.605 1.01 1.223 1.082 1.912.055.537-.096 1.059-.38 1.572.637.121 1.294.187 1.967.187.657 0 1.298-.063 1.921-.178-.287-.517-.44-1.041-.384-1.581.07-.69.465-1.307 1.081-1.913 1.004-.987 1.647-2.513 1.657-2.539.021-.074.083-.285.233-.542.09-.154.208-.323.4-.467a1.08 1.08 0 0 1 .787-.203c.359.056.604.29.762.543s.247.55.265.874v.015c.225-.34.457-.67.683-.952.23-.286.432-.52.71-.694.257-.16.547-.284.84-.285a.97.97 0 0 1 .524.151c.228.143.373.388.43.625l.006.04a10.3 10.3 0 0 0 .534-3.273c0-5.731-4.678-10.378-10.449-10.378M8.327 6.583a1.5 1.5 0 0 1 .713.174 1.487 1.487 0 0 1 .617 2.013c-.183.343-.762-.214-1.102-.094-.38.134-.532.914-.917.71a1.487 1.487 0 0 1 .69-2.803m7.486 0a1.487 1.487 0 0 1 .689 2.803c-.385.204-.536-.576-.916-.71-.34-.12-.92.437-1.103.094a1.487 1.487 0 0 1 .617-2.013 1.5 1.5 0 0 1 .713-.174m-10.68 1.55a.96.96 0 1 1 0 1.921.96.96 0 0 1 0-1.92m13.838 0a.96.96 0 1 1 0 1.92.96.96 0 0 1 0-1.92M8.489 11.458c.588.01 1.965 1.157 3.572 1.164 1.607-.007 2.984-1.155 3.572-1.164.196-.003.305.12.305.454 0 .886-.424 2.328-1.563 3.202-.22-.756-1.396-1.366-1.63-1.32q-.011.001-.02.006l-.044.026-.01.008-.03.024q-.018.017-.035.036l-.032.04a1 1 0 0 0-.058.09l-.014.025q-.049.088-.11.19a1 1 0 0 1-.083.116 1.2 1.2 0 0 1-.173.18q-.035.029-.075.058a1.3 1.3 0 0 1-.251-.243 1 1 0 0 1-.076-.107c-.124-.193-.177-.363-.337-.444-.034-.016-.104-.008-.2.022q-.094.03-.216.087-.06.028-.125.063l-.13.074q-.067.04-.136.086a3 3 0 0 0-.135.096 3 3 0 0 0-.26.219 2 2 0 0 0-.12.121 2 2 0 0 0-.106.128l-.002.002a2 2 0 0 0-.09.132l-.001.001a1.2 1.2 0 0 0-.105.212q-.013.036-.024.073c-1.139-.875-1.563-2.317-1.563-3.203 0-.334.109-.457.305-.454m.836 10.354c.824-1.19.766-2.082-.365-3.194-1.13-1.112-1.789-2.738-1.789-2.738s-.246-.945-.806-.858-.97 1.499.202 2.362c1.173.864-.233 1.45-.685.64-.45-.812-1.683-2.896-2.322-3.295s-1.089-.175-.938.647 2.822 2.813 2.562 3.244-1.176-.506-1.176-.506-2.866-2.567-3.49-1.898.473 1.23 2.037 2.16c1.564.932 1.686 1.178 1.464 1.53s-3.675-2.511-4-1.297c-.323 1.214 3.524 1.567 3.287 2.405-.238.839-2.71-1.587-3.216-.642-.506.946 3.49 2.056 3.522 2.064 1.29.33 4.568 1.028 5.713-.624m5.349 0c-.824-1.19-.766-2.082.365-3.194 1.13-1.112 1.789-2.738 1.789-2.738s.246-.945.806-.858.97 1.499-.202 2.362c-1.173.864.233 1.45.685.64.451-.812 1.683-2.896 2.322-3.295s1.089-.175.938.647-2.822 2.813-2.562 3.244 1.176-.506 1.176-.506 2.866-2.567 3.49-1.898-.473 1.23-2.037 2.16c-1.564.932-1.686 1.178-1.464 1.53s3.675-2.511 4-1.297c.323 1.214-3.524 1.567-3.287 2.405.238.839 2.71-1.587 3.216-.642.506.946-3.49 2.056-3.522 2.064-1.29.33-4.568 1.028-5.713-.624" />
         </symbol>
@@ -117,314 +85,255 @@
         </symbol>
       </svg>
 
-      <div class="scene" aria-hidden="true"></div>
-      <div class="veil" aria-hidden="true"></div>
+    <div class="hero theme-dark">
+      <header class="site-header shell">
+        <a class="identity" href="/" aria-label="Laplace Research home">
+          <img src="/assets/mark.png" alt="" width="56" height="55" />
+          <span>Laplace Research</span>
+        </a>
+        <nav class="page-nav" aria-label="Primary navigation">
+          <a href="/research/">Research</a>
+          <a href="/about/">About</a>
+        </nav>
+      </header>
 
-      <div class="frame">
-        <header class="topbar">
-          <a class="mark" href="/" aria-label="Laplace Research home">
-            <img src="assets/mark.png" alt="" width="56" height="55" />
-          </a>
-
-          <p class="clock label">
-            <span id="clock">00:00:00</span><span class="zone" id="zone">ET</span>
+      <section class="hero-body shell grid" aria-labelledby="hero-title">
+        <p class="page-label">New York, NY</p>
+        <div class="hero-copy">
+          <h1 id="hero-title">Foundation models for calibrated forecasting</h1>
+          <p class="hero-dek">
+            A forecast is only useful if you know how much to trust it. We build
+            forecasting models whose confidence can be taken at face value, and
+            study the mechanisms that make it so. Every release ships with its
+            data, code, and limits.
           </p>
-
-          <nav class="nav" aria-label="Sections">
-            <a class="label" href="/research/">Research</a>
-            <button
-              class="label text-button"
-              type="button"
-              data-open="info"
-              aria-controls="panel-info"
-              aria-expanded="false"
-            >
-              About
-            </button>
-            <button
-              class="label text-button"
-              type="button"
-              data-open="releases"
-              aria-controls="panel-releases"
-              aria-expanded="false"
-            >
-              Releases
-            </button>
+          <nav class="release-links" aria-label="Start here">
+            <a class="primary" href="/research/">Read the research <span aria-hidden="true">&#8594;</span></a>
+            <a href="/about/">About the lab</a>
           </nav>
-        </header>
+        </div>
+      </section>
+    </div>
 
-        <section class="stage">
-          <a
-            class="announce"
-            href="/convictionbench/#models"
-          >
-            <span class="announce-dot" aria-hidden="true"></span>
-            <span>Conviction is here</span>
-            <span class="announce-models" aria-hidden="true">Anchor · Vector · Meridian</span>
-            <span class="announce-arrow" aria-hidden="true">&#8594;</span>
-          </a>
-
-          <h1 class="statement">
-            Foundation models<br />for calibrated forecasting
-          </h1>
-
-          <article class="panel" id="panel-info" data-panel="info" hidden>
-            <div class="prose">
-              <p style="--step: 1">
-                A forecast is only useful if you know how much to trust it.
-                Models now produce predictions at scale, and almost none of them
-                arrive with confidence you can take at face value. Laplace is
-                our attempt at closing that gap.
-              </p>
-              <p style="--step: 2">
-                Two problems stand in the way, and we work on both: aggregating
-                resolved forecasting data across markets, history, and expert
-                judgment, and understanding the internal mechanisms that produce
-                calibrated belief.
-              </p>
-              <p style="--step: 3">
-                The two tighten each other. Better data sharpens calibration,
-                and understanding why a model is calibrated tells us which data
-                to collect next.
-              </p>
-              <p style="--step: 4">
-                If this works, the result is not simply better forecasts. It is
-                that judgment can be spent on choosing which questions matter,
-                rather than on second-guessing the answers.
-              </p>
-              <p style="--step: 5">
-                Laplace Research was co-founded by
-                <a
-                  href="https://aryasomu.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  >Arya Somu</a
-                >, Chief Scientist, and
-                <a
-                  href="https://brucenh.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  >Bruce Nshuti Hirwa</a
-                >, Chief Technology Officer. Reach us at
-                <a href="mailto:arya@laplaceresearch.org"
-                  >arya@laplaceresearch.org</a
-                >
-                and
-                <a href="mailto:bruce@laplaceresearch.org"
-                  >bruce@laplaceresearch.org</a
-                >.
-              </p>
-              <p style="--step: 6">
-                <a href="/about/">Read more about Laplace Research</a>.
-              </p>
+    <main id="main">
+      <section class="content-section shell grid" aria-labelledby="featured-title">
+        <p class="section-label">Latest release</p>
+        <div class="featured-copy">
+          <p class="kicker">Benchmark &middot; <time datetime="2026-11-19">19 November 2026</time></p>
+          <h2 id="featured-title"><a href="/convictionbench/">ConvictionBench</a></h2>
+          <p>
+            When challenged, a language model has to decide whether to keep its
+            answer, revise it, or say the evidence is insufficient.
+            ConvictionBench measures how that decision changes with the quality
+            of the evidence and the pressure to agree, and ships with three
+            experimental Conviction adapters.
+          </p>
+          <p class="byline">Arya Somu and Bruce Nshuti Hirwa</p>
+          <nav class="release-links" aria-label="ConvictionBench resources">
+            <a class="primary" href="/convictionbench/">Read the release</a>
+            <a href="/convictionbench/paper.pdf">Paper (PDF)</a>
+            <a href="https://convictionbench.org/#leaderboard">Leaderboard</a>
+          </nav>
+        </div>
+        <div class="featured-figure">
+          <figure class="figure" aria-labelledby="fig-channel-title">
+            <div class="figure-head">
+              <p class="figure-title" id="fig-channel-title">Same record, different framing</p>
+              <p class="figure-sub">How often Conviction Anchor 1.7B adopted an identical record text, by the channel and wording it arrived in.</p>
             </div>
-            <button class="label text-button back" type="button" data-close>
-              <span aria-hidden="true">&#8592;</span> Back
-            </button>
-          </article>
+            <div style="--c: var(--s1)"><ul class="chart-rows has-values" style="--label-w: 164px"><li class="chart-row"><span class="row-label">Tool message</span><span class="track" style="--ticks: 2"><span class="bar" style="--v: 0.6200" tabindex="0" role="img" aria-label="Record sent as a tool message: Adopted the record 62%" data-tip-title="Record sent as a tool message" data-tip="Adopted the record 62%"></span><span class="bar-value" style="--v: 0.6200">62%</span></span></li><li class="chart-row"><span class="row-label">Plain user message</span><span class="track" style="--ticks: 2"><span class="bar" style="--v: 0.5800" tabindex="0" role="img" aria-label="Record sent as a plain user message: Adopted the record 58%" data-tip-title="Record sent as a plain user message" data-tip="Adopted the record 58%"></span><span class="bar-value" style="--v: 0.5800">58%</span></span></li><li class="chart-row"><span class="row-label">User + forger’s wording</span><span class="track" style="--ticks: 2"><span class="bar" style="--v: 0.0800" tabindex="0" role="img" aria-label="User message with the forger’s wording: Adopted the record 8%" data-tip-title="User message with the forger’s wording" data-tip="Adopted the record 8%"></span><span class="bar-value" style="--v: 0.0800">8%</span></span></li></ul><div class="axis has-values" aria-hidden="true" style="--label-w: 164px"><span style="--t: 0">0%</span><span style="--t: 0.5">50%</span><span style="--t: 1">100%</span></div></div>
+          </figure>
+        </div>
+      </section>
 
-          <article
-            class="panel panel-releases"
-            id="panel-releases"
-            data-panel="releases"
-            hidden
-          >
-            <div class="prose">
-              <p class="lede" style="--step: 1">
-                Releases on probabilistic forecasting and evidence-sensitive belief revision.
+      <section class="content-section shell grid" aria-labelledby="research-title">
+        <p class="section-label">Research</p>
+        <div class="research-list">
+          <h2 class="section-title" id="research-title">Recent work</h2>
+          <article class="research-row">
+            <p class="research-date">
+              <time datetime="2026-11-19">19 Nov 2026</time>
+              <span class="research-type">Benchmark &middot; Models</span>
+            </p>
+            <div class="research-copy">
+              <h3><a href="/convictionbench/">ConvictionBench: Evidence-Sensitive Belief Revision in Language Models</a></h3>
+              <p>
+                26,478 generated episodes that vary a challenge’s wording, the
+                quality of its evidence, and the channel it arrives through,
+                with three Qwen3-1.7B adapters trained for belief revision.
               </p>
-
-              <a class="release-story" href="/convictionbench/" style="--step: 2">
-                Read the ConvictionBench release
-                <span aria-hidden="true">&#8594;</span>
-              </a>
-
-              <ul class="releases" aria-label="Conviction models">
-                <li style="--step: 4">
-                  <span class="rel-name">Conviction Anchor 1.7B</span>
-                  <time class="rel-date" datetime="2026-11-10">10 Nov 2026</time>
-                  <span class="rel-links">
-                    <a
-                      href="https://huggingface.co/Laplace-AI-Research/Conviction-Anchor-1.7B"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      title="Hugging Face"
-                      aria-label="Conviction Anchor 1.7B on Hugging Face"
-                      ><svg class="icon icon--hf" aria-hidden="true" focusable="false">
-                        <use href="#icon-hf" />
-                      </svg></a
-                    >
-                    <a
-                      href="https://github.com/Laplace-AI-Research/conviction/tree/main/results/E2_sft"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      title="Experiment results on GitHub"
-                      aria-label="Conviction Anchor 1.7B experiment results on GitHub"
-                      ><svg class="icon icon--gh" aria-hidden="true" focusable="false">
-                        <use href="#icon-gh" />
-                      </svg></a
-                    >
-                  </span>
-                </li>
-                <li style="--step: 5">
-                  <span class="rel-name">Conviction Vector 1.7B</span>
-                  <time class="rel-date" datetime="2026-11-10">10 Nov 2026</time>
-                  <span class="rel-links">
-                    <a
-                      href="https://huggingface.co/Laplace-AI-Research/Conviction-Vector-1.7B"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      title="Hugging Face"
-                      aria-label="Conviction Vector 1.7B on Hugging Face"
-                      ><svg class="icon icon--hf" aria-hidden="true" focusable="false">
-                        <use href="#icon-hf" />
-                      </svg></a
-                    >
-                    <a
-                      href="https://github.com/Laplace-AI-Research/conviction/tree/main/results/E3b_grpo_base"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      title="Experiment results on GitHub"
-                      aria-label="Conviction Vector 1.7B experiment results on GitHub"
-                      ><svg class="icon icon--gh" aria-hidden="true" focusable="false">
-                        <use href="#icon-gh" />
-                      </svg></a
-                    >
-                  </span>
-                </li>
-                <li style="--step: 6">
-                  <span class="rel-name">Conviction Meridian 1.7B</span>
-                  <time class="rel-date" datetime="2026-11-10">10 Nov 2026</time>
-                  <span class="rel-links">
-                    <a
-                      href="https://huggingface.co/Laplace-AI-Research/Conviction-Meridian-1.7B"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      title="Hugging Face"
-                      aria-label="Conviction Meridian 1.7B on Hugging Face"
-                      ><svg class="icon icon--hf" aria-hidden="true" focusable="false">
-                        <use href="#icon-hf" />
-                      </svg></a
-                    >
-                    <a
-                      href="https://github.com/Laplace-AI-Research/conviction/tree/main/results/V2"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      title="Experiment results on GitHub"
-                      aria-label="Conviction Meridian 1.7B experiment results on GitHub"
-                      ><svg class="icon icon--gh" aria-hidden="true" focusable="false">
-                        <use href="#icon-gh" />
-                      </svg></a
-                    >
-                  </span>
-                </li>
-              </ul>
-
-              <a class="release-story" href="/tarot-draw/" style="--step: 7">
-                Read the Tarot-Draw family release
-                <span aria-hidden="true">&#8594;</span>
-              </a>
-
-              <ul class="releases">
-                <li style="--step: 8">
-                  <span class="rel-name">Tarot-Draw 1.7B</span>
-                  <time class="rel-date" datetime="2026-08-29">29 Aug 2026</time>
-                  <span class="rel-links">
-                    <a
-                      href="https://huggingface.co/Laplace-AI-Research/tarot-draw-1-7b"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      title="Hugging Face"
-                      aria-label="Tarot-Draw 1.7B on Hugging Face"
-                      ><svg class="icon icon--hf" aria-hidden="true" focusable="false">
-                        <use href="#icon-hf" />
-                      </svg></a
-                    >
-                    <a
-                      href="https://github.com/Laplace-AI-Research/tarot-draw-1-7b"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      title="GitHub"
-                      aria-label="Tarot-Draw 1.7B on GitHub"
-                      ><svg class="icon icon--gh" aria-hidden="true" focusable="false">
-                        <use href="#icon-gh" />
-                      </svg></a
-                    >
-                  </span>
-                </li>
-                <li style="--step: 9">
-                  <span class="rel-name">Tarot-Draw 8B</span>
-                  <time class="rel-date" datetime="2026-08-28">28 Aug 2026</time>
-                  <span class="rel-links">
-                    <a
-                      href="https://huggingface.co/Laplace-AI-Research/tarot-draw-8b"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      title="Hugging Face"
-                      aria-label="Tarot-Draw 8B on Hugging Face"
-                      ><svg class="icon icon--hf" aria-hidden="true" focusable="false">
-                        <use href="#icon-hf" />
-                      </svg></a
-                    >
-                    <a
-                      href="https://github.com/Laplace-AI-Research/tarot-draw-8b"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      title="GitHub"
-                      aria-label="Tarot-Draw 8B on GitHub"
-                      ><svg class="icon icon--gh" aria-hidden="true" focusable="false">
-                        <use href="#icon-gh" />
-                      </svg></a
-                    >
-                  </span>
-                </li>
-                <li style="--step: 10">
-                  <span class="rel-name">Tarot-Draw 4B</span>
-                  <time class="rel-date" datetime="2026-08-28">28 Aug 2026</time>
-                  <span class="rel-links">
-                    <a
-                      href="https://huggingface.co/Laplace-AI-Research/tarot-draw-4b"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      title="Hugging Face"
-                      aria-label="Tarot-Draw 4B on Hugging Face"
-                      ><svg class="icon icon--hf" aria-hidden="true" focusable="false">
-                        <use href="#icon-hf" />
-                      </svg></a
-                    >
-                    <a
-                      href="https://github.com/Laplace-AI-Research/tarot-draw-4b"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      title="GitHub"
-                      aria-label="Tarot-Draw 4B on GitHub"
-                      ><svg class="icon icon--gh" aria-hidden="true" focusable="false">
-                        <use href="#icon-gh" />
-                      </svg></a
-                    >
-                  </span>
-                </li>
-              </ul>
-              <a class="research-index-link" href="/research/" style="--step: 11">
-                View all research <span aria-hidden="true">&#8594;</span>
-              </a>
+              <p class="research-authors">Arya Somu, Bruce Nshuti Hirwa</p>
             </div>
-            <button class="label text-button back" type="button" data-close>
-              <span aria-hidden="true">&#8592;</span> Back
-            </button>
+            <div class="research-links">
+              <a href="/convictionbench/paper.pdf">Paper</a>
+              <a href="https://huggingface.co/datasets/Laplace-AI-Research/ConvictionBench">Dataset</a>
+              <a href="https://github.com/Laplace-AI-Research/conviction">Code</a>
+            </div>
           </article>
-        </section>
+          <article class="research-row">
+            <p class="research-date">
+              <time datetime="2026-08-29">29 Aug 2026</time>
+              <span class="research-type">Models</span>
+            </p>
+            <div class="research-copy">
+              <h3><a href="/tarot-draw/">Tarot-Draw: what model scale changes in binary forecasting</a></h3>
+              <p>
+                Three forecasting models trained on the same 81,870 questions.
+                Calibration stayed flat across sizes; resolution did not.
+              </p>
+              <p class="research-authors">Arya Somu, Bruce Nshuti Hirwa</p>
+            </div>
+            <div class="research-links">
+              <a href="/tarot-draw/">Release</a>
+              <a href="https://huggingface.co/collections/Laplace-AI-Research/tarot-draw-family">Models</a>
+            </div>
+          </article>
+          <p class="list-more"><a href="/research/">All research <span aria-hidden="true">&#8594;</span></a></p>
+        </div>
+      </section>
 
-        <footer class="baseline">
-          <span class="label">New York, NY</span>
-          <span class="label">Laplace Research</span>
-          <a class="label" href="mailto:inquiries@laplaceresearch.org"
-            >Inquiries</a
-          >
-        </footer>
-      </div>
+      <section class="content-section shell grid" aria-labelledby="agenda-title">
+        <p class="section-label">Agenda</p>
+        <div class="agenda-intro section-body">
+          <h2 id="agenda-title">Two problems that tighten each other</h2>
+          <p class="lead">
+            Better data sharpens calibration, and understanding why a model is
+            calibrated tells us which data to collect next.
+          </p>
+        </div>
+        <div class="agenda">
+          <div>
+            <h3>Forecasting data</h3>
+            <p>
+              We aggregate resolved forecasting data across markets, history,
+              and expert judgment. A model can only learn calibrated confidence
+              from outcomes that are well specified and consistently resolved.
+            </p>
+          </div>
+          <div>
+            <h3>Mechanisms of calibrated belief</h3>
+            <p>
+              We study the internal mechanisms that produce calibrated
+              predictions, and how a model’s beliefs should move when evidence
+              arrives, so we can tell where its confidence should hold and where
+              it should fail.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-section shell grid" aria-labelledby="models-title">
+        <p class="section-label">Models</p>
+        <div class="wide-body" style="margin-top: 0">
+          <h2 class="section-title" id="models-title">Open weights</h2>
+          <div class="table-scroll" role="region" aria-labelledby="models-title" tabindex="0">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th scope="col">Model</th>
+                  <th scope="col">Release</th>
+                  <th scope="col">Notes</th>
+                  <th scope="col">Published</th>
+                  <th scope="col"><span class="sr-only">Links</span></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">Conviction Anchor 1.7B</th>
+                  <td><a href="/convictionbench/#models">ConvictionBench</a></td>
+                  <td>Supervised fine-tuning</td>
+                  <td><time datetime="2026-11-10">10 Nov 2026</time></td>
+                  <td>
+                    <span class="icon-links">
+                      <a href="https://huggingface.co/Laplace-AI-Research/Conviction-Anchor-1.7B" target="_blank" rel="noopener noreferrer" title="Weights on Hugging Face" aria-label="Conviction Anchor 1.7B on Hugging Face"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-hf" /></svg></a>
+                      <a href="https://github.com/Laplace-AI-Research/conviction/tree/main/results/E2_sft" target="_blank" rel="noopener noreferrer" title="Code and results on GitHub" aria-label="Conviction Anchor 1.7B on GitHub"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-gh" /></svg></a>
+                    </span>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">Conviction Vector 1.7B</th>
+                  <td><a href="/convictionbench/#models">ConvictionBench</a></td>
+                  <td>GRPO from the base model</td>
+                  <td><time datetime="2026-11-10">10 Nov 2026</time></td>
+                  <td>
+                    <span class="icon-links">
+                      <a href="https://huggingface.co/Laplace-AI-Research/Conviction-Vector-1.7B" target="_blank" rel="noopener noreferrer" title="Weights on Hugging Face" aria-label="Conviction Vector 1.7B on Hugging Face"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-hf" /></svg></a>
+                      <a href="https://github.com/Laplace-AI-Research/conviction/tree/main/results/E3b_grpo_base" target="_blank" rel="noopener noreferrer" title="Code and results on GitHub" aria-label="Conviction Vector 1.7B on GitHub"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-gh" /></svg></a>
+                    </span>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">Conviction Meridian 1.7B</th>
+                  <td><a href="/convictionbench/#models">ConvictionBench</a></td>
+                  <td>Light supervised fine-tuning, then GRPO</td>
+                  <td><time datetime="2026-11-10">10 Nov 2026</time></td>
+                  <td>
+                    <span class="icon-links">
+                      <a href="https://huggingface.co/Laplace-AI-Research/Conviction-Meridian-1.7B" target="_blank" rel="noopener noreferrer" title="Weights on Hugging Face" aria-label="Conviction Meridian 1.7B on Hugging Face"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-hf" /></svg></a>
+                      <a href="https://github.com/Laplace-AI-Research/conviction/tree/main/results/V2" target="_blank" rel="noopener noreferrer" title="Code and results on GitHub" aria-label="Conviction Meridian 1.7B on GitHub"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-gh" /></svg></a>
+                    </span>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">Tarot-Draw 4B</th>
+                  <td><a href="/tarot-draw/">Tarot-Draw</a></td>
+                  <td>Recommended default</td>
+                  <td><time datetime="2026-08-28">28 Aug 2026</time></td>
+                  <td>
+                    <span class="icon-links">
+                      <a href="https://huggingface.co/Laplace-AI-Research/tarot-draw-4b" target="_blank" rel="noopener noreferrer" title="Weights on Hugging Face" aria-label="Tarot-Draw 4B on Hugging Face"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-hf" /></svg></a>
+                      <a href="https://github.com/Laplace-AI-Research/tarot-draw-4b" target="_blank" rel="noopener noreferrer" title="Code and results on GitHub" aria-label="Tarot-Draw 4B on GitHub"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-gh" /></svg></a>
+                    </span>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">Tarot-Draw 8B</th>
+                  <td><a href="/tarot-draw/">Tarot-Draw</a></td>
+                  <td>Largest</td>
+                  <td><time datetime="2026-08-28">28 Aug 2026</time></td>
+                  <td>
+                    <span class="icon-links">
+                      <a href="https://huggingface.co/Laplace-AI-Research/tarot-draw-8b" target="_blank" rel="noopener noreferrer" title="Weights on Hugging Face" aria-label="Tarot-Draw 8B on Hugging Face"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-hf" /></svg></a>
+                      <a href="https://github.com/Laplace-AI-Research/tarot-draw-8b" target="_blank" rel="noopener noreferrer" title="Code and results on GitHub" aria-label="Tarot-Draw 8B on GitHub"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-gh" /></svg></a>
+                    </span>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">Tarot-Draw 1.7B</th>
+                  <td><a href="/tarot-draw/">Tarot-Draw</a></td>
+                  <td>Smallest; laptops and CPUs</td>
+                  <td><time datetime="2026-08-29">29 Aug 2026</time></td>
+                  <td>
+                    <span class="icon-links">
+                      <a href="https://huggingface.co/Laplace-AI-Research/tarot-draw-1-7b" target="_blank" rel="noopener noreferrer" title="Weights on Hugging Face" aria-label="Tarot-Draw 1.7B on Hugging Face"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-hf" /></svg></a>
+                      <a href="https://github.com/Laplace-AI-Research/tarot-draw-1-7b" target="_blank" rel="noopener noreferrer" title="Code and results on GitHub" aria-label="Tarot-Draw 1.7B on GitHub"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-gh" /></svg></a>
+                    </span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
     </main>
 
-    <script src="app.js?v=20261119"></script>
+    <footer class="site-footer shell">
+      <div class="footer-id">
+        <a class="identity" href="/" aria-label="Laplace Research home">
+          <img src="/assets/mark.png" alt="" width="38" height="37" />
+          <span>Laplace Research</span>
+        </a>
+        <p class="footer-meta">&copy; 2026 Laplace Research &middot; New York, NY</p>
+      </div>
+      <nav aria-label="Footer navigation">
+        <a href="/research/">Research</a>
+        <a href="/about/">About</a>
+        <a href="https://github.com/Laplace-AI-Research" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="https://huggingface.co/Laplace-AI-Research" target="_blank" rel="noopener noreferrer">Hugging Face</a>
+        <a href="mailto:inquiries@laplaceresearch.org">Inquiries</a>
+      </nav>
+    </footer>
+
+    <script src="/figures.js?v=20261119" defer></script>
   </body>
 </html>
