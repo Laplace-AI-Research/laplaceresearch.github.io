@@ -95,3 +95,13 @@
   font-size: 14px;
   line-height: 1.6;
 }
+
+.citation-bib {
+  margin: 0;
+  padding: 16px;
+  border: 1px solid var(--rule);
+  color: var(--muted);
+  font: 14px/1.6 ui-monospace, monospace;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
