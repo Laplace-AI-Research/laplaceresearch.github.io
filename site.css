@@ -157,7 +157,7 @@ main { display: contents; }
   line-height: 20px;
 }
 .sec + .sec::before { left: calc(var(--gutter) - 4px); }
-.sec + .sec::after { left: calc(var(--gutter) + var(--col) - 4px); }
+.sec + .sec::after { left: calc(var(--gutter) + min(var(--col), 100% - var(--gutter) - 24px) - 4px); }
 
 .num {
   grid-column: 1;
