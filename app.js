@@ -137,27 +137,28 @@
     requestAnimationFrame(step);
   }
 
-  /* --- page-load reveal: wait on the background plate and the webfont --- */
-  var revealed = false;
-
-  function reveal() {
-    if (revealed) return;
-    revealed = true;
-    root.classList.add("is-ready");
-    spinHeadline();
-  }
+  /* --- page-load: show text at once; the plate fades in when it arrives,
+     and the headline reel waits (briefly) for the webfont so its glyph
+     widths are measured from the real face --- */
+  root.classList.add("is-ready");
 
   var plate = new Image();
-  var waits = [
-    new Promise(function (done) {
-      plate.onload = plate.onerror = done;
-      plate.src = "assets/ridgeline.jpg";
-    }),
-  ];
-  if (document.fonts && document.fonts.ready) waits.push(document.fonts.ready);
+  plate.onload = plate.onerror = function () {
+    root.classList.add("plate-ready");
+  };
+  plate.src = "assets/ridgeline.jpg";
 
-  Promise.all(waits).then(reveal);
-  window.setTimeout(reveal, 2200); // never leave the page blank
+  var spun = false;
+  function startReel() {
+    if (spun) return;
+    spun = true;
+    spinHeadline();
+  }
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(startReel);
+  }
+  window.setTimeout(startReel, 900);
+
   var triggers = Array.prototype.slice.call(
     document.querySelectorAll("[data-open]")
   );

@@ -96,7 +96,7 @@ a {
     transform 1400ms var(--enter);
 }
 
-.is-ready .scene {
+.plate-ready .scene {
   opacity: 1;
   transform: scale(1.006);
 }
@@ -157,16 +157,19 @@ a {
   padding-right: max(56px, env(safe-area-inset-right));
   padding-bottom: max(62px, env(safe-area-inset-bottom));
   padding-left: max(56px, env(safe-area-inset-left));
-  opacity: 0;
-  transform: translateY(6px);
-  transition:
-    opacity 700ms ease 160ms,
-    transform 900ms var(--enter) 160ms;
+  /* text is never held back for the photo or the webfont */
+  animation: frame-in 420ms ease both;
 }
 
-.is-ready .frame {
-  opacity: 1;
-  transform: none;
+@keyframes frame-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 /* ---------- shared type ---------- */
@@ -435,11 +438,15 @@ a {
   position: absolute;
   width: 100%;
   max-width: 588px;
-  max-height: 100%;
-  padding: 0 4px;
+  /* keep clear of the top bar and the baseline; long lists scroll inside */
+  max-height: calc(100% - 64px);
+  padding: 22px 4px;
   overflow-y: auto;
   overscroll-behavior: contain;
   scrollbar-width: none;
+  /* soft edges when a long panel scrolls; the padding keeps resting text clear */
+  -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 22px, #000 calc(100% - 22px), transparent 100%);
+  mask-image: linear-gradient(180deg, transparent 0, #000 22px, #000 calc(100% - 22px), transparent 100%);
   opacity: 0;
   pointer-events: none;
   transition: opacity 260ms ease;
@@ -779,6 +786,10 @@ a {
 }
 
 @media (max-height: 720px) {
+  .panel {
+    max-height: calc(100% - 32px);
+  }
+
   .frame {
     padding-top: 28px;
     padding-bottom: 30px;

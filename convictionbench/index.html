@@ -21,12 +21,29 @@
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="Laplace Research over a blue-grey mountain landscape" />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="ConvictionBench | Laplace Research" />
+    <meta name="twitter:description" content="A benchmark and three experimental adapters for studying evidence-sensitive belief revision." />
+    <meta name="twitter:image" content="https://laplaceresearch.org/assets/laplace-social.png" />
+    <meta name="twitter:image:alt" content="Laplace Research over a blue-grey mountain landscape" />
+
+    <!-- Google Scholar / Highwire Press citation tags for the paper -->
+    <meta name="citation_title" content="ConvictionBench: Evidence-Sensitive Belief Revision in Language Models" />
+    <meta name="citation_author" content="Somu, Arya" />
+    <meta name="citation_author" content="Nshuti Hirwa, Bruce" />
+    <meta name="citation_publication_date" content="2026/11/19" />
+    <meta name="citation_technical_report_institution" content="Laplace Research" />
+    <meta name="citation_pdf_url" content="https://laplaceresearch.org/convictionbench/paper.pdf" />
+    <meta name="citation_abstract_html_url" content="https://laplaceresearch.org/convictionbench/" />
 
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "Article",
-        "headline": "ConvictionBench",
+        "@type": "ScholarlyArticle",
+        "headline": "ConvictionBench: Evidence-Sensitive Belief Revision in Language Models",
+        "author": [
+          { "@type": "Person", "name": "Arya Somu", "url": "https://aryasomu.com/" },
+          { "@type": "Person", "name": "Bruce Nshuti Hirwa", "url": "https://brucenh.com/" }
+        ],
         "description": "A benchmark and three experimental adapters for studying evidence-sensitive belief revision.",
         "datePublished": "2026-11-19",
         "mainEntityOfPage": "https://laplaceresearch.org/convictionbench/",
@@ -42,8 +59,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500&amp;display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="../institutional.css?v=20260921" />
-    <link rel="stylesheet" href="styles.css?v=citation" />
+    <link rel="stylesheet" href="../institutional.css?v=20261119" />
+    <link rel="stylesheet" href="styles.css?v=20261119" />
   </head>
   <body class="conviction-release">
     <a class="skip-link" href="#release">Skip to release</a>
@@ -56,7 +73,6 @@
       <nav class="page-nav" aria-label="Primary navigation">
         <a href="/research/">Research</a>
         <a href="/about/">About</a>
-        <a href="/">Home</a>
       </nav>
     </header>
 
@@ -221,13 +237,18 @@
     </main>
 
     <footer class="site-footer shell">
-      <a class="identity" href="/" aria-label="Laplace Research home">
-        <img src="../assets/mark.png" alt="" width="38" height="37" />
-        <span>Laplace Research</span>
-      </a>
+      <div class="footer-id">
+        <a class="identity" href="/" aria-label="Laplace Research home">
+          <img src="../assets/mark.png" alt="" width="38" height="37" />
+          <span>Laplace Research</span>
+        </a>
+        <p class="footer-meta">&copy; 2026 Laplace Research &middot; New York, NY</p>
+      </div>
       <nav aria-label="Footer navigation">
         <a href="/research/">Research</a>
         <a href="/about/">About</a>
+        <a href="https://github.com/Laplace-AI-Research" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="https://huggingface.co/Laplace-AI-Research" target="_blank" rel="noopener noreferrer">Hugging Face</a>
         <a href="mailto:inquiries@laplaceresearch.org">Inquiries</a>
       </nav>
     </footer>

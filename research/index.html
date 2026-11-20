@@ -66,7 +66,7 @@
       href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500&amp;display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="../institutional.css?v=20260921" />
+    <link rel="stylesheet" href="../institutional.css?v=20261119" />
   </head>
 
   <body>
@@ -80,7 +80,6 @@
       <nav class="page-nav" aria-label="Primary navigation">
         <a href="/research/" aria-current="page">Research</a>
         <a href="/about/">About</a>
-        <a href="/">Home</a>
       </nav>
     </header>
 
@@ -104,24 +103,17 @@
               <h2><a href="/convictionbench/">ConvictionBench</a></h2>
               <p>
                 A benchmark for how language models revise their answers under
-                evidence and social pressure, with three experimental Qwen adapters.
+                evidence and social pressure, released with the Laplace
+                Conviction Series: three experimental Qwen3-1.7B LoRA adapters.
+              </p>
+              <p class="research-note">
+                Benchmark and adapters first released <time datetime="2026-11-10">10 November 2026</time>.
               </p>
             </div>
             <div class="research-links">
-              <a href="/convictionbench/">Read release</a>
+              <a href="/convictionbench/paper.pdf">Paper (PDF)</a>
+              <a href="/convictionbench/#models">Models</a>
               <a href="https://convictionbench.org/#leaderboard">Live leaderboard</a>
-            </div>
-          </article>
-          <article class="research-row">
-            <p class="research-date"><time datetime="2026-11-19">19 November 2026</time></p>
-            <div class="research-copy">
-              <h2><a href="/convictionbench/#models">Laplace Conviction Series</a></h2>
-              <p>Three Qwen3-1.7B LoRA adapters that test different ways to train for belief revision.</p>
-            </div>
-            <div class="research-links">
-              <a href="https://huggingface.co/Laplace-AI-Research/Conviction-Anchor-1.7B" aria-label="Conviction Anchor 1.7B on Hugging Face">Anchor 1.7B</a>
-              <a href="https://huggingface.co/Laplace-AI-Research/Conviction-Vector-1.7B" aria-label="Conviction Vector 1.7B on Hugging Face">Vector 1.7B</a>
-              <a href="https://huggingface.co/Laplace-AI-Research/Conviction-Meridian-1.7B" aria-label="Conviction Meridian 1.7B on Hugging Face">Meridian 1.7B</a>
             </div>
           </article>
           <article class="research-row">
@@ -161,13 +153,18 @@
     </main>
 
     <footer class="site-footer shell">
-      <a class="identity" href="/" aria-label="Laplace Research home">
-        <img src="../assets/mark.png" alt="" width="38" height="37" />
-        <span>Laplace Research</span>
-      </a>
+      <div class="footer-id">
+        <a class="identity" href="/" aria-label="Laplace Research home">
+          <img src="../assets/mark.png" alt="" width="38" height="37" />
+          <span>Laplace Research</span>
+        </a>
+        <p class="footer-meta">&copy; 2026 Laplace Research &middot; New York, NY</p>
+      </div>
       <nav aria-label="Footer navigation">
         <a href="/research/">Research</a>
         <a href="/about/">About</a>
+        <a href="https://github.com/Laplace-AI-Research" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="https://huggingface.co/Laplace-AI-Research" target="_blank" rel="noopener noreferrer">Hugging Face</a>
         <a href="mailto:inquiries@laplaceresearch.org">Inquiries</a>
       </nav>
     </footer>
