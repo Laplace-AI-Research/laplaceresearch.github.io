@@ -1,152 +1,92 @@
-/* Laplace Research — the homepage ridgeline.
-   Rows of Laplace densities, f(x) = exp(-|x - mu| / b) / 2b, drawn back to
-   front so nearer ridges hide farther ones. Each row's location and scale
-   drift slowly, like beliefs being revised. One row is drawn in the accent:
-   the sharpest, best-located estimate. Static under reduced motion. */
+/* Laplace Research — homepage results card and writing carousel.
+   Results are held-out point estimates from the conviction repository
+   (results/{E0_base,E2_sft,E3b_grpo_base,V2}/metrics.json, test_structural). */
 (function () {
   "use strict";
 
-  var canvas = document.querySelector("[data-ridgeline]");
-  if (!canvas || !canvas.getContext) return;
+  var data = {
+    acc: {
+      note: "Higher is better.",
+      rows: [
+        ["Conviction Vector", "GRPO", 0.644, "var(--s2)"],
+        ["Conviction Anchor", "SFT", 0.58, "var(--s1)"],
+        ["Conviction Meridian", "SFT → GRPO", 0.56, "var(--s3)"],
+        ["Qwen3-1.7B base", "", 0.424, "var(--quiet)", true],
+      ],
+    },
+    res: {
+      note: "Higher is better: the share of forged records the model refused to adopt.",
+      rows: [
+        ["Conviction Meridian", "SFT → GRPO", 0.578, "var(--s3)"],
+        ["Conviction Anchor", "SFT", 0.531, "var(--s1)"],
+        ["Qwen3-1.7B base", "", 0.34, "var(--quiet)", true],
+        ["Conviction Vector", "GRPO", 0.315, "var(--s2)"],
+      ],
+    },
+    flip: {
+      note: "Lower is better: how often social pressure alone flipped a correct answer.",
+      rows: [
+        ["Conviction Vector", "GRPO", 0.348, "var(--s2)"],
+        ["Conviction Meridian", "SFT → GRPO", 0.375, "var(--s3)"],
+        ["Conviction Anchor", "SFT", 0.389, "var(--s1)"],
+        ["Qwen3-1.7B base", "", 0.536, "var(--quiet)", true],
+      ],
+    },
+  };
 
-  var ctx = canvas.getContext("2d");
-  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
-  var dark = window.matchMedia("(prefers-color-scheme: dark)");
+  var list = document.getElementById("rows");
+  var foot = document.getElementById("card-foot");
+  var tabs = document.querySelectorAll(".tabs [data-metric]");
+  var base = "Point estimates on the scripted structural split. Greedy decoding, thinking disabled. ";
 
-  /* deterministic so the picture is the same on every visit */
-  var seed = 20261119;
-  function rand() {
-    seed = (seed * 16807) % 2147483647;
-    return seed / 2147483647;
-  }
-
-  var ROWS = 30;
-  var ACCENT_ROW = 21;
-  var rows = [];
-  for (var i = 0; i < ROWS; i++) {
-    var depth = i / (ROWS - 1); // 0 = far, 1 = near
-    rows.push({
-      mu: 0.18 + rand() * 0.64,
-      b: 0.035 + rand() * 0.075 + (1 - depth) * 0.03,
-      amp: 0.55 + rand() * 0.55,
-      mu2: rand(),
-      w2: rand() < 0.55 ? 0.25 + rand() * 0.35 : 0,
-      phase: rand() * Math.PI * 2,
-      speed: 0.12 + rand() * 0.16,
-    });
-  }
-  rows[ACCENT_ROW].mu = 0.64;
-  rows[ACCENT_ROW].b = 0.03;
-  rows[ACCENT_ROW].amp = 1.15;
-  rows[ACCENT_ROW].w2 = 0;
-
-  var W = 0;
-  var H = 0;
-  var colors = {};
-
-  function readColors() {
-    var cs = getComputedStyle(canvas);
-    colors.bg = cs.getPropertyValue("--bg").trim() || "#fbfbf9";
-    colors.ink = cs.getPropertyValue("--text").trim() || "#15171b";
-    colors.accent = cs.getPropertyValue("--s1").trim() || "#2a78d6";
-  }
-
-  function resize() {
-    var dpr = Math.min(window.devicePixelRatio || 1, 2);
-    W = canvas.clientWidth;
-    H = canvas.clientHeight;
-    canvas.width = Math.round(W * dpr);
-    canvas.height = Math.round(H * dpr);
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-  }
-
-  function laplace(u, mu, b) {
-    return Math.exp(-Math.abs(u - mu) / b);
-  }
-
-  function draw(t) {
-    ctx.clearRect(0, 0, W, H);
-    var top = H * 0.16;
-    var gap = (H - top) / (ROWS + 1);
-    var step = W > 900 ? 3 : 2;
-
-    for (var r = 0; r < ROWS; r++) {
-      var row = rows[r];
-      var base = top + gap * (r + 1);
-      var height = gap * 6.5 * row.amp;
-      var drift = Math.sin(t * row.speed + row.phase);
-      var mu = row.mu + 0.05 * drift;
-      var b = row.b * (1 + 0.28 * Math.sin(t * row.speed * 0.7 + row.phase * 1.3));
-      var mu2 = row.mu2 + 0.04 * Math.cos(t * row.speed * 0.8 + row.phase);
-
-      ctx.beginPath();
-      ctx.moveTo(0, base);
-      for (var x = 0; x <= W + step; x += step) {
-        var u = x / W;
-        var d = laplace(u, mu, b);
-        if (row.w2) d = Math.max(d, row.w2 * laplace(u, mu2, b * 1.7));
-        ctx.lineTo(x, base - height * d);
+  function render(key) {
+    var d = data[key];
+    list.textContent = "";
+    d.rows.forEach(function (r, i) {
+      var li = document.createElement("li");
+      if (r[4]) li.className = "ref";
+      li.style.setProperty("--c", r[3]);
+      li.innerHTML =
+        '<span class="rk">' + (i + 1) + '</span><span class="sw"></span>' +
+        '<span class="nm"></span><span class="tr"><i></i></span>' +
+        '<span class="vl">' + r[2].toFixed(3) + "</span>";
+      var name = li.querySelector(".nm");
+      name.textContent = r[0];
+      if (r[1]) {
+        var small = document.createElement("small");
+        small.textContent = r[1];
+        name.appendChild(small);
       }
-      ctx.lineTo(W, H + 2);
-      ctx.lineTo(0, H + 2);
-      ctx.closePath();
-
-      ctx.fillStyle = colors.bg;
-      ctx.fill();
-
-      var isAccent = r === ACCENT_ROW;
-      var depth = r / (ROWS - 1);
-      ctx.globalAlpha = isAccent ? 1 : 0.16 + depth * 0.42;
-      ctx.strokeStyle = isAccent ? colors.accent : colors.ink;
-      ctx.lineWidth = isAccent ? 1.75 : 1;
-      ctx.lineJoin = "round";
-      ctx.stroke();
-      ctx.globalAlpha = 1;
-    }
+      li.querySelector("i").style.setProperty("--v", 0);
+      list.appendChild(li);
+    });
+    requestAnimationFrame(function () {
+      list.querySelectorAll("i").forEach(function (bar, i) {
+        bar.style.setProperty("--v", d.rows[i][2]);
+      });
+    });
+    foot.textContent = base + d.note;
   }
 
-  var visible = true;
-  var frame = null;
-  var start = performance.now();
-
-  var last = 0;
-
-  function loop(now) {
-    frame = null;
-    /* the drift is slow, so 60fps is plenty even on high-refresh screens */
-    if (now - last >= 15 || reduce.matches) {
-      last = now;
-      draw((now - start) / 1000);
-    }
-    if (visible && !reduce.matches && !document.hidden) {
-      frame = requestAnimationFrame(loop);
-    }
+  if (list && foot) {
+    tabs.forEach(function (tab) {
+      tab.addEventListener("click", function () {
+        tabs.forEach(function (t) {
+          t.setAttribute("aria-selected", String(t === tab));
+        });
+        render(tab.dataset.metric);
+      });
+    });
+    render("acc");
   }
 
-  function kick() {
-    if (frame === null) frame = requestAnimationFrame(loop);
-  }
-
-  function refresh() {
-    readColors();
-    resize();
-    draw((performance.now() - start) / 1000);
-    kick();
-  }
-
-  if ("IntersectionObserver" in window) {
-    new IntersectionObserver(function (entries) {
-      visible = entries[0].isIntersecting;
-      if (visible) kick();
-    }).observe(canvas);
-  }
-
-  document.addEventListener("visibilitychange", kick);
-  window.addEventListener("resize", refresh);
-  if (dark.addEventListener) {
-    dark.addEventListener("change", refresh);
-    reduce.addEventListener("change", refresh);
-  }
-
-  refresh();
+  var carousel = document.getElementById("carousel");
+  document.querySelectorAll(".arrows [data-dir]").forEach(function (button) {
+    button.addEventListener("click", function () {
+      if (!carousel) return;
+      var card = carousel.querySelector(".post");
+      var step = card ? card.getBoundingClientRect().width + 12 : 312;
+      carousel.scrollBy({ left: Number(button.dataset.dir) * step, behavior: "smooth" });
+    });
+  });
 })();

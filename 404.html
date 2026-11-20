@@ -4,9 +4,9 @@
     <meta charset="utf-8" />
     <title>Page not found | Laplace Research</title>
     <meta name="robots" content="noindex" />
+    <meta name="theme-color" content="#f6f5f2" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0f1012" media="(prefers-color-scheme: dark)" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <meta name="theme-color" content="#fbfbf9" media="(prefers-color-scheme: light)" />
-    <meta name="theme-color" content="#0e1014" media="(prefers-color-scheme: dark)" />
 
     <link rel="icon" href="/favicon.ico" sizes="32x32" />
     <link rel="icon" type="image/png" href="/favicon-96.png" sizes="96x96" />
@@ -18,72 +18,51 @@
       href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500&amp;family=Geist+Mono&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400;1,8..60,400&amp;display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="/site.css?v=20261119-2" />
+    <link rel="stylesheet" href="/site.css?v=20261119-3" />
   </head>
 
   <body>
-    <header class="site-header">
-      <div class="shell header-inner">
-        <a class="identity" href="/" aria-label="Laplace Research home">
-          <img src="/assets/mark.png" alt="" width="56" height="55" />
-          <span>Laplace Research</span>
-        </a>
-        <nav class="page-nav" aria-label="Primary navigation">
-          <a href="/research/">Research</a>
-          <a href="/#models">Models</a>
-          <a href="/about/">About</a>
-          <a class="nav-cta" href="mailto:inquiries@laplaceresearch.org">Contact</a>
-        </nav>
-      </div>
-    </header>
-
-    <main class="error-main shell">
-      <div class="error-copy">
-        <p class="page-label">Error 404</p>
-        <h1>This page is unresolved.</h1>
-        <p>
-          The address may have changed, or the page may not exist. Continue to
-          the research index or return home.
-        </p>
-        <p class="error-links">
-          <a href="/research/">Research</a>
+    <a class="skip-link" href="#content">Skip to content</a>
+    <div class="frame">
+      <aside class="rail">
+        <a href="/" aria-label="Laplace Research home"><img class="mark" src="/assets/mark.png" alt="" width="56" height="55" /></a>
+        <nav aria-label="Primary">
           <a href="/">Home</a>
-        </p>
-      </div>
-    </main>
-
-    <footer class="site-footer">
-      <div class="shell footer-grid">
-        <div class="footer-brand">
-          <a class="identity" href="/" aria-label="Laplace Research home">
-            <img src="/assets/mark.png" alt="" width="56" height="55" />
-            <span>Laplace Research</span>
-          </a>
-          <p>Foundation models for calibrated forecasting.</p>
-        </div>
-        <nav aria-label="Research">
-          <p class="footer-head">Research</p>
-          <a href="/convictionbench/">ConvictionBench</a>
-          <a href="/tarot-draw/">Tarot-Draw</a>
-          <a href="/research/">All research</a>
-        </nav>
-        <nav aria-label="Lab">
-          <p class="footer-head">Lab</p>
-          <a href="/about/">About</a>
+          <a href="/research/">Research</a>
           <a href="/#models">Models</a>
-          <a href="mailto:inquiries@laplaceresearch.org">Inquiries</a>
+          <a href="/about/">About</a>
+          <a href="mailto:inquiries@laplaceresearch.org">Contact</a>
         </nav>
-        <nav aria-label="Elsewhere">
-          <p class="footer-head">Elsewhere</p>
-          <a href="https://github.com/Laplace-AI-Research" target="_blank" rel="noopener noreferrer">GitHub</a>
-          <a href="https://huggingface.co/Laplace-AI-Research" target="_blank" rel="noopener noreferrer">Hugging Face</a>
-          <a href="https://convictionbench.org/#leaderboard" target="_blank" rel="noopener noreferrer">Leaderboard</a>
-        </nav>
-      </div>
-      <div class="shell footer-base">
-        <span>&copy; 2026 Laplace Research</span>
-        <span>New York, NY</span>
-      </div>
-    </footer>
+        <a class="rail-btn" href="https://convictionbench.org/#leaderboard">Leaderboard</a>
+        <p class="rail-foot">New York, NY</p>
+      </aside>
+
+      <main>
+        <section class="sec" id="content" aria-labelledby="t">
+          <p class="num">404</p>
+          <div class="body">
+            <h1 id="t">This page is unresolved.</h1>
+            <p>
+              The address may have changed, or the page may not exist. Continue to
+              the research index or return home.
+            </p>
+            <div class="btns">
+              <a class="btn solid" href="/research/">Research</a>
+              <a class="btn" href="/">Home</a>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="foot">
+        <div class="brand"><img src="/assets/mark.png" alt="" width="56" height="55" />Laplace Research</div>
+        <div class="cols">
+          <nav aria-label="Research"><a href="/convictionbench/">ConvictionBench</a><a href="/tarot-draw/">Tarot-Draw</a><a href="/research/">All research</a></nav>
+          <nav aria-label="Lab"><a href="/about/">About</a><a href="/#models">Models</a><a href="mailto:inquiries@laplaceresearch.org">Inquiries</a></nav>
+          <nav aria-label="Elsewhere"><a href="https://github.com/Laplace-AI-Research" target="_blank" rel="noopener noreferrer">GitHub</a><a href="https://huggingface.co/Laplace-AI-Research" target="_blank" rel="noopener noreferrer">Hugging Face</a><a href="https://convictionbench.org/#leaderboard">Leaderboard</a></nav>
+        </div>
+        <p class="copy">&copy; 2026 Laplace Research &middot; New York, NY</p>
+      </footer>
+    </div>
   </body>
 </html>

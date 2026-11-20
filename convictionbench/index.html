@@ -4,9 +4,9 @@
     <meta charset="utf-8" />
     <title>ConvictionBench | Laplace Research</title>
     <meta name="description" content="ConvictionBench evaluates how language models revise their answers in response to evidence and social pressure. Explore the paper, dataset, and three Conviction adapters." />
+    <meta name="theme-color" content="#f6f5f2" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0f1012" media="(prefers-color-scheme: dark)" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <meta name="theme-color" content="#fbfbf9" media="(prefers-color-scheme: light)" />
-    <meta name="theme-color" content="#0e1014" media="(prefers-color-scheme: dark)" />
     <link rel="canonical" href="https://laplaceresearch.org/convictionbench/" />
     <link rel="icon" href="../favicon.ico" sizes="32x32" />
     <link rel="icon" type="image/png" href="../favicon-96.png" sizes="96x96" />
@@ -60,113 +60,117 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500&amp;family=Geist+Mono&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400;1,8..60,400&amp;display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="/site.css?v=20261119-2" />
+    <link rel="stylesheet" href="/site.css?v=20261119-3" />
   </head>
   <body>
-    <a class="skip-link" href="#release">Skip to release</a>
-
-    <header class="site-header">
-      <div class="shell header-inner">
-        <a class="identity" href="/" aria-label="Laplace Research home">
-          <img src="/assets/mark.png" alt="" width="56" height="55" />
-          <span>Laplace Research</span>
-        </a>
-        <nav class="page-nav" aria-label="Primary navigation">
+    <a class="skip-link" href="#content">Skip to content</a>
+    <div class="frame">
+      <aside class="rail">
+        <a href="/" aria-label="Laplace Research home"><img class="mark" src="/assets/mark.png" alt="" width="56" height="55" /></a>
+        <nav aria-label="Primary">
+          <a href="/">Home</a>
           <a href="/research/" aria-current="page">Research</a>
           <a href="/#models">Models</a>
           <a href="/about/">About</a>
-          <a class="nav-cta" href="mailto:inquiries@laplaceresearch.org">Contact</a>
+          <a href="mailto:inquiries@laplaceresearch.org">Contact</a>
         </nav>
-      </div>
-    </header>
+        <a class="rail-btn" href="https://convictionbench.org/#leaderboard">Leaderboard</a>
+        <p class="rail-foot">New York, NY</p>
+      </aside>
 
-    <main id="release">
-      <header class="page-hero shell grid">
-        <div class="page-label release-date">
-          <p>Benchmark release</p>
-          <time datetime="2026-11-19">19 November 2026</time>
-        </div>
-        <div class="page-intro">
-          <h1>ConvictionBench</h1>
-          <p class="page-dek">Evidence-sensitive belief revision in language models</p>
-          <p class="release-summary">
-            When challenged, a language model has to decide whether to keep its answer,
-            revise it, or say the evidence is insufficient. ConvictionBench tests how
-            that decision changes with the evidence and with the pressure to agree.
-          </p>
-          <p class="byline">
-            By <a href="https://aryasomu.com/">Arya Somu</a> and
-            <a href="https://brucenh.com/">Bruce Nshuti Hirwa</a>
-          </p>
-          <nav class="release-links" aria-label="Release resources">
-            <a class="primary" href="paper.pdf">Paper (PDF)</a>
-            <a href="https://convictionbench.org/#leaderboard">Live leaderboard</a>
-            <a href="https://huggingface.co/datasets/Laplace-AI-Research/ConvictionBench">Dataset</a>
-            <a href="https://github.com/Laplace-AI-Research/conviction">Code</a>
+      <main>
+        <section class="sec" id="content" aria-labelledby="t">
+          <p class="num">01</p>
+          <div class="body">
+            <p class="article-meta"><span>Benchmark release</span><time datetime="2026-11-19">2026.11.19</time></p>
+            <h1 id="t">ConvictionBench</h1>
+            <p class="dek">Evidence-sensitive belief revision in language models</p>
+            <p>
+              When challenged, a language model has to decide whether to keep its
+              answer, revise it, or say the evidence is insufficient.
+              ConvictionBench tests how that decision changes with the evidence
+              and with the pressure to agree.
+            </p>
+            <p class="byline">
+              By <a href="https://aryasomu.com/">Arya Somu</a> and
+              <a href="https://brucenh.com/">Bruce Nshuti Hirwa</a>
+            </p>
+            <nav class="btns" aria-label="Release resources">
+              <a class="btn solid" href="paper.pdf">Paper (PDF)</a>
+              <a class="btn" href="https://convictionbench.org/#leaderboard">Live leaderboard</a>
+              <a class="btn" href="https://huggingface.co/datasets/Laplace-AI-Research/ConvictionBench">Dataset</a>
+              <a class="btn" href="https://github.com/Laplace-AI-Research/conviction">Code</a>
+            </nav>
+          </div>
+          <nav class="toc" aria-label="On this page">
+            <p>On this page</p>
+            <a href="#benchmark">Benchmark</a>
+            <a href="#models">Models and results</a>
+            <a href="#paper">Paper and citation</a>
           </nav>
-        </div>
-      </header>
+        </section>
 
-      <section class="content-section shell grid" aria-labelledby="benchmark-title">
-        <p class="section-label">Benchmark</p>
-        <div class="section-body">
-          <h2 id="benchmark-title">Evidence and social pressure</h2>
-          <p class="lead">
-            ConvictionBench v0.1 contains 26,478 generated episodes across arithmetic,
-            ledgers, logic, and small rule-based worlds. A deterministic solver
-            determines the expected answer and decision.
-          </p>
-          <p>
-            Matched episodes vary the wording of a challenge, the quality of its
-            evidence, and the channel the evidence arrives through. The structural
-            split holds out whole problem types. A separate natural-history evaluation
-            challenges the model’s own first answer.
-          </p>
-          <p>
-            In a control using identical record text, Anchor adopted the record 62%
-            of the time from a tool message and 58% of the time from a plain user
-            message, compared with 8% when the user added the forger’s wording.
-            That result shows how much the measured resistance depended on the framing.
-          </p>
-          <div class="inline-figure">
-            <figure class="figure" aria-labelledby="fig-channel-title">
+        <section class="sec" id="benchmark" aria-labelledby="benchmark-title">
+          <p class="num">02</p>
+          <div class="body prose">
+            <h2 id="benchmark-title">Evidence and social pressure</h2>
+            <p class="lead">
+              ConvictionBench v0.1 contains 26,478 generated episodes across
+              arithmetic, ledgers, logic, and small rule-based worlds. A
+              deterministic solver determines the expected answer and decision.
+            </p>
+            <p>
+              Matched episodes vary the wording of a challenge, the quality of its
+              evidence, and the channel the evidence arrives through. The
+              structural split holds out whole problem types. A separate
+              natural-history evaluation challenges the model’s own first answer.
+            </p>
+            <p>
+              In a control using identical record text, Anchor adopted the record
+              62% of the time from a tool message and 58% of the time from a plain
+              user message, compared with 8% when the user added the forger’s
+              wording. That result shows how much the measured resistance
+              depended on the framing.
+            </p>
+            <div class="inline-figure">
+              <figure class="figure" aria-labelledby="fig-channel-title">
             <div class="figure-head">
               <p class="figure-title" id="fig-channel-title">Same record, different framing</p>
               <p class="figure-sub">How often Conviction Anchor 1.7B adopted an identical record text, by the channel and wording it arrived in.</p>
             </div>
             <div style="--c: var(--s1)"><ul class="chart-rows has-values" style="--label-w: 164px"><li class="chart-row"><span class="row-label">Tool message</span><span class="track" style="--ticks: 2"><span class="bar" style="--v: 0.6200" tabindex="0" role="img" aria-label="Record sent as a tool message: Adopted the record 62%" data-tip-title="Record sent as a tool message" data-tip="Adopted the record 62%"></span><span class="bar-value" style="--v: 0.6200">62%</span></span></li><li class="chart-row"><span class="row-label">Plain user message</span><span class="track" style="--ticks: 2"><span class="bar" style="--v: 0.5800" tabindex="0" role="img" aria-label="Record sent as a plain user message: Adopted the record 58%" data-tip-title="Record sent as a plain user message" data-tip="Adopted the record 58%"></span><span class="bar-value" style="--v: 0.5800">58%</span></span></li><li class="chart-row"><span class="row-label">User + forger’s wording</span><span class="track" style="--ticks: 2"><span class="bar" style="--v: 0.0800" tabindex="0" role="img" aria-label="User message with the forger’s wording: Adopted the record 8%" data-tip-title="User message with the forger’s wording" data-tip="Adopted the record 8%"></span><span class="bar-value" style="--v: 0.0800">8%</span></span></li></ul><div class="axis has-values" aria-hidden="true" style="--label-w: 164px"><span style="--t: 0">0%</span><span style="--t: 0.5">50%</span><span style="--t: 1">100%</span></div></div>
           </figure>
+            </div>
+            <p>
+              The tasks use short synthetic dialogues and a fixed response format.
+              The results describe behavior under those conditions and give
+              limited evidence about real-world authentication or manipulation.
+            </p>
+            <nav class="btns" aria-label="Benchmark details">
+              <a class="btn" href="https://convictionbench.org/#method">Benchmark methodology</a>
+              <a class="btn" href="https://convictionbench.org/#channel">Channel control</a>
+              <a class="btn" href="https://convictionbench.org/blog/">Research blog</a>
+            </nav>
           </div>
-          <p>
-            The tasks use short synthetic dialogues and a fixed response format.
-            The results describe behavior under those conditions and give limited
-            evidence about real-world authentication or manipulation.
-          </p>
-          <nav class="release-links" aria-label="Benchmark details">
-            <a href="https://convictionbench.org/#method">Benchmark methodology</a>
-            <a href="https://convictionbench.org/#channel">Channel control</a>
-            <a href="https://convictionbench.org/blog/">Research blog</a>
-          </nav>
-        </div>
-      </section>
+        </section>
 
-      <section id="models" class="content-section shell grid" aria-labelledby="models-title">
-        <p class="section-label">Models</p>
-        <div class="section-body">
-          <h2 id="models-title">Laplace Conviction Series</h2>
-          <p class="lead">Three experimental Qwen3-1.7B LoRA adapters test different ways to train for belief revision.</p>
-          <p>
-            Anchor often kept its own wrong answers after valid corrections in
-            natural history. Vector had the highest held-out final accuracy of
-            the three in the original setup, with weaker forged-record resistance
-            than the base model on the same split. Its accuracy advantage over
-            Anchor was sensitive to the seed and prompt. Meridian resisted more
-            forged records than the other adapters on held-out types and had
-            lower final accuracy than Vector.
-          </p>
-        </div>
-        <div class="wide-body">
-          <figure class="figure" aria-labelledby="fig-heldout-title">
+        <section class="sec" id="models" aria-labelledby="models-title">
+          <p class="num">03</p>
+          <div class="body prose">
+            <h2 id="models-title">Laplace Conviction Series</h2>
+            <p class="lead">Three experimental Qwen3-1.7B LoRA adapters test different ways to train for belief revision.</p>
+            <p>
+              Anchor often kept its own wrong answers after valid corrections in
+              natural history. Vector had the highest held-out final accuracy of
+              the three in the original setup, with weaker forged-record
+              resistance than the base model on the same split. Its accuracy
+              advantage over Anchor was sensitive to the seed and prompt.
+              Meridian resisted more forged records than the other adapters on
+              held-out types and had lower final accuracy than Vector.
+            </p>
+          </div>
+          <div class="wide" style="margin-top: 32px">
+            <figure class="figure" aria-labelledby="fig-heldout-title">
             <div class="figure-head">
               <p class="figure-title" id="fig-heldout-title">Held-out problem types</p>
               <p class="figure-sub">Point estimates with 95% cluster-bootstrap intervals. Scripted structural split, greedy decoding, thinking disabled. Axes run from 0.2 to 0.8.</p>
@@ -174,80 +178,82 @@
             </div>
             <div class="panels" style="--panels: 3"><div class="panel"><p class="panel-title">Final accuracy <span>· higher is better</span></p><ul class="chart-rows"><li class="chart-row" style="--c: var(--s1)"><span class="row-label">Anchor</span><span class="track" style="--ticks: 3"><span class="ci" style="--lo: 0.5504; --hi: 0.7098"></span><span class="dot" style="--v: 0.6333" tabindex="0" role="img" aria-label="Conviction Anchor 1.7B, final accuracy: 0.580 (95% CI 0.530 to 0.626)" data-tip-title="Conviction Anchor 1.7B" data-tip="Final accuracy 0.580 · 95% CI 0.530–0.626"></span></span></li><li class="chart-row" style="--c: var(--s2)"><span class="row-label">Vector</span><span class="track" style="--ticks: 3"><span class="ci" style="--lo: 0.6967; --hi: 0.7799"></span><span class="dot" style="--v: 0.7396" tabindex="0" role="img" aria-label="Conviction Vector 1.7B, final accuracy: 0.644 (95% CI 0.618 to 0.668)" data-tip-title="Conviction Vector 1.7B" data-tip="Final accuracy 0.644 · 95% CI 0.618–0.668"></span></span></li><li class="chart-row" style="--c: var(--s3)"><span class="row-label">Meridian</span><span class="track" style="--ticks: 3"><span class="ci" style="--lo: 0.5339; --hi: 0.6624"></span><span class="dot" style="--v: 0.5992" tabindex="0" role="img" aria-label="Conviction Meridian 1.7B, final accuracy: 0.560 (95% CI 0.520 to 0.597)" data-tip-title="Conviction Meridian 1.7B" data-tip="Final accuracy 0.560 · 95% CI 0.520–0.597"></span></span></li><li class="chart-row is-reference" style="--c: var(--mark-quiet)"><span class="row-label">Qwen3 base</span><span class="track" style="--ticks: 3"><span class="ci" style="--lo: 0.3392; --hi: 0.4066"></span><span class="dot hollow" style="--v: 0.3738" tabindex="0" role="img" aria-label="Qwen3-1.7B base, final accuracy: 0.424 (95% CI 0.404 to 0.444)" data-tip-title="Qwen3-1.7B base" data-tip="Final accuracy 0.424 · 95% CI 0.404–0.444"></span></span></li></ul><div class="axis" aria-hidden="true" style="--label-w: 84px"><span style="--t: 0">0.2</span><span style="--t: 0.333333">0.4</span><span style="--t: 0.666667">0.6</span><span style="--t: 1">0.8</span></div></div><div class="panel"><p class="panel-title">Pressure flips <span>· lower is better</span></p><ul class="chart-rows"><li class="chart-row" style="--c: var(--s1)"><span class="row-label">Anchor</span><span class="track" style="--ticks: 3"><span class="ci" style="--lo: 0.2150; --hi: 0.4183"></span><span class="dot" style="--v: 0.3146" tabindex="0" role="img" aria-label="Conviction Anchor 1.7B, pressure flips: 0.389 (95% CI 0.329 to 0.451)" data-tip-title="Conviction Anchor 1.7B" data-tip="Pressure flips 0.389 · 95% CI 0.329–0.451"></span></span></li><li class="chart-row" style="--c: var(--s2)"><span class="row-label">Vector</span><span class="track" style="--ticks: 3"><span class="ci" style="--lo: 0.1940; --hi: 0.3043"></span><span class="dot" style="--v: 0.2470" tabindex="0" role="img" aria-label="Conviction Vector 1.7B, pressure flips: 0.348 (95% CI 0.316 to 0.383)" data-tip-title="Conviction Vector 1.7B" data-tip="Pressure flips 0.348 · 95% CI 0.316–0.383"></span></span></li><li class="chart-row" style="--c: var(--s3)"><span class="row-label">Meridian</span><span class="track" style="--ticks: 3"><span class="ci" style="--lo: 0.2040; --hi: 0.3826"></span><span class="dot" style="--v: 0.2919" tabindex="0" role="img" aria-label="Conviction Meridian 1.7B, pressure flips: 0.375 (95% CI 0.322 to 0.430)" data-tip-title="Conviction Meridian 1.7B" data-tip="Pressure flips 0.375 · 95% CI 0.322–0.430"></span></span></li><li class="chart-row is-reference" style="--c: var(--mark-quiet)"><span class="row-label">Qwen3 base</span><span class="track" style="--ticks: 3"><span class="ci" style="--lo: 0.5143; --hi: 0.6070"></span><span class="dot hollow" style="--v: 0.5603" tabindex="0" role="img" aria-label="Qwen3-1.7B base, pressure flips: 0.536 (95% CI 0.509 to 0.564)" data-tip-title="Qwen3-1.7B base" data-tip="Pressure flips 0.536 · 95% CI 0.509–0.564"></span></span></li></ul><div class="axis" aria-hidden="true" style="--label-w: 84px"><span style="--t: 0">0.2</span><span style="--t: 0.333333">0.4</span><span style="--t: 0.666667">0.6</span><span style="--t: 1">0.8</span></div></div><div class="panel"><p class="panel-title">Forged-record resistance <span>· higher is better</span></p><ul class="chart-rows"><li class="chart-row" style="--c: var(--s1)"><span class="row-label">Anchor</span><span class="track" style="--ticks: 3"><span class="ci" style="--lo: 0.4497; --hi: 0.6582"></span><span class="dot" style="--v: 0.5516" tabindex="0" role="img" aria-label="Conviction Anchor 1.7B, forged-record resistance: 0.531 (95% CI 0.470 to 0.595)" data-tip-title="Conviction Anchor 1.7B" data-tip="Forged-record resistance 0.531 · 95% CI 0.470–0.595"></span></span></li><li class="chart-row" style="--c: var(--s2)"><span class="row-label">Vector</span><span class="track" style="--ticks: 3"><span class="ci" style="--lo: 0.1282; --hi: 0.2520"></span><span class="dot" style="--v: 0.1920" tabindex="0" role="img" aria-label="Conviction Vector 1.7B, forged-record resistance: 0.315 (95% CI 0.277 to 0.351)" data-tip-title="Conviction Vector 1.7B" data-tip="Forged-record resistance 0.315 · 95% CI 0.277–0.351"></span></span></li><li class="chart-row" style="--c: var(--s3)"><span class="row-label">Meridian</span><span class="track" style="--ticks: 3"><span class="ci" style="--lo: 0.5304; --hi: 0.7284"></span><span class="dot" style="--v: 0.6298" tabindex="0" role="img" aria-label="Conviction Meridian 1.7B, forged-record resistance: 0.578 (95% CI 0.518 to 0.637)" data-tip-title="Conviction Meridian 1.7B" data-tip="Forged-record resistance 0.578 · 95% CI 0.518–0.637"></span></span></li><li class="chart-row is-reference" style="--c: var(--mark-quiet)"><span class="row-label">Qwen3 base</span><span class="track" style="--ticks: 3"><span class="ci" style="--lo: 0.1651; --hi: 0.2983"></span><span class="dot hollow" style="--v: 0.2326" tabindex="0" role="img" aria-label="Qwen3-1.7B base, forged-record resistance: 0.340 (95% CI 0.299 to 0.379)" data-tip-title="Qwen3-1.7B base" data-tip="Forged-record resistance 0.340 · 95% CI 0.299–0.379"></span></span></li></ul><div class="axis" aria-hidden="true" style="--label-w: 84px"><span style="--t: 0">0.2</span><span style="--t: 0.333333">0.4</span><span style="--t: 0.666667">0.6</span><span style="--t: 1">0.8</span></div></div></div>
           </figure>
-          <div class="table-block table-scroll" role="region" aria-labelledby="held-out-caption" tabindex="0">
-            <table class="data-table">
-              <caption id="held-out-caption">Results on held-out problem types</caption>
-              <thead>
-                <tr>
-                  <th scope="col">Model</th>
-                  <th scope="col">Training</th>
-                  <th scope="col" class="num">Final accuracy</th>
-                  <th scope="col" class="num">Pressure flips</th>
-                  <th scope="col" class="num">Forged-record resistance</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="row"><a href="https://huggingface.co/Laplace-AI-Research/Conviction-Anchor-1.7B">Conviction Anchor 1.7B</a></th>
-                  <td>Supervised fine-tuning</td>
-                  <td class="num" data-metric="final_accuracy">0.580</td>
-                  <td class="num" data-metric="pressure_flip_rate">0.389</td>
-                  <td class="num" data-metric="fabricated_evidence_resistance">0.531</td>
-                </tr>
-                <tr>
-                  <th scope="row"><a href="https://huggingface.co/Laplace-AI-Research/Conviction-Vector-1.7B">Conviction Vector 1.7B</a></th>
-                  <td>GRPO from the base model</td>
-                  <td class="num" data-metric="final_accuracy">0.644</td>
-                  <td class="num" data-metric="pressure_flip_rate">0.348</td>
-                  <td class="num" data-metric="fabricated_evidence_resistance">0.315</td>
-                </tr>
-                <tr>
-                  <th scope="row"><a href="https://huggingface.co/Laplace-AI-Research/Conviction-Meridian-1.7B">Conviction Meridian 1.7B</a></th>
-                  <td>Light supervised fine-tuning, then GRPO</td>
-                  <td class="num" data-metric="final_accuracy">0.560</td>
-                  <td class="num" data-metric="pressure_flip_rate">0.375</td>
-                  <td class="num" data-metric="fabricated_evidence_resistance">0.578</td>
-                </tr>
-              </tbody>
-            </table>
+            <div class="table-block table-scroll" role="region" aria-labelledby="held-out-caption" tabindex="0">
+              <table class="data-table">
+                <caption id="held-out-caption">Results on held-out problem types</caption>
+                <thead>
+                  <tr>
+                    <th scope="col">Model</th>
+                    <th scope="col">Training</th>
+                    <th scope="col" class="num">Final accuracy</th>
+                    <th scope="col" class="num">Pressure flips</th>
+                    <th scope="col" class="num">Forged-record resistance</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row"><a href="https://huggingface.co/Laplace-AI-Research/Conviction-Anchor-1.7B">Conviction Anchor 1.7B</a></th>
+                    <td>Supervised fine-tuning</td>
+                    <td class="num" data-metric="final_accuracy">0.580</td>
+                    <td class="num" data-metric="pressure_flip_rate">0.389</td>
+                    <td class="num" data-metric="fabricated_evidence_resistance">0.531</td>
+                  </tr>
+                  <tr>
+                    <th scope="row"><a href="https://huggingface.co/Laplace-AI-Research/Conviction-Vector-1.7B">Conviction Vector 1.7B</a></th>
+                    <td>GRPO from the base model</td>
+                    <td class="num" data-metric="final_accuracy">0.644</td>
+                    <td class="num" data-metric="pressure_flip_rate">0.348</td>
+                    <td class="num" data-metric="fabricated_evidence_resistance">0.315</td>
+                  </tr>
+                  <tr>
+                    <th scope="row"><a href="https://huggingface.co/Laplace-AI-Research/Conviction-Meridian-1.7B">Conviction Meridian 1.7B</a></th>
+                    <td>Light supervised fine-tuning, then GRPO</td>
+                    <td class="num" data-metric="final_accuracy">0.560</td>
+                    <td class="num" data-metric="pressure_flip_rate">0.375</td>
+                    <td class="num" data-metric="fabricated_evidence_resistance">0.578</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="table-note">
+              Point estimates from the scripted structural split, using greedy
+              decoding with thinking disabled. Lower pressure-flip rates are
+              better. The Qwen3-1.7B base scored 0.424, 0.536, and 0.340 on the
+              same measures. Intervals for every model are on the
+              <a href="https://convictionbench.org/#leaderboard">leaderboard</a>.
+            </p>
+            <nav class="btns" aria-label="Model artifacts">
+              <a class="btn" href="https://huggingface.co/collections/Laplace-AI-Research/conviction-models-and-benchmark-6aff86d2ffe859af7052eafd">Models and dataset collection</a>
+              <a class="btn" href="https://convictionbench.org/models/">Training curves and model examples</a>
+            </nav>
           </div>
-          <p class="table-note">
-            Point estimates from the scripted structural split, using greedy decoding
-            with thinking disabled. Lower pressure-flip rates are better. The
-            Qwen3-1.7B base scored 0.424, 0.536, and 0.340 on the same measures.
-            Intervals for every model are on the <a href="https://convictionbench.org/#leaderboard">leaderboard</a>.
-          </p>
-          <nav class="release-links" aria-label="Model artifacts">
-            <a href="https://huggingface.co/collections/Laplace-AI-Research/conviction-models-and-benchmark-6aff86d2ffe859af7052eafd">Models and dataset collection</a>
-            <a href="https://convictionbench.org/models/">Training curves and model examples</a>
-          </nav>
-        </div>
-      </section>
+        </section>
 
-      <section class="content-section shell grid" aria-labelledby="paper-title">
-        <p class="section-label">Paper</p>
-        <div class="section-body">
-          <h2 id="paper-title">Paper and reproducibility</h2>
-          <p class="lead">ConvictionBench: Evidence-Sensitive Belief Revision in Language Models</p>
-          <p>
-            The Laplace Research edition credits <a href="https://aryasomu.com/">Arya Somu</a>
-            and <a href="https://brucenh.com/">Bruce Nshuti Hirwa</a>. Arya Somu
-            first released the frozen v0.1 benchmark on
-            <time datetime="2026-11-10">10 November 2026</time>.
-            Laplace Research became its publisher and maintainer on
-            <time datetime="2026-11-19">19 November 2026</time>.
-          </p>
-          <p>
-            The code repository provides the benchmark generator, evaluation
-            harness, experiment logs, and frozen file hashes. Code and adapters
-            are Apache-2.0. The dataset is CC BY 4.0 and subject to its Hugging Face access agreement.
-          </p>
-          <nav class="release-links" aria-label="Paper and reproduction files">
-            <a href="paper.pdf">Laplace Research edition (PDF)</a>
-            <a href="https://github.com/Laplace-AI-Research/conviction/blob/main/release/LAPLACE_RELEASE.md">Release and reproducibility record</a>
-          </nav>
-          <h3 id="citation">Cite the Laplace Research edition</h3>
-          <pre class="citation-bib">@techreport{somu2026convictionbench-laplace,
+        <section class="sec" id="paper" aria-labelledby="paper-title">
+          <p class="num">04</p>
+          <div class="body prose">
+            <h2 id="paper-title">Paper and reproducibility</h2>
+            <p class="lead">ConvictionBench: Evidence-Sensitive Belief Revision in Language Models</p>
+            <p>
+              The Laplace Research edition credits <a href="https://aryasomu.com/">Arya Somu</a>
+              and <a href="https://brucenh.com/">Bruce Nshuti Hirwa</a>. Arya Somu
+              first released the frozen v0.1 benchmark on
+              <time datetime="2026-11-10">10 November 2026</time>. Laplace
+              Research became its publisher and maintainer on
+              <time datetime="2026-11-19">19 November 2026</time>.
+            </p>
+            <p>
+              The code repository provides the benchmark generator, evaluation
+              harness, experiment logs, and frozen file hashes. Code and adapters
+              are Apache-2.0. The dataset is CC BY 4.0 and subject to its Hugging
+              Face access agreement.
+            </p>
+            <nav class="btns" aria-label="Paper and reproduction files">
+              <a class="btn solid" href="paper.pdf">Laplace Research edition (PDF)</a>
+              <a class="btn" href="https://github.com/Laplace-AI-Research/conviction/blob/main/release/LAPLACE_RELEASE.md">Release and reproducibility record</a>
+            </nav>
+            <h3 id="citation">Cite the Laplace Research edition</h3>
+            <pre class="citation-bib">@techreport{somu2026convictionbench-laplace,
   title       = {{ConvictionBench}: Evidence-Sensitive Belief Revision in Language Models},
   author      = {Somu, Arya and Nshuti Hirwa, Bruce},
   institution = {Laplace Research},
@@ -257,43 +263,20 @@
   note        = {ConvictionBench v0.1, Laplace Research edition},
   url         = {https://laplaceresearch.org/convictionbench/paper.pdf}
 }</pre>
-        </div>
-      </section>
-    </main>
+          </div>
+        </section>
+      </main>
 
-    <footer class="site-footer">
-      <div class="shell footer-grid">
-        <div class="footer-brand">
-          <a class="identity" href="/" aria-label="Laplace Research home">
-            <img src="/assets/mark.png" alt="" width="56" height="55" />
-            <span>Laplace Research</span>
-          </a>
-          <p>Foundation models for calibrated forecasting.</p>
+      <footer class="foot">
+        <div class="brand"><img src="/assets/mark.png" alt="" width="56" height="55" />Laplace Research</div>
+        <div class="cols">
+          <nav aria-label="Research"><a href="/convictionbench/">ConvictionBench</a><a href="/tarot-draw/">Tarot-Draw</a><a href="/research/">All research</a></nav>
+          <nav aria-label="Lab"><a href="/about/">About</a><a href="/#models">Models</a><a href="mailto:inquiries@laplaceresearch.org">Inquiries</a></nav>
+          <nav aria-label="Elsewhere"><a href="https://github.com/Laplace-AI-Research" target="_blank" rel="noopener noreferrer">GitHub</a><a href="https://huggingface.co/Laplace-AI-Research" target="_blank" rel="noopener noreferrer">Hugging Face</a><a href="https://convictionbench.org/#leaderboard">Leaderboard</a></nav>
         </div>
-        <nav aria-label="Research">
-          <p class="footer-head">Research</p>
-          <a href="/convictionbench/">ConvictionBench</a>
-          <a href="/tarot-draw/">Tarot-Draw</a>
-          <a href="/research/">All research</a>
-        </nav>
-        <nav aria-label="Lab">
-          <p class="footer-head">Lab</p>
-          <a href="/about/">About</a>
-          <a href="/#models">Models</a>
-          <a href="mailto:inquiries@laplaceresearch.org">Inquiries</a>
-        </nav>
-        <nav aria-label="Elsewhere">
-          <p class="footer-head">Elsewhere</p>
-          <a href="https://github.com/Laplace-AI-Research" target="_blank" rel="noopener noreferrer">GitHub</a>
-          <a href="https://huggingface.co/Laplace-AI-Research" target="_blank" rel="noopener noreferrer">Hugging Face</a>
-          <a href="https://convictionbench.org/#leaderboard" target="_blank" rel="noopener noreferrer">Leaderboard</a>
-        </nav>
-      </div>
-      <div class="shell footer-base">
-        <span>&copy; 2026 Laplace Research</span>
-        <span>New York, NY</span>
-      </div>
-    </footer>
+        <p class="copy">&copy; 2026 Laplace Research &middot; New York, NY</p>
+      </footer>
+    </div>
     <script src="/figures.js?v=20261119" defer></script>
   </body>
 </html>
