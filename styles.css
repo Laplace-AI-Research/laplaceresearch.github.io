@@ -533,19 +533,8 @@ a {
   transform: translateX(3px);
 }
 
-.release-models {
-  margin: -8px 0 23px;
-  font-size: 13px;
-}
-
-.release-models ul {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px 18px;
-  margin: 6px 0 0;
-  padding: 0;
-  list-style: none;
-  font-size: 14px;
+.releases + .release-story {
+  margin-top: 23px;
 }
 
 .research-index-link {
