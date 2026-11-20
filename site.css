@@ -1,7 +1,7 @@
 /* Laplace Research — laplaceresearch.org
    One stylesheet: a left rail, a visible hairline grid, numbered sections,
    Geist headings over Source Serif reading text, Geist Mono for labels.
-   Light by default, dark when the system asks. */
+   Light only. */
 
 :root {
   --bg: #f6f5f2;
@@ -31,26 +31,7 @@
   --link-line: var(--line-strong);
   --mark-quiet: var(--quiet);
   --track: color-mix(in srgb, var(--ink) 6%, transparent);
-  color-scheme: light;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #0f1012;
-    --surface: #16171a;
-    --ink: #eeede9;
-    --ink-2: #c3c2bd;
-    --muted: rgba(238, 237, 233, 0.5);
-    --line: rgba(238, 237, 233, 0.09);
-    --line-strong: rgba(238, 237, 233, 0.18);
-    --accent: #8b9bff;
-    --s1: #3987e5;
-    --s2: #d95926;
-    --s3: #199e70;
-    --quiet: #6f7278;
-    --mark: none;
-    color-scheme: dark;
-  }
+  color-scheme: only light;
 }
 
 * { box-sizing: border-box; }
@@ -419,9 +400,6 @@ button.btn { font-family: var(--sans); cursor: pointer; }
 .form-status { margin: 0; font-size: 14px; }
 .form-status[data-kind="ok"] { color: var(--s3); }
 .form-status[data-kind="error"] { color: #c23333; }
-@media (prefers-color-scheme: dark) {
-  .field-error, .form-status[data-kind="error"] { color: #f07a7a; }
-}
 
 /* ---------- 04: principles ---------- */
 
