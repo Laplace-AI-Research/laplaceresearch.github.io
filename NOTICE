@@ -1,0 +1,24 @@
+laplaceresearch.org
+Copyright 2026 Asterion Laboratories, Inc. (DBA Laplace Research)
+
+Scope of the license
+--------------------
+The source code of this website (HTML markup, CSS, JavaScript, and the
+scripts in tools/) is licensed under the Apache License, Version 2.0. See
+LICENSE.
+
+The site's written content, the Laplace Research name and logo, and the
+images in assets/ (including the cover art and social images) are not
+covered by the Apache License. All rights reserved.
+
+Research papers, models, datasets, and code linked from this site are
+licensed separately. See https://laplaceresearch.org/licenses/.
+
+Third-party material
+--------------------
+Geist and Geist Mono, copyright 2024 The Geist Project Authors, and
+Source Serif 4, copyright 2014-2023 Adobe, are licensed under the SIL Open
+Font License 1.1. License texts are in assets/fonts/.
+
+GitHub and Hugging Face icon paths come from Simple Icons (CC0 1.0). The
+logos are trademarks of their respective owners.

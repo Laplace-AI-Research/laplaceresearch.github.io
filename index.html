@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>Laplace Research</title>
+    <title>Laplace Research | Calibrated forecasting models</title>
     <meta
       name="description"
       content="Laplace Research builds foundation models for calibrated forecasting and studies why their confidence can be trusted."
@@ -38,6 +38,7 @@
         "@context": "https://schema.org",
         "@type": "Organization",
         "name": "Laplace Research",
+        "legalName": "Asterion Laboratories, Inc.",
         "url": "https://laplaceresearch.org/",
         "logo": "https://laplaceresearch.org/assets/mark.png",
         "description": "Foundation models for calibrated forecasting.",
@@ -70,14 +71,9 @@
         ]
       }
     </script>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500&amp;family=Geist+Mono&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400;1,8..60,400&amp;display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="/site.css?v=20261119-6" />
+    <link rel="preload" href="/assets/fonts/geist-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/assets/fonts/source-serif-4-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="/site.css?v=20261121-1" />
   </head>
 
   <body>
@@ -98,7 +94,6 @@
           <a href="/research/">Research</a>
           <a href="/#models">Models</a>
           <a href="/about/">About</a>
-          <a href="/careers/">Careers</a>
           <a href="mailto:inquiries@laplaceresearch.org">Contact</a>
         </nav>
         <a class="rail-btn" href="https://convictionbench.org/#leaderboard">Leaderboard</a>
@@ -168,12 +163,22 @@
                 <a href="https://convictionbench.org/#leaderboard">View leaderboard</a>
               </div>
               <div class="tabs" role="tablist" aria-label="Metric">
-                <button type="button" role="tab" aria-selected="true" data-metric="acc">Final accuracy</button>
-                <button type="button" role="tab" aria-selected="false" data-metric="res">Forged-record resistance</button>
-                <button type="button" role="tab" aria-selected="false" data-metric="flip">Pressure flips</button>
+                <button type="button" role="tab" id="tab-acc" aria-controls="rows" aria-selected="true" data-metric="acc">Final accuracy</button>
+                <button type="button" role="tab" id="tab-res" aria-controls="rows" aria-selected="false" tabindex="-1" data-metric="res">Forged-record resistance</button>
+                <button type="button" role="tab" id="tab-flip" aria-controls="rows" aria-selected="false" tabindex="-1" data-metric="flip">Pressure flips</button>
               </div>
-              <ol class="rows" id="rows" aria-live="polite"></ol>
+              <ol class="rows" id="rows" role="tabpanel" aria-labelledby="tab-acc" tabindex="0"></ol>
               <p class="card-foot" id="card-foot">Point estimates on the scripted structural split. Greedy decoding, thinking disabled.</p>
+              <table class="sr-only">
+                <caption>ConvictionBench results on held-out problem types, all three metrics. Point estimates on the scripted structural split. Higher is better for final accuracy and forged-record resistance; lower is better for pressure flips.</caption>
+                <thead><tr><th scope="col">Model</th><th scope="col">Training</th><th scope="col">Final accuracy</th><th scope="col">Forged-record resistance</th><th scope="col">Pressure flips</th></tr></thead>
+                <tbody>
+                  <tr><th scope="row">Conviction Anchor</th><td>SFT</td><td>0.580</td><td>0.531</td><td>0.389</td></tr>
+                  <tr><th scope="row">Conviction Vector</th><td>GRPO</td><td>0.644</td><td>0.315</td><td>0.348</td></tr>
+                  <tr><th scope="row">Conviction Meridian</th><td>SFT then GRPO</td><td>0.560</td><td>0.578</td><td>0.375</td></tr>
+                  <tr><th scope="row">Qwen3-1.7B base</th><td>None (reference)</td><td>0.424</td><td>0.340</td><td>0.536</td></tr>
+                </tbody>
+              </table>
             </div>
           </div>
         </section>
@@ -191,7 +196,7 @@
                 <h3>Laplace Conviction Series</h3>
                 <p>Qwen3-1.7B LoRA adapters for evidence-sensitive belief revision.</p>
               </div>
-              <div class="mfamily-meta"><span class="mlicense">Apache-2.0</span><a href="/convictionbench/#models">Release <span aria-hidden="true">&#8594;</span></a></div>
+              <div class="mfamily-meta"><a class="mlicense" href="/licenses/#conviction" aria-label="License: Apache-2.0. Licensing details">Apache-2.0</a><a href="/convictionbench/#models">Release <span aria-hidden="true">&#8594;</span></a></div>
             </div>
             <div class="mgrid">
               <article class="mcard" style="--c: var(--s1)">
@@ -235,7 +240,7 @@
                 <h3>Tarot-Draw</h3>
                 <p>Binary forecasting priors at three scales, trained on the same 81,870 questions.</p>
               </div>
-              <div class="mfamily-meta"><span class="mlicense">CC BY-NC 4.0</span><a href="/tarot-draw/">Release <span aria-hidden="true">&#8594;</span></a></div>
+              <div class="mfamily-meta"><a class="mlicense" href="/licenses/#tarot-draw" aria-label="License: CC BY-NC 4.0, non-commercial use only. Licensing details">CC BY-NC 4.0</a><a href="/tarot-draw/">Release <span aria-hidden="true">&#8594;</span></a></div>
             </div>
             <div class="mgrid">
               <article class="mcard" style="--c: var(--accent)">
@@ -273,6 +278,7 @@
               </article>
             </div>
             <p class="mnote">Development split, n = 3,000. Lower Brier is better; higher resolution is better.</p>
+            <p class="mnote">Research artifacts, provided as is. Forecasts are not financial, investment, legal, or betting advice. <a href="/licenses/#disclaimer">Disclaimer</a></p>
           </div>
         </section>
 
@@ -334,12 +340,16 @@
         <div class="brand"><img src="/assets/mark.png" alt="" width="56" height="55" />Laplace Research</div>
         <div class="cols">
           <nav aria-label="Research"><a href="/convictionbench/">ConvictionBench</a><a href="/tarot-draw/">Tarot-Draw</a><a href="/research/">All research</a></nav>
-          <nav aria-label="Lab"><a href="/about/">About</a><a href="/careers/">Careers</a><a href="/#models">Models</a><a href="mailto:inquiries@laplaceresearch.org">Inquiries</a></nav>
+          <nav aria-label="Lab"><a href="/about/">About</a><a href="/#models">Models</a><a href="mailto:inquiries@laplaceresearch.org">Inquiries</a></nav>
           <nav aria-label="Elsewhere"><a href="https://github.com/Laplace-AI-Research" target="_blank" rel="noopener noreferrer">GitHub</a><a href="https://huggingface.co/Laplace-AI-Research" target="_blank" rel="noopener noreferrer">Hugging Face</a><a href="https://convictionbench.org/#leaderboard">Leaderboard</a></nav>
         </div>
-        <p class="copy">&copy; 2026 Laplace Research &middot; San Francisco &amp; New York</p>
+        <div class="copy">
+          <p>&copy; 2026 Laplace Research &middot; <a href="mailto:inquiries@laplaceresearch.org">inquiries@laplaceresearch.org</a></p>
+          <nav aria-label="Legal"><a href="/privacy/">Privacy</a><a href="/licenses/">Licenses</a><a href="/accessibility/">Accessibility</a></nav>
+          <p class="disclaimer">Research artifacts provided &lsquo;as is&rsquo;, without warranty. Forecasts are not financial, investment, legal, or betting advice. <a href="/licenses/#disclaimer">Full disclaimer</a></p>
+        </div>
       </footer>
     </div>
-    <script src="/home.js?v=20261119-6" defer></script>
+    <script src="/home.js?v=20261121-1" defer></script>
   </body>
 </html>

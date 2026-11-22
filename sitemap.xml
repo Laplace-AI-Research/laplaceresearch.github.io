@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://laplaceresearch.org/</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-21</lastmod>
   </url>
   <url>
     <loc>https://laplaceresearch.org/research/</loc>
@@ -13,15 +13,23 @@
     <lastmod>2026-09-21</lastmod>
   </url>
   <url>
-    <loc>https://laplaceresearch.org/careers/</loc>
-    <lastmod>2026-11-19</lastmod>
-  </url>
-  <url>
     <loc>https://laplaceresearch.org/tarot-draw/</loc>
-    <lastmod>2026-09-21</lastmod>
+    <lastmod>2026-11-21</lastmod>
   </url>
   <url>
     <loc>https://laplaceresearch.org/convictionbench/</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-21</lastmod>
+  </url>
+  <url>
+    <loc>https://laplaceresearch.org/licenses/</loc>
+    <lastmod>2026-11-21</lastmod>
+  </url>
+  <url>
+    <loc>https://laplaceresearch.org/privacy/</loc>
+    <lastmod>2026-11-21</lastmod>
+  </url>
+  <url>
+    <loc>https://laplaceresearch.org/accessibility/</loc>
+    <lastmod>2026-11-21</lastmod>
   </url>
 </urlset>

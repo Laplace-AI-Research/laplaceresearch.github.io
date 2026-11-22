@@ -68,17 +68,36 @@
     foot.textContent = base + d.note;
   }
 
+  function select(tab, focus) {
+    tabs.forEach(function (t) {
+      var on = t === tab;
+      t.setAttribute("aria-selected", String(on));
+      t.tabIndex = on ? 0 : -1;
+    });
+    list.setAttribute("aria-labelledby", tab.id);
+    if (focus) tab.focus();
+    render(tab.dataset.metric);
+  }
+
   if (list && foot) {
-    tabs.forEach(function (tab) {
-      tab.addEventListener("click", function () {
-        tabs.forEach(function (t) {
-          t.setAttribute("aria-selected", String(t === tab));
-        });
-        render(tab.dataset.metric);
+    tabs.forEach(function (tab, i) {
+      tab.addEventListener("click", function () { select(tab); });
+      /* arrow keys, Home and End move between tabs (WAI-ARIA tabs pattern) */
+      tab.addEventListener("keydown", function (event) {
+        var n = tabs.length, next = null;
+        if (event.key === "ArrowRight") next = (i + 1) % n;
+        else if (event.key === "ArrowLeft") next = (i - 1 + n) % n;
+        else if (event.key === "Home") next = 0;
+        else if (event.key === "End") next = n - 1;
+        if (next === null) return;
+        event.preventDefault();
+        select(tabs[next], true);
       });
     });
     render("acc");
   }
+
+  var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)");
 
   var carousel = document.getElementById("carousel");
   document.querySelectorAll(".arrows [data-dir]").forEach(function (button) {
@@ -86,7 +105,10 @@
       if (!carousel) return;
       var card = carousel.querySelector(".post");
       var step = card ? card.getBoundingClientRect().width + 12 : 312;
-      carousel.scrollBy({ left: Number(button.dataset.dir) * step, behavior: "smooth" });
+      carousel.scrollBy({
+        left: Number(button.dataset.dir) * step,
+        behavior: reduceMotion && reduceMotion.matches ? "auto" : "smooth",
+      });
     });
   });
 })();
