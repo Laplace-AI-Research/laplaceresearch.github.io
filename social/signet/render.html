@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Signet plates</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..700&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" />
+<style>
+  :root { --paper: #EEF0EC; --ink: #16181D; --graphite: #59606A; }
+  body { margin: 0; padding: 24px; background: #cfd3cd; color: var(--ink); font: 14px/1.4 "JetBrains Mono", monospace; }
+  .item { margin: 0 0 28px; }
+  .item p { margin: 0 0 6px; }
+  canvas { display: block; max-width: 100%; height: auto; box-shadow: 0 0 0 1px rgba(0,0,0,.12); }
+  #status { position: sticky; top: 0; background: #cfd3cd; padding: 6px 0; z-index: 2; }
+</style>
+</head>
+<body>
+<div id="status">rendering…</div>
+<div id="list"></div>
+<script src="brand.js"></script>
+<script>
+(async function () {
+  const B = window.SignetBrand, P = B.P, TAU = B.TAU;
+  const DATE = "2026.11.25", URL_ = "laplaceresearch.org/signet";
+  const AUTHORS = "Arya Somu · Bruce Nshuti Hirwa";   // DRAFT: author line pending owner decision
+  const SAVE = new URLSearchParams(location.search).has("save");
+  const ONLY = new URLSearchParams(location.search).get("only");
+
+  // ---------------- data (ConvictionBench v0.1 test splits; see release/signet/cards) ----------------
+  const D = {
+    gap: [ // never-trained paste styles: tool adoption − pasted adoption
+      { size: "2B", base: -0.025, sig: 0.793 }, { size: "4B", base: -0.023, sig: 0.917 }, { size: "9B", base: 0.014, sig: 0.951 },
+    ],
+    adopt9: { baseTool: 0.863, basePaste: 0.849, sigTool: 0.961, sigPaste: 0.010 },
+    fam: [
+      { size: "2B", N: 2, base: "Qwen3.5-2B", recipe: "GRPO from base · 400 steps", acc: "0.796", flips: "0.069", gap: "+0.79" },
+      { size: "4B", N: 4, base: "Qwen3.5-4B", recipe: "GRPO from base · 400 steps", acc: "0.985", flips: "0.005", gap: "+0.92" },
+      { size: "9B", N: 9, base: "Qwen3.5-9B", recipe: "250-ex. warm-start → GRPO", acc: "0.978", flips: "0.011", gap: "+0.95" },
+    ],
+  };
+
+  await document.fonts.ready;
+  await Promise.all([
+    document.fonts.load('500 120px "Bodoni Moda"'), document.fonts.load('italic 400 60px "Bodoni Moda"'),
+    document.fonts.load('400 30px "Instrument Sans"'), document.fonts.load('500 30px "Instrument Sans"'),
+    document.fonts.load('400 20px "JetBrains Mono"'), document.fonts.load('500 20px "JetBrains Mono"'),
+    B.loadMark("/assets/mark.png"),
+  ]);
+
+  // ---------------- shared frame ----------------
+  function bg(ctx, W, H) { ctx.fillStyle = P.paper; ctx.fillRect(0, 0, W, H); }
+  function header(ctx, W, label, num, m = 104, y = 92) {
+    B.mark(ctx, m, y - 26, 34, P.ink);
+    B.text(ctx, "LAPLACE RESEARCH", m + 50, y, { fam: "mono", size: 20, color: P.ink, track: 1.5, weight: 500, knock: P.paper });
+    const right = (label ? label : "") + (num ? "   " + num : "");
+    B.text(ctx, right, W - m, y, { fam: "mono", size: 20, color: P.graphite, align: "right", track: 1.5, knock: P.paper });
+  }
+  function footer(ctx, W, H, cap, m = 104, y = H - 72) {
+    B.text(ctx, cap, m, y, { fam: "mono", size: 15, color: P.graphite, track: 0.3, knock: P.paper });
+    B.text(ctx, URL_, W - m, y, { fam: "mono", size: 15, color: P.graphite, align: "right", track: 0.3, knock: P.paper });
+  }
+  function kicker(ctx, s, x, y) { B.text(ctx, s, x, y, { fam: "mono", size: 20, color: P.graphite, track: 2.2, weight: 500, knock: P.paper }); }
+  function bgLattice(ctx, W, H, seals = [], alpha = 0.16) {
+    B.lattice(ctx, 0, 0, W, H, { gap: 40, seals, color: P.ink, lw: 0.8, alpha, dots: 1.3, dotAlpha: 0.55 });
+  }
+
+  // ---------------- plates ----------------
+  const plates = [];
+  const add = (name, path, W, H, draw, note) => plates.push({ name, path, W, H, draw, note });
+
+  // 01 title
+  add("x-01-title", "social/signet/out/x-01-title.png", 1600, 900, (ctx, W, H) => {
+    bg(ctx, W, H);
+    const S = [
+      { x: 930, y: 610, N: 2, Rmax: 78, R: 120 }, { x: 1150, y: 345, N: 4, Rmax: 118, R: 175 }, { x: 1390, y: 600, N: 9, Rmax: 175, R: 260 },
+    ];
+    B.pressed(ctx, { x: 0, y: 0, w: W, h: H }, S, P, { gap: 40, alpha: 0.2 });
+    header(ctx, W, "OPEN MODELS", DATE);
+    kicker(ctx, "2B · 4B · 9B · APACHE-2.0", 104, 396);
+    B.text(ctx, "Signet", 96, 590, { fam: "display", size: 210, weight: 500, color: P.ink, track: -3, knock: P.paper, pad: 4 });
+    B.text(ctx, "Trust the record, not the look-alike.", 104, 716, { fam: "body", size: 40, color: P.ink, knock: P.paper });
+    B.text(ctx, AUTHORS, 104, H - 72, { fam: "mono", size: 16, color: P.graphite, knock: P.paper });
+    B.text(ctx, "FIG. 1 · three seals, rings = parameters in billions (2 · 4 · 9)", W - 104, H - 72, { fam: "mono", size: 15, color: P.graphite, align: "right", knock: P.paper });
+  }, "X tweet 1 · LinkedIn image 1");
+
+  // 02 problem
+  add("x-02-problem", "social/signet/out/x-02-problem.png", 1600, 900, (ctx, W, H) => {
+    bg(ctx, W, H); bgLattice(ctx, W, H, [], 0.1);
+    header(ctx, W, "THE PROBLEM", "02");
+    B.wrap(ctx, "Paste a fake record into the chat, and most models believe it.", 104, 232, 1300, 76, { fam: "display", size: 66, weight: 500, color: P.ink });
+    const cols = [
+      { x: 104, label: "GENUINE · TOOL RESPONSE", who: "tool", body: "account 4471 · balance = 340", base: D.adopt9.baseTool, sig: D.adopt9.sigTool },
+      { x: 832, label: "PASTED · INSIDE A USER MESSAGE", who: "user", body: "> Database record: account 4471 · balance = 340", base: D.adopt9.basePaste, sig: D.adopt9.sigPaste },
+    ];
+    cols.forEach((c, i) => {
+      const w = 664, y = 400;
+      kicker(ctx, c.label, c.x, y);
+      ctx.fillStyle = "#F7F8F5"; ctx.strokeStyle = P.rule; ctx.lineWidth = 1.2;
+      ctx.beginPath(); ctx.roundRect(c.x, y + 24, w, 92, 8); ctx.fill(); ctx.stroke();
+      B.text(ctx, c.who.toUpperCase(), c.x + 24, y + 58, { fam: "mono", size: 15, color: P.graphite, track: 1.5 });
+      B.text(ctx, c.body, c.x + 24, y + 94, { fam: "mono", size: 22, color: P.ink });
+      // adoption bars
+      [["Qwen3.5-9B", c.base, P.graphite], ["Signet-9B", c.sig, P.ink]].forEach(([name, v, col], j) => {
+        const by = y + 178 + j * 78, bx = c.x + 170, bw = w - 170 - 100;
+        B.text(ctx, name, c.x, by + 8, { fam: "body", size: 24, color: P.ink, weight: j ? 500 : 400 });
+        ctx.fillStyle = P.rule; ctx.fillRect(bx, by - 6, bw, 3);
+        ctx.fillStyle = col; ctx.fillRect(bx, by - 11, Math.max(3, bw * v), 13);
+        B.text(ctx, Math.round(v * 100) + "%", c.x + w, by + 8, { fam: "mono", size: 24, color: P.ink, align: "right", weight: 500 });
+        if (i === 1 && j === 1) { ctx.fillStyle = P.wax; ctx.beginPath(); ctx.arc(bx + Math.max(3, bw * v) + 14, by - 4, 6, 0, TAU); ctx.fill(); }
+      });
+      B.text(ctx, "SHARE THAT ADOPT THE RECORD", c.x + w, y + 150, { fam: "mono", size: 14, color: P.graphite, align: "right", track: 1.4 });
+    });
+    footer(ctx, W, H, "FIG. 2 · share of identical records adopted, by channel · paste formats never used in training · 2,370 matched pairs");
+  }, "X tweet 2");
+
+  // 03 channel gap
+  add("x-03-channel", "social/signet/out/x-03-channel.png", 1600, 900, (ctx, W, H) => {
+    bg(ctx, W, H); bgLattice(ctx, W, H, [], 0.08);
+    header(ctx, W, "CHANNEL CHECK", "03");
+    B.wrap(ctx, "Signet checks where a record came from. Its base models don't.", 104, 232, 1340, 76, { fam: "display", size: 66, weight: 500, color: P.ink });
+    const x0 = 420, x1 = 1440, xv = v => x0 + (v + 0.1) / 1.1 * (x1 - x0), top = 440, rowH = 105;
+    // axis
+    [0, 0.25, 0.5, 0.75, 1].forEach(t => {
+      ctx.strokeStyle = P.rule; ctx.lineWidth = t === 0 ? 1.6 : 1; ctx.beginPath(); ctx.moveTo(xv(t), top - 40); ctx.lineTo(xv(t), top + rowH * 2 + 40); ctx.stroke();
+      B.text(ctx, t === 0 ? "0" : (t === 1 ? "1.0" : t.toFixed(2)), xv(t), top + rowH * 2 + 82, { fam: "mono", size: 17, color: P.graphite, align: "center" });
+    });
+    B.text(ctx, "channel gap: tool adoption − pasted adoption", (x0 + x1) / 2, top + rowH * 2 + 120, { fam: "mono", size: 16, color: P.graphite, align: "center" });
+    D.gap.forEach((r, i) => {
+      const y = top + i * rowH;
+      B.text(ctx, "Qwen3.5-" + r.size, 104, y - 6, { fam: "body", size: 24, color: P.graphite });
+      B.text(ctx, "Signet-" + r.size, 104, y + 26, { fam: "body", size: 26, color: P.ink, weight: 500 });
+      ctx.strokeStyle = P.graphite; ctx.lineWidth = 1.2; ctx.beginPath(); ctx.moveTo(xv(r.base), y + 8); ctx.lineTo(xv(r.sig), y + 8); ctx.stroke();
+      ctx.fillStyle = P.paper; ctx.strokeStyle = P.graphite; ctx.lineWidth = 2.5; ctx.beginPath(); ctx.arc(xv(r.base), y + 8, 11, 0, TAU); ctx.fill(); ctx.stroke();
+      ctx.fillStyle = P.ink; ctx.beginPath(); ctx.arc(xv(r.sig), y + 8, 14, 0, TAU); ctx.fill();
+      if (r.size === "9B") { ctx.fillStyle = P.wax; ctx.beginPath(); ctx.arc(xv(r.sig), y + 8, 5.5, 0, TAU); ctx.fill(); }
+      B.text(ctx, (r.sig > 0 ? "+" : "") + r.sig.toFixed(2), xv(r.sig) + 30, y + 16, { fam: "mono", size: 22, color: P.ink, weight: 500 });
+      B.text(ctx, (r.base >= 0 ? "+" : "−") + Math.abs(r.base).toFixed(2), xv(r.base), y - 18, { fam: "mono", size: 17, color: P.graphite, align: "center" });
+    });
+    footer(ctx, W, H, "FIG. 3 · hollow = off-the-shelf base, solid = Signet · paste formats never used in training · ConvictionBench v0.1 test");
+  }, "X tweet 3");
+
+  // 04 Signet-9B
+  add("x-04-9b", "social/signet/out/x-04-9b.png", 1600, 900, (ctx, W, H) => {
+    bg(ctx, W, H);
+    B.pressed(ctx, { x: 0, y: 0, w: W, h: H }, [{ x: 1290, y: 470, N: 9, Rmax: 270, R: 380, k: 0.66 }], P, { gap: 40, alpha: 0.18 });
+    header(ctx, W, "FLAGSHIP", "04");
+    kicker(ctx, "OUR LARGEST MODEL · QWEN3.5-9B BASE", 104, 210);
+    B.text(ctx, "Signet-9B", 98, 320, { fam: "display", size: 112, weight: 500, color: P.ink, track: -1.5, knock: P.paper, pad: 4 });
+    const stats = [
+      ["97.8%", "accuracy on unseen problem types", "base 68.8%"], ["1.1%", "flips under pressure", "base 39.9%"],
+      ["97.9%", "forged records rejected", "base 15.8%"], ["100%", "valid corrections accepted", "base 88.6%"],
+    ];
+    stats.forEach((s, i) => {
+      const x = 104 + (i % 2) * 400, y = 470 + Math.floor(i / 2) * 200;
+      B.text(ctx, s[0], x - 4, y, { fam: "display", size: 88, weight: 500, color: P.ink, knock: P.paper, pad: 4 });
+      B.text(ctx, s[1], x, y + 44, { fam: "body", size: 22, color: P.ink, knock: P.paper, pad: 4 });
+      B.text(ctx, s[2], x, y + 76, { fam: "mono", size: 18, color: P.graphite, knock: P.paper, pad: 4 });
+    });
+    footer(ctx, W, H, "FIG. 4 · held-out problem types (test_structural), greedy decoding · one seal, nine rings");
+  }, "X tweet 4 · LinkedIn image 2");
+
+  // 05 family
+  add("x-05-family", "social/signet/out/x-05-family.png", 1600, 900, (ctx, W, H) => {
+    bg(ctx, W, H); bgLattice(ctx, W, H, [], 0.08);
+    header(ctx, W, "THE FAMILY", "05");
+    B.text(ctx, "Ring count = parameters in billions.", 104, 232, { fam: "display", size: 66, weight: 500, color: P.ink });
+    D.fam.forEach((m, i) => {
+      const cx = 104 + i * 470, sy = 400;
+      const s = { x: cx + 80, y: sy, N: m.N, Rmax: 78, R: 120 };
+      B.rings(ctx, s, { N: m.N, Rmax: 78, rin: 8, color: P.ink, lw: m.N > 6 ? 1.4 : 1.8, wax: m.N === 9 ? P.wax : null });
+      if (m.N !== 9) { ctx.fillStyle = P.ink; ctx.beginPath(); ctx.arc(s.x, s.y, 4.5, 0, TAU); ctx.fill(); }
+      B.text(ctx, "Signet-" + m.size, cx, 560, { fam: "display", size: 58, weight: 500, color: P.ink });
+      B.text(ctx, m.base + " · " + m.recipe, cx, 600, { fam: "mono", size: 16, color: P.graphite });
+      [["Held-out accuracy", m.acc], ["Pressure flips ↓", m.flips], ["Channel gap", m.gap]].forEach(([k, v], j) => {
+        const y = 668 + j * 46;
+        ctx.strokeStyle = P.rule; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(cx, y + 14); ctx.lineTo(cx + 400, y + 14); ctx.stroke();
+        B.text(ctx, k, cx, y, { fam: "body", size: 21, color: P.ink });
+        B.text(ctx, v, cx + 400, y, { fam: "mono", size: 21, color: P.ink, align: "right", weight: 500 });
+      });
+    });
+    footer(ctx, W, H, "FIG. 5 · held-out problem types; channel gap on paste formats never used in training");
+  }, "X tweet 5");
+
+  // 06 checks
+  add("x-06-checks", "social/signet/out/x-06-checks.png", 1600, 900, (ctx, W, H) => {
+    bg(ctx, W, H); bgLattice(ctx, W, H, [], 0.08);
+    header(ctx, W, "BEFORE RELEASE", "06");
+    B.text(ctx, "Checked before we shipped.", 104, 232, { fam: "display", size: 66, weight: 500, color: P.ink });
+    B.text(ctx, "Pre-registered, all passed.", 104, 290, { fam: "display", size: 40, weight: 400, style: "italic", color: P.graphite });
+    const rows = [
+      ["Second training seed", "Replicates at every size: held-out 0.840 · 0.961 · 0.972."],
+      ["Private held-out split", "Never published. Scores match the public splits within 0.02."],
+      ["Reworded system prompt", "Costs at most 3.7 points of held-out accuracy."],
+    ];
+    rows.forEach((r, i) => {
+      const y = 400 + i * 120;
+      ctx.strokeStyle = P.rule; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(104, y - 50); ctx.lineTo(W - 104, y - 50); ctx.stroke();
+      ctx.strokeStyle = P.ink; ctx.lineWidth = 1.6; ctx.beginPath(); ctx.roundRect(104, y - 28, 78, 36, 18); ctx.stroke();
+      B.text(ctx, "PASS", 143, y - 3, { fam: "mono", size: 16, color: P.ink, align: "center", weight: 500, track: 1.5 });
+      B.text(ctx, r[0], 220, y, { fam: "body", size: 30, color: P.ink, weight: 500 });
+      B.text(ctx, r[1], 640, y, { fam: "body", size: 24, color: P.ink });
+    });
+    ctx.strokeStyle = P.rule; ctx.beginPath(); ctx.moveTo(104, 710); ctx.lineTo(W - 104, 710); ctx.stroke();
+    B.wrap(ctx, "Disclosed: Signet-4B's second seed learned a weaker rule for unfamiliar paste formats (+0.66 vs +0.92). Its model card says so.", 104, 760, 1300, 32, { fam: "body", size: 22, color: P.graphite });
+    footer(ctx, W, H, "FIG. 6 · protocol registered before any verification run · results in the model cards and the research log");
+  }, "X tweet 6");
+
+  // 07 get it
+  add("x-07-get", "social/signet/out/x-07-get.png", 1600, 900, (ctx, W, H) => {
+    bg(ctx, W, H);
+    const S = [{ x: 1450, y: 690, N: 2, Rmax: 58, R: 90 }, { x: 1235, y: 600, N: 4, Rmax: 92, R: 140 }, { x: 1360, y: 330, N: 9, Rmax: 132, R: 200 }];
+    B.pressed(ctx, { x: 0, y: 0, w: W, h: H }, S, P, { gap: 40, alpha: 0.18 });
+    header(ctx, W, "GET SIGNET", "07");
+    B.text(ctx, "Open weights. Apache-2.0.", 104, 300, { fam: "display", size: 80, weight: 500, color: P.ink, knock: P.paper, pad: 4 });
+    const links = [
+      ["Weights", "huggingface.co/Laplace-AI-Research/Signet-9B · -4B · -2B"],
+      ["Code and every result", "github.com/Laplace-AI-Research/signet"],
+      ["Article", "laplaceresearch.org/signet"],
+      ["Benchmark", "convictionbench.org"],
+    ];
+    links.forEach((l, i) => {
+      const y = 430 + i * 82;
+      B.text(ctx, l[0].toUpperCase(), 104, y, { fam: "mono", size: 16, color: P.graphite, track: 1.8, knock: P.paper, pad: 4 });
+      B.text(ctx, l[1], 104, y + 36, { fam: "mono", size: 25, color: P.ink, weight: 500, knock: P.paper, pad: 4 });
+    });
+    footer(ctx, W, H, "FIG. 7 · Signet-2B, -4B and -9B · LoRA adapters, plus merged weights for Signet-9B");
+  }, "X tweet 7 (optional; X shows the link card)");
+
+  // social / Open Graph card 1200x630 (article, LinkedIn link preview)
+  add("social", "assets/signet/social.png", 1200, 630, (ctx, W, H) => {
+    bg(ctx, W, H);
+    const S = [{ x: 700, y: 420, N: 2, Rmax: 56, R: 88 }, { x: 870, y: 230, N: 4, Rmax: 84, R: 128 }, { x: 1050, y: 420, N: 9, Rmax: 122, R: 185 }];
+    B.pressed(ctx, { x: 0, y: 0, w: W, h: H }, S, P, { gap: 30, alpha: 0.2, dots: 1.2 });
+    B.mark(ctx, 72, 66, 28, P.ink);
+    B.text(ctx, "LAPLACE RESEARCH", 112, 88, { fam: "mono", size: 16, color: P.ink, track: 1.4, weight: 500, knock: P.paper, pad: 4 });
+    B.text(ctx, "Signet", 66, 380, { fam: "display", size: 150, weight: 500, color: P.ink, track: -2, knock: P.paper, pad: 4 });
+    B.text(ctx, "Trust the record, not the look-alike.", 72, 440, { fam: "body", size: 28, color: P.ink, knock: P.paper, pad: 4 });
+    B.text(ctx, "OPEN MODELS · 2B · 4B · 9B", 72, 560, { fam: "mono", size: 15, color: P.graphite, track: 1.6, knock: P.paper, pad: 4 });
+  }, "og:image / twitter:image / LinkedIn link preview");
+
+  // LinkedIn 1200x627 single image (same composition, LinkedIn's preferred ratio)
+  add("linkedin", "social/signet/out/linkedin-hero.png", 1200, 627, (ctx, W, H) => plates.find(p => p.name === "social").draw(ctx, W, H),
+    "LinkedIn post image (if not using the 16:9 cards)");
+
+  // article hero 2400x1200 (no text; the page sets the title)
+  add("hero", "assets/signet/hero.png", 2400, 1200, (ctx, W, H) => {
+    bg(ctx, W, H);
+    const S = [{ x: 620, y: 760, N: 2, Rmax: 120, R: 185 }, { x: 1180, y: 430, N: 4, Rmax: 180, R: 270 }, { x: 1800, y: 700, N: 9, Rmax: 270, R: 400 }];
+    B.pressed(ctx, { x: 0, y: 0, w: W, h: H }, S, P, { gap: 56, alpha: 0.24, lw: 1.1, dots: 2 });
+  }, "article hero (2:1)");
+
+  // HF banners 1600x560, one seal each
+  D.fam.forEach(m => add("hf-" + m.size, `assets/signet/hf-banner-${m.size.toLowerCase()}.png`, 1600, 560, (ctx, W, H) => {
+    bg(ctx, W, H);
+    const R = { 2: 120, 4: 150, 9: 190 }[m.N];
+    B.pressed(ctx, { x: 0, y: 0, w: W, h: H }, [{ x: 1230, y: H / 2, N: m.N, Rmax: R, R: R * 1.45, k: 0.66 }], P, { gap: 36, alpha: 0.2, waxIndex: 0 });
+    B.mark(ctx, 96, 92, 30, P.ink);
+    B.text(ctx, "LAPLACE RESEARCH", 138, 116, { fam: "mono", size: 18, color: P.ink, track: 1.5, weight: 500, knock: P.paper, pad: 4 });
+    B.text(ctx, "Signet-" + m.size, 90, 330, { fam: "display", size: 130, weight: 500, color: P.ink, track: -2, knock: P.paper, pad: 4 });
+    B.text(ctx, "Trust the record, not the look-alike.", 96, 392, { fam: "body", size: 28, color: P.ink, knock: P.paper, pad: 4 });
+    B.text(ctx, `${m.base.toUpperCase()} BASE · ${m.N} RINGS = ${m.size}`, 96, H - 70, { fam: "mono", size: 16, color: P.graphite, track: 1.4, knock: P.paper, pad: 4 });
+  }, "Hugging Face card banner"));
+
+  // marks (SVG) + avatar PNGs
+  const svgs = [];
+  [2, 4, 9].forEach(N => {
+    svgs.push([`assets/signet/mark-${N}b.svg`, B.sealSVG(N)]);
+    svgs.push([`assets/signet/mark-${N}b-solid.svg`, B.sealSVG(N, { solid: true })]);
+    add("avatar-" + N, `assets/signet/avatar-${N}b.png`, 512, 512, (ctx, W, H) => new Promise(res => {
+      const im = new Image(); im.onload = () => { ctx.drawImage(im, 0, 0, W, H); res(); };
+      im.src = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(B.sealSVG(N, { solid: true }));
+    }), "avatar (solid impression)");
+  });
+
+  // ---------------- render ----------------
+  const list = document.getElementById("list"), status = document.getElementById("status");
+  let saved = 0;
+  for (const p of plates) {
+    if (ONLY && !p.name.startsWith(ONLY)) continue;
+    const div = document.createElement("div"); div.className = "item";
+    div.innerHTML = `<p>${p.name} · ${p.W}×${p.H} · ${p.note || ""} → ${p.path}</p>`;
+    const cv = document.createElement("canvas"); cv.width = p.W; cv.height = p.H; div.appendChild(cv); list.appendChild(div);
+    const ctx = cv.getContext("2d");
+    await p.draw(ctx, p.W, p.H);
+    if (SAVE) {
+      const blob = await new Promise(r => cv.toBlob(r, "image/png"));
+      const res = await fetch("/save?path=" + encodeURIComponent(p.path), { method: "POST", body: blob });
+      if (res.ok) saved++;
+    }
+  }
+  if (SAVE && !ONLY) for (const [path, svg] of svgs) {
+    const res = await fetch("/save?path=" + encodeURIComponent(path), { method: "POST", body: new Blob([svg], { type: "image/svg+xml" }) });
+    if (res.ok) saved++;
+  }
+  status.textContent = SAVE ? `done · saved ${saved}` : `done · ${plates.length} plates (add ?save to write files)`;
+  window.__done = true;
+})();
+</script>
+</body>
+</html>

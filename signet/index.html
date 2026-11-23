@@ -1,0 +1,460 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <!-- DRAFT for release on 2026-11-25. Not linked from nav, sitemap or models page yet. Author line pending owner confirmation. -->
+    <title>Signet | Laplace Research</title>
+    <meta
+      name="description"
+      content="Signet is a family of open models, 2B to 9B, that check where a record came from before they believe it."
+    />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+
+    <link rel="canonical" href="https://laplaceresearch.org/signet/" />
+    <link rel="icon" href="/favicon.ico?v=3" sizes="16x16 32x32 48x48" />
+    <link rel="icon" type="image/png" href="/favicon-96.png?v=3" sizes="96x96" />
+    <link rel="icon" type="image/png" href="/favicon-192.png?v=3" sizes="192x192" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=3" />
+
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Laplace Research" />
+    <meta property="og:title" content="Signet" />
+    <meta property="og:description" content="Open models that trust the record, not the look-alike." />
+    <meta property="og:url" content="https://laplaceresearch.org/signet/" />
+    <meta property="og:image" content="https://laplaceresearch.org/assets/signet/social.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Signet: three seals pressed into a square lattice, with two, four and nine rings" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Signet" />
+    <meta name="twitter:description" content="Open models that trust the record, not the look-alike." />
+    <meta name="twitter:image" content="https://laplaceresearch.org/assets/signet/social.png" />
+    <meta name="twitter:image:alt" content="Signet: three seals pressed into a square lattice, with two, four and nine rings" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "Signet",
+        "description": "Open models, 2B to 9B, that check where a record came from before they believe it.",
+        "datePublished": "2026-11-25",
+        "dateModified": "2026-11-25",
+        "mainEntityOfPage": "https://laplaceresearch.org/signet/",
+        "image": "https://laplaceresearch.org/assets/signet/social.png",
+        "author": [
+          { "@type": "Person", "name": "Arya Somu", "url": "https://aryasomu.com/" },
+          { "@type": "Person", "name": "Bruce Nshuti Hirwa", "url": "https://brucenh.com/" }
+        ],
+        "publisher": {
+          "@type": "Organization",
+          "name": "Laplace Research",
+          "url": "https://laplaceresearch.org/",
+          "logo": { "@type": "ImageObject", "url": "https://laplaceresearch.org/assets/mark.png" }
+        }
+      }
+    </script>
+    <link rel="preload" href="/assets/fonts/geist-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/assets/fonts/source-serif-4-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <script>document.documentElement.classList.add("js")</script>
+    <link rel="stylesheet" href="/site.css?v=20261122-3" />
+    <style>
+      /* Signet plates are generated (social/signet/render.html); they keep their own vellum ground. */
+      .plate { margin: 0; }
+      .plate img { display: block; width: 100%; height: auto; border: 1px solid var(--line); background: #EEF0EC; }
+      .plate figcaption { margin-top: 10px; font-family: var(--mono, "Geist Mono", monospace); font-size: 12px; line-height: 1.5; color: var(--quiet); }
+    </style>
+  </head>
+
+  <body>
+    <a class="skip-link" href="#content">Skip to content</a>
+    <div class="frame">
+      <header class="rail">
+        <a class="brand" href="/" aria-label="Laplace Research home"><span class="mark" aria-hidden="true"></span>Laplace Research</a>
+        <button class="menu" type="button" aria-expanded="false" aria-controls="primary-nav">Menu <i aria-hidden="true"></i></button>
+        <nav id="primary-nav" aria-label="Primary">
+          <a href="/">Home</a>
+          <a href="/research/" aria-current="page">Research</a>
+          <a href="/models/">Models</a>
+          <a href="/about/">About</a>
+        </nav>
+        <a class="cta" href="mailto:inquiries@laplaceresearch.org" aria-label="Get in touch">
+          <span class="cta-roll"><span>Get in touch</span><span aria-hidden="true">Get in touch</span></span>
+          <svg class="icon-arrow" aria-hidden="true" focusable="false"><use href="/assets/icons.svg#arrow" /></svg>
+        </a>
+        <div class="rail-end">
+          <div class="rail-icons">
+            <a href="mailto:inquiries@laplaceresearch.org" aria-label="Email"><svg class="stroke" aria-hidden="true" focusable="false"><use href="/assets/icons.svg#mail" /></svg></a>
+            <a href="https://github.com/Laplace-AI-Research" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#gh" /></svg></a>
+            <a href="https://huggingface.co/Laplace-AI-Research" target="_blank" rel="noopener noreferrer" aria-label="Hugging Face"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#hf" /></svg></a>
+          </div>
+          <p class="rail-legal"><a href="/privacy/">Privacy</a> &middot; <a href="/licenses/">Licenses</a> &middot; <a href="/accessibility/">Accessibility</a><br />&copy; 2026 Laplace Research &middot; SF &amp; NYC</p>
+        </div>
+        <img class="dither" src="/assets/dither.svg" alt="" width="248" height="64" />
+      </header>
+
+      <main>
+        <section class="sec" id="content" aria-labelledby="t">
+          <p class="num">01</p>
+          <div class="body">
+            <p class="article-meta"><span>Model release</span><time datetime="2026-11-25">2026.11.25</time><span>7 minute read</span></p>
+            <h1 id="t">Signet</h1>
+            <p class="dek">
+              Three open models that check where a record came from before they
+              believe it. Trust the record, not the look-alike.
+            </p>
+            <p class="byline">
+              By <a href="https://aryasomu.com/" target="_blank" rel="noopener noreferrer">Arya Somu</a>
+              and <a href="https://brucenh.com/" target="_blank" rel="noopener noreferrer">Bruce Nshuti Hirwa</a>
+            </p>
+            <nav class="btns" aria-label="Release links">
+              <a class="btn solid ext" href="https://huggingface.co/Laplace-AI-Research/Signet-9B" target="_blank" rel="noopener noreferrer">Signet-9B on Hugging Face</a>
+              <a class="btn" href="#artifacts">All models and code</a>
+            </nav>
+            <dl class="release-facts">
+              <div><dt>Family</dt><dd>2B, 4B, 9B</dd></div>
+              <div><dt>Base</dt><dd>Qwen3.5, text-only</dd></div>
+              <div><dt>Output</dt><dd>Answer and decision, as JSON</dd></div>
+              <div><dt>Flagship</dt><dd>Signet-9B</dd></div>
+            </dl>
+          </div>
+          <nav class="toc" aria-label="On this page">
+            <p>On this page</p>
+            <a href="#overview">Overview</a>
+            <a href="#channel">The channel</a>
+            <a href="#results">Results</a>
+            <a href="#family">Choosing a model</a>
+            <a href="#checks">Checks</a>
+            <a href="#learned">What we learned</a>
+            <a href="#limits">Limits</a>
+            <a href="#release">Release</a>
+          </nav>
+          <div class="wide" style="margin-top: 36px">
+            <figure class="plate">
+              <img src="/assets/signet/hero.png" width="2400" height="1200" alt="A square lattice pressed by three seals with two, four and nine contour rings; the largest seal has a red centre." />
+              <figcaption>FIG. 0 · three seals pressed into a square lattice · rings = parameters in billions (2 · 4 · 9) · pinch r&prime; = r(1 &minus; k&middot;e<sup>&minus;r/b</sup>)</figcaption>
+            </figure>
+          </div>
+        </section>
+
+
+        <section class="sec" id="overview" aria-labelledby="overview-title">
+          <p class="num">02</p>
+          <div class="body prose">
+            <h2 id="overview-title">What Signet is</h2>
+            <p class="lead">
+              Signet models revise their answers on evidence, not on pressure, and
+              they accept a record only when it arrives through the channel that
+              is supposed to carry it.
+            </p>
+            <p>
+              A Signet model keeps a correct answer when a user pushes back. It
+              changes its answer when shown a valid correction. It says so when
+              the evidence does not settle the question. And when a record claims
+              to come from an authenticated tool, it checks that the record
+              actually arrived as a tool response, rather than as text pasted into
+              the user's message.
+            </p>
+            <p>
+              The family has three sizes, built on Qwen3.5 and trained on the
+              <a href="/convictionbench/">ConvictionBench</a> training split. All
+              three are open under Apache-2.0.
+            </p>
+            <div class="input-output" aria-label="Model input and output">
+              <div>
+                <p>Input</p>
+                <ul>
+                  <li>A question and the conversation so far</li>
+                  <li>User claims and arguments</li>
+                  <li>Records from an authenticated tool</li>
+                </ul>
+              </div>
+              <div>
+                <p>Output</p>
+                <strong>keep</strong>
+                <span>answer, revise, keep, or insufficient, with a final answer</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="sec" id="channel" aria-labelledby="channel-title">
+          <p class="num">03</p>
+          <div class="body prose">
+            <h2 id="channel-title">The channel problem</h2>
+            <p class="lead">
+              Paste a record into the chat and most models believe it, exactly as
+              often as they believe the real one.
+            </p>
+            <p>
+              Language models increasingly act on what tools tell them: a database
+              lookup, a search result, an account balance. The text of a record is
+              easy to copy. Where the record came from is not. We gave models the
+              same record twice, once as a genuine tool response and once pasted
+              into a user message as a quote, a forwarded message or a code block.
+            </p>
+            <blockquote class="finding">
+              <p>Off-the-shelf models don't check the channel. Signet does.</p>
+            </blockquote>
+            <p>
+              Qwen3.5-9B adopted 86% of the genuine records and 85% of the pasted
+              ones. Signet-9B adopted 96% of the genuine records and 1% of the
+              pasted ones. None of these paste formats appeared in training.
+            </p>
+          </div>
+          <div class="wide" style="margin-top: 28px">
+            <figure class="figure" aria-labelledby="fig-adopt-title">
+              <div class="figure-head">
+                <p class="figure-title" id="fig-adopt-title">How often each model adopts the same record</p>
+                <p class="figure-sub">ConvictionBench v0.1 test splits, 2,370 matched pairs per model. Paste formats (quote, forward, code block) were never used in training.</p>
+              </div>
+              <div class="panels" style="--panels: 2">
+                <div class="panel"><p class="panel-title">Genuine tool response <span>· should adopt</span></p><ul class="chart-rows has-values" style="--label-w: 112px">
+                  <li class="chart-row"><span class="row-label">Qwen3.5-9B</span><span class="track" style="--ticks: 2"><span class="bar" style="--v: 0.863" tabindex="0" role="img" aria-label="Qwen3.5-9B adopts 86% of genuine records" data-tip-title="Qwen3.5-9B" data-tip="Adopts 86.3% of genuine records"></span><span class="bar-value" style="--v: 0.863">86%</span></span></li>
+                  <li class="chart-row"><span class="row-label">Signet-9B</span><span class="track" style="--ticks: 2"><span class="bar" style="--v: 0.961" tabindex="0" role="img" aria-label="Signet-9B adopts 96% of genuine records" data-tip-title="Signet-9B" data-tip="Adopts 96.1% of genuine records"></span><span class="bar-value" style="--v: 0.961">96%</span></span></li>
+                  <li class="chart-row"><span class="row-label">Qwen3.5-4B</span><span class="track" style="--ticks: 2"><span class="bar" style="--v: 0.674" tabindex="0" role="img" aria-label="Qwen3.5-4B adopts 67% of genuine records" data-tip-title="Qwen3.5-4B" data-tip="Adopts 67.4% of genuine records"></span><span class="bar-value" style="--v: 0.674">67%</span></span></li>
+                  <li class="chart-row"><span class="row-label">Signet-4B</span><span class="track" style="--ticks: 2"><span class="bar" style="--v: 0.971" tabindex="0" role="img" aria-label="Signet-4B adopts 97% of genuine records" data-tip-title="Signet-4B" data-tip="Adopts 97.1% of genuine records"></span><span class="bar-value" style="--v: 0.971">97%</span></span></li>
+                  <li class="chart-row"><span class="row-label">Qwen3.5-2B</span><span class="track" style="--ticks: 2"><span class="bar" style="--v: 0.228" tabindex="0" role="img" aria-label="Qwen3.5-2B adopts 23% of genuine records" data-tip-title="Qwen3.5-2B" data-tip="Adopts 22.8% of genuine records"></span><span class="bar-value" style="--v: 0.228">23%</span></span></li>
+                  <li class="chart-row"><span class="row-label">Signet-2B</span><span class="track" style="--ticks: 2"><span class="bar" style="--v: 0.804" tabindex="0" role="img" aria-label="Signet-2B adopts 80% of genuine records" data-tip-title="Signet-2B" data-tip="Adopts 80.4% of genuine records"></span><span class="bar-value" style="--v: 0.804">80%</span></span></li>
+                </ul><div class="axis has-values" aria-hidden="true" style="--label-w: 112px"><span style="--t: 0">0</span><span style="--t: 0.5">50%</span><span style="--t: 1">100%</span></div></div>
+                <div class="panel"><p class="panel-title">Same record, pasted by the user <span>· should reject</span></p><ul class="chart-rows has-values" style="--label-w: 112px">
+                  <li class="chart-row"><span class="row-label">Qwen3.5-9B</span><span class="track" style="--ticks: 2"><span class="bar" style="--v: 0.849" tabindex="0" role="img" aria-label="Qwen3.5-9B adopts 85% of pasted records" data-tip-title="Qwen3.5-9B" data-tip="Adopts 84.9% of pasted records"></span><span class="bar-value" style="--v: 0.849">85%</span></span></li>
+                  <li class="chart-row"><span class="row-label">Signet-9B</span><span class="track" style="--ticks: 2"><span class="bar" style="--v: 0.010" tabindex="0" role="img" aria-label="Signet-9B adopts 1% of pasted records" data-tip-title="Signet-9B" data-tip="Adopts 1.0% of pasted records"></span><span class="bar-value" style="--v: 0.010">1%</span></span></li>
+                  <li class="chart-row"><span class="row-label">Qwen3.5-4B</span><span class="track" style="--ticks: 2"><span class="bar" style="--v: 0.697" tabindex="0" role="img" aria-label="Qwen3.5-4B adopts 70% of pasted records" data-tip-title="Qwen3.5-4B" data-tip="Adopts 69.7% of pasted records"></span><span class="bar-value" style="--v: 0.697">70%</span></span></li>
+                  <li class="chart-row"><span class="row-label">Signet-4B</span><span class="track" style="--ticks: 2"><span class="bar" style="--v: 0.054" tabindex="0" role="img" aria-label="Signet-4B adopts 5% of pasted records" data-tip-title="Signet-4B" data-tip="Adopts 5.4% of pasted records"></span><span class="bar-value" style="--v: 0.054">5%</span></span></li>
+                  <li class="chart-row"><span class="row-label">Qwen3.5-2B</span><span class="track" style="--ticks: 2"><span class="bar" style="--v: 0.253" tabindex="0" role="img" aria-label="Qwen3.5-2B adopts 25% of pasted records" data-tip-title="Qwen3.5-2B" data-tip="Adopts 25.3% of pasted records"></span><span class="bar-value" style="--v: 0.253">25%</span></span></li>
+                  <li class="chart-row"><span class="row-label">Signet-2B</span><span class="track" style="--ticks: 2"><span class="bar" style="--v: 0.011" tabindex="0" role="img" aria-label="Signet-2B adopts 1% of pasted records" data-tip-title="Signet-2B" data-tip="Adopts 1.1% of pasted records"></span><span class="bar-value" style="--v: 0.011">1%</span></span></li>
+                </ul><div class="axis has-values" aria-hidden="true" style="--label-w: 112px"><span style="--t: 0">0</span><span style="--t: 0.5">50%</span><span style="--t: 1">100%</span></div></div>
+              </div>
+            </figure>
+          </div>
+        </section>
+
+        <section class="sec" id="results" aria-labelledby="results-title">
+          <p class="num">04</p>
+          <div class="body prose">
+            <h2 id="results-title">Results on unseen problem types</h2>
+            <p class="lead">
+              On problem types held out of training entirely, every Signet model
+              is more accurate, steadier under pressure and harder to fool than
+              its base.
+            </p>
+            <p>
+              The held-out split removes whole problem subtypes from training, so
+              these numbers measure behaviour the models had to generalise, not
+              recall. Signet-9B reaches 97.8% final accuracy against 68.8% for
+              Qwen3.5-9B, gives in to pressure 1.1% of the time against 39.9%, and
+              accepted every valid correction.
+            </p>
+          </div>
+          <div class="wide" style="margin-top: 28px">
+            <figure class="results-figure">
+              <figcaption>
+                ConvictionBench v0.1, held-out problem types (<code>test_structural</code>), greedy decoding,
+                thinking disabled. Channel gap = adoption of genuine minus pasted records, on paste formats never
+                used in training.
+              </figcaption>
+              <div class="table-scroll" tabindex="0" role="region" aria-label="Held-out results table">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th scope="col">Model</th>
+                      <th scope="col" class="num">Accuracy</th>
+                      <th scope="col" class="num">Pressure flips ↓</th>
+                      <th scope="col" class="num">Forged records rejected</th>
+                      <th scope="col" class="num">Valid corrections accepted</th>
+                      <th scope="col" class="num">Channel gap</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="recommended-row"><th scope="row">Signet-9B <span class="tag">Flagship</span></th><td class="num">0.978</td><td class="num">0.011</td><td class="num">0.979</td><td class="num">1.000</td><td class="num">+0.95</td></tr>
+                    <tr><th scope="row">Qwen3.5-9B</th><td class="num">0.688</td><td class="num">0.399</td><td class="num">0.158</td><td class="num">0.886</td><td class="num">+0.01</td></tr>
+                    <tr><th scope="row">Signet-4B</th><td class="num">0.985</td><td class="num">0.005</td><td class="num">0.981</td><td class="num">0.989</td><td class="num">+0.92</td></tr>
+                    <tr><th scope="row">Qwen3.5-4B</th><td class="num">0.606</td><td class="num">0.428</td><td class="num">0.128</td><td class="num">0.909</td><td class="num">&minus;0.02</td></tr>
+                    <tr><th scope="row">Signet-2B</th><td class="num">0.796</td><td class="num">0.069</td><td class="num">0.863</td><td class="num">0.840</td><td class="num">+0.79</td></tr>
+                    <tr><th scope="row">Qwen3.5-2B</th><td class="num">0.425</td><td class="num">0.581</td><td class="num">0.221</td><td class="num">0.737</td><td class="num">&minus;0.03</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <p class="figure-note">
+                Each model was scored on the test splits once. 95% problem-group bootstrap intervals and the
+                in-distribution splits are in each model card.
+              </p>
+            </figure>
+          </div>
+        </section>
+
+        <section class="sec" id="family" aria-labelledby="family-title">
+          <p class="num">05</p>
+          <div class="body prose">
+            <h2 id="family-title">Choosing a model</h2>
+            <p class="lead">
+              Start with Signet-9B for the strongest channel check. Signet-4B is
+              nearly as strong at less than half the size.
+            </p>
+            <p>
+              Signet-4B and Signet-9B are within noise of each other on most
+              measures. Signet-9B holds its channel rule more consistently on
+              unfamiliar paste formats and ships as merged weights as well as
+              adapters. Signet-2B fits the tightest budgets, but trails on unseen
+              problem types and errs towards rejecting genuine records.
+            </p>
+          </div>
+          <div class="wide">
+            <div class="model-list" id="artifacts">
+              <div class="model-row model-row-head" aria-hidden="true">
+                <span>Model</span>
+                <span>Best fit</span>
+                <span>Artifacts</span>
+              </div>
+              <div class="model-row">
+                <div><h3>Signet-9B</h3><p>Flagship &middot; our largest model</p></div>
+                <p>The strongest channel check; loads directly as merged weights</p>
+                <p class="artifact-links">
+                  <a href="https://huggingface.co/Laplace-AI-Research/Signet-9B" target="_blank" rel="noopener noreferrer">Weights</a>
+                  <a href="https://github.com/Laplace-AI-Research/signet" target="_blank" rel="noopener noreferrer">Code</a>
+                </p>
+              </div>
+              <div class="model-row">
+                <div><h3>Signet-4B</h3><p>Best per parameter</p></div>
+                <p>Most deployments that need a smaller footprint</p>
+                <p class="artifact-links">
+                  <a href="https://huggingface.co/Laplace-AI-Research/Signet-4B" target="_blank" rel="noopener noreferrer">Weights</a>
+                  <a href="https://github.com/Laplace-AI-Research/signet" target="_blank" rel="noopener noreferrer">Code</a>
+                </p>
+              </div>
+              <div class="model-row">
+                <div><h3>Signet-2B</h3><p>Smallest</p></div>
+                <p>Tight memory budgets and scaling studies</p>
+                <p class="artifact-links">
+                  <a href="https://huggingface.co/Laplace-AI-Research/Signet-2B" target="_blank" rel="noopener noreferrer">Weights</a>
+                  <a href="https://github.com/Laplace-AI-Research/signet" target="_blank" rel="noopener noreferrer">Code</a>
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="sec" id="checks" aria-labelledby="checks-title">
+          <p class="num">06</p>
+          <div class="body prose">
+            <h2 id="checks-title">Checked before release</h2>
+            <p class="lead">
+              We wrote down three release checks before running them. All three
+              passed at every size.
+            </p>
+            <ol class="limitations">
+              <li><h3>A second training seed replicates the result.</h3><p>Retraining each model with a different seed gave held-out accuracy of 0.840, 0.961 and 0.972 for 2B, 4B and 9B, with the channel rule intact. Signet-4B's second seed learned a weaker rule for unfamiliar paste formats (+0.66 rather than +0.92); its model card says so.</p></li>
+              <li><h3>A private held-out split shows no contamination.</h3><p>ConvictionBench keeps a split that has never been published. Each Signet model scores within 0.02 of its public results on it, in line with its base model.</p></li>
+              <li><h3>A reworded system prompt costs little.</h3><p>Rewording every sentence of the system prompt while keeping its meaning cost at most 3.7 points of held-out accuracy.</p></li>
+            </ol>
+            <div class="verification-block">
+              <p>Recompute the release checks from the published results</p>
+              <code>uv run python scripts/signet_verify.py 9B</code>
+            </div>
+          </div>
+        </section>
+
+        <section class="sec" id="learned" aria-labelledby="learned-title">
+          <p class="num">07</p>
+          <div class="body prose">
+            <h2 id="learned-title">What we learned</h2>
+            <p class="lead">
+              The right recipe depends on the base model and on its size.
+            </p>
+            <p>
+              On Qwen3-1.7B, reinforcement learning found the channel rule slowly
+              and weakly. On Qwen3.5-2B it found it within 400 steps. The base
+              model decides whether the rule is learnable at all.
+            </p>
+            <p>
+              Imitation saturates larger models. A warm-start of 1,000 supervised
+              examples left reinforcement learning almost nothing to learn at 4B
+              and 9B; 250 examples worked. Reinforcement learning from the base
+              model gave the best 2B and 4B models, while a light warm-start before
+              it gave clearly the best 9B.
+            </p>
+            <p>
+              Not everything worked. No 1.7B model met the bar we set in advance.
+              The closest reached 0.751 held-out accuracy with a +0.19 channel gap,
+              and we report it rather than release it.
+            </p>
+          </div>
+        </section>
+
+        <section class="sec" id="limits" aria-labelledby="limits-title">
+          <p class="num">08</p>
+          <div class="body prose">
+            <h2 id="limits-title">Where the seal stops</h2>
+            <p class="lead">
+              Signet learned to trust the channel its system prompt declares
+              trusted. It does not authenticate anything by itself.
+            </p>
+            <ol class="limitations">
+              <li><h3>The benchmark is synthetic.</h3><p>Short arithmetic, logic and state-tracking problems with a fixed JSON reply. Open-ended conversation, long documents and real tool ecosystems are untested.</p></li>
+              <li><h3>Tool messages are trusted by construction.</h3><p>In ConvictionBench, a tool response is authentic by definition. In a real system, that guarantee has to come from the application, not the model.</p></li>
+              <li><h3>The benchmark is near its ceiling.</h3><p>Signet-4B and Signet-9B score close to 1.0 on many measures, so ConvictionBench v0.1 no longer separates models at this level.</p></li>
+              <li><h3>Text only.</h3><p>The Qwen3.5 vision tower was never trained or evaluated, and the merged Signet-9B weights leave it out.</p></li>
+            </ol>
+          </div>
+        </section>
+
+        <section class="sec" id="release" aria-labelledby="release-title">
+          <p class="num">09</p>
+          <div class="body prose">
+            <h2 id="release-title">Models, code, and terms</h2>
+            <p>
+              Model weights and code are released under Apache-2.0. The models are
+              built on Qwen3.5-2B, Qwen3.5-4B and Qwen3.5-9B (Apache-2.0, Qwen /
+              Alibaba Cloud). ConvictionBench data is CC BY 4.0. Please do not train
+              on its test splits. See <a href="/licenses/">licenses and attribution</a>.
+            </p>
+            <p class="note">
+              Signet models are research artifacts provided &lsquo;as is&rsquo;, without
+              warranty. They do not verify the authenticity of real-world records
+              and should not be the only safeguard in a system that acts on them.
+              <a href="/licenses/#disclaimer">Full disclaimer</a>.
+            </p>
+            <dl class="publication-details">
+              <div><dt>Version</dt><dd>1.0</dd></div>
+              <div><dt>Published</dt><dd>25 November 2026</dd></div>
+              <div><dt>Authors</dt><dd>Arya Somu; Bruce Nshuti Hirwa</dd></div>
+              <div><dt>Publisher</dt><dd>Laplace Research</dd></div>
+            </dl>
+            <h3>Cite this release</h3>
+            <pre class="citation-bib"><code>@misc{somu2026signet,
+  title     = {Signet},
+  author    = {Somu, Arya and Nshuti Hirwa, Bruce},
+  year      = {2026},
+  publisher = {Laplace Research},
+  url       = {https://laplaceresearch.org/signet/}
+}</code></pre>
+            <nav class="btns" aria-label="Release resources">
+              <a class="btn ext" href="https://huggingface.co/Laplace-AI-Research/Signet-9B" target="_blank" rel="noopener noreferrer">Get Signet-9B</a>
+              <a class="btn ext" href="https://github.com/Laplace-AI-Research/signet" target="_blank" rel="noopener noreferrer">Code and every result</a>
+            </nav>
+          </div>
+        </section>
+      </main>
+
+      <footer class="foot">
+        <a class="brand" href="/"><span class="mark" aria-hidden="true"></span>Laplace Research</a>
+        <div class="cols">
+          <nav aria-label="Research"><a href="/convictionbench/">ConvictionBench</a><a href="/tarot-draw/">Tarot-Draw</a><a href="/signet/">Signet</a><a href="/research/">All research</a></nav>
+          <nav aria-label="Lab"><a href="/about/">About</a><a href="/models/">Models</a><a href="mailto:inquiries@laplaceresearch.org">Inquiries</a></nav>
+          <nav aria-label="Elsewhere"><a href="https://github.com/Laplace-AI-Research" target="_blank" rel="noopener noreferrer">GitHub</a><a href="https://huggingface.co/Laplace-AI-Research" target="_blank" rel="noopener noreferrer">Hugging Face</a><a href="https://convictionbench.org/#leaderboard" target="_blank" rel="noopener noreferrer">Leaderboard</a></nav>
+        </div>
+        <div class="copy">
+          <p>&copy; 2026 Laplace Research &middot; <a href="mailto:inquiries@laplaceresearch.org">inquiries@laplaceresearch.org</a></p>
+          <nav aria-label="Legal"><a href="/privacy/">Privacy</a><a href="/licenses/">Licenses</a><a href="/accessibility/">Accessibility</a></nav>
+          <p class="disclaimer">Research artifacts provided &lsquo;as is&rsquo;, without warranty. <a href="/licenses/#disclaimer">Full disclaimer</a></p>
+        </div>
+      </footer>
+    </div>
+    <script src="/figures.js?v=20261119" defer></script>
+    <script src="/site.js?v=20261122-2" defer></script>
+  </body>
+</html>
