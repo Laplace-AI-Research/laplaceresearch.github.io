@@ -73,7 +73,8 @@
     </script>
     <link rel="preload" href="/assets/fonts/geist-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/assets/fonts/source-serif-4-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="stylesheet" href="/site.css?v=20261121-1" />
+    <script>document.documentElement.classList.add("js")</script>
+    <link rel="stylesheet" href="/site.css?v=20261122-1" />
   </head>
 
   <body>
@@ -87,108 +88,124 @@
         </symbol>
       </svg>
     <div class="frame">
-      <aside class="rail">
-        <a href="/" aria-label="Laplace Research home"><img class="mark" src="/assets/mark.png" alt="" width="56" height="55" /></a>
-        <nav aria-label="Primary">
+      <header class="rail">
+        <a class="brand" href="/" aria-label="Laplace Research home"><span class="mark" aria-hidden="true"></span>Laplace Research</a>
+        <button class="menu" type="button" aria-expanded="false" aria-controls="primary-nav">Menu <i aria-hidden="true"></i></button>
+        <nav id="primary-nav" aria-label="Primary">
           <a href="/" aria-current="page">Home</a>
           <a href="/research/">Research</a>
           <a href="/#models">Models</a>
           <a href="/about/">About</a>
-          <a href="mailto:inquiries@laplaceresearch.org">Contact</a>
         </nav>
-        <a class="rail-btn" href="https://convictionbench.org/#leaderboard">Leaderboard</a>
-        <p class="rail-foot">San Francisco &amp; New York</p>
-      </aside>
+        <a class="cta" href="mailto:inquiries@laplaceresearch.org">
+          <span class="cta-roll"><span>Get in touch</span><span aria-hidden="true">Get in touch</span></span>
+          <svg class="icon-arrow" aria-hidden="true" focusable="false"><use href="/assets/icons.svg#arrow" /></svg>
+        </a>
+        <div class="rail-end">
+          <div class="rail-icons">
+            <a href="mailto:inquiries@laplaceresearch.org" aria-label="Email"><svg class="stroke" aria-hidden="true" focusable="false"><use href="/assets/icons.svg#mail" /></svg></a>
+            <a href="https://github.com/Laplace-AI-Research" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#gh" /></svg></a>
+            <a href="https://huggingface.co/Laplace-AI-Research" target="_blank" rel="noopener noreferrer" aria-label="Hugging Face"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#hf" /></svg></a>
+          </div>
+          <p class="rail-legal"><a href="/privacy/">Privacy</a> &middot; <a href="/licenses/">Licenses</a> &middot; <a href="/accessibility/">Accessibility</a><br />&copy; 2026 Laplace Research &middot; SF &amp; NYC</p>
+        </div>
+        <img class="dither" src="/assets/dither.svg" alt="" width="248" height="64" />
+      </header>
 
       <main>
-        <section class="sec" id="content" aria-labelledby="intro">
-          <p class="num">01</p>
+        <section class="sec hero" id="content" aria-labelledby="intro">
+          <p class="num">Laplace Research</p>
           <div class="body">
-            <h1 id="intro">Laplace Research builds foundation models for calibrated forecasting.</h1>
-            <p>
-              A forecast is only useful if you know how much to trust it. Models
-              now produce predictions at scale, and almost none of them arrive
-              with confidence you can take at face value. We work on closing
-              that gap: aggregating resolved forecasting data across markets,
-              history, and expert judgment, and studying the mechanisms that
-              produce calibrated belief.
-            </p>
-            <p>
-              Every release ships with its model artifacts, evaluation inputs,
-              metric code, and limitations, so the claims can be checked.
-              <a href="/convictionbench/">Read our latest release</a>.
+            <h1 id="intro">Forecasts you can take at their word.</h1>
+            <p class="lede">
+              Laplace Research builds foundation models for calibrated
+              forecasting. We aggregate resolved forecasting data across
+              markets, history, and expert judgment, and study the mechanisms
+              that make a model&rsquo;s stated confidence match how often it is right.
             </p>
             <div class="btns">
-              <a class="btn solid" href="/research/">Read the research</a>
-              <a class="btn" href="#models">Browse models</a>
+              <a class="btn" href="/research/">Read the research</a>
             </div>
           </div>
         </section>
 
-        <section class="sec" aria-label="Laplace Research in numbers">
-          <p class="num">02</p>
+        <section class="sec mosaic-sec" aria-label="Recent releases">
+          <div class="wide mosaic">
+            <a class="tile" href="/convictionbench/"><img src="/assets/covers/convictionbench.svg" alt="Intervals tightening onto a line of truth, with two pulled away by pressure" width="960" height="600" /><span class="tile-tag">ConvictionBench</span></a>
+            <a class="tile" href="/tarot-draw/"><img src="/assets/covers/tarot-draw.svg" alt="Three halftone discs sized by model scale along a diagonal" width="960" height="600" /><span class="tile-tag">Tarot-Draw</span></a>
+            <a class="tile" href="/convictionbench/#models"><img src="/assets/covers/conviction-series.svg" alt="Three halftone Laplace curves for Anchor, Meridian, and Vector" width="960" height="600" /><span class="tile-tag">Conviction Series</span></a>
+          </div>
+        </section>
+
+        <section class="sec" aria-labelledby="figures-title">
+          <p class="num">By the numbers</p>
           <div class="wide">
-            <div class="facts">
+            <div class="sec-head">
+              <h2 id="figures-title">Claims travel with evidence.</h2>
+              <p>Every release ships its model artifacts, evaluation inputs, metric code, and limitations, so the headline numbers can be recomputed.</p>
+            </div>
+            <div class="figures">
               <div><b>26,478</b><span>ConvictionBench episodes</span></div>
               <div><b>81,870</b><span>Resolved training questions</span></div>
-              <div class="viz" aria-hidden="true"><svg viewBox="0 0 200 132" preserveAspectRatio="none"><path class="soft" d="M0.0,113.9 L1.0,113.7 L2.0,113.6 L3.0,113.4 L4.0,113.2 L5.0,113.1 L6.0,112.9 L7.0,112.7 L8.0,112.5 L9.0,112.3 L10.0,112.1 L11.0,111.9 L12.0,111.7 L13.0,111.5 L14.0,111.3 L15.0,111.1 L16.0,110.9 L17.0,110.6 L18.0,110.4 L19.0,110.2 L20.0,109.9 L21.0,109.6 L22.0,109.4 L23.0,109.1 L24.0,108.8 L25.0,108.6 L26.0,108.3 L27.0,108.0 L28.0,107.7 L29.0,107.4 L30.0,107.0 L31.0,106.7 L32.0,106.4 L33.0,106.0 L34.0,105.7 L35.0,105.3 L36.0,104.9 L37.0,104.6 L38.0,104.2 L39.0,103.8 L40.0,103.4 L41.0,102.9 L42.0,102.5 L43.0,102.1 L44.0,101.6 L45.0,101.1 L46.0,100.7 L47.0,100.2 L48.0,99.7 L49.0,99.2 L50.0,98.6 L51.0,98.1 L52.0,97.5 L53.0,97.0 L54.0,96.4 L55.0,95.8 L56.0,95.2 L57.0,94.5 L58.0,93.9 L59.0,93.2 L60.0,92.6 L61.0,91.9 L62.0,91.2 L63.0,90.4 L64.0,89.7 L65.0,88.9 L66.0,88.1 L67.0,87.3 L68.0,86.5 L69.0,85.6 L70.0,84.8 L71.0,83.9 L72.0,83.0 L73.0,82.0 L74.0,81.1 L75.0,80.1 L76.0,79.1 L77.0,78.0 L78.0,77.0 L79.0,75.9 L80.0,74.8 L81.0,73.6 L82.0,72.4 L83.0,71.2 L84.0,70.0 L84.0,70.0 L85.0,71.2 L86.0,72.4 L87.0,73.6 L88.0,74.8 L89.0,75.9 L90.0,77.0 L91.0,78.0 L92.0,79.1 L93.0,80.1 L94.0,81.1 L95.0,82.0 L96.0,83.0 L97.0,83.9 L98.0,84.8 L99.0,85.6 L100.0,86.5 L101.0,87.3 L102.0,88.1 L103.0,88.9 L104.0,89.7 L105.0,90.4 L106.0,91.2 L107.0,91.9 L108.0,92.6 L109.0,93.2 L110.0,93.9 L111.0,94.5 L112.0,95.2 L113.0,95.8 L114.0,96.4 L115.0,97.0 L116.0,97.5 L117.0,98.1 L118.0,98.6 L119.0,99.2 L120.0,99.7 L121.0,100.2 L122.0,100.7 L123.0,101.1 L124.0,101.6 L125.0,102.1 L126.0,102.5 L127.0,102.9 L128.0,103.4 L129.0,103.8 L130.0,104.2 L131.0,104.6 L132.0,104.9 L133.0,105.3 L134.0,105.7 L135.0,106.0 L136.0,106.4 L137.0,106.7 L138.0,107.0 L139.0,107.4 L140.0,107.7 L141.0,108.0 L142.0,108.3 L143.0,108.6 L144.0,108.8 L145.0,109.1 L146.0,109.4 L147.0,109.6 L148.0,109.9 L149.0,110.2 L150.0,110.4 L151.0,110.6 L152.0,110.9 L153.0,111.1 L154.0,111.3 L155.0,111.5 L156.0,111.7 L157.0,111.9 L158.0,112.1 L159.0,112.3 L160.0,112.5 L161.0,112.7 L162.0,112.9 L163.0,113.1 L164.0,113.2 L165.0,113.4 L166.0,113.6 L167.0,113.7 L168.0,113.9 L169.0,114.0 L170.0,114.2 L171.0,114.3 L172.0,114.5 L173.0,114.6 L174.0,114.7 L175.0,114.9 L176.0,115.0 L177.0,115.1 L178.0,115.2 L179.0,115.3 L180.0,115.5 L181.0,115.6 L182.0,115.7 L183.0,115.8 L184.0,115.9 L185.0,116.0 L186.0,116.1 L187.0,116.2 L188.0,116.3 L189.0,116.4 L190.0,116.5 L191.0,116.6 L192.0,116.6 L193.0,116.7 L194.0,116.8 L195.0,116.9 L196.0,117.0 L197.0,117.0 L198.0,117.1 L199.0,117.2 L200.0,117.2"/><path class="acc" d="M0.0,120.0 L1.0,120.0 L2.0,120.0 L3.0,120.0 L4.0,120.0 L5.0,120.0 L6.0,120.0 L7.0,120.0 L8.0,120.0 L9.0,120.0 L10.0,120.0 L11.0,120.0 L12.0,120.0 L13.0,120.0 L14.0,120.0 L15.0,120.0 L16.0,120.0 L17.0,120.0 L18.0,120.0 L19.0,120.0 L20.0,120.0 L21.0,120.0 L22.0,120.0 L23.0,120.0 L24.0,120.0 L25.0,120.0 L26.0,120.0 L27.0,120.0 L28.0,120.0 L29.0,120.0 L30.0,120.0 L31.0,120.0 L32.0,120.0 L33.0,120.0 L34.0,120.0 L35.0,120.0 L36.0,120.0 L37.0,120.0 L38.0,120.0 L39.0,120.0 L40.0,120.0 L41.0,120.0 L42.0,120.0 L43.0,120.0 L44.0,120.0 L45.0,120.0 L46.0,120.0 L47.0,120.0 L48.0,120.0 L49.0,120.0 L50.0,120.0 L51.0,120.0 L52.0,120.0 L53.0,120.0 L54.0,120.0 L55.0,120.0 L56.0,120.0 L57.0,120.0 L58.0,120.0 L59.0,120.0 L60.0,120.0 L61.0,120.0 L62.0,120.0 L63.0,120.0 L64.0,119.9 L65.0,119.9 L66.0,119.9 L67.0,119.9 L68.0,119.9 L69.0,119.9 L70.0,119.9 L71.0,119.9 L72.0,119.8 L73.0,119.8 L74.0,119.8 L75.0,119.8 L76.0,119.8 L77.0,119.7 L78.0,119.7 L79.0,119.6 L80.0,119.6 L81.0,119.5 L82.0,119.5 L83.0,119.4 L84.0,119.3 L85.0,119.2 L86.0,119.1 L87.0,119.0 L88.0,118.9 L89.0,118.7 L90.0,118.6 L91.0,118.4 L92.0,118.2 L93.0,117.9 L94.0,117.6 L95.0,117.3 L96.0,117.0 L97.0,116.6 L98.0,116.1 L99.0,115.6 L100.0,115.0 L101.0,114.4 L102.0,113.6 L103.0,112.8 L104.0,111.8 L105.0,110.7 L106.0,109.5 L107.0,108.1 L108.0,106.5 L109.0,104.7 L110.0,102.6 L111.0,100.3 L112.0,97.7 L113.0,94.7 L114.0,91.3 L115.0,87.5 L116.0,83.2 L117.0,78.3 L118.0,72.8 L119.0,66.5 L120.0,59.3 L121.0,51.3 L122.0,42.1 L123.0,31.8 L124.0,20.0 L124.0,20.0 L125.0,31.8 L126.0,42.1 L127.0,51.3 L128.0,59.3 L129.0,66.5 L130.0,72.8 L131.0,78.3 L132.0,83.2 L133.0,87.5 L134.0,91.3 L135.0,94.7 L136.0,97.7 L137.0,100.3 L138.0,102.6 L139.0,104.7 L140.0,106.5 L141.0,108.1 L142.0,109.5 L143.0,110.7 L144.0,111.8 L145.0,112.8 L146.0,113.6 L147.0,114.4 L148.0,115.0 L149.0,115.6 L150.0,116.1 L151.0,116.6 L152.0,117.0 L153.0,117.3 L154.0,117.6 L155.0,117.9 L156.0,118.2 L157.0,118.4 L158.0,118.6 L159.0,118.7 L160.0,118.9 L161.0,119.0 L162.0,119.1 L163.0,119.2 L164.0,119.3 L165.0,119.4 L166.0,119.5 L167.0,119.5 L168.0,119.6 L169.0,119.6 L170.0,119.7 L171.0,119.7 L172.0,119.8 L173.0,119.8 L174.0,119.8 L175.0,119.8 L176.0,119.8 L177.0,119.9 L178.0,119.9 L179.0,119.9 L180.0,119.9 L181.0,119.9 L182.0,119.9 L183.0,119.9 L184.0,119.9 L185.0,120.0 L186.0,120.0 L187.0,120.0 L188.0,120.0 L189.0,120.0 L190.0,120.0 L191.0,120.0 L192.0,120.0 L193.0,120.0 L194.0,120.0 L195.0,120.0 L196.0,120.0 L197.0,120.0 L198.0,120.0 L199.0,120.0 L200.0,120.0"/></svg></div>
-              <div><b>6</b><span>Open-weight models</span></div>
               <div><b>0.0004</b><span>Calibration error, Tarot-Draw 1.7B, dev split</span></div>
-              <div><b>3</b><span>Model scales: 1.7B, 4B, 8B</span></div>
-              <div><b>95%</b><span>Cluster-bootstrap intervals on ConvictionBench results</span></div>
-              <div><b>Apache-2.0</b><span>Code and verification scripts</span></div>
+              <div><b>6</b><span>Open-weight models at 1.7B, 4B, and 8B</span></div>
             </div>
           </div>
         </section>
 
-        <section class="sec" aria-labelledby="cb">
-          <p class="num">03</p>
-          <div class="body">
-            <h2 id="cb">Introducing ConvictionBench</h2>
-            <p>
-              When challenged, a language model has to decide whether to keep
-              its answer, revise it, or say the evidence is insufficient.
-              ConvictionBench measures how that decision moves with the quality
-              of the evidence and the pressure to agree, across 26,478 generated
-              episodes in arithmetic, ledgers, logic, and small rule-based worlds.
-            </p>
-            <p>
-              We released it with the Laplace Conviction Series, three
-              Qwen3-1.7B adapters that each train for belief revision a
-              different way. <a href="/convictionbench/">Read the release</a>.
-            </p>
-            <div class="card">
-              <div class="card-head">
-                <span>Held-out problem types</span>
-                <a href="https://convictionbench.org/#leaderboard">View leaderboard</a>
-              </div>
-              <div class="tabs" role="tablist" aria-label="Metric">
-                <button type="button" role="tab" id="tab-acc" aria-controls="rows" aria-selected="true" data-metric="acc">Final accuracy</button>
-                <button type="button" role="tab" id="tab-res" aria-controls="rows" aria-selected="false" tabindex="-1" data-metric="res">Forged-record resistance</button>
-                <button type="button" role="tab" id="tab-flip" aria-controls="rows" aria-selected="false" tabindex="-1" data-metric="flip">Pressure flips</button>
-              </div>
-              <ol class="rows" id="rows" role="tabpanel" aria-labelledby="tab-acc" tabindex="0"></ol>
-              <p class="card-foot" id="card-foot">Point estimates on the scripted structural split. Greedy decoding, thinking disabled.</p>
-              <table class="sr-only">
-                <caption>ConvictionBench results on held-out problem types, all three metrics. Point estimates on the scripted structural split. Higher is better for final accuracy and forged-record resistance; lower is better for pressure flips.</caption>
-                <thead><tr><th scope="col">Model</th><th scope="col">Training</th><th scope="col">Final accuracy</th><th scope="col">Forged-record resistance</th><th scope="col">Pressure flips</th></tr></thead>
-                <tbody>
-                  <tr><th scope="row">Conviction Anchor</th><td>SFT</td><td>0.580</td><td>0.531</td><td>0.389</td></tr>
-                  <tr><th scope="row">Conviction Vector</th><td>GRPO</td><td>0.644</td><td>0.315</td><td>0.348</td></tr>
-                  <tr><th scope="row">Conviction Meridian</th><td>SFT then GRPO</td><td>0.560</td><td>0.578</td><td>0.375</td></tr>
-                  <tr><th scope="row">Qwen3-1.7B base</th><td>None (reference)</td><td>0.424</td><td>0.340</td><td>0.536</td></tr>
-                </tbody>
-              </table>
+        <section class="sec" id="writing" aria-labelledby="wr">
+          <p class="num">Latest</p>
+          <div class="wide">
+            <div class="sec-head">
+              <h2 id="wr">New work.</h2>
+              <a class="btn link" href="/research/">All research</a>
+            </div>
+            <div class="posts">
+              <a class="post-row reveal" href="/convictionbench/">
+                <div class="post-copy">
+                  <h3>Introducing ConvictionBench: when should a model change its mind?</h3>
+                  <p>When challenged, a language model has to keep its answer, revise it, or say the evidence is insufficient. ConvictionBench measures how that decision moves with evidence quality and social pressure, across 26,478 generated episodes.</p>
+                  <p class="meta"><span>Benchmark</span><time datetime="2026-11-10">November 10, 2026</time></p>
+                </div>
+                <div class="post-cover"><img src="/assets/covers/convictionbench.svg" alt="" width="960" height="600" loading="lazy" /></div>
+              </a>
+              <a class="post-row reveal" href="/convictionbench/#models">
+                <div class="post-copy">
+                  <h3>The Laplace Conviction Series: three ways to train for belief revision</h3>
+                  <p>Anchor, Vector, and Meridian are Qwen3-1.7B adapters trained with supervised fine-tuning, GRPO, and both in sequence. Vector posts the highest held-out accuracy; Meridian resists the most forged records.</p>
+                  <p class="meta"><span>Models</span><time datetime="2026-11-10">November 10, 2026</time></p>
+                </div>
+                <div class="post-cover"><img src="/assets/covers/conviction-series.svg" alt="" width="960" height="600" loading="lazy" /></div>
+              </a>
+              <a class="post-row reveal" href="/tarot-draw/">
+                <div class="post-copy">
+                  <h3>Tarot-Draw: what model scale changes in binary forecasting, and what it does not</h3>
+                  <p>Three forecasting models trained on the same 81,870 questions. The 4B matches the 8B within the resolution of the experiment, and the 1.7B is the best calibrated of the three.</p>
+                  <p class="meta"><span>Release</span><time datetime="2026-08-29">August 29, 2026</time></p>
+                </div>
+                <div class="post-cover"><img src="/assets/covers/tarot-draw.svg" alt="" width="960" height="600" loading="lazy" /></div>
+              </a>
+              <a class="post-row reveal" href="/research/#standard">
+                <div class="post-copy">
+                  <h3>Our release standard</h3>
+                  <p>What ships with every Laplace release: weights, evaluation inputs, metric code, intervals, and a written account of the limits. Unresolved results are labelled as such.</p>
+                  <p class="meta"><span>Standard</span><span>Lab</span></p>
+                </div>
+                <div class="post-cover"><img src="/assets/covers/release-standard.svg" alt="" width="960" height="600" loading="lazy" /></div>
+              </a>
             </div>
           </div>
         </section>
 
         <section class="sec" id="models" aria-labelledby="models-title">
-          <p class="num">04</p>
+          <p class="num">Open models</p>
           <div class="wide">
-            <div class="models-head">
-              <h2 id="models-title">Open models</h2>
-              <a href="https://huggingface.co/Laplace-AI-Research" target="_blank" rel="noopener noreferrer">All on Hugging Face <span aria-hidden="true">&#8599;</span></a>
+            <div class="sec-head">
+              <div>
+                <h2 id="models-title">Weights you can check.</h2>
+                <p>Six open-weight models across two families. Every number below links to the run that produced it.</p>
+              </div>
+              <a class="btn ext link" href="https://huggingface.co/Laplace-AI-Research" target="_blank" rel="noopener noreferrer">All on Hugging Face</a>
             </div>
 
             <div class="mfamily">
@@ -196,7 +213,7 @@
                 <h3>Laplace Conviction Series</h3>
                 <p>Qwen3-1.7B LoRA adapters for evidence-sensitive belief revision.</p>
               </div>
-              <div class="mfamily-meta"><a class="mlicense" href="/licenses/#conviction" aria-label="License: Apache-2.0. Licensing details">Apache-2.0</a><a href="/convictionbench/#models">Release <span aria-hidden="true">&#8594;</span></a></div>
+              <div class="mfamily-meta"><a class="mlicense" href="/licenses/#conviction" aria-label="License: Apache-2.0. Licensing details">Apache-2.0</a><a href="/convictionbench/#models">Release &rarr;</a></div>
             </div>
             <div class="mgrid">
               <article class="mcard" style="--c: var(--s1)">
@@ -240,7 +257,7 @@
                 <h3>Tarot-Draw</h3>
                 <p>Binary forecasting priors at three scales, trained on the same 81,870 questions.</p>
               </div>
-              <div class="mfamily-meta"><a class="mlicense" href="/licenses/#tarot-draw" aria-label="License: CC BY-NC 4.0, non-commercial use only. Licensing details">CC BY-NC 4.0</a><a href="/tarot-draw/">Release <span aria-hidden="true">&#8594;</span></a></div>
+              <div class="mfamily-meta"><a class="mlicense" href="/licenses/#tarot-draw" aria-label="License: CC BY-NC 4.0, non-commercial use only. Licensing details">CC BY-NC 4.0</a><a href="/tarot-draw/">Release &rarr;</a></div>
             </div>
             <div class="mgrid">
               <article class="mcard" style="--c: var(--accent)">
@@ -282,32 +299,30 @@
           </div>
         </section>
 
+
         <section class="sec" id="approach" aria-labelledby="ap">
-          <p class="num">05</p>
-          <div class="body">
-            <h2 id="ap">How we work</h2>
-            <p>
-              Two problems tighten each other. Better data sharpens calibration,
-              and understanding why a model is calibrated tells us which data to
-              collect next.
-            </p>
+          <p class="num">How we work</p>
+          <div class="wide">
+            <div class="sec-head">
+              <h2 id="ap">Two problems that tighten each other.</h2>
+              <p>Better data sharpens calibration, and understanding why a model is calibrated tells us which data to collect next.</p>
+            </div>
             <ol class="principles">
-              <li><span class="i">i</span><div><h3>Calibration before confidence</h3><p>A stated probability should match how often the model is right. We measure that first.</p></div></li>
-              <li><span class="i">ii</span><div><h3>Claims travel with evidence</h3><p>Releases link artifacts, evaluation inputs, metric code, and limitations. Unresolved results are labelled as such.</p></div></li>
-              <li><span class="i">iii</span><div><h3>Open by default</h3><p>Weights, evaluation data, and code are public, so the headline numbers can be recomputed.</p></div></li>
+              <li><span class="i">I.</span><div><h3>Calibration before confidence</h3><p>A stated probability should match how often the model is right. We measure that first, and report it with intervals.</p></div></li>
+              <li><span class="i">II.</span><div><h3>Claims travel with evidence</h3><p>Releases link artifacts, evaluation inputs, metric code, and limitations. Unresolved results are labelled as such.</p></div></li>
+              <li><span class="i">III.</span><div><h3>Open by default</h3><p>Weights, evaluation data, and code are public, so anyone can recompute the headline numbers.</p></div></li>
             </ol>
           </div>
         </section>
 
-        <section class="sec" aria-labelledby="wk">
-          <p class="num">06</p>
+        <section class="sec closing" aria-labelledby="wk">
+          <p class="num">Work with us</p>
           <div class="body">
-            <h2 id="wk">Work with us</h2>
+            <h2 id="wk">For anyone who needs probabilities they can act on.</h2>
             <p>
-              We collaborate with researchers, forecasters, and institutions who
-              need probabilities they can act on. If you are working on
-              forecasting, evaluation, or model calibration, we would like to
-              hear from you.
+              We collaborate with researchers, forecasters, and institutions
+              working on forecasting, evaluation, and model calibration.
+              We would like to hear from you.
             </p>
             <div class="btns">
               <a class="btn solid" href="mailto:inquiries@laplaceresearch.org">Get in touch</a>
@@ -315,33 +330,14 @@
             </div>
           </div>
         </section>
-
-        <section class="sec" id="writing" aria-labelledby="wr">
-          <p class="num">07</p>
-          <div class="wide">
-            <div class="carousel-head">
-              <h2 id="wr">Writing</h2>
-              <div class="arrows">
-                <button type="button" data-dir="-1" aria-label="Previous articles">&#8592;</button>
-                <button type="button" data-dir="1" aria-label="Next articles">&#8594;</button>
-              </div>
-            </div>
-            <div class="carousel" id="carousel">
-              <a class="post" href="/convictionbench/"><div class="cover"><img src="/assets/covers/convictionbench.svg" alt="Intervals tightening onto a line of truth, with two pulled away by pressure" width="960" height="600" loading="lazy" /></div><h3>ConvictionBench: evidence-sensitive belief revision in language models</h3><time datetime="2026-11-19">2026.11.19</time></a>
-              <a class="post" href="/convictionbench/#models"><div class="cover"><img src="/assets/covers/conviction-series.svg" alt="Three halftone Laplace curves for Anchor, Meridian, and Vector" width="960" height="600" loading="lazy" /></div><h3>The Laplace Conviction Series: Anchor, Vector, and Meridian</h3><time datetime="2026-11-10">2026.11.10</time></a>
-              <a class="post" href="/tarot-draw/"><div class="cover"><img src="/assets/covers/tarot-draw.svg" alt="Three halftone discs sized by model scale along a diagonal" width="960" height="600" loading="lazy" /></div><h3>Tarot-Draw: what model scale changes in binary forecasting</h3><time datetime="2026-08-29">2026.08.29</time></a>
-              <a class="post" href="/research/#standard"><div class="cover"><img src="/assets/covers/release-standard.svg" alt="A halftone asterisk beside a release checklist" width="960" height="600" loading="lazy" /></div><h3>Our release standard: claims should travel with evidence</h3><time datetime="2026-08-29">2026.08.29</time></a>
-            </div>
-          </div>
-        </section>
       </main>
 
       <footer class="foot">
-        <div class="brand"><img src="/assets/mark.png" alt="" width="56" height="55" />Laplace Research</div>
+        <a class="brand" href="/"><span class="mark" aria-hidden="true"></span>Laplace Research</a>
         <div class="cols">
           <nav aria-label="Research"><a href="/convictionbench/">ConvictionBench</a><a href="/tarot-draw/">Tarot-Draw</a><a href="/research/">All research</a></nav>
           <nav aria-label="Lab"><a href="/about/">About</a><a href="/#models">Models</a><a href="mailto:inquiries@laplaceresearch.org">Inquiries</a></nav>
-          <nav aria-label="Elsewhere"><a href="https://github.com/Laplace-AI-Research" target="_blank" rel="noopener noreferrer">GitHub</a><a href="https://huggingface.co/Laplace-AI-Research" target="_blank" rel="noopener noreferrer">Hugging Face</a><a href="https://convictionbench.org/#leaderboard">Leaderboard</a></nav>
+          <nav aria-label="Elsewhere"><a href="https://github.com/Laplace-AI-Research" target="_blank" rel="noopener noreferrer">GitHub</a><a href="https://huggingface.co/Laplace-AI-Research" target="_blank" rel="noopener noreferrer">Hugging Face</a><a href="https://convictionbench.org/#leaderboard" target="_blank" rel="noopener noreferrer">Leaderboard</a></nav>
         </div>
         <div class="copy">
           <p>&copy; 2026 Laplace Research &middot; <a href="mailto:inquiries@laplaceresearch.org">inquiries@laplaceresearch.org</a></p>
@@ -350,6 +346,6 @@
         </div>
       </footer>
     </div>
-    <script src="/home.js?v=20261121-1" defer></script>
+      <script src="/site.js?v=20261122-1" defer></script>
   </body>
 </html>

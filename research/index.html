@@ -63,24 +63,36 @@
     </script>
     <link rel="preload" href="/assets/fonts/geist-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/assets/fonts/source-serif-4-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="stylesheet" href="/site.css?v=20261121-1" />
+    <script>document.documentElement.classList.add("js")</script>
+    <link rel="stylesheet" href="/site.css?v=20261122-1" />
   </head>
 
   <body>
     <a class="skip-link" href="#content">Skip to content</a>
     <div class="frame">
-      <aside class="rail">
-        <a href="/" aria-label="Laplace Research home"><img class="mark" src="/assets/mark.png" alt="" width="56" height="55" /></a>
-        <nav aria-label="Primary">
+      <header class="rail">
+        <a class="brand" href="/" aria-label="Laplace Research home"><span class="mark" aria-hidden="true"></span>Laplace Research</a>
+        <button class="menu" type="button" aria-expanded="false" aria-controls="primary-nav">Menu <i aria-hidden="true"></i></button>
+        <nav id="primary-nav" aria-label="Primary">
           <a href="/">Home</a>
           <a href="/research/" aria-current="page">Research</a>
           <a href="/#models">Models</a>
           <a href="/about/">About</a>
-          <a href="mailto:inquiries@laplaceresearch.org">Contact</a>
         </nav>
-        <a class="rail-btn" href="https://convictionbench.org/#leaderboard">Leaderboard</a>
-        <p class="rail-foot">San Francisco &amp; New York</p>
-      </aside>
+        <a class="cta" href="mailto:inquiries@laplaceresearch.org">
+          <span class="cta-roll"><span>Get in touch</span><span aria-hidden="true">Get in touch</span></span>
+          <svg class="icon-arrow" aria-hidden="true" focusable="false"><use href="/assets/icons.svg#arrow" /></svg>
+        </a>
+        <div class="rail-end">
+          <div class="rail-icons">
+            <a href="mailto:inquiries@laplaceresearch.org" aria-label="Email"><svg class="stroke" aria-hidden="true" focusable="false"><use href="/assets/icons.svg#mail" /></svg></a>
+            <a href="https://github.com/Laplace-AI-Research" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#gh" /></svg></a>
+            <a href="https://huggingface.co/Laplace-AI-Research" target="_blank" rel="noopener noreferrer" aria-label="Hugging Face"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#hf" /></svg></a>
+          </div>
+          <p class="rail-legal"><a href="/privacy/">Privacy</a> &middot; <a href="/licenses/">Licenses</a> &middot; <a href="/accessibility/">Accessibility</a><br />&copy; 2026 Laplace Research &middot; SF &amp; NYC</p>
+        </div>
+        <img class="dither" src="/assets/dither.svg" alt="" width="248" height="64" />
+      </header>
 
       <main>
         <section class="sec" id="content" aria-labelledby="t">
@@ -158,11 +170,11 @@
       </main>
 
       <footer class="foot">
-        <div class="brand"><img src="/assets/mark.png" alt="" width="56" height="55" />Laplace Research</div>
+        <a class="brand" href="/"><span class="mark" aria-hidden="true"></span>Laplace Research</a>
         <div class="cols">
           <nav aria-label="Research"><a href="/convictionbench/">ConvictionBench</a><a href="/tarot-draw/">Tarot-Draw</a><a href="/research/">All research</a></nav>
           <nav aria-label="Lab"><a href="/about/">About</a><a href="/#models">Models</a><a href="mailto:inquiries@laplaceresearch.org">Inquiries</a></nav>
-          <nav aria-label="Elsewhere"><a href="https://github.com/Laplace-AI-Research" target="_blank" rel="noopener noreferrer">GitHub</a><a href="https://huggingface.co/Laplace-AI-Research" target="_blank" rel="noopener noreferrer">Hugging Face</a><a href="https://convictionbench.org/#leaderboard">Leaderboard</a></nav>
+          <nav aria-label="Elsewhere"><a href="https://github.com/Laplace-AI-Research" target="_blank" rel="noopener noreferrer">GitHub</a><a href="https://huggingface.co/Laplace-AI-Research" target="_blank" rel="noopener noreferrer">Hugging Face</a><a href="https://convictionbench.org/#leaderboard" target="_blank" rel="noopener noreferrer">Leaderboard</a></nav>
         </div>
         <div class="copy">
           <p>&copy; 2026 Laplace Research &middot; <a href="mailto:inquiries@laplaceresearch.org">inquiries@laplaceresearch.org</a></p>
@@ -171,5 +183,6 @@
         </div>
       </footer>
     </div>
+      <script src="/site.js?v=20261122-1" defer></script>
   </body>
 </html>
