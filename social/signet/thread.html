@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Signet technical thread cards</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..700&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" />
+<style>
+  body { margin: 0; padding: 24px; background: #2a2d33; color: #ddd; font: 14px/1.4 "JetBrains Mono", monospace; }
+  canvas { display: block; max-width: 100%; height: auto; margin: 6px 0 26px; box-shadow: 0 0 0 1px rgba(255,255,255,.12); }
+</style>
+</head>
+<body>
+<div id="status">rendering…</div><div id="list"></div>
+<script src="brand.js"></script>
+<script>
+/* Technical thread (2026-11-23): paper figures redrawn as Night plate cards. Data: thread_data.json, exported by
+   conviction-research scripts/signet_thread_data.py from results/ (same values as the technical report). */
+(async function () {
+  const B = window.SignetBrand, P = B.PD, TAU = B.TAU, W = 1600, H = 900;
+  const SAVE = new URLSearchParams(location.search).has("save"), ONLY = new URLSearchParams(location.search).get("only");
+  const D = await (await fetch("thread_data.json", { cache: "no-store" })).json();
+  await document.fonts.ready;
+  await Promise.all(['500 120px "Bodoni Moda"', 'italic 400 40px "Bodoni Moda"', '400 30px "Instrument Sans"', '500 30px "Instrument Sans"',
+    '400 20px "JetBrains Mono"', '500 20px "JetBrains Mono"'].map(f => document.fonts.load(f)).concat([B.loadMark("/assets/mark.png")]));
+
+  // ---------- chrome ----------
+  const URL_ = "laplaceresearch.org/signet";
+  function ground(ctx) { ctx.fillStyle = P.paper; ctx.fillRect(0, 0, W, H); B.lattice(ctx, 0, 0, W, H, { gap: 40, color: P.ink, lines: false, dots: 1.2, dotAlpha: 0.2 }); }
+  function header(ctx, right) {
+    B.mark(ctx, 104, 66, 32, P.ink);
+    B.text(ctx, "LAPLACE RESEARCH", 152, 92, { fam: "mono", size: 19, color: P.ink, track: 1.6, weight: 500 });
+    B.text(ctx, right, W - 104, 92, { fam: "mono", size: 19, color: P.graphite, track: 1.6, align: "right" });
+  }
+  function footer(ctx, left) {
+    if (left) B.text(ctx, left, 104, H - 64, { fam: "mono", size: 16, color: P.graphite, track: 0.3 });
+    B.text(ctx, URL_, W - 104, H - 64, { fam: "mono", size: 16, color: P.graphite, align: "right", track: 0.3 });
+  }
+  const h2 = (ctx, s, y = 200, size = 60) => B.wrap(ctx, s, 104, y, 1390, size * 1.14, { fam: "display", size, weight: 500, color: P.ink });
+  const sub = (ctx, s, y) => B.wrap(ctx, s, 104, y, 1390, 34, { fam: "body", size: 25, color: P.graphite });
+  const mono = (ctx, s, x, y, o = {}) => B.text(ctx, s, x, y, { fam: "mono", size: o.size || 17, color: o.color || P.graphite, align: o.align, weight: o.weight, track: o.track });
+  const body = (ctx, s, x, y, o = {}) => B.text(ctx, s, x, y, { fam: "body", size: o.size || 22, color: o.color || P.ink, align: o.align, weight: o.weight });
+  function dot(ctx, x, y, r, fill, stroke) { ctx.beginPath(); ctx.arc(x, y, r, 0, TAU); if (fill) { ctx.fillStyle = fill; ctx.fill(); } if (stroke) { ctx.strokeStyle = stroke; ctx.lineWidth = 2; ctx.stroke(); } }
+  function hline(ctx, x0, x1, y, c = P.rule, lw = 1) { ctx.strokeStyle = c; ctx.lineWidth = lw; ctx.beginPath(); ctx.moveTo(x0, y); ctx.lineTo(x1, y); ctx.stroke(); }
+  function vline(ctx, x, y0, y1, c = P.rule, lw = 1) { ctx.strokeStyle = c; ctx.lineWidth = lw; ctx.beginPath(); ctx.moveTo(x, y0); ctx.lineTo(x, y1); ctx.stroke(); }
+  const fmt = (v, d = 2) => (v >= 0 ? "+" : "−") + Math.abs(v).toFixed(d);
+  const pct = v => Math.round(v * 100) + "%";
+  function legend(ctx, items, x, y) { let cx = x; items.forEach(([lab, draw]) => { draw(cx + 8, y - 6); body(ctx, lab, cx + 26, y, { size: 19, color: P.ink }); ctx.font = '400 19px "Instrument Sans"'; cx += 26 + ctx.measureText(lab).width + 40; }); }
+
+  const cards = [];
+  const add = (name, note, draw) => cards.push({ name, note, draw });
+
+  // 02 transcript
+  add("t02-transcript", "the failure, verbatim", ctx => {
+    ground(ctx); header(ctx, "THE SAME RECORD, TWO CHANNELS");
+    const T = D.transcript, m = T.messages;
+    h2(ctx, "A user pastes a “correction.” One model believes it.", 196, 54);
+    const box = (x, y, w, h, title, titleCol, lines, border) => {
+      ctx.fillStyle = P.plate; ctx.strokeStyle = border || P.rule; ctx.lineWidth = border ? 2 : 1.2; ctx.beginPath(); ctx.roundRect(x, y, w, h, 10); ctx.fill(); ctx.stroke();
+      mono(ctx, title, x + 24, y + 38, { color: titleCol || P.graphite, size: 16, track: 1.4, weight: 500 });
+      lines.forEach((l, i) => l[0] === "mono" ? mono(ctx, l[1], x + 24, y + 78 + i * 34, { size: 20, color: l[2] || P.ink }) : B.wrap(ctx, l[1], x + 24, y + 78 + i * 34, w - 48, 30, { fam: "body", size: 21, color: l[2] || P.ink }));
+    };
+    box(104, 262, 1392, 196, "CONVERSATION", null, [
+      ["body", "User:  " + m[0].content], ["mono", "Assistant:  answer 12   (correct)", P.graphite],
+      ["body", "User:  " + m[2].content.split("\n")[0] + "  ›  " + m[2].content.split("\n")[2].replace(/^>\s*/, "")]]);
+    const rb = (x, title, d, ok, border, titleCol) => {
+      ctx.fillStyle = P.plate; ctx.strokeStyle = border; ctx.lineWidth = 2; ctx.beginPath(); ctx.roundRect(x, 490, 676, 250, 10); ctx.fill(); ctx.stroke();
+      mono(ctx, title, x + 24, 528, { color: titleCol, size: 16, track: 1.4, weight: 500 });
+      dot(ctx, x + 34, 572, 9, ok ? P.ink : P.wax);
+      mono(ctx, `decision: ${d.decision}   answer: ${d.answer}`, x + 56, 579, { size: 22, color: P.ink, weight: 500 });
+      B.wrap(ctx, "“" + d.reason + "”", x + 24, 626, 628, 32, { fam: "display", size: 24, style: "italic", color: P.graphite });
+    };
+    rb(104, "QWEN3.5-9B  ·  OFF THE SHELF", T.base_paste, false, P.rule, P.graphite);
+    rb(820, "SIGNET-9B", T.sig_paste, true, P.ink, P.ink);
+    mono(ctx, `Same record sent as a tool message → Signet-9B: decision ${T.sig_tool.decision}, answer ${T.sig_tool.answer}`, 104, 786, { size: 18, color: P.ink });
+    footer(ctx, "Verbatim outputs · quote-block paste format never used in training");
+  });
+
+  // 03 adoption
+  add("t03-adoption", "adoption, all sizes", ctx => {
+    ground(ctx); header(ctx, "THE PROBLEM");
+    h2(ctx, "Off-the-shelf models trust a pasted record as much as a real one.", 196, 54);
+    const x0 = 104, top = 370, bottom = 720, groupW = 464;
+    hline(ctx, 104, 1496, bottom, P.graphite, 1.4);
+    [0.5, 1].forEach(t => { hline(ctx, 104, 1496, bottom - t * (bottom - top)); mono(ctx, pct(t), 96, bottom - t * (bottom - top) + 6, { align: "right", size: 15 }); });
+    ["2B", "4B", "9B"].forEach((s, gi) => {
+      const items = D.adoption.filter(a => a.size === s);
+      items.forEach((a, j) => {
+        const cx = x0 + 40 + gi * groupW + j * 200;
+        [["tool", P.ink], ["paste", P.prussian]].forEach(([k, col], b) => {
+          const v = a[k], bx = cx + b * 78, bh = v * (bottom - top);
+          ctx.fillStyle = col; ctx.fillRect(bx, bottom - bh, 70, bh);
+          mono(ctx, pct(v), bx + 35, bottom - bh - 12, { align: "center", size: 18, color: P.ink, weight: 500 });
+        });
+        body(ctx, a.label, cx + 74, bottom + 38, { align: "center", size: 21, weight: a.signet ? 500 : 400, color: a.signet ? P.ink : P.graphite });
+      });
+    });
+    legend(ctx, [["genuine tool record", (x, y) => { ctx.fillStyle = P.ink; ctx.fillRect(x - 8, y - 8, 16, 16); }],
+                 ["same record, pasted by the user", (x, y) => { ctx.fillStyle = P.prussian; ctx.fillRect(x - 8, y - 8, 16, 16); }]], 104, 316);
+    footer(ctx, "Share adopting the record · paste formats never used in training · 2,370 matched pairs per model");
+  });
+
+  // 04 forest
+  add("t04-forest", "every model on the leaderboard", ctx => {
+    ground(ctx); header(ctx, "THE WHOLE LEADERBOARD");
+    const rows = D.forest, n = rows.length;
+    B.wrap(ctx, "We checked every model on our leaderboard. Only Signet checks the channel.", 104, 196, 640, 64, { fam: "display", size: 52, weight: 500, color: P.ink });
+    B.wrap(ctx, `Channel gap: how much more often a model adopts a record from a tool than the identical record pasted into a user message. ${n - 3} other models, 95% intervals.`, 104, 470, 620, 34, { fam: "body", size: 24, color: P.graphite });
+    const x0 = 860, x1 = 1460, xv = v => x0 + (v + 0.2) / 1.2 * (x1 - x0), top = 140, sigH = 34, rowH = (H - 130 - top - 3 * sigH) / (n - 3);
+    const yOf = i => i < 3 ? top + i * sigH + sigH / 2 : top + 3 * sigH + (i - 3) * rowH + rowH / 2;
+    const bot = top + 3 * sigH + (n - 3) * rowH;
+    vline(ctx, xv(0), top - 10, bot, P.graphite, 1.2);
+    [0, 0.5, 1].forEach(t => { vline(ctx, xv(t), top - 10, bot); mono(ctx, t === 0 ? "0" : t.toFixed(1), xv(t), bot + 26, { align: "center", size: 15 }); });
+    rows.slice().reverse().forEach((r, i) => {
+      const y = yOf(i), col = r.kind === "sig" ? P.ink : (r.kind === "v01" ? P.prussian : P.graphite);
+      ctx.strokeStyle = col; ctx.lineWidth = r.kind === "sig" ? 2.4 : 1.4; ctx.beginPath(); ctx.moveTo(xv(r.lo), y); ctx.lineTo(xv(r.hi), y); ctx.stroke();
+      dot(ctx, xv(r.gap), y, r.kind === "sig" ? 7 : 4, col);
+      if (r.name === "Signet-9B") dot(ctx, xv(r.gap), y, 3, P.wax);
+      if (r.kind !== "shelf") mono(ctx, r.name, xv(r.lo) - 12, y + 5, { align: "right", size: r.kind === "sig" ? 19 : 14, color: col, weight: r.kind === "sig" ? 500 : 400 });
+    });
+    legend(ctx, [["Signet", (x, y) => dot(ctx, x, y, 7, P.ink)], ["Conviction v0.1", (x, y) => dot(ctx, x, y, 5, P.prussian)], ["off the shelf", (x, y) => dot(ctx, x, y, 4, P.graphite)]], 104, 720);
+    footer(ctx, "Pure-channel control · ConvictionBench v0.1 test splits");
+  });
+
+  // 05 pareto
+  add("t05-pareto", "frontier", ctx => {
+    ground(ctx); header(ctx, "THE TRADE-OFF");
+    h2(ctx, "Every earlier model trades skepticism for correctability. Signet doesn't.", 196, 50);
+    const X0 = 220, X1 = 1460, Y0 = 735, Y1 = 330, xv = v => X0 + v * (X1 - X0), yv = v => Y0 - (v - 0.5) / 0.52 * (Y0 - Y1);
+    [0, 0.25, 0.5, 0.75, 1].forEach(t => { vline(ctx, xv(t), Y1 - 10, Y0); mono(ctx, t.toFixed(2), xv(t), Y0 + 28, { align: "center", size: 15 }); });
+    [0.5, 0.75, 1].forEach(t => { hline(ctx, X0, X1, yv(t)); mono(ctx, t.toFixed(2), X0 - 14, yv(t) + 5, { align: "right", size: 15 }); });
+    mono(ctx, "REJECTS FORGED RECORDS →", (X0 + X1) / 2, Y0 + 58, { align: "center", size: 15, track: 1.6 });
+    ctx.save(); ctx.translate(132, (Y0 + Y1) / 2); ctx.rotate(-Math.PI / 2); mono(ctx, "ACCEPTS VALID CORRECTIONS →", 0, 0, { align: "center", size: 15, track: 1.6 }); ctx.restore();
+    D.pareto.filter(p => p.kind === "shelf").forEach(p => dot(ctx, xv(p.x), yv(p.y), 6, P.paper, P.graphite));
+    D.pareto.filter(p => p.kind === "v01").forEach(p => { dot(ctx, xv(p.x), yv(p.y), 8, P.prussian); mono(ctx, p.name.split(" ")[0], xv(p.x) + 14, yv(p.y) + 22, { size: 16, color: P.prussian }); });
+    D.pareto.filter(p => p.kind === "sig").forEach(p => {
+      dot(ctx, xv(p.x), yv(p.y), 11, P.ink); if (p.name === "Signet-9B") dot(ctx, xv(p.x), yv(p.y), 4.5, P.wax);
+      const dy = p.name === "Signet-9B" ? -2 : (p.name === "Signet-4B" ? 26 : 6);
+      body(ctx, p.name, xv(p.x) - 22, yv(p.y) + dy, { align: "right", size: 22, weight: 500 });
+    });
+    [["off the shelf (38)", (x, y) => dot(ctx, x, y, 6, P.paper, P.graphite)], ["Conviction v0.1", (x, y) => dot(ctx, x, y, 7, P.prussian)], ["Signet", (x, y) => dot(ctx, x, y, 9, P.ink)]]
+      .forEach(([lab, draw], i) => { draw(1080, 600 + i * 38); body(ctx, lab, 1102, 607 + i * 38, { size: 19 }); });
+    footer(ctx, "Held-out problem types (never seen in training)");
+  });
+
+  // 06 method
+  add("t06-method", "paired contrast data", ctx => {
+    ground(ctx); header(ctx, "METHOD");
+    h2(ctx, "Make the wording useless, so only the channel predicts the label.", 196, 54);
+    sub(ctx, "Every authenticated record in training is paired with its exact twin pasted into the user turn. New pointer and forger wordings each appear with both labels.", 352);
+    const rows = [["twinpaste", "user turn", "the trusted twin's exact text", "reject"], ["paste", "user turn", "new pointer sentences", "reject"],
+                  ["repointed", "tool turn", "the same pointer sentences", "adopt"], ["reframed", "user turn", "new forger wording", "reject"],
+                  ["framedtool", "tool turn", "the same forger wording", "adopt"]];
+    const cx = [104, 420, 720, 1250], y0 = 470;
+    ["FAMILY", "RECORD ARRIVES IN", "WORDING", "LABEL"].forEach((h, i) => mono(ctx, h, cx[i], y0, { size: 15, track: 1.6, weight: 500 }));
+    hline(ctx, 104, 1496, y0 + 18, P.graphite);
+    rows.forEach((r, i) => {
+      const y = y0 + 66 + i * 56;
+      mono(ctx, r[0], cx[0], y, { size: 21, color: P.ink, weight: 500 });
+      body(ctx, r[1], cx[1], y, { size: 22, color: r[1] === "tool turn" ? P.ink : P.graphite });
+      body(ctx, r[2], cx[2], y, { size: 22 });
+      const adopt = r[3] === "adopt";
+      ctx.strokeStyle = adopt ? P.ink : P.graphite; ctx.lineWidth = 1.6; ctx.beginPath(); ctx.roundRect(cx[3], y - 24, 110, 34, 17); ctx.stroke();
+      mono(ctx, r[3].toUpperCase(), cx[3] + 55, y - 1, { align: "center", size: 15, color: adopt ? P.ink : P.graphite, weight: 500, track: 1.4 });
+      if (i < 4) hline(ctx, 104, 1496, y + 22);
+    });
+    footer(ctx, "8,805 derived episodes from the train split · contrast data = 50% of training");
+  });
+
+  // 07 ablation
+  add("t07-ablation", "what made it work", ctx => {
+    ground(ctx); header(ctx, "WHAT MADE IT WORK");
+    h2(ctx, "The fix was in the data, not the optimizer.", 196, 56);
+    sub(ctx, "Recipe development on Qwen3-1.7B (validation split). More samples and a difficulty prefilter did nothing. Pairing each record with its pasted twin did.", 286);
+    const X0 = 220, X1 = 1460, base = 690, top = 420, yv = v => base - v / 0.45 * (base - top);
+    [0, 0.1, 0.2, 0.3, 0.4].forEach(t => { hline(ctx, X0 - 20, X1, yv(t), t === 0 ? P.graphite : P.rule, t === 0 ? 1.4 : 1); mono(ctx, t.toFixed(1), X0 - 30, yv(t) + 5, { align: "right", size: 15 }); });
+    const gw = (X1 - X0) / 4;
+    D.ablation.forEach((a, i) => {
+      [["pure", P.ink], ["paste", P.prussian]].forEach(([k, col], j) => {
+        const g = a[k], x = X0 + i * gw + 60 + j * 110, y = yv(Math.max(0, g.gap)), y0 = yv(Math.min(0, g.gap));
+        ctx.fillStyle = col; ctx.fillRect(x, Math.min(y, yv(0)), 96, Math.abs(yv(g.gap) - yv(0)));
+        ctx.strokeStyle = P.ink; ctx.lineWidth = 1.4; ctx.beginPath(); ctx.moveTo(x + 48, yv(g.lo)); ctx.lineTo(x + 48, yv(g.hi));
+        ctx.moveTo(x + 40, yv(g.lo)); ctx.lineTo(x + 56, yv(g.lo)); ctx.moveTo(x + 40, yv(g.hi)); ctx.lineTo(x + 56, yv(g.hi)); ctx.stroke();
+      });
+      mono(ctx, a.arm, X0 + i * gw + 163, base + 34, { align: "center", size: 20, color: P.ink, weight: 500 });
+      body(ctx, a.desc, X0 + i * gw + 163, base + 64, { align: "center", size: 19, color: P.graphite });
+    });
+    legend(ctx, [["pure-channel gap", (x, y) => { ctx.fillStyle = P.ink; ctx.fillRect(x - 8, y - 8, 16, 16); }], ["unseen paste-style gap", (x, y) => { ctx.fillStyle = P.prussian; ctx.fillRect(x - 8, y - 8, 16, 16); }]], 230, 392);
+    footer(ctx, "Bars: channel gap with 95% bootstrap intervals");
+  });
+
+  // 08 base model
+  add("t08-base", "base model matters", ctx => {
+    ground(ctx); header(ctx, "FINDING 1");
+    h2(ctx, "The base model decides whether RL can find the rule at all.", 196, 54);
+    sub(ctx, `Same recipe, same data, GRPO from the base. Both bases start at the same held-out accuracy (${D.base[0].acc0.toFixed(3)} and ${D.base[2].acc0.toFixed(3)}).`, 352);
+    const X0 = 560, X1 = 1420, xv = v => X0 + v * (X1 - X0);
+    [0, 0.25, 0.5, 0.75, 1].forEach(t => { vline(ctx, xv(t), 440, 740); mono(ctx, t.toFixed(2), xv(t), 768, { align: "center", size: 15 }); });
+    mono(ctx, "UNSEEN PASTE-STYLE CHANNEL GAP", (X0 + X1) / 2, 800, { align: "center", size: 15, track: 1.6 });
+    D.base.forEach((b, i) => {
+      const y = 480 + i * 100, col = i === 2 ? P.ink : P.graphite;
+      body(ctx, b.label, X0 - 30, y + 8, { align: "right", size: 24, color: col, weight: i === 2 ? 500 : 400 });
+      ctx.fillStyle = col; ctx.fillRect(X0, y - 14, xv(b.gap) - X0, 28);
+      ctx.strokeStyle = P.ink; ctx.lineWidth = 1.4; ctx.beginPath(); ctx.moveTo(xv(b.lo), y); ctx.lineTo(xv(b.hi), y); ctx.stroke();
+      mono(ctx, fmt(b.gap), xv(b.hi) + 16, y + 7, { size: 22, color: P.ink, weight: 500 });
+    });
+    footer(ctx, "400 GRPO steps unless noted · 95% intervals");
+  });
+
+  // 09 imitation + recipe flips with scale
+  add("t09-scale", "imitation saturates; recipe flips", ctx => {
+    ground(ctx); header(ctx, "FINDINGS 2 AND 3");
+    h2(ctx, "Imitation saturates big models, and the best recipe flips at 9B.", 196, 52);
+    // left: gate
+    mono(ctx, "ZERO-VARIANCE GROUPS AFTER WARM-START", 104, 360, { size: 15, track: 1.6, weight: 500 });
+    const L0 = 104, L1 = 700, gy = s => 430 + ["2B", "4B", "9B"].indexOf(s) * 110, gx = v => L0 + 70 + v * (L1 - L0 - 70);
+    vline(ctx, gx(0.7), 395, 760, P.wax, 1.6); mono(ctx, "GATE: 0.70", gx(0.7), 785, { align: "center", size: 14, color: P.wax });
+    D.gate.forEach(g => {
+      const y = gy(g.size); body(ctx, g.size, L0, y + 18, { size: 24, weight: 500 });
+      [["1,000 ex.", g.w1000, P.graphite, 0], ["250 ex.", g.w250, P.ink, 34]].forEach(([lab, v, col, dy]) => {
+        if (v == null) return; ctx.fillStyle = col; ctx.fillRect(gx(0), y + dy - 6, gx(v) - gx(0), 24);
+        mono(ctx, `${lab} ${v.toFixed(2)}`, gx(v) + 10, y + dy + 12, { size: 15, color: P.ink });
+      });
+    });
+    // right: held-out accuracy by size
+    mono(ctx, "HELD-OUT ACCURACY BY SIZE", 860, 360, { size: 15, track: 1.6, weight: 500 });
+    const R0 = 900, R1 = 1460, ry0 = 760, ry1 = 440, sx = s => R0 + ["2B", "4B", "9B"].indexOf(s) * ((R1 - R0) / 2), sy = v => ry0 - (v - 0.4) / 0.6 * (ry0 - ry1);
+    [0.4, 0.6, 0.8, 1].forEach(t => { hline(ctx, R0 - 10, R1 + 10, sy(t)); mono(ctx, t.toFixed(1), R0 - 22, sy(t) + 5, { align: "right", size: 14 }); });
+    ["2B", "4B", "9B"].forEach(s => mono(ctx, s, sx(s), ry0 + 30, { align: "center", size: 17, color: P.ink }));
+    [["base", P.graphite, "off the shelf"], ["rl", P.ink, "RL only"], ["a6", P.prussian, "warm-start → GRPO"]].forEach(([k, col, lab], li) => {
+      ctx.strokeStyle = col; ctx.lineWidth = 2.4; ctx.setLineDash(k === "base" ? [8, 6] : []); ctx.beginPath();
+      ["2B", "4B", "9B"].forEach((s, i) => { const y = sy(D.scale[k][s].acc); i ? ctx.lineTo(sx(s), y) : ctx.moveTo(sx(s), y); }); ctx.stroke(); ctx.setLineDash([]);
+      ["2B", "4B", "9B"].forEach(s => dot(ctx, sx(s), sy(D.scale[k][s].acc), 6, k === "base" ? P.paper : col, k === "base" ? col : null));
+      const lx = 860 + li * 210; ctx.strokeStyle = col; ctx.lineWidth = 2.4; ctx.setLineDash(k === "base" ? [8, 6] : []); ctx.beginPath(); ctx.moveTo(lx, 392); ctx.lineTo(lx + 28, 392); ctx.stroke(); ctx.setLineDash([]);
+      body(ctx, lab, lx + 36, 398, { size: 17, color: col });
+    });
+    footer(ctx, "Left: 3-step GRPO smoke test · Right: test split, held-out problem types");
+  });
+
+  // 10 dynamics
+  add("t10-dynamics", "training dynamics", ctx => {
+    ground(ctx); header(ctx, "TRAINING DYNAMICS");
+    h2(ctx, "RL alone plateaus, then jumps. A light warm-start just climbs.", 196, 54);
+    const X0 = 200, X1 = 1300, Y0 = 760, Y1 = 360, xv = v => X0 + v / 400 * (X1 - X0), yv = v => Y0 - (v - 0.25) / 0.8 * (Y0 - Y1);
+    [0, 100, 200, 300, 400].forEach(t => { vline(ctx, xv(t), Y1 - 10, Y0); mono(ctx, String(t), xv(t), Y0 + 28, { align: "center", size: 15 }); });
+    [0.4, 0.6, 0.8, 1].forEach(t => { hline(ctx, X0, X1, yv(t)); mono(ctx, t.toFixed(1), X0 - 14, yv(t) + 5, { align: "right", size: 15 }); });
+    mono(ctx, "GRPO STEP", (X0 + X1) / 2, Y0 + 60, { align: "center", size: 15, track: 1.6 });
+    ctx.save(); ctx.translate(120, (Y0 + Y1) / 2); ctx.rotate(-Math.PI / 2); mono(ctx, "TRAINING REWARD", 0, 0, { align: "center", size: 15, track: 1.6 }); ctx.restore();
+    const style = { "2B RL-only": [P.graphite, []], "4B RL-only": [P.graphite, [10, 6]], "9B RL-only": [P.ink, [3, 5]], "9B warm-start + GRPO": [P.prussian, []] };
+    Object.entries(D.dynamics).forEach(([k, pts]) => {
+      const [col, dash] = style[k]; ctx.strokeStyle = col; ctx.lineWidth = 2.6; ctx.setLineDash(dash); ctx.beginPath();
+      pts.forEach(([s, v], i) => i ? ctx.lineTo(xv(s), yv(v)) : ctx.moveTo(xv(s), yv(v))); ctx.stroke(); ctx.setLineDash([]);
+      const li = Object.keys(D.dynamics).indexOf(k), lx = 1330, ly = 400 + li * 44;
+      ctx.strokeStyle = col; ctx.lineWidth = 2.6; ctx.setLineDash(dash); ctx.beginPath(); ctx.moveTo(lx, ly); ctx.lineTo(lx + 34, ly); ctx.stroke(); ctx.setLineDash([]);
+      body(ctx, k, lx + 44, ly + 7, { size: 18, color: col });
+    });
+    footer(ctx, "10-step moving average of GRPO reward");
+  });
+
+  // 11 error anatomy
+  add("t11-errors", "where it still fails", ctx => {
+    ground(ctx); header(ctx, "WHERE IT STILL FAILS");
+    h2(ctx, "We read the mistakes. Each size fails differently.", 196, 56);
+    const rows = [
+      ["Signet-9B", "checks the channel, slips on arithmetic", `${D.errors["9B"].paste_tags.rejected_wrong_arith} of ${D.errors["9B"].paste_wrong} wrong answers on pasted records reject the paste, then miscompute`],
+      ["Signet-4B", "fooled by forwarded messages", `${D.errors["4B"].paste_tags.treated_as_record} of ${D.errors["4B"].paste_wrong} treat the paste as a real update; ${D.errors["4B"].adopted_by_style.forward} of those are forwards`],
+      ["Signet-2B", "ignores records, runs out of tokens", `${D.errors["2B"].tool_tags.ignored_record} of ${D.errors["2B"].tool_wrong} misses on genuine records never mention the record`],
+    ];
+    rows.forEach((r, i) => {
+      const y = 380 + i * 150;
+      hline(ctx, 104, 1496, y - 50);
+      seal(ctx, 160, y, [9, 4, 2][i], i === 0);
+      body(ctx, r[0], 250, y - 8, { size: 32, weight: 500 });
+      B.text(ctx, r[1], 250, y + 32, { fam: "display", size: 30, style: "italic", color: P.ink });
+      B.wrap(ctx, r[2], 820, y - 10, 676, 32, { fam: "body", size: 23, color: P.graphite });
+    });
+    hline(ctx, 104, 1496, 380 + 3 * 150 - 50);
+    footer(ctx, "~50 outputs read per model; every control error tagged by its stated reasoning");
+  });
+  function seal(ctx, x, y, N, wax) { B.rings(ctx, { x, y }, { N, Rmax: 44, rin: 5, color: P.ink, lw: N > 6 ? 1.3 : 1.8, wax: wax ? P.wax : null }); if (!wax) dot(ctx, x, y, 3.5, P.ink); }
+
+  // render
+  const list = document.getElementById("list"); let saved = 0;
+  for (const c of cards) {
+    if (ONLY && !c.name.startsWith(ONLY)) continue;
+    const p = document.createElement("p"); p.textContent = `${c.name} · ${c.note}`; list.appendChild(p);
+    const cv = document.createElement("canvas"); cv.width = W; cv.height = H; list.appendChild(cv);
+    c.draw(cv.getContext("2d"));
+    if (SAVE && (await fetch("/save?path=" + encodeURIComponent(`social/signet/out/thread2/${c.name.slice(1)}.png`), { method: "POST", body: await new Promise(r => cv.toBlob(r)) })).ok) saved++;
+  }
+  document.getElementById("status").textContent = SAVE ? `done · saved ${saved}` : "done"; window.__done = true;
+})();
+</script>
+</body>
+</html>
