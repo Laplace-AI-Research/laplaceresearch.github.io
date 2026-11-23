@@ -377,6 +377,8 @@ main {
 }
 .mfamily + .mgrid { margin-top: 0; }
 .mnote + .mfamily { margin-top: 56px; }
+.mfamily { margin-bottom: 24px; }
+.mfamily h2 { margin: 0 0 10px; }
 .mfamily h3 { margin: 0 0 6px; font-size: 24px; letter-spacing: -0.02em; line-height: 1.1; }
 .mfamily p { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.5; }
 .mfamily-meta { display: flex; align-items: center; gap: 14px; flex: none; font-size: 13px; }
