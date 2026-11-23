@@ -119,9 +119,9 @@
   add("05-tradeoff", ctx => {
     ground(ctx); chrome(ctx, "Problem types never seen in training");
     head(ctx, "More skeptical, and still correctable.", 62);
-    const X0 = 230, X1 = W - M - 20, Y0 = 760, Y1 = 270, xv = v => X0 + v * (X1 - X0), yv = v => Y0 - (v - 0.5) / 0.52 * (Y0 - Y1);
+    const X0 = 230, X1 = W - M - 20, Y0 = 760, Y1 = 270, xv = v => X0 + v * (X1 - X0), yv = v => Y0 - v / 1.02 * (Y0 - Y1);
     [0, 0.25, 0.5, 0.75, 1].forEach(t => { line(ctx, xv(t), Y1, xv(t), Y0, P.rule); mono(ctx, pct(t), xv(t), Y0 + 32, { align: "center" }); });
-    [0.5, 0.75, 1].forEach(t => { line(ctx, X0, yv(t), X1, yv(t), P.rule); mono(ctx, pct(t), X0 - 16, yv(t) + 6, { align: "right" }); });
+    [0, 0.25, 0.5, 0.75, 1].forEach(t => { line(ctx, X0, yv(t), X1, yv(t), P.rule); mono(ctx, pct(t), X0 - 16, yv(t) + 6, { align: "right" }); });
     mono(ctx, "REJECTS FORGED RECORDS  →", (X0 + X1) / 2, Y0 + 70, { align: "center", track: 1.6 });
     ctx.save(); ctx.translate(140, (Y0 + Y1) / 2); ctx.rotate(-Math.PI / 2); mono(ctx, "ACCEPTS VALID CORRECTIONS  →", 0, 0, { align: "center", track: 1.6 }); ctx.restore();
     D.pareto.filter(p => p.kind === "shelf").forEach(p => dot(ctx, xv(p.x), yv(p.y), 8, "#5b616a", "#8a9099", 1.4));
@@ -131,7 +131,7 @@
       T(ctx, p.name, xv(p.x) - 28, yv(p.y) + ({ "Signet-9B": -4, "Signet-4B": 30, "Signet-2B": 9 }[p.name]), { align: "right", size: 26, weight: 600 });
     });
     [["38 off-the-shelf models", (x, y) => dot(ctx, x, y, 8, "#5b616a", "#8a9099", 1.4)], ["earlier Conviction adapters", (x, y) => dot(ctx, x, y, 9, V01)], ["Signet", (x, y) => dot(ctx, x, y, 12, SIG)]]
-      .forEach(([l, d], i) => { d(1110, 590 + i * 44); T(ctx, l, 1136, 598 + i * 44, { size: 21, color: P.graphite }); });
+      .forEach(([l, d], i) => { d(1110, 560 + i * 44); T(ctx, l, 1136, 568 + i * 44, { size: 21, color: P.graphite }); });
   });
 
   // 06 — how (ablation, one metric)

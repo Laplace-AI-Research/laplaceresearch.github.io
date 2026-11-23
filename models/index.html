@@ -5,7 +5,7 @@
     <title>Models | Laplace Research</title>
     <meta
       name="description"
-      content="Open-weight models from Laplace Research: the Conviction Series for belief revision and Tarot-Draw for calibrated binary forecasting."
+      content="Open-weight models from Laplace Research: Signet and the Conviction Series for belief revision, and Tarot-Draw for calibrated binary forecasting."
     />
     <meta name="theme-color" content="#f6f5f2" />
     <meta name="color-scheme" content="only light" />
@@ -75,7 +75,7 @@
           <div class="body">
             <h1 id="t">Open models</h1>
             <p class="lede">
-              Six open-weight models across two families. Each card links the
+              Nine open-weight models across three families. Each card links the
               weights and the run that produced its numbers, so every figure
               on this page can be recomputed.
             </p>
@@ -83,6 +83,55 @@
               <a class="btn ext" href="https://huggingface.co/Laplace-AI-Research" target="_blank" rel="noopener noreferrer">All on Hugging Face</a>
               <a class="btn" href="/research/">Read the research</a>
             </div>
+          </div>
+        </section>
+
+        <section class="sec" id="signet" aria-labelledby="signet-title">
+          <p class="num">Signet</p>
+          <div class="wide">
+            <div class="mfamily">
+              <div>
+                <h2 id="signet-title">Signet</h2>
+                <p>Qwen3.5 models that check where a record came from before they believe it.</p>
+              </div>
+              <div class="mfamily-meta"><a class="mlicense" href="/licenses/#signet" aria-label="License: Apache-2.0. Licensing details">Apache-2.0</a><a href="/signet/">Release &rarr;</a></div>
+            </div>
+            <div class="mgrid">
+              <article class="mcard" style="--c: var(--s1)">
+                <div class="mcard-top"><span class="mdot" aria-hidden="true"></span><span class="kicker">Signet · 9B</span><span class="mtag">Flagship</span></div>
+                <h3>Signet-9B</h3>
+                <p class="mdesc">Light warm-start, then GRPO. Our largest model; ships as merged weights and adapters.</p>
+                <dl class="mstats"><div><dt>Final accuracy</dt><dd>0.978</dd></div><div><dt>Forged-record resistance</dt><dd>0.979</dd></div></dl>
+                <div class="mlinks">
+                  <a href="https://huggingface.co/Laplace-AI-Research/Signet-9B" target="_blank" rel="noopener noreferrer" aria-label="Signet-9B weights on Hugging Face"><svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/icons.svg#hf" /></svg>Weights</a>
+                  <a href="https://github.com/Laplace-AI-Research/signet/tree/main/results/SIG_9B_a6w250" target="_blank" rel="noopener noreferrer" aria-label="Signet-9B results on GitHub"><svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/icons.svg#gh" /></svg>Results</a>
+                  <time datetime="2026-11-25">2026.11.25</time>
+                </div>
+              </article>
+              <article class="mcard" style="--c: var(--s2)">
+                <div class="mcard-top"><span class="mdot" aria-hidden="true"></span><span class="kicker">Signet · 4B</span></div>
+                <h3>Signet-4B</h3>
+                <p class="mdesc">GRPO from the base model. Highest held-out accuracy in the family.</p>
+                <dl class="mstats"><div><dt>Final accuracy</dt><dd>0.985</dd></div><div><dt>Forged-record resistance</dt><dd>0.981</dd></div></dl>
+                <div class="mlinks">
+                  <a href="https://huggingface.co/Laplace-AI-Research/Signet-4B" target="_blank" rel="noopener noreferrer" aria-label="Signet-4B weights on Hugging Face"><svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/icons.svg#hf" /></svg>Weights</a>
+                  <a href="https://github.com/Laplace-AI-Research/signet/tree/main/results/SIG_4B_r1" target="_blank" rel="noopener noreferrer" aria-label="Signet-4B results on GitHub"><svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/icons.svg#gh" /></svg>Results</a>
+                  <time datetime="2026-11-25">2026.11.25</time>
+                </div>
+              </article>
+              <article class="mcard" style="--c: var(--s3)">
+                <div class="mcard-top"><span class="mdot" aria-hidden="true"></span><span class="kicker">Signet · 2B</span></div>
+                <h3>Signet-2B</h3>
+                <p class="mdesc">GRPO from the base model. The smallest Signet.</p>
+                <dl class="mstats"><div><dt>Final accuracy</dt><dd>0.796</dd></div><div><dt>Forged-record resistance</dt><dd>0.863</dd></div></dl>
+                <div class="mlinks">
+                  <a href="https://huggingface.co/Laplace-AI-Research/Signet-2B" target="_blank" rel="noopener noreferrer" aria-label="Signet-2B weights on Hugging Face"><svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/icons.svg#hf" /></svg>Weights</a>
+                  <a href="https://github.com/Laplace-AI-Research/signet/tree/main/results/SIG_2B_r1" target="_blank" rel="noopener noreferrer" aria-label="Signet-2B results on GitHub"><svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/icons.svg#gh" /></svg>Results</a>
+                  <time datetime="2026-11-25">2026.11.25</time>
+                </div>
+              </article>
+            </div>
+            <p class="mnote">Held-out structural split, point estimates. Higher is better for both measures.</p>
           </div>
         </section>
 
@@ -190,7 +239,7 @@
       <footer class="foot">
         <a class="brand" href="/"><span class="mark" aria-hidden="true"></span>Laplace Research</a>
         <div class="cols">
-          <nav aria-label="Research"><a href="/convictionbench/">ConvictionBench</a><a href="/tarot-draw/">Tarot-Draw</a><a href="/research/">All research</a></nav>
+          <nav aria-label="Research"><a href="/signet/">Signet</a><a href="/convictionbench/">ConvictionBench</a><a href="/tarot-draw/">Tarot-Draw</a><a href="/research/">All research</a></nav>
           <nav aria-label="Lab"><a href="/about/">About</a><a href="/models/">Models</a><a href="mailto:inquiries@laplaceresearch.org">Inquiries</a></nav>
           <nav aria-label="Elsewhere"><a href="https://github.com/Laplace-AI-Research" target="_blank" rel="noopener noreferrer">GitHub</a><a href="https://huggingface.co/Laplace-AI-Research" target="_blank" rel="noopener noreferrer">Hugging Face</a><a href="https://convictionbench.org/#leaderboard" target="_blank" rel="noopener noreferrer">Leaderboard</a></nav>
         </div>

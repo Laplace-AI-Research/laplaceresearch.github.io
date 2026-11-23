@@ -2,19 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://laplaceresearch.org/</loc>
-    <lastmod>2026-11-22</lastmod>
+    <lastmod>2026-11-25</lastmod>
   </url>
   <url>
     <loc>https://laplaceresearch.org/research/</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-25</lastmod>
   </url>
   <url>
     <loc>https://laplaceresearch.org/models/</loc>
-    <lastmod>2026-11-22</lastmod>
+    <lastmod>2026-11-25</lastmod>
   </url>
   <url>
     <loc>https://laplaceresearch.org/about/</loc>
     <lastmod>2026-09-21</lastmod>
+  </url>
+  <url>
+    <loc>https://laplaceresearch.org/signet/</loc>
+    <lastmod>2026-11-25</lastmod>
   </url>
   <url>
     <loc>https://laplaceresearch.org/tarot-draw/</loc>
@@ -26,7 +30,7 @@
   </url>
   <url>
     <loc>https://laplaceresearch.org/licenses/</loc>
-    <lastmod>2026-11-21</lastmod>
+    <lastmod>2026-11-25</lastmod>
   </url>
   <url>
     <loc>https://laplaceresearch.org/privacy/</loc>

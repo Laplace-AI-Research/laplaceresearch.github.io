@@ -124,9 +124,9 @@
 
         <section class="sec mosaic-sec" aria-label="Recent releases">
           <div class="wide mosaic">
+            <a class="tile" href="/signet/"><img src="/assets/covers/signet.svg" alt="Three seals pressed into a square grid, with two, four and nine rings" width="960" height="600" /><span class="tile-tag">Signet</span></a>
             <a class="tile" href="/convictionbench/"><img src="/assets/covers/convictionbench.svg" alt="Intervals tightening onto a line of truth, with two pulled away by pressure" width="960" height="600" /><span class="tile-tag">ConvictionBench</span></a>
             <a class="tile" href="/tarot-draw/"><img src="/assets/covers/tarot-draw.svg" alt="Three halftone discs sized by model scale along a diagonal" width="960" height="600" /><span class="tile-tag">Tarot-Draw</span></a>
-            <a class="tile" href="/convictionbench/#models"><img src="/assets/covers/conviction-series.svg" alt="Three halftone Laplace curves for Anchor, Meridian, and Vector" width="960" height="600" /><span class="tile-tag">Conviction Series</span></a>
           </div>
         </section>
 
@@ -141,7 +141,7 @@
               <div><b>26,478</b><span>ConvictionBench episodes</span></div>
               <div><b>81,870</b><span>Resolved training questions</span></div>
               <div><b>0.0004</b><span>Calibration error, Tarot-Draw 1.7B, dev split</span></div>
-              <div><b>6</b><span>Open-weight models at 1.7B, 4B, and 8B</span></div>
+              <div><b>9</b><span>Open-weight models from 1.7B to 9B</span></div>
             </div>
           </div>
         </section>
@@ -154,6 +154,14 @@
               <a class="btn link" href="/research/">All research</a>
             </div>
             <div class="posts">
+              <a class="post-row reveal" href="/signet/">
+                <div class="post-copy">
+                  <h3>Signet: open models that check where a record came from before they believe it</h3>
+                  <p>Most models accept a fake record pasted into the chat as readily as a genuine tool result. Signet-2B, 4B and 9B adopt genuine records and reject pasted ones, including in formats they never saw in training, and still accept valid corrections.</p>
+                  <p class="meta"><span>Models</span><time datetime="2026-11-25">November 25, 2026</time></p>
+                </div>
+                <div class="post-cover"><img src="/assets/covers/signet.svg" alt="" width="960" height="600" loading="lazy" /></div>
+              </a>
               <a class="post-row reveal" href="/convictionbench/">
                 <div class="post-copy">
                   <h3>Introducing ConvictionBench: when should a model change its mind?</h3>
@@ -225,7 +233,7 @@
       <footer class="foot">
         <a class="brand" href="/"><span class="mark" aria-hidden="true"></span>Laplace Research</a>
         <div class="cols">
-          <nav aria-label="Research"><a href="/convictionbench/">ConvictionBench</a><a href="/tarot-draw/">Tarot-Draw</a><a href="/research/">All research</a></nav>
+          <nav aria-label="Research"><a href="/signet/">Signet</a><a href="/convictionbench/">ConvictionBench</a><a href="/tarot-draw/">Tarot-Draw</a><a href="/research/">All research</a></nav>
           <nav aria-label="Lab"><a href="/about/">About</a><a href="/models/">Models</a><a href="mailto:inquiries@laplaceresearch.org">Inquiries</a></nav>
           <nav aria-label="Elsewhere"><a href="https://github.com/Laplace-AI-Research" target="_blank" rel="noopener noreferrer">GitHub</a><a href="https://huggingface.co/Laplace-AI-Research" target="_blank" rel="noopener noreferrer">Hugging Face</a><a href="https://convictionbench.org/#leaderboard" target="_blank" rel="noopener noreferrer">Leaderboard</a></nav>
         </div>

@@ -122,6 +122,7 @@
                 </thead>
                 <tbody>
                   <tr id="code"><th scope="row">Code and verification scripts</th><td><a href="https://www.apache.org/licenses/LICENSE-2.0">Apache-2.0</a></td><td>Permitted</td></tr>
+                  <tr id="signet"><th scope="row">Signet models (2B, 4B, 9B),<br />adapters and merged weights</th><td><a href="https://www.apache.org/licenses/LICENSE-2.0">Apache-2.0</a></td><td>Permitted</td></tr>
                   <tr id="conviction"><th scope="row">Laplace Conviction Series adapters<br />(Anchor, Vector, Meridian)</th><td><a href="https://www.apache.org/licenses/LICENSE-2.0">Apache-2.0</a></td><td>Permitted</td></tr>
                   <tr id="convictionbench"><th scope="row">ConvictionBench dataset</th><td><a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>, plus its <a href="https://huggingface.co/datasets/Laplace-AI-Research/ConvictionBench">Hugging Face access agreement</a></td><td>Permitted, with attribution</td></tr>
                   <tr id="tarot-draw"><th scope="row">Tarot-Draw adapters (1.7B, 4B, 8B),<br />forecasts, and evaluation metadata</th><td><a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a></td><td>Not permitted</td></tr>
@@ -137,12 +138,15 @@
           <div class="body">
             <h2 id="base-title">Base models</h2>
             <p>
-              All of our adapters are fine-tuned from Qwen3 models released by the
+              All of our models are fine-tuned from Qwen3 and Qwen3.5 models released by the
               Qwen team at Alibaba Cloud under
               <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache-2.0</a>.
               Their licence is unaffected by ours.
             </p>
             <ul class="legal-list">
+              <li><b>Signet-2B</b>: <a href="https://huggingface.co/Qwen/Qwen3.5-2B">Qwen3.5-2B</a></li>
+              <li><b>Signet-4B</b>: <a href="https://huggingface.co/Qwen/Qwen3.5-4B">Qwen3.5-4B</a></li>
+              <li><b>Signet-9B</b>: <a href="https://huggingface.co/Qwen/Qwen3.5-9B">Qwen3.5-9B</a> (text model only)</li>
               <li><b>Laplace Conviction Series</b>: <a href="https://huggingface.co/Qwen/Qwen3-1.7B">Qwen3-1.7B</a></li>
               <li><b>Tarot-Draw 1.7B</b>: <a href="https://huggingface.co/Qwen/Qwen3-1.7B">Qwen3-1.7B</a></li>
               <li><b>Tarot-Draw 4B</b>: <a href="https://huggingface.co/Qwen/Qwen3-4B">Qwen3-4B</a></li>
@@ -224,7 +228,7 @@
       <footer class="foot">
         <a class="brand" href="/"><span class="mark" aria-hidden="true"></span>Laplace Research</a>
         <div class="cols">
-          <nav aria-label="Research"><a href="/convictionbench/">ConvictionBench</a><a href="/tarot-draw/">Tarot-Draw</a><a href="/research/">All research</a></nav>
+          <nav aria-label="Research"><a href="/signet/">Signet</a><a href="/convictionbench/">ConvictionBench</a><a href="/tarot-draw/">Tarot-Draw</a><a href="/research/">All research</a></nav>
           <nav aria-label="Lab"><a href="/about/">About</a><a href="/models/">Models</a><a href="mailto:inquiries@laplaceresearch.org">Inquiries</a></nav>
           <nav aria-label="Elsewhere"><a href="https://github.com/Laplace-AI-Research" target="_blank" rel="noopener noreferrer">GitHub</a><a href="https://huggingface.co/Laplace-AI-Research" target="_blank" rel="noopener noreferrer">Hugging Face</a><a href="https://convictionbench.org/#leaderboard" target="_blank" rel="noopener noreferrer">Leaderboard</a></nav>
         </div>
