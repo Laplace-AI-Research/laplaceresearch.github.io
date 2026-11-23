@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Signet release thread v3</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..700&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" />
+<style>
+  body { margin: 0; padding: 24px; background: #2a2d33; color: #ddd; font: 14px/1.4 "JetBrains Mono", monospace; }
+  canvas { display: block; max-width: 100%; height: auto; margin: 6px 0 26px; box-shadow: 0 0 0 1px rgba(255,255,255,.12); }
+</style>
+</head>
+<body>
+<div id="status">rendering…</div><div id="list"></div>
+<script src="brand.js"></script>
+<script>
+/* Release thread v3 (2026-11-23), restyled after frontier-lab launch threads: one takeaway headline per card, chart
+   fills the card, large value labels, Signet highlighted against grey comparators, no paragraphs on cards.
+   Data: thread_data.json (conviction-research scripts/signet_thread_data.py; same values as the technical report). */
+(async function () {
+  const B = window.SignetBrand, P = B.PD, TAU = B.TAU, W = 1600, H = 900;
+  const SAVE = new URLSearchParams(location.search).has("save"), ONLY = new URLSearchParams(location.search).get("only");
+  const D = await (await fetch("thread_data.json", { cache: "no-store" })).json();
+  await document.fonts.ready;
+  await Promise.all(['500 120px "Bodoni Moda"', 'italic 400 40px "Bodoni Moda"', '400 30px "Instrument Sans"', '500 30px "Instrument Sans"',
+    '600 30px "Instrument Sans"', '400 20px "JetBrains Mono"', '500 20px "JetBrains Mono"'].map(f => document.fonts.load(f)).concat([B.loadMark("/assets/mark.png")]));
+
+  const M = 104;
+  const SIG = P.ink, BASE = "#7d838c", V01 = P.prussian;
+  function ground(ctx) { ctx.fillStyle = P.paper; ctx.fillRect(0, 0, W, H); B.lattice(ctx, 0, 0, W, H, { gap: 40, color: P.ink, lines: false, dots: 1.1, dotAlpha: 0.14 }); }
+  function chrome(ctx, src) {
+    B.mark(ctx, M, 58, 26, P.ink);
+    B.text(ctx, "LAPLACE RESEARCH  ·  SIGNET", M + 40, 79, { fam: "mono", size: 16, color: P.graphite, track: 1.6, weight: 500 });
+    if (src) B.text(ctx, src, M, H - 48, { fam: "mono", size: 15, color: P.graphite });
+    B.text(ctx, "laplaceresearch.org/signet", W - M, H - 48, { fam: "mono", size: 15, color: P.graphite, align: "right" });
+  }
+  const head = (ctx, s, size = 66) => B.text(ctx, s, M - 4, 186, { fam: "display", size, weight: 500, color: P.ink, track: -0.5 });
+  const T = (ctx, s, x, y, o = {}) => B.text(ctx, s, x, y, { fam: o.fam || "body", size: o.size || 24, color: o.color || P.ink, align: o.align, weight: o.weight, track: o.track, style: o.style });
+  const mono = (ctx, s, x, y, o = {}) => T(ctx, s, x, y, Object.assign({ fam: "mono", size: 16, color: P.graphite }, o));
+  function dot(ctx, x, y, r, fill, stroke, lw = 2) { ctx.beginPath(); ctx.arc(x, y, r, 0, TAU); if (fill) { ctx.fillStyle = fill; ctx.fill(); } if (stroke) { ctx.strokeStyle = stroke; ctx.lineWidth = lw; ctx.stroke(); } }
+  function line(ctx, x0, y0, x1, y1, c = P.rule, lw = 1, dash = []) { ctx.strokeStyle = c; ctx.lineWidth = lw; ctx.setLineDash(dash); ctx.beginPath(); ctx.moveTo(x0, y0); ctx.lineTo(x1, y1); ctx.stroke(); ctx.setLineDash([]); }
+  const pct = v => Math.round(v * 100) + "%", sg = v => (v >= 0 ? "+" : "−") + Math.abs(v).toFixed(2);
+  function key(ctx, items, x, y) { let cx = x; items.forEach(([lab, draw]) => { draw(cx + 9, y - 7); T(ctx, lab, cx + 28, y, { size: 20, color: P.graphite }); ctx.font = '400 20px "Instrument Sans"'; cx += 28 + ctx.measureText(lab).width + 44; }); }
+  const sq = c => (x, y) => { ctx_.fillStyle = c; ctx_.fillRect(x - 9, y - 9, 18, 18); };
+  let ctx_;
+
+  const cards = [];
+  const add = (name, draw) => cards.push({ name, draw });
+
+  // 02 — the example
+  add("02-example", ctx => {
+    ground(ctx); chrome(ctx, "Verbatim outputs · a paste format never used in training");
+    head(ctx, "Same record. Two channels.");
+    const t = D.transcript, m = t.messages, rec = m[2].content.split("\n")[2].replace(/^>\s*/, "");
+    // the pasted message
+    ctx.fillStyle = P.plate; ctx.strokeStyle = P.rule; ctx.lineWidth = 1.2; ctx.beginPath(); ctx.roundRect(M, 250, W - 2 * M, 150, 12); ctx.fill(); ctx.stroke();
+    mono(ctx, "USER, AFTER THE MODEL CORRECTLY ANSWERED  x = 12", M + 28, 290, { track: 1.4, weight: 500 });
+    T(ctx, "“Taking another look at this.", M + 28, 340, { size: 28 });
+    ctx.fillStyle = P.graphite; ctx.fillRect(M + 28, 356, 4, 30);
+    T(ctx, rec + "”", M + 46, 380, { size: 28, color: P.ink, fam: "mono" });
+    const col = (x, who, d, good) => {
+      mono(ctx, who, x, 470, { track: 1.4, weight: 500, color: good ? P.ink : P.graphite, size: 17 });
+      const w = T(ctx, d.decision === "keep" ? "Keeps 12" : "Changes to " + d.answer, x, 548, { fam: "display", size: 64, weight: 500, color: good ? P.ink : P.graphite });
+      dot(ctx, x + w + 26, 528, 11, good ? P.ink : P.wax);
+      B.wrap(ctx, "“" + d.reason + "”", x, 610, 620, 36, { fam: "display", size: 27, style: "italic", color: P.graphite });
+    };
+    col(M, "QWEN3.5-9B", t.base_paste, false);
+    col(W / 2 + 20, "SIGNET-9B", t.sig_paste, true);
+    line(ctx, W / 2 - 20, 450, W / 2 - 20, 790, P.rule);
+  });
+
+  // 03 — core result
+  add("03-result", ctx => {
+    ctx_ = ctx; ground(ctx); chrome(ctx, "Same record as a tool message vs pasted into the chat · formats never used in training · 2,370 pairs per model");
+    head(ctx, "Base models can't tell a pasted record from a real one.", 54);
+    key(ctx, [["genuine tool record", sq(SIG)], ["identical record, pasted by the user", sq(V01)]], M, 262);
+    const top = 330, bot = 740, gw = (W - 2 * M) / 3;
+    line(ctx, M, bot, W - M, bot, P.graphite, 1.4);
+    ["2B", "4B", "9B"].forEach((s, gi) => {
+      D.adoption.filter(a => a.size === s).forEach((a, j) => {
+        const cx = M + gi * gw + 34 + j * 220;
+        [["tool", SIG], ["paste", V01]].forEach(([k, c], b) => {
+          const v = a[k], h = v * (bot - top), x = cx + b * 92;
+          ctx.fillStyle = a.signet ? c : (k === "tool" ? "#9aa0a8" : "#5d7aa3"); ctx.fillRect(x, bot - h, 82, h);
+          T(ctx, pct(v), x + 41, bot - h - 14, { fam: "mono", size: 24, align: "center", weight: 500, color: a.signet ? P.ink : P.graphite });
+        });
+        T(ctx, a.label, cx + 87, bot + 42, { size: 23, align: "center", weight: a.signet ? 600 : 400, color: a.signet ? P.ink : P.graphite });
+      });
+    });
+  });
+
+  // 04 — nobody else does it (strip plot)
+  add("04-field", ctx => {
+    ground(ctx); chrome(ctx, "Channel gap = adoption via tool minus adoption when pasted · 35 off-the-shelf models + 3 earlier Conviction adapters");
+    head(ctx, "No other model we tested checks the channel.", 58);
+    const x0 = M + 40, x1 = W - M - 40, xv = v => x0 + (v + 0.2) / 1.2 * (x1 - x0), y = 640;
+    line(ctx, x0, y, x1, y, P.graphite, 1.4);
+    [-0.2, 0, 0.25, 0.5, 0.75, 1].forEach(t => { line(ctx, xv(t), y - 230, xv(t), y + 8, t === 0 ? P.graphite : P.rule, t === 0 ? 1.4 : 1); mono(ctx, t === 0 ? "0" : t.toFixed(2), xv(t), y + 40, { align: "center" }); });
+    mono(ctx, "CHANNEL GAP  →", (x0 + x1) / 2, y + 80, { align: "center", track: 1.6 });
+    // beeswarm-ish stacking for the cluster near zero
+    const placed = [];
+    D.forest.filter(r => r.kind !== "sig").forEach(r => {
+      const x = xv(r.gap); let k = 0, yy;
+      do { yy = y - 22 - k * 20; k++; } while (placed.some(p => Math.abs(p[0] - x) < 17 && Math.abs(p[1] - yy) < 17));
+      placed.push([x, yy]);
+      dot(ctx, x, yy, 8, r.kind === "v01" ? V01 : "#5b616a", r.kind === "v01" ? null : "#8a9099", 1.4);
+    });
+    T(ctx, "38 models", xv(0), y - 22 - 20 * 11 - 10, { align: "center", size: 22, color: P.graphite });
+    D.forest.filter(r => r.kind === "sig").sort((a, b) => a.gap - b.gap).forEach((r, i) => {
+      const x = xv(r.gap), yy = y - 40 - i * 64;
+      line(ctx, xv(r.lo), yy, xv(r.hi), yy, SIG, 3);
+      dot(ctx, x, yy, 13, SIG); if (r.name === "Signet-9B") dot(ctx, x, yy, 5, P.wax);
+      T(ctx, r.name, xv(r.lo) - 18, yy + 8, { align: "right", size: 26, weight: 600 });
+    });
+  });
+
+  // 05 — not just stubborn
+  add("05-tradeoff", ctx => {
+    ground(ctx); chrome(ctx, "Problem types never seen in training");
+    head(ctx, "More skeptical, and still correctable.", 62);
+    const X0 = 230, X1 = W - M - 20, Y0 = 760, Y1 = 270, xv = v => X0 + v * (X1 - X0), yv = v => Y0 - (v - 0.5) / 0.52 * (Y0 - Y1);
+    [0, 0.25, 0.5, 0.75, 1].forEach(t => { line(ctx, xv(t), Y1, xv(t), Y0, P.rule); mono(ctx, pct(t), xv(t), Y0 + 32, { align: "center" }); });
+    [0.5, 0.75, 1].forEach(t => { line(ctx, X0, yv(t), X1, yv(t), P.rule); mono(ctx, pct(t), X0 - 16, yv(t) + 6, { align: "right" }); });
+    mono(ctx, "REJECTS FORGED RECORDS  →", (X0 + X1) / 2, Y0 + 70, { align: "center", track: 1.6 });
+    ctx.save(); ctx.translate(140, (Y0 + Y1) / 2); ctx.rotate(-Math.PI / 2); mono(ctx, "ACCEPTS VALID CORRECTIONS  →", 0, 0, { align: "center", track: 1.6 }); ctx.restore();
+    D.pareto.filter(p => p.kind === "shelf").forEach(p => dot(ctx, xv(p.x), yv(p.y), 8, "#5b616a", "#8a9099", 1.4));
+    D.pareto.filter(p => p.kind === "v01").forEach(p => dot(ctx, xv(p.x), yv(p.y), 10, V01));
+    D.pareto.filter(p => p.kind === "sig").forEach(p => {
+      dot(ctx, xv(p.x), yv(p.y), 15, SIG); if (p.name === "Signet-9B") dot(ctx, xv(p.x), yv(p.y), 6, P.wax);
+      T(ctx, p.name, xv(p.x) - 28, yv(p.y) + ({ "Signet-9B": -4, "Signet-4B": 30, "Signet-2B": 9 }[p.name]), { align: "right", size: 26, weight: 600 });
+    });
+    [["38 off-the-shelf models", (x, y) => dot(ctx, x, y, 8, "#5b616a", "#8a9099", 1.4)], ["earlier Conviction adapters", (x, y) => dot(ctx, x, y, 9, V01)], ["Signet", (x, y) => dot(ctx, x, y, 12, SIG)]]
+      .forEach(([l, d], i) => { d(1110, 590 + i * 44); T(ctx, l, 1136, 598 + i * 44, { size: 21, color: P.graphite }); });
+  });
+
+  // 06 — how (ablation, one metric)
+  add("06-how", ctx => {
+    ground(ctx); chrome(ctx, "Recipe development on Qwen3-1.7B · validation split · 95% intervals");
+    head(ctx, "The fix was in the data: pair every record with its twin.", 52);
+    mono(ctx, "CHANNEL GAP · SAME RECORD VIA TOOL VS PASTED PLAINLY", M, 268, { track: 1.6, weight: 500 });
+    const X0 = M + 40, X1 = W - M, base = 690, top = 330, yv = v => base - v / 0.45 * (base - top), gw = (X1 - X0) / 4;
+    line(ctx, X0 - 20, base, X1, base, P.graphite, 1.4);
+    const names = ["First recipe", "More samples +\ndifficulty filter", "Pair each record with\nits pasted twin", "Double the\ncontrast data"];
+    D.ablation.forEach((a, i) => {
+      const g = a.pure, x = X0 + i * gw + gw / 2 - 70, hot = i >= 2;
+      ctx.fillStyle = hot ? SIG : "#7d838c"; ctx.fillRect(x, Math.min(yv(g.gap), base), 140, Math.max(3, Math.abs(base - yv(g.gap))));
+      line(ctx, x + 70, yv(g.lo), x + 70, yv(g.hi), hot ? P.paper : P.ink, 1.6);
+      T(ctx, sg(g.gap), x + 70, yv(g.hi) - 16, { fam: "mono", size: 28, align: "center", weight: 500 });
+      names[i].split("\n").forEach((l, k) => T(ctx, l, x + 70, base + 76 + k * 30, { size: 22, align: "center", color: hot ? P.ink : P.graphite, weight: hot ? 600 : 400 }));
+    });
+  });
+
+  // 07 — finding: base model
+  add("07-base", ctx => {
+    ground(ctx); chrome(ctx, "GRPO from the base, same data · both bases start at the same held-out accuracy · 95% intervals");
+    head(ctx, "Same recipe. Different base. Different result.", 58);
+    mono(ctx, "CHANNEL GAP ON PASTE FORMATS NEVER SEEN IN TRAINING", M, 268, { track: 1.6, weight: 500 });
+    const X0 = 600, X1 = W - M - 120, xv = v => X0 + v * (X1 - X0);
+    [0, 0.25, 0.5, 0.75, 1].forEach(t => { line(ctx, xv(t), 320, xv(t), 720, P.rule); mono(ctx, t.toFixed(2), xv(t), 752, { align: "center" }); });
+    const labels = ["Qwen3-1.7B, 400 steps", "Qwen3-1.7B, 800 steps", "Qwen3.5-2B, 400 steps"];
+    D.base.forEach((b, i) => {
+      const y = 390 + i * 120, hot = i === 2;
+      T(ctx, labels[i], X0 - 30, y + 9, { align: "right", size: 27, weight: hot ? 600 : 400, color: hot ? P.ink : P.graphite });
+      ctx.fillStyle = hot ? SIG : "#7d838c"; ctx.fillRect(X0, y - 24, Math.max(4, xv(b.gap) - X0), 48);
+      T(ctx, sg(b.gap), xv(b.gap) + 18, y + 10, { fam: "mono", size: 30, weight: 500 });
+    });
+  });
+
+  // 08 — finding: scale
+  add("08-scale", ctx => {
+    ground(ctx); chrome(ctx, "Held-out problem types · warm-start uses 250 examples at 4B and 9B, 1,000 at 2B");
+    head(ctx, "The best recipe changes with scale.", 64);
+    const R0 = 330, R1 = W - M - 300, y0 = 740, y1 = 290, sx = s => R0 + ["2B", "4B", "9B"].indexOf(s) * ((R1 - R0) / 2), sy = v => y0 - (v - 0.4) / 0.62 * (y0 - y1);
+    [0.4, 0.6, 0.8, 1].forEach(t => { line(ctx, R0 - 30, sy(t), R1 + 30, sy(t), P.rule); mono(ctx, pct(t), R0 - 46, sy(t) + 6, { align: "right" }); });
+    ["2B", "4B", "9B"].forEach(s => T(ctx, s, sx(s), y0 + 44, { align: "center", size: 26, weight: 500 }));
+    mono(ctx, "HELD-OUT ACCURACY", R0 - 46, 262, { track: 1.6, weight: 500 });
+    const series = [["base", "#7d838c", "off the shelf", [10, 8]], ["rl", SIG, "RL only", []], ["a6", V01, "light warm-start → RL", []]];
+    series.forEach(([k, c, lab, dash]) => {
+      ctx.strokeStyle = c; ctx.lineWidth = 3.4; ctx.setLineDash(dash); ctx.beginPath();
+      ["2B", "4B", "9B"].forEach((s, i) => { const y = sy(D.scale[k][s].acc); i ? ctx.lineTo(sx(s), y) : ctx.moveTo(sx(s), y); }); ctx.stroke(); ctx.setLineDash([]);
+      ["2B", "4B", "9B"].forEach(s => dot(ctx, sx(s), sy(D.scale[k][s].acc), 9, k === "base" ? P.paper : c, k === "base" ? c : null, 2.4));
+      const y9 = sy(D.scale[k]["9B"].acc) + ({ base: 8, rl: 30, a6: -14 }[k]);
+      T(ctx, lab, R1 + 40, y9, { size: 24, color: c, weight: 600 });
+    });
+  });
+
+  // 09 — checks
+  add("09-checks", ctx => {
+    ground(ctx); chrome(ctx, "All three checks registered in advance · results on each model card");
+    head(ctx, "Checked before we shipped.", 66);
+    const rows = [["Second training seed", "Replicates at every size"], ["Never-published test split", "No sign of contamination"], ["Reworded system prompt", "At most 3.7 points lower"]];
+    rows.forEach((r, i) => {
+      const y = 330 + i * 140;
+      line(ctx, M, y - 56, W - M, y - 56, P.rule);
+      ctx.strokeStyle = P.ink; ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(M + 6, y - 10); ctx.lineTo(M + 22, y + 6); ctx.lineTo(M + 52, y - 28); ctx.stroke();
+      T(ctx, r[0], M + 100, y + 4, { size: 36, weight: 600 });
+      T(ctx, r[1], W - M, y + 4, { size: 32, align: "right", color: P.graphite, fam: "display", style: "italic" });
+    });
+    line(ctx, M, 330 + 3 * 140 - 56, W - M, 330 + 3 * 140 - 56, P.rule);
+  });
+
+  // 10 — what we're releasing
+  add("10-release", ctx => {
+    ground(ctx); chrome(ctx, "");
+    head(ctx, "What we're releasing", 66);
+    const items = [["Signet-2B, Signet-4B, Signet-9B", "LoRA adapters on Qwen3.5 · merged weights for 9B"], ["Apache-2.0", "Use, modify and build on them"],
+                   ["Code and every result", "Training configs, evals, the pre-registration log"], ["Technical report", "Coming next week"]];
+    items.forEach((it, i) => {
+      const y = 300 + i * 120;
+      line(ctx, M, y - 52, 1060, y - 52, P.rule);
+      T(ctx, it[0], M, y, { size: 34, weight: 600 });
+      T(ctx, it[1], M, y + 40, { size: 23, color: P.graphite });
+    });
+    line(ctx, M, 300 + 4 * 120 - 52, 1060, 300 + 4 * 120 - 52, P.rule);
+    [[1360, 300, 2, 58], [1170, 560, 4, 80], [1420, 630, 9, 112]].forEach(([x, y, N, R], i) => {
+      B.rings(ctx, { x, y }, { N, Rmax: R, rin: 6, color: P.ink, lw: N > 6 ? 1.6 : 2.2, wax: N === 9 ? P.wax : null }); if (N !== 9) dot(ctx, x, y, 4, P.ink);
+    });
+    T(ctx, "huggingface.co/Laplace-AI-Research", M, 800, { fam: "mono", size: 22, color: P.ink });
+  });
+
+  const list = document.getElementById("list"); let saved = 0;
+  for (const c of cards) {
+    if (ONLY && !c.name.startsWith(ONLY)) continue;
+    const p = document.createElement("p"); p.textContent = c.name; list.appendChild(p);
+    const cv = document.createElement("canvas"); cv.width = W; cv.height = H; list.appendChild(cv);
+    c.draw(cv.getContext("2d"));
+    if (SAVE && (await fetch("/save?path=" + encodeURIComponent(`social/signet/out/thread3/${c.name}.png`), { method: "POST", body: await new Promise(r => cv.toBlob(r)) })).ok) saved++;
+  }
+  document.getElementById("status").textContent = SAVE ? `done · saved ${saved}` : "done"; window.__done = true;
+})();
+</script>
+</body>
+</html>
