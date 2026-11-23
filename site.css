@@ -150,8 +150,8 @@ main {
   color: var(--ink);
   font-family: var(--serif); font-variation-settings: "opsz" 24;
   font-size: 21px;
-  font-weight: 600;
-  letter-spacing: -0.025em;
+  font-weight: 350;
+  letter-spacing: -0.03em;
   white-space: nowrap;
   line-height: 1;
   text-decoration: none;
