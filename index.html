@@ -74,7 +74,7 @@
     <link rel="preload" href="/assets/fonts/geist-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/assets/fonts/source-serif-4-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin />
     <script>document.documentElement.classList.add("js")</script>
-    <link rel="stylesheet" href="/site.css?v=20261123-2" />
+    <link rel="stylesheet" href="/site.css?v=20261123-3" />
   </head>
 
   <body>
@@ -124,35 +124,15 @@
 
         <section class="sec mosaic-sec" aria-label="Recent releases">
           <div class="wide mosaic">
-            <a class="tile" href="/convictionbench/"><img src="/assets/covers/convictionbench.svg" alt="Intervals tightening onto a line of truth, with two pulled away by pressure" width="960" height="600" /><span class="tile-tag">ConvictionBench</span></a>
-            <a class="tile" href="/tarot-draw/"><img src="/assets/covers/tarot-draw.svg" alt="Three halftone discs sized by model scale along a diagonal" width="960" height="600" /><span class="tile-tag">Tarot-Draw</span></a>
-            <a class="tile" href="/convictionbench/#models"><img src="/assets/covers/conviction-series.svg" alt="Three halftone Laplace curves for Anchor, Meridian, and Vector" width="960" height="600" /><span class="tile-tag">Conviction Series</span></a>
+            <a class="tile" href="/convictionbench/" aria-label="ConvictionBench"><img src="/assets/covers/convictionbench.svg" alt="Intervals tightening onto a line of truth, with two pulled away by pressure" width="960" height="600" /></a>
+            <a class="tile" href="/tarot-draw/" aria-label="Tarot-Draw"><img src="/assets/covers/tarot-draw.svg" alt="Three halftone discs sized by model scale along a diagonal" width="960" height="600" /></a>
+            <a class="tile" href="/models/#conviction" aria-label="The Conviction Series models"><img src="/assets/covers/conviction-series.svg" alt="Three halftone Laplace curves for Anchor, Meridian, and Vector" width="960" height="600" /></a>
           </div>
         </section>
 
-        <section class="sec" aria-labelledby="figures-title">
-          <p class="num">By the numbers</p>
+        <section class="sec news" id="writing" aria-labelledby="wr">
           <div class="wide">
-            <div class="sec-head">
-              <h2 id="figures-title">Claims travel with evidence.</h2>
-              <p>Every release ships its model artifacts, evaluation inputs, metric code, and limitations, so the headline numbers can be recomputed.</p>
-            </div>
-            <div class="figures">
-              <div><b>26,478</b><span>ConvictionBench episodes</span></div>
-              <div><b>81,870</b><span>Resolved training questions</span></div>
-              <div><b>0.0004</b><span>Calibration error, Tarot-Draw 1.7B, dev split</span></div>
-              <div><b>6</b><span>Open-weight models at 1.7B, 4B, and 8B</span></div>
-            </div>
-          </div>
-        </section>
-
-        <section class="sec" id="writing" aria-labelledby="wr">
-          <p class="num">Latest</p>
-          <div class="wide">
-            <div class="sec-head">
-              <h2 id="wr">New work.</h2>
-              <a class="btn link" href="/research/">All research</a>
-            </div>
+            <h2 id="wr">New work</h2>
             <div class="posts">
               <a class="post-row reveal" href="/convictionbench/">
                 <div class="post-copy">
@@ -162,7 +142,7 @@
                 </div>
                 <div class="post-cover"><img src="/assets/covers/convictionbench.svg" alt="" width="960" height="600" loading="lazy" /></div>
               </a>
-              <a class="post-row reveal" href="/convictionbench/#models">
+              <a class="post-row reveal" href="/models/#conviction">
                 <div class="post-copy">
                   <h3>The Laplace Conviction Series: three ways to train for belief revision</h3>
                   <p>Anchor, Vector, and Meridian are Qwen3-1.7B adapters trained with supervised fine-tuning, GRPO, and both in sequence. Vector posts the highest held-out accuracy; Meridian resists the most forged records.</p>
@@ -179,37 +159,7 @@
                 <div class="post-cover"><img src="/assets/covers/tarot-draw.svg" alt="" width="960" height="600" loading="lazy" /></div>
               </a>
             </div>
-          </div>
-        </section>
-
-        <section class="sec" id="approach" aria-labelledby="ap">
-          <p class="num">How we work</p>
-          <div class="wide">
-            <div class="sec-head">
-              <h2 id="ap">Two problems that tighten each other.</h2>
-              <p>Better data sharpens calibration, and understanding why a model is calibrated tells us which data to collect next.</p>
-            </div>
-            <ol class="principles">
-              <li><span class="i">I.</span><div><h3>Calibration before confidence</h3><p>A stated probability should match how often the model is right. We measure that first, and report it with intervals.</p></div></li>
-              <li><span class="i">II.</span><div><h3>Claims travel with evidence</h3><p>Releases link artifacts, evaluation inputs, metric code, and limitations. Unresolved results are labelled as such.</p></div></li>
-              <li><span class="i">III.</span><div><h3>Open by default</h3><p>Weights, evaluation data, and code are public, so anyone can recompute the headline numbers.</p></div></li>
-            </ol>
-          </div>
-        </section>
-
-        <section class="sec closing" aria-labelledby="wk">
-          <p class="num">Work with us</p>
-          <div class="body">
-            <h2 id="wk">For anyone who needs probabilities they can act on.</h2>
-            <p>
-              We collaborate with researchers, forecasters, and institutions
-              working on forecasting, evaluation, and model calibration.
-              We would like to hear from you.
-            </p>
-            <div class="btns">
-              <a class="btn solid" href="mailto:inquiries@laplaceresearch.org">Get in touch</a>
-              <a class="btn" href="/about/">About the lab</a>
-            </div>
+            <div class="btns"><a class="btn" href="/research/">All research</a></div>
           </div>
         </section>
       </main>
