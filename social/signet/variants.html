@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Signet title directions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..700&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" />
+<style> body { margin: 0; padding: 24px; background: #888; font: 14px monospace; } canvas { display: block; max-width: 100%; height: auto; margin: 8px 0 24px; } </style>
+</head>
+<body>
+<div id="status">rendering…</div><div id="list"></div>
+<script src="brand.js"></script>
+<script>
+(async function () {
+  const B = window.SignetBrand, TAU = B.TAU, SAVE = new URLSearchParams(location.search).has("save");
+  await document.fonts.ready;
+  await Promise.all(['500 120px "Bodoni Moda"', '400 30px "Instrument Sans"', '500 20px "JetBrains Mono"', '400 20px "JetBrains Mono"'].map(f => document.fonts.load(f)).concat([B.loadMark("/assets/mark.png")]));
+  const W = 1600, H = 900, PLATE_X = 800;
+
+  function chrome(ctx, pal) {
+    B.mark(ctx, 104, 66, 32, pal.ink);
+    B.text(ctx, "LAPLACE RESEARCH", 152, 92, { fam: "mono", size: 19, color: pal.ink, track: 1.6, weight: 500 });
+    B.text(ctx, "OPEN WEIGHTS · 2026.11.25", W - 104, 92, { fam: "mono", size: 19, color: pal.graphite, track: 1.6, align: "right" });
+  }
+  function titleBlock(ctx, pal, y0 = 390) {
+    B.text(ctx, "2B · 4B · 9B", 104, y0, { fam: "mono", size: 21, color: pal.graphite, track: 3, weight: 500 });
+    B.text(ctx, "Signet", 92, y0 + 210, { fam: "display", size: 236, weight: 500, color: pal.ink, track: -4 });
+    B.text(ctx, "Trust the record, not the look-alike.", 104, y0 + 330, { fam: "body", size: 38, color: pal.ink });
+  }
+  // dot lattice only on the text side, pinched line lattice on the plate side, split at a hairline rule
+  function splitGround(ctx, pal, seals, o = {}) {
+    ctx.fillStyle = pal.paper; ctx.fillRect(0, 0, W, H);
+    B.lattice(ctx, 0, 0, PLATE_X, H, { gap: 40, color: pal.ink, lines: false, dots: 1.2, dotAlpha: o.dotAlpha ?? 0.28 });
+    const S = seals.map(s => ({ x: s.x, y: s.y, R: s.R, k: s.k ?? 0.72 }));
+    B.lattice(ctx, PLATE_X, 0, W - PLATE_X, H, { gap: 40, seals: S, color: pal.ink, lw: 1, alpha: o.alpha ?? 0.3, dots: 1.6, dotAlpha: 0.75 });
+    ctx.strokeStyle = pal.rule; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(PLATE_X + 0.5, 0); ctx.lineTo(PLATE_X + 0.5, H); ctx.stroke();
+  }
+  const SEALS = [{ x: 990, y: 650, N: 2, Rmax: 92, R: 140 }, { x: 1180, y: 330, N: 4, Rmax: 132, R: 200 }, { x: 1360, y: 600, N: 9, Rmax: 190, R: 285 }];
+  function seals(ctx, pal, lwBase = 2) {
+    SEALS.forEach((s, i) => B.rings(ctx, s, { N: s.N, Rmax: s.Rmax, rin: Math.max(6, s.Rmax * 0.1), color: pal.ink, lw: s.N > 6 ? lwBase * 0.8 : lwBase, wax: i === 2 ? pal.wax : null }));
+    SEALS.slice(0, 2).forEach(s => { ctx.fillStyle = pal.ink; ctx.beginPath(); ctx.arc(s.x, s.y, 4, 0, TAU); ctx.fill(); });
+  }
+
+  const variants = [
+    ["A-night", "A · Night plate: dark ground, text on clean dots, seals pressed into a framed plate", (ctx) => {
+      const pal = B.PD; splitGround(ctx, pal, SEALS, { alpha: 0.32, dotAlpha: 0.22 }); seals(ctx, pal, 2.2); chrome(ctx, pal); titleBlock(ctx, pal);
+    }],
+    ["B-impression", "B · Impression: dark ground, the seals' Laplace field drawn as an embossed contour map", (ctx) => {
+      const pal = B.PD;
+      ctx.fillStyle = pal.paper; ctx.fillRect(0, 0, W, H);
+      B.lattice(ctx, 0, 0, W, H, { gap: 40, color: pal.ink, lines: false, dots: 1.2, dotAlpha: 0.2 });
+      const src = SEALS.map(s => ({ x: s.x, y: s.y, b: s.Rmax * 0.62 }));
+      ctx.save(); ctx.globalAlpha = 0.16; ctx.drawImage(B.bands(W, H, src, pal.ink, 0.08, 0.075), 0, 0); ctx.restore();
+      const S = SEALS.map(s => ({ x: s.x, y: s.y, R: s.R, k: 0.6 }));
+      B.lattice(ctx, PLATE_X - 120, 0, W - PLATE_X + 120, H, { gap: 40, seals: S, color: pal.ink, lw: 0.8, alpha: 0.18 });
+      seals(ctx, pal, 2.2); chrome(ctx, pal); titleBlock(ctx, pal);
+    }],
+    ["C-vellum", "C · Vellum, refined: light ground, same split composition, heavier seals, no captions", (ctx) => {
+      const pal = B.P; splitGround(ctx, pal, SEALS, { alpha: 0.26, dotAlpha: 0.3 }); seals(ctx, pal, 2.2); chrome(ctx, pal); titleBlock(ctx, pal);
+    }],
+  ];
+  const list = document.getElementById("list");
+  for (const [name, note, draw] of variants) {
+    const p = document.createElement("p"); p.textContent = note; list.appendChild(p);
+    const cv = document.createElement("canvas"); cv.width = W; cv.height = H; list.appendChild(cv);
+    draw(cv.getContext("2d"));
+    if (SAVE) await fetch("/save?path=" + encodeURIComponent(`social/signet/out/variants/${name}.png`), { method: "POST", body: await new Promise(r => cv.toBlob(r)) });
+  }
+  document.getElementById("status").textContent = "done"; window.__done = true;
+})();
+</script>
+</body>
+</html>
