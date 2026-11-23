@@ -520,6 +520,9 @@ a.mlicense:hover { border-color: var(--ink); color: var(--ink) !important; }
   .js .rail nav { display: none; flex-direction: column; gap: 0; padding: 4px 20px 16px; border-top: 1px solid var(--line); }
   .js .rail nav a { padding: 10px 0; border-bottom: 1px solid var(--line); color: var(--ink); font-family: var(--serif); font-size: 22px; font-weight: 300; line-height: 1.2; letter-spacing: -0.02em; }
   .js .rail.open nav { display: flex; }
+  .js .rail nav a[aria-current="page"] { color: var(--accent); }
+  .js .rail nav a[aria-current="page"]::before { display: block; top: 50%; left: -14px; margin-top: -2px; }
+  .js .rail nav { padding-left: 34px; }
   .js .rail.open .cta { display: flex; flex: 1 0 calc(100% - 40px); order: 4; margin: 0 20px 20px; }
   .sec { padding: 52px var(--pad) 60px; }
   .sec:first-child { padding-top: 44px; }

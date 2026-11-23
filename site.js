@@ -8,14 +8,23 @@
   var rail = document.querySelector(".rail");
   var menu = rail && rail.querySelector(".menu");
   if (menu) {
+    var close = function () {
+      rail.classList.remove("open");
+      menu.setAttribute("aria-expanded", "false");
+    };
     menu.addEventListener("click", function () {
       var open = rail.classList.toggle("open");
       menu.setAttribute("aria-expanded", open ? "true" : "false");
     });
+    // tapping a link closes the menu, including links to this same page
+    rail.addEventListener("click", function (e) {
+      if (e.target.closest("nav a, .cta")) close();
+    });
+    // a page restored from the back/forward cache comes back closed
+    window.addEventListener("pageshow", close);
     document.addEventListener("keydown", function (e) {
       if (e.key === "Escape" && rail.classList.contains("open")) {
-        rail.classList.remove("open");
-        menu.setAttribute("aria-expanded", "false");
+        close();
         menu.focus();
       }
     });
