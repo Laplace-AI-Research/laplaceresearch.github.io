@@ -150,16 +150,18 @@ main {
   color: var(--ink);
   font-family: var(--serif); font-variation-settings: "opsz" 24;
   font-size: 21px;
-  font-weight: 350;
-  letter-spacing: -0.03em;
+  font-weight: 600;
+  letter-spacing: -0.025em;
   white-space: nowrap;
   line-height: 1;
   text-decoration: none;
 }
 .brand .mark {
-  width: 18px;
-  height: 18px;
+  width: 0.82em;
+  height: 0.82em;
   flex: none;
+  /* centre the mark on the capitals rather than on the full line box */
+  translate: 0 -0.12em;
   background: var(--accent);
   -webkit-mask: url("/assets/mark.png") center / contain no-repeat;
   mask: url("/assets/mark.png") center / contain no-repeat;
