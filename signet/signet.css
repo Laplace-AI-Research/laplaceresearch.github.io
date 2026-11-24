@@ -1,9 +1,9 @@
 /* Signet release article. Standalone long-form layout: night-plate hero, vellum reading column, data figures.
    Palette follows the Laplace Lattice brand (social/signet/brand.js): paper, ink, graphite, rule, wax, prussian. */
-@font-face { font-family: "Geist"; font-style: normal; font-weight: 100 900; font-display: swap; src: url("/assets/fonts/geist-latin-wght-normal.woff2") format("woff2"); }
+@font-face { font-family: "Inter"; font-style: normal; font-weight: 100 900; font-display: swap; src: url("/assets/fonts/inter-latin-opsz-normal.woff2") format("woff2"); }
 @font-face { font-family: "Geist Mono"; font-style: normal; font-weight: 100 900; font-display: swap; src: url("/assets/fonts/geist-mono-latin-wght-normal.woff2") format("woff2"); }
-@font-face { font-family: "Source Serif 4"; font-style: normal; font-weight: 200 900; font-display: swap; src: url("/assets/fonts/source-serif-4-latin-opsz-normal.woff2") format("woff2"); }
-@font-face { font-family: "Source Serif 4"; font-style: italic; font-weight: 200 900; font-display: swap; src: url("/assets/fonts/source-serif-4-latin-opsz-italic.woff2") format("woff2"); }
+@font-face { font-family: "Newsreader"; font-style: normal; font-weight: 200 800; font-display: swap; src: url("/assets/fonts/newsreader-latin-opsz-normal.woff2") format("woff2"); }
+@font-face { font-family: "Newsreader"; font-style: italic; font-weight: 200 800; font-display: swap; src: url("/assets/fonts/newsreader-latin-opsz-italic.woff2") format("woff2"); }
 
 :root {
   --paper: #eef0ec;
@@ -24,8 +24,8 @@
   --night: #101216;
   --night-ink: #e6e8e3;
   --night-graphite: #969ca5;
-  --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
-  --sans: "Geist", "Helvetica Neue", Arial, sans-serif;
+  --serif: "Newsreader", Georgia, "Times New Roman", serif;
+  --sans: "Inter", "Helvetica Neue", Arial, sans-serif;
   --mono: "Geist Mono", ui-monospace, Menlo, monospace;
   --col: 680px;
   --wide: 1080px;
