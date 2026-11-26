@@ -11,7 +11,8 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 BRAND = ROOT / "assets" / "brand"
 # Five-point Δ on a 2000 x 2000 canvas (traced from the brand masters).
 MARK = [(1000, 432), (1699, 1567.5), (1044.4, 1375.5), (1267.8, 1170.9), (301, 1567.5)]
-NAVY_BG, NAVY_MARK, WHITE = (2, 51, 138), (15, 52, 135), (255, 255, 255)
+NAVY_BG = NAVY_MARK = (2, 51, 138)
+WHITE = (255, 255, 255)
 SS = 8  # supersampling
 
 

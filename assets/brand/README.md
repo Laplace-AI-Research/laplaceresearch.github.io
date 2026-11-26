@@ -11,4 +11,4 @@
 | `laplace-mark-black.{svg,png}` | Transparent, black |
 | `laplace-mark-white.{svg,png}` | Transparent, for dark or photo backgrounds |
 
-Colours: background navy `#02338A`; mark navy `#0F3487`.
+Colour: one navy, `#02338A`, for the mark, tiles and the site accent (`--accent` in `site.css`).
