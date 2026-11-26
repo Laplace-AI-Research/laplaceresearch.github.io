@@ -198,7 +198,7 @@ main {
   font-size: 13px;
   text-decoration: none;
   overflow: hidden;
-  transition: background-color 320ms var(--ease), transform 240ms var(--ease), box-shadow 320ms var(--ease);
+  transition: background-color 480ms var(--ease), transform 360ms var(--ease), box-shadow 480ms var(--ease);
 }
 .cta::before {
   content: "";
@@ -206,10 +206,10 @@ main {
   inset: -40% -20%;
   background: linear-gradient(
     112deg,
-    rgba(255, 255, 255, 0) 30%,
-    rgba(255, 255, 255, 0.28) 48%,
-    rgba(165, 196, 255, 0.22) 54%,
-    rgba(255, 255, 255, 0) 70%
+    rgba(255, 255, 255, 0) 28%,
+    rgba(255, 255, 255, 0.26) 48%,
+    rgba(165, 196, 255, 0.2) 55%,
+    rgba(255, 255, 255, 0) 72%
   );
   transform: translateX(-115%);
   transition: transform 0ms;
@@ -222,17 +222,17 @@ main {
 }
 .cta:hover::before {
   transform: translateX(115%);
-  transition: transform 640ms var(--ease);
+  transition: transform 1150ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 .cta:active {
   transform: translateY(0);
   box-shadow: 0 2px 6px rgba(27, 39, 143, 0.2);
 }
 .cta-roll { position: relative; z-index: 1; display: block; height: 18px; overflow: hidden; line-height: 18px; }
-.cta-roll span { display: block; transition: transform 380ms var(--ease); }
+.cta-roll span { display: block; transition: transform 480ms var(--ease); }
 .cta:hover .cta-roll span { transform: translateY(-100%); }
 .cta .icon-arrow { position: relative; z-index: 1; width: 14px; height: 14px; }
-.cta:hover .icon-arrow { animation: cta-arrow-loop 460ms var(--ease) both; }
+.cta:hover .icon-arrow { animation: cta-arrow-loop 620ms var(--ease) both; }
 @keyframes cta-arrow-loop {
   0% { transform: translateX(0); opacity: 1; }
   42% { transform: translateX(10px); opacity: 0; }
