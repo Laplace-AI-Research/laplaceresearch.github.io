@@ -1,6 +1,39 @@
-/* Laplace Research — Editorial article figure zoom lightbox. */
+/* Laplace Research — Editorial article figure zoom lightbox & Copy BibTeX. */
 (function () {
   "use strict";
+
+  // One-click Copy BibTeX button for every .post-bib block
+  document.querySelectorAll(".post-bib").forEach(function (pre) {
+    if (pre.parentElement && pre.parentElement.classList.contains("post-bib-wrap")) return;
+    var wrap = document.createElement("div");
+    wrap.className = "post-bib-wrap";
+    pre.parentNode.insertBefore(wrap, pre);
+    wrap.appendChild(pre);
+
+    var btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "post-bib-copy";
+    btn.textContent = "Copy BibTeX";
+    btn.setAttribute("aria-label", "Copy BibTeX citation");
+    wrap.appendChild(btn);
+
+    btn.addEventListener("click", function () {
+      var text = (pre.textContent || "").trim();
+      var done = function () {
+        btn.textContent = "Copied";
+        btn.classList.add("is-copied");
+        window.setTimeout(function () {
+          btn.textContent = "Copy BibTeX";
+          btn.classList.remove("is-copied");
+        }, 1600);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done).catch(done);
+      } else {
+        done();
+      }
+    });
+  });
 
   var frames = document.querySelectorAll(".post-fig-frame[data-zoomable]");
   if (!frames.length) return;

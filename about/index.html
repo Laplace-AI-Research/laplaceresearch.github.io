@@ -2,16 +2,17 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>About</title>
+    <title>About | Laplace Research</title>
     <meta
       name="description"
-      content="Laplace Research develops foundation models for calibrated forecasting."
+      content="Laplace Research develops foundation models for calibrated forecasting and evidence-sensitive belief revision."
     />
     <meta name="theme-color" content="#f6f5f2" />
     <meta name="color-scheme" content="only light" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 
     <link rel="canonical" href="https://laplaceresearch.org/about/" />
+    <link rel="alternate" type="application/atom+xml" title="Laplace Research" href="/feed.xml" />
     <link rel="icon" href="/favicon.ico?v=3" sizes="16x16 32x32 48x48" />
     <link rel="icon" type="image/png" href="/favicon-96.png?v=3" sizes="96x96" />
     <link rel="icon" type="image/png" href="/favicon-192.png?v=3" sizes="192x192" />
@@ -20,21 +21,18 @@
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Laplace Research" />
     <meta property="og:title" content="About Laplace Research" />
-    <meta
-      property="og:description"
-      content="Foundation models for calibrated forecasting."
-    />
+    <meta property="og:description" content="Foundation models for calibrated forecasting and evidence-sensitive belief revision." />
     <meta property="og:url" content="https://laplaceresearch.org/about/" />
-    <meta property="og:image" content="https://laplaceresearch.org/assets/laplace-social.png" />
+    <meta property="og:image" content="https://laplaceresearch.org/assets/og/home.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Laplace Research over a blue-grey mountain landscape" />
+    <meta property="og:image:alt" content="Laplace Research" />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="About Laplace Research" />
-    <meta name="twitter:description" content="Foundation models for calibrated forecasting." />
-    <meta name="twitter:image" content="https://laplaceresearch.org/assets/laplace-social.png" />
-    <meta name="twitter:image:alt" content="Laplace Research over a blue-grey mountain landscape" />
+    <meta name="twitter:description" content="Foundation models for calibrated forecasting and evidence-sensitive belief revision." />
+    <meta name="twitter:image" content="https://laplaceresearch.org/assets/og/home.png" />
+    <meta name="twitter:image:alt" content="Laplace Research" />
 
     <script type="application/ld+json">
       {
@@ -68,7 +66,66 @@
     <link rel="preload" href="/assets/fonts/inter-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/assets/fonts/newsreader-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin />
     <script>document.documentElement.classList.add("js")</script>
-    <link rel="stylesheet" href="/site.css?v=20261123-8" />
+    <link rel="stylesheet" href="/site.css?v=20261126-2" />
+    <style>
+      .about-hero {
+        padding: 52px var(--pad) 44px;
+        background: var(--panel);
+        border-bottom: 1px solid var(--line);
+      }
+      .about-hero-inner { max-width: 1080px; }
+      .about-hero h1 {
+        margin: 0 0 18px;
+        font-family: var(--serif);
+        font-size: clamp(46px, 5.6vw, 76px);
+        font-weight: 500;
+        line-height: 1;
+        letter-spacing: -0.03em;
+        color: var(--ink);
+      }
+      .about-hero .lede {
+        max-width: 640px;
+        margin: 0;
+        font-size: 17px;
+        line-height: 1.6;
+        color: var(--ink-2);
+      }
+      .about-hero .btns { margin-top: 24px; }
+      .about-sec {
+        padding: 52px var(--pad);
+        border-top: 1px solid var(--line);
+      }
+      .about-sec:first-of-type { border-top: 0; }
+      .about-sec-inner { max-width: 760px; }
+      .about-sec-inner.wide-inner { max-width: 1080px; }
+      .about-sec h2 {
+        margin: 0 0 16px;
+        font-family: var(--serif);
+        font-size: clamp(26px, 2.6vw, 34px);
+        font-weight: 500;
+        line-height: 1.15;
+        letter-spacing: -0.02em;
+        color: var(--ink);
+      }
+      .about-sec p {
+        margin: 0 0 16px;
+        font-size: 16px;
+        line-height: 1.65;
+        color: var(--ink-2);
+      }
+      .about-sec p:last-child { margin-bottom: 0; }
+      .about-sec a {
+        color: var(--accent);
+        text-decoration: underline;
+        text-decoration-color: rgba(51, 71, 214, 0.35);
+        text-underline-offset: 3px;
+      }
+      .about-sec a:hover { text-decoration-color: var(--accent); }
+      .about-sec .person-links a,
+      .about-sec .contact-list a { text-decoration: none; }
+      .about-sec .person-links a:hover,
+      .about-sec .contact-list a:hover { text-decoration: underline; }
+    </style>
   </head>
 
   <body>
@@ -98,21 +155,23 @@
         <img class="dither" src="/assets/dither.svg" alt="" width="248" height="64" />
       </header>
 
-      <main>
-        <section class="sec" id="content" aria-labelledby="t">
-          <p class="num">01</p>
-          <div class="body">
+      <main id="content">
+        <section class="about-hero" aria-labelledby="t">
+          <div class="about-hero-inner">
             <h1 id="t">Laplace Research</h1>
-            <p>
+            <p class="lede">
               We build foundation models for calibrated forecasting and study why
-              their confidence can be trusted.
+              their stated confidence can be trusted.
             </p>
+            <div class="btns">
+              <a class="btn solid" href="/research/">Read the research</a>
+              <a class="btn" href="/models/">Browse models</a>
+            </div>
           </div>
         </section>
 
-        <section class="sec" aria-labelledby="mandate-title">
-          <p class="num">02</p>
-          <div class="body">
+        <section class="about-sec" aria-labelledby="mandate-title">
+          <div class="about-sec-inner">
             <h2 id="mandate-title">Calibration before confidence</h2>
             <p>
               A forecast is useful only when you know how much to trust it.
@@ -128,25 +187,24 @@
           </div>
         </section>
 
-        <section class="sec" aria-labelledby="work-title">
-          <p class="num">03</p>
-          <div class="body">
+        <section class="about-sec" aria-labelledby="work-title">
+          <div class="about-sec-inner">
             <h2 id="work-title">Two connected problems</h2>
             <ol class="principles">
               <li><span class="i">i</span><div><h3>Forecasting data</h3><p>We aggregate resolved forecasting data across markets, history, and expert judgment. A model can only learn calibrated confidence from outcomes that are well specified and consistently resolved.</p></div></li>
-              <li><span class="i">ii</span><div><h3>Internal mechanisms</h3><p>We study the mechanisms that produce calibrated predictions. Understanding why a model is calibrated helps identify which data to collect next and where confidence should fail.</p></div></li>
+              <li><span class="i">ii</span><div><h3>Internal mechanisms</h3><p>We study the mechanisms that produce calibrated predictions and evidence-sensitive belief revision. Understanding why a model updates helps identify which data to collect next and where confidence should fail.</p></div></li>
             </ol>
-            <p style="margin-top: 22px">
+            <p style="margin-top: 24px">
               Our first public release was the <a href="/tarot-draw/">Tarot-Draw family</a>,
               a controlled study of model scale in binary forecasting, followed by
-              <a href="/convictionbench/">ConvictionBench</a>.
+              <a href="/convictionbench/">ConvictionBench</a> and the Conviction Series, and most recently
+              <a href="/signet/">Signet</a> &mdash; open models that check where a record came from before they believe it.
             </p>
           </div>
         </section>
 
-        <section class="sec" aria-labelledby="people-title">
-          <p class="num">04</p>
-          <div class="wide">
+        <section class="about-sec" aria-labelledby="people-title">
+          <div class="about-sec-inner wide-inner">
             <h2 id="people-title">Founders</h2>
             <div class="people-list">
               <article class="person-row">
@@ -169,9 +227,8 @@
           </div>
         </section>
 
-        <section class="sec" id="contact" aria-labelledby="contact-title">
-          <p class="num">05</p>
-          <div class="body">
+        <section class="about-sec" id="contact" aria-labelledby="contact-title">
+          <div class="about-sec-inner">
             <h2 id="contact-title">Get in touch</h2>
             <p>For research, collaboration, and general inquiries, write to the address below.</p>
             <dl class="contact-list">
@@ -198,6 +255,6 @@
         </div>
       </footer>
     </div>
-      <script src="/site.js?v=20261122-2" defer></script>
+    <script src="/site.js?v=20261122-2" defer></script>
   </body>
 </html>

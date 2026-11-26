@@ -2,16 +2,17 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>Research</title>
+    <title>Research | Laplace Research</title>
     <meta
       name="description"
-      content="Model releases and research from Laplace Research."
+      content="Model releases, benchmarks, and research from Laplace Research."
     />
     <meta name="theme-color" content="#f6f5f2" />
     <meta name="color-scheme" content="only light" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 
     <link rel="canonical" href="https://laplaceresearch.org/research/" />
+    <link rel="alternate" type="application/atom+xml" title="Laplace Research" href="/feed.xml" />
     <link rel="icon" href="/favicon.ico?v=3" sizes="16x16 32x32 48x48" />
     <link rel="icon" type="image/png" href="/favicon-96.png?v=3" sizes="96x96" />
     <link rel="icon" type="image/png" href="/favicon-192.png?v=3" sizes="192x192" />
@@ -20,18 +21,18 @@
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Laplace Research" />
     <meta property="og:title" content="Research | Laplace Research" />
-    <meta property="og:description" content="Model releases and research from Laplace Research." />
+    <meta property="og:description" content="Model releases, benchmarks, and research from Laplace Research." />
     <meta property="og:url" content="https://laplaceresearch.org/research/" />
-    <meta property="og:image" content="https://laplaceresearch.org/assets/laplace-social.png" />
+    <meta property="og:image" content="https://laplaceresearch.org/assets/og/home.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Laplace Research over a blue-grey mountain landscape" />
+    <meta property="og:image:alt" content="Laplace Research — Research releases" />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Research | Laplace Research" />
-    <meta name="twitter:description" content="Model releases and research from Laplace Research." />
-    <meta name="twitter:image" content="https://laplaceresearch.org/assets/laplace-social.png" />
-    <meta name="twitter:image:alt" content="Laplace Research over a blue-grey mountain landscape" />
+    <meta name="twitter:description" content="Model releases, benchmarks, and research from Laplace Research." />
+    <meta name="twitter:image" content="https://laplaceresearch.org/assets/og/home.png" />
+    <meta name="twitter:image:alt" content="Laplace Research — Research releases" />
 
     <script type="application/ld+json">
       {
@@ -70,7 +71,8 @@
     <link rel="preload" href="/assets/fonts/inter-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/assets/fonts/newsreader-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin />
     <script>document.documentElement.classList.add("js")</script>
-    <link rel="stylesheet" href="/site.css?v=20261123-8" />
+    <link rel="stylesheet" href="/site.css?v=20261126-2" />
+    <link rel="stylesheet" href="/research/research.css?v=20261126-1" />
   </head>
 
   <body>
@@ -100,97 +102,110 @@
         <img class="dither" src="/assets/dither.svg" alt="" width="248" height="64" />
       </header>
 
-      <main>
-        <section class="sec" id="content" aria-labelledby="t">
-          <p class="num">01</p>
-          <div class="body">
+      <main class="res-main" id="content">
+        <section class="res-hero" aria-labelledby="t">
+          <div class="res-hero-inner">
             <h1 id="t">Research</h1>
-            <p>
+            <p class="lede">
               Models, evaluations, and the evidence needed to inspect their
               claims. Each release links its artifacts, evaluation inputs, metric
               code, limitations, and reproduction instructions.
             </p>
-          </div>
-        </section>
-
-        <section class="sec" id="releases" aria-label="Releases">
-          <p class="num">02</p>
-          <div class="wide">
-            <p class="kicker" style="margin-bottom: 16px">2026</p>
-            <div class="research-list">
-              <article class="research-row">
-                <p class="research-date">
-                  <time datetime="2026-11-24">2026.11.24</time>
-                  <span class="research-type">Models</span>
-                </p>
-                <div class="research-copy">
-                  <h2><a href="/signet/">Signet</a></h2>
-                  <p>
-                    Three open models, 2B to 9B, that check where a record came from
-                    before they believe it: genuine tool records are adopted, the same
-                    record pasted into the chat is not.
-                  </p>
-                  <p class="research-authors">Arya Somu, Bruce Nshuti Hirwa</p>
-                </div>
-                <div class="research-links">
-                  <a href="/signet/">Read release</a>
-                  <a href="/models/#signet">Models</a>
-                  <a href="https://github.com/Laplace-AI-Research/signet" target="_blank" rel="noopener noreferrer">Code and results</a>
-                </div>
-              </article>
-              <article class="research-row">
-                <p class="research-date">
-                  <time datetime="2026-11-19">2026.11.19</time>
-                  <span class="research-type">Benchmark &middot; Models</span>
-                </p>
-                <div class="research-copy">
-                  <h2><a href="/convictionbench/">ConvictionBench: Evidence-Sensitive Belief Revision in Language Models</a></h2>
-                  <p>
-                    A benchmark for how language models revise their answers under
-                    evidence and social pressure, released with the Laplace
-                    Conviction Series: three experimental Qwen3-1.7B LoRA adapters.
-                  </p>
-                  <p class="research-authors">Arya Somu, Bruce Nshuti Hirwa</p>
-                  <p class="research-note">Benchmark and adapters first released <time datetime="2026-11-10">10 November 2026</time>.</p>
-                </div>
-                <div class="research-links">
-                  <a href="/convictionbench/paper.pdf">Paper (PDF)</a>
-                  <a href="/models/#conviction">Models</a>
-                  <a href="https://convictionbench.org/#leaderboard">Live leaderboard</a>
-                </div>
-              </article>
-              <article class="research-row">
-                <p class="research-date">
-                  <time datetime="2026-08-29">2026.08.29</time>
-                  <span class="research-type">Models</span>
-                </p>
-                <div class="research-copy">
-                  <h2><a href="/tarot-draw/">Tarot-Draw</a></h2>
-                  <p>
-                    Three binary forecasting models trained on the same 81,870
-                    questions. A controlled study of what model size changes, and
-                    what it does not.
-                  </p>
-                  <p class="research-authors">Arya Somu, Bruce Nshuti Hirwa</p>
-                </div>
-                <div class="research-links">
-                  <a href="/tarot-draw/">Read release</a>
-                  <a href="https://huggingface.co/collections/Laplace-AI-Research/tarot-draw-family" target="_blank" rel="noopener noreferrer">Model collection</a>
-                </div>
-              </article>
+            <div class="btns">
+              <a class="btn solid ext" href="https://convictionbench.org/#leaderboard" target="_blank" rel="noopener noreferrer">ConvictionBench leaderboard</a>
+              <a class="btn" href="/models/">Browse models</a>
             </div>
           </div>
         </section>
 
-        <section class="sec" id="standard" aria-labelledby="standard-title">
-          <p class="num">03</p>
-          <div class="body">
-            <h2 id="standard-title">Claims should travel with evidence</h2>
-            <p>
-              Public releases link their model artifacts, evaluation inputs,
-              metric code, limitations, and reproduction instructions. Where a
-              result is not statistically resolved, the release says so.
-            </p>
+        <div class="res-bar" role="region" aria-label="Filter research releases">
+          <div class="res-bar-inner">
+            <div class="res-pills" role="group" aria-label="Filter by category">
+              <button type="button" class="rpill" data-rfilter="all" aria-pressed="true">All releases (3)</button>
+              <button type="button" class="rpill" data-rfilter="models" aria-pressed="false">Models (3)</button>
+              <button type="button" class="rpill" data-rfilter="benchmark" aria-pressed="false">Benchmarks (1)</button>
+            </div>
+            <a class="res-feed-link" href="/feed.xml">Atom feed &rarr;</a>
+          </div>
+        </div>
+
+        <section class="res-wrap" id="releases" aria-label="Releases">
+          <div class="res-list-inner">
+            <p class="res-year">2026</p>
+            <div class="res-cards">
+              <article class="rcard" data-rcats="models">
+                <div class="rcard-copy">
+                  <div class="rcard-meta">
+                    <span class="rcard-kicker">Models</span>
+                    <time datetime="2026-11-24">November 24, 2026</time>
+                  </div>
+                  <h2><a href="/signet/">Signet: open models that check where a record came from before they believe it</a></h2>
+                  <p class="rcard-desc">
+                    Three open models, 2B to 9B, trained to adopt genuine tool records
+                    and reject the same record pasted into chat &mdash; including in
+                    formats never seen in training &mdash; while still accepting valid corrections.
+                  </p>
+                  <p class="rcard-authors">Arya Somu, Bruce Nshuti Hirwa</p>
+                  <div class="rcard-links">
+                    <a class="primary" href="/signet/">Read release &rarr;</a>
+                    <a href="/models/#signet">Models</a>
+                    <a href="https://github.com/Laplace-AI-Research/signet" target="_blank" rel="noopener noreferrer">Code &amp; results</a>
+                  </div>
+                </div>
+                <a class="rcard-art" href="/signet/" aria-label="Read the Signet release">
+                  <img src="/assets/covers/signet-hero.svg" alt="" width="1600" height="720" />
+                </a>
+              </article>
+
+              <article class="rcard" data-rcats="benchmark models">
+                <div class="rcard-copy">
+                  <div class="rcard-meta">
+                    <span class="rcard-kicker">Benchmark &middot; Models</span>
+                    <time datetime="2026-11-19">November 19, 2026</time>
+                  </div>
+                  <h2><a href="/convictionbench/">ConvictionBench: Evidence-Sensitive Belief Revision in Language Models</a></h2>
+                  <p class="rcard-desc">
+                    A benchmark measuring how language models revise their answers under
+                    evidence quality and social pressure across 26,478 episodes, released
+                    with the Laplace Conviction Series of Qwen3-1.7B LoRA adapters.
+                  </p>
+                  <p class="rcard-authors">Arya Somu, Bruce Nshuti Hirwa &middot; First released Nov 10, 2026</p>
+                  <div class="rcard-links">
+                    <a class="primary" href="/convictionbench/">Read release &rarr;</a>
+                    <a href="/convictionbench/paper.pdf">Paper (PDF)</a>
+                    <a href="/models/#conviction">Models</a>
+                    <a href="https://convictionbench.org/#leaderboard" target="_blank" rel="noopener noreferrer">Live leaderboard</a>
+                  </div>
+                </div>
+                <a class="rcard-art" href="/convictionbench/" aria-label="Read the ConvictionBench release">
+                  <img src="/assets/covers/convictionbench-hero.svg" alt="" width="1600" height="720" />
+                </a>
+              </article>
+
+              <article class="rcard" data-rcats="models">
+                <div class="rcard-copy">
+                  <div class="rcard-meta">
+                    <span class="rcard-kicker">Models &middot; Release</span>
+                    <time datetime="2026-08-29">August 29, 2026</time>
+                  </div>
+                  <h2><a href="/tarot-draw/">Tarot-Draw: what model scale changes in binary forecasting, and what it does not</a></h2>
+                  <p class="rcard-desc">
+                    Three binary forecasting models (1.7B, 4B, and 8B) trained on the same
+                    81,870 resolved questions. The 4B matches the 8B within experimental
+                    resolution, and the 1.7B is the best calibrated of the three.
+                  </p>
+                  <p class="rcard-authors">Arya Somu, Bruce Nshuti Hirwa</p>
+                  <div class="rcard-links">
+                    <a class="primary" href="/tarot-draw/">Read release &rarr;</a>
+                    <a href="/models/#tarot-draw">Models</a>
+                    <a href="https://huggingface.co/collections/Laplace-AI-Research/tarot-draw-family" target="_blank" rel="noopener noreferrer">Hugging Face collection</a>
+                  </div>
+                </div>
+                <a class="rcard-art" href="/tarot-draw/" aria-label="Read the Tarot-Draw release">
+                  <img src="/assets/covers/tarot-draw-hero.svg" alt="" width="1600" height="720" />
+                </a>
+              </article>
+            </div>
           </div>
         </section>
       </main>
@@ -209,6 +224,24 @@
         </div>
       </footer>
     </div>
-      <script src="/site.js?v=20261122-2" defer></script>
+    <script src="/site.js?v=20261122-2" defer></script>
+    <script>
+      (function () {
+        var pills = Array.from(document.querySelectorAll(".rpill[data-rfilter]"));
+        var cards = Array.from(document.querySelectorAll(".rcard[data-rcats]"));
+        pills.forEach(function (pill) {
+          pill.addEventListener("click", function () {
+            var f = pill.getAttribute("data-rfilter") || "all";
+            pills.forEach(function (p) {
+              p.setAttribute("aria-pressed", String(p === pill));
+            });
+            cards.forEach(function (c) {
+              var cats = (c.getAttribute("data-rcats") || "").split(/\s+/);
+              c.hidden = f !== "all" && cats.indexOf(f) === -1;
+            });
+          });
+        });
+      })();
+    </script>
   </body>
 </html>
