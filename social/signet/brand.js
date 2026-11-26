@@ -139,12 +139,13 @@
   function loadMark(src) {
     return new Promise(res => { const im = new Image(); im.onload = () => { markImg = im; res(); }; im.onerror = () => res(); im.src = src; });
   }
-  function mark(ctx, x, y, size, color) { // Laplace lab asterisk, tinted to one colour
+  function mark(ctx, x, y, size, color) { // Laplace lab Δ mark, tinted to one colour, fitted to a size x size box
     if (!markImg) return;
-    const off = document.createElement("canvas"); off.width = off.height = size * 2;
-    const o = off.getContext("2d"); o.drawImage(markImg, 0, 0, size * 2, size * 2);
-    o.globalCompositeOperation = "source-in"; o.fillStyle = color; o.fillRect(0, 0, size * 2, size * 2);
-    ctx.drawImage(off, x, y, size, size);
+    const ar = markImg.height / markImg.width, h = size * ar;
+    const off = document.createElement("canvas"); off.width = size * 2; off.height = Math.round(h * 2);
+    const o = off.getContext("2d"); o.drawImage(markImg, 0, 0, off.width, off.height);
+    o.globalCompositeOperation = "source-in"; o.fillStyle = color; o.fillRect(0, 0, off.width, off.height);
+    ctx.drawImage(off, x, y + (size - h) / 2, size, h);
   }
 
   window.SignetBrand = { P, PD, F, TAU, pinch, lattice, ringRadii, rings, bands, pressed, sealSVG, font, text, wrap, loadMark, mark };

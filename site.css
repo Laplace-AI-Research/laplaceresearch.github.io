@@ -22,6 +22,7 @@
   --line-strong: #e0e0df;
   --accent: #3347d6;
   --accent-ink: #2335b8;
+  --brand: #0f3487;
   --s1: #2a78d6;
   --s2: #eb6834;
   --s3: #1baf7a;
@@ -157,17 +158,17 @@ main {
   text-decoration: none;
 }
 .brand .mark {
-  width: 0.82em;
-  height: 0.82em;
+  width: 0.9em;
+  height: 0.74em;
   flex: none;
-  /* centre the mark on the capitals rather than on the full line box */
-  translate: 0 -0.12em;
-  background: var(--accent);
+  /* sit the mark on the baseline of the capitals rather than the full line box */
+  translate: 0 -0.08em;
+  background: var(--brand);
   -webkit-mask: url("/assets/mark.png") center / contain no-repeat;
   mask: url("/assets/mark.png") center / contain no-repeat;
   transition: transform 600ms var(--ease);
 }
-.brand:hover .mark { transform: rotate(60deg); }
+.brand:hover .mark { transform: translateY(-0.08em); }
 
 .rail nav { display: flex; flex-direction: column; margin-top: 64px; }
 .rail nav a {

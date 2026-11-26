@@ -164,26 +164,28 @@ def cover_tarot():
 
 
 # ---------------------------------------------------------------- 4
-def asterisk_contains(x, y, cx, cy, R, rot=0.26):
-    """Six rounded petals radiating from the centre, like the Laplace mark."""
-    dx, dy = x - cx, y - cy
-    for k in range(6):
-        a = rot + k * math.pi / 3
-        ux, uy = math.cos(a), math.sin(a)
-        t = max(0.0, min(R * 0.7, dx * ux + dy * uy))  # project onto the petal axis
-        px, py = ux * t, uy * t
-        if (dx - px) ** 2 + (dy - py) ** 2 <= (R * 0.27) ** 2:
-            return True
-    return False
+# The Laplace Δ mark (tools/generate_brand.py), centred on the origin with half-width 1.
+DELTA = [((x - 1000) / 700, (y - 1000) / 700) for x, y in
+         [(1000, 432), (1699, 1567.5), (1044.4, 1375.5), (1267.8, 1170.9), (301, 1567.5)]]
+
+
+def delta_contains(x, y, cx, cy, R):
+    """Point-in-polygon test for the Laplace Δ mark scaled to half-width R."""
+    u, v = (x - cx) / R, (y - cy) / R
+    inside = False
+    for (x0, y0), (x1, y1) in zip(DELTA, DELTA[1:] + DELTA[:1]):
+        if (y0 > v) != (y1 > v) and u < x0 + (v - y0) * (x1 - x0) / (y1 - y0):
+            inside = not inside
+    return inside
 
 
 def cover_standard():
     bg, pale, ink = "#173d31", "#d7efe2", "#ffffff"
     s = [head(bg)]
-    cx, cy, R = W * 0.76, H * 0.52, 300
+    cx, cy, R = W * 0.72, H * 0.5, 230
 
     def rad(x, y):
-        if not asterisk_contains(x, y, cx, cy, R):
+        if not delta_contains(x, y, cx, cy, R):
             return 0
         lx, ly = cx - R * 0.35, cy - R * 0.4  # soft light from the upper left
         d = min(1, math.hypot(x - lx, y - ly) / (R * 1.25))
