@@ -139,7 +139,7 @@
 }
 
 .rcard:hover {
-  border-color: rgba(51, 71, 214, 0.5);
+  border-color: rgba(2, 51, 138, 0.5);
 }
 
 .rcard-copy {
@@ -240,7 +240,7 @@
   position: relative;
   display: block;
   overflow: hidden;
-  background: #08104a;
+  background: #011a47;
   border-left: 1px solid var(--line);
   min-height: 220px;
 }

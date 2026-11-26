@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 250" width="760" height="250" role="img" aria-label="Tarot-Draw single-pass probability estimation pipeline">
   <defs>
     <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-      <path d="M 1 2 L 8 5 L 1 8 z" fill="#3347d6"/>
+      <path d="M 1 2 L 8 5 L 1 8 z" fill="#02338a"/>
     </marker>
   </defs>
   <rect width="760" height="250" fill="#ffffff"/>
@@ -11,36 +11,36 @@
   <text x="36" y="50" font-family="Geist Mono, ui-monospace, monospace" font-size="10.5" letter-spacing="0.08em" fill="#6b7080">INPUT SPECIFICATION</text>
 
   <rect x="36" y="64" width="192" height="30" fill="#ffffff" stroke="#e2e4ec" stroke-width="1"/>
-  <rect x="36" y="64" width="3" height="30" fill="#3347d6"/>
+  <rect x="36" y="64" width="3" height="30" fill="#02338a"/>
   <text x="48" y="83" font-family="Inter, Helvetica Neue, Arial, sans-serif" font-size="12.5" fill="#23262d">Question text</text>
 
   <rect x="36" y="102" width="192" height="30" fill="#ffffff" stroke="#e2e4ec" stroke-width="1"/>
-  <rect x="36" y="102" width="3" height="30" fill="#3347d6"/>
+  <rect x="36" y="102" width="3" height="30" fill="#02338a"/>
   <text x="48" y="121" font-family="Inter, Helvetica Neue, Arial, sans-serif" font-size="12.5" fill="#23262d">Resolution criteria</text>
 
   <rect x="36" y="140" width="192" height="30" fill="#ffffff" stroke="#e2e4ec" stroke-width="1"/>
-  <rect x="36" y="140" width="3" height="30" fill="#3347d6"/>
+  <rect x="36" y="140" width="3" height="30" fill="#02338a"/>
   <text x="48" y="159" font-family="Inter, Helvetica Neue, Arial, sans-serif" font-size="12.5" fill="#23262d">Scheduled resolution date</text>
 
   <rect x="36" y="178" width="192" height="30" fill="#ffffff" stroke="#e2e4ec" stroke-width="1"/>
-  <rect x="36" y="178" width="3" height="30" fill="#3347d6"/>
+  <rect x="36" y="178" width="3" height="30" fill="#02338a"/>
   <text x="48" y="197" font-family="Geist Mono, ui-monospace, monospace" font-size="12" fill="#23262d">as_of_date</text>
 
   <!-- Arrow 1 -->
-  <line x1="244" y1="125" x2="292" y2="125" stroke="#3347d6" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="244" y1="125" x2="292" y2="125" stroke="#02338a" stroke-width="1.5" marker-end="url(#arr)"/>
 
   <!-- Center: Controlled Model Family -->
   <rect x="298" y="26" width="212" height="198" fill="#ffffff" stroke="#23262d" stroke-width="1.2"/>
-  <rect x="298" y="26" width="212" height="34" fill="#3347d6"/>
+  <rect x="298" y="26" width="212" height="34" fill="#02338a"/>
   <text x="404" y="47" text-anchor="middle" font-family="Geist Mono, ui-monospace, monospace" font-size="11" letter-spacing="0.06em" fill="#ffffff">TAROT-DRAW PRIOR</text>
 
   <rect x="316" y="76" width="176" height="32" fill="#f7f8fc" stroke="#d9dce6" stroke-width="1"/>
   <text x="328" y="96" font-family="Inter, Helvetica Neue, Arial, sans-serif" font-size="12" font-weight="500" fill="#23262d">1.7B</text>
   <text x="480" y="96" text-anchor="end" font-family="Geist Mono, ui-monospace, monospace" font-size="11" fill="#6b7080">Brier 0.1803</text>
 
-  <rect x="316" y="116" width="176" height="34" fill="#edf0ff" stroke="#3347d6" stroke-width="1.2"/>
+  <rect x="316" y="116" width="176" height="34" fill="#edf0ff" stroke="#02338a" stroke-width="1.2"/>
   <text x="328" y="137" font-family="Inter, Helvetica Neue, Arial, sans-serif" font-size="12" font-weight="600" fill="#23262d">4B  (default)</text>
-  <text x="480" y="137" text-anchor="end" font-family="Geist Mono, ui-monospace, monospace" font-size="11" font-weight="600" fill="#3347d6">0.1684</text>
+  <text x="480" y="137" text-anchor="end" font-family="Geist Mono, ui-monospace, monospace" font-size="11" font-weight="600" fill="#02338a">0.1684</text>
 
   <rect x="316" y="158" width="176" height="32" fill="#f7f8fc" stroke="#d9dce6" stroke-width="1"/>
   <text x="328" y="178" font-family="Inter, Helvetica Neue, Arial, sans-serif" font-size="12" font-weight="500" fill="#23262d">8B</text>
@@ -49,7 +49,7 @@
   <text x="404" y="211" text-anchor="middle" font-family="Inter, Helvetica Neue, Arial, sans-serif" font-size="10.5" fill="#6b7080">No retrieval · No news · Same 81,870 corpus</text>
 
   <!-- Arrow 2 -->
-  <line x1="510" y1="125" x2="558" y2="125" stroke="#3347d6" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="510" y1="125" x2="558" y2="125" stroke="#02338a" stroke-width="1.5" marker-end="url(#arr)"/>
 
   <!-- Right: Calibrated Output -->
   <rect x="564" y="54" width="176" height="142" fill="#f7f8fc" stroke="#d9dce6" stroke-width="1"/>
@@ -57,5 +57,5 @@
   <text x="652" y="136" text-anchor="middle" font-family="Newsreader, Georgia, serif" font-size="52" font-weight="300" fill="#23262d">0.73</text>
   <text x="652" y="162" text-anchor="middle" font-family="Inter, Helvetica Neue, Arial, sans-serif" font-size="12" fill="#6b7080">probability in [0, 1]</text>
   <rect x="584" y="174" width="136" height="4" fill="#e2e4ec"/>
-  <rect x="584" y="174" width="99" height="4" fill="#3347d6"/>
+  <rect x="584" y="174" width="99" height="4" fill="#02338a"/>
 </svg>

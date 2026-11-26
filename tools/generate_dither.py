@@ -9,7 +9,7 @@ import math, pathlib
 OUT = pathlib.Path(__file__).resolve().parent.parent / "assets" / "dither.svg"
 CELL, COLS, ROWS = 4, 62, 16
 W, H = COLS * CELL, ROWS * CELL
-INK = "#3347d6"
+INK = "#02338a"
 BAYER = [[0, 8, 2, 10], [12, 4, 14, 6], [3, 11, 1, 9], [15, 7, 13, 5]]
 
 

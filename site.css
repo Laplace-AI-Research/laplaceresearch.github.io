@@ -20,8 +20,9 @@
   --faint: rgba(35, 38, 45, 0.38);
   --line: #e8e8e8;
   --line-strong: #e0e0df;
-  --accent: #3347d6;
-  --accent-ink: #2335b8;
+  --accent: #02338a;
+  --accent-ink: #01276b;
+  --brand: var(--accent);
   --s1: #2a78d6;
   --s2: #eb6834;
   --s3: #1baf7a;
@@ -35,7 +36,7 @@
   --col: 700px;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
   --offset: max(0px, calc((100vw - 1600px) / 2));
-  --metal-stops: #c3cad6 0%, #8d97a8 14%, #d5dae3 28%, #5c6678 42%, #3347d6 56%, #b9c4ff 66%, #6a7486 80%, #cfd5df 92%, #7b8597 100%;
+  --metal-stops: #c3cad6 0%, #8d97a8 14%, #d5dae3 28%, #5c6678 42%, #02338a 56%, #b9c4ff 66%, #6a7486 80%, #cfd5df 92%, #7b8597 100%;
   --metal: linear-gradient(135deg, var(--metal-stops));
   --metal-h: linear-gradient(90deg, var(--metal-stops));
   /* aliases for the figure, table, and release components */
@@ -157,17 +158,17 @@ main {
   text-decoration: none;
 }
 .brand .mark {
-  width: 0.82em;
-  height: 0.82em;
+  width: 0.9em;
+  height: 0.74em;
   flex: none;
-  /* centre the mark on the capitals rather than on the full line box */
-  translate: 0 -0.12em;
-  background: var(--accent);
+  /* sit the mark on the baseline of the capitals rather than the full line box */
+  translate: 0 -0.08em;
+  background: var(--brand);
   -webkit-mask: url("/assets/mark.png") center / contain no-repeat;
   mask: url("/assets/mark.png") center / contain no-repeat;
   transition: transform 600ms var(--ease);
 }
-.brand:hover .mark { transform: rotate(60deg); }
+.brand:hover .mark { transform: translateY(-0.08em); }
 
 .rail nav { display: flex; flex-direction: column; margin-top: 64px; }
 .rail nav a {
