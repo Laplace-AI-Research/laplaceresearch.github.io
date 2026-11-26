@@ -562,12 +562,12 @@ a.mlicense:hover { border-color: var(--ink); color: var(--ink) !important; }
 
 /* ---------- home: principles ---------- */
 
-.principles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin: 8px 0 0; padding: 0; list-style: none; border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
+.principles { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); margin: 8px 0 0; padding: 0; list-style: none; border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
 .principles li { display: flex; flex-direction: column; gap: 40px; padding: 20px 22px 24px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
 .principles .i { color: var(--accent); font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; }
 .principles h3 { margin: 0 0 8px; font-size: 21px; line-height: 1.15; letter-spacing: -0.02em; }
 .principles p { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.6; }
-.body .principles { grid-template-columns: 1fr; }
+.body .principles { grid-template-columns: 1fr; grid-auto-flow: row; }
 .body .principles li { flex-direction: row; gap: 18px; }
 
 /* ---------- home: closing panel ---------- */
@@ -688,7 +688,7 @@ a.mlicense:hover { border-color: var(--ink); color: var(--ink) !important; }
   .post-cover { order: -1; border-left: 0; border-bottom: 1px solid var(--line); }
   .post-copy { padding: 22px 20px 20px; }
   .sec-head { flex-direction: column; align-items: start; }
-  .principles { grid-template-columns: 1fr; }
+  .principles { grid-template-columns: 1fr; grid-auto-flow: row; }
   .principles li { gap: 18px; }
   .foot { grid-template-columns: 1fr; padding: 40px var(--pad) 32px; border: 0; border-top: 1px solid var(--line); }
   .foot .cols { grid-template-columns: repeat(2, minmax(0, 1fr)); }
