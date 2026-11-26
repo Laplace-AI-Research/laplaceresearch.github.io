@@ -1,0 +1,631 @@
+/* Redesigned Models catalog page — harmonized with the Laplace Redwood article system */
+
+.models-main {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 56px;
+}
+
+/* Header section */
+.models-hero {
+  padding: 52px var(--pad) 40px;
+  background: var(--panel);
+  border-bottom: 1px solid var(--line);
+}
+
+.models-hero-inner {
+  max-width: 1080px;
+}
+
+.models-hero h1 {
+  margin: 0 0 18px;
+  font-family: var(--serif);
+  font-size: clamp(46px, 5.6vw, 76px);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+}
+
+.models-hero .lede {
+  max-width: 640px;
+  margin: 0;
+  font-size: 16.5px;
+  line-height: 1.6;
+  color: var(--ink-2);
+}
+
+.models-hero .btns {
+  margin-top: 24px;
+}
+
+/* Quick-pick decision strip */
+.quick-picks {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 36px;
+}
+
+.qpick {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 16px 18px;
+  background: #ffffff;
+  border: 1px solid var(--line);
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 160ms ease, transform 160ms ease;
+}
+
+.qpick:hover {
+  border-color: var(--accent);
+  transform: translateY(-1px);
+}
+
+.qpick-use {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.qpick-name {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+  font-family: var(--serif);
+  font-size: 21px;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.qpick-name span {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.qpick-note {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--ink-2);
+}
+
+/* Toolbar: family filter + Cards/Table toggle */
+.models-bar {
+  position: sticky;
+  top: 0;
+  z-index: 25;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px 20px;
+  padding: 14px var(--pad);
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+
+.filter-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.fpill {
+  appearance: none;
+  background: #ffffff;
+  border: 1px solid var(--line);
+  padding: 7px 12px;
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink-2);
+  cursor: pointer;
+  transition: border-color 140ms, background 140ms, color 140ms;
+}
+
+.fpill:hover {
+  border-color: var(--ink);
+  color: var(--ink);
+}
+
+.fpill[aria-pressed="true"] {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #ffffff;
+}
+
+.view-switch {
+  display: inline-flex;
+  border: 1px solid var(--line);
+  background: var(--panel);
+  padding: 2px;
+}
+
+.vbtn {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  padding: 6px 12px;
+  font-family: var(--sans);
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--muted);
+  cursor: pointer;
+  transition: background 140ms, color 140ms;
+}
+
+.vbtn[aria-pressed="true"] {
+  background: #ffffff;
+  color: var(--ink);
+  box-shadow: 0 1px 2px rgba(20, 24, 34, 0.08);
+}
+
+/* Family blocks */
+.models-wrap {
+  padding: 36px var(--pad) 0;
+  max-width: calc(1080px + 2 * var(--pad));
+}
+
+.fam-block {
+  margin-bottom: 64px;
+}
+
+.fam-block[hidden] {
+  display: none;
+}
+
+/* Vibrant family hero banner */
+.fam-banner {
+  position: relative;
+  height: 196px;
+  background: #08104a;
+  overflow: hidden;
+  margin-bottom: 18px;
+}
+
+.fam-banner img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.fam-banner-card {
+  position: absolute;
+  left: 14px;
+  bottom: 14px;
+  max-width: 520px;
+  background: #ffffff;
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.fam-banner-card h2 {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: clamp(22px, 2.2vw, 28px);
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+
+.fam-banner-card p {
+  margin: 4px 0 0;
+  font-size: 13.5px;
+  line-height: 1.45;
+  color: var(--ink-2);
+}
+
+.fam-banner-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.fam-lic {
+  display: inline-block;
+  padding: 4px 8px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink-2);
+  text-decoration: none;
+}
+
+.fam-lic:hover {
+  border-color: var(--ink);
+  color: var(--ink);
+}
+
+.fam-release {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.fam-release:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* Redesigned 3-col model cards */
+.mc-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.mc {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 20px 16px;
+  background: #ffffff;
+  border: 1px solid var(--line);
+  transition: border-color 160ms ease;
+}
+
+.mc:hover {
+  border-color: rgba(51, 71, 214, 0.55);
+}
+
+.mc.is-flagship {
+  border-color: rgba(51, 71, 214, 0.42);
+  background: linear-gradient(180deg, rgba(51, 71, 214, 0.032) 0%, #ffffff 48%);
+}
+
+.mc-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.mc-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.mc-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--accent);
+  display: inline-block;
+}
+
+.mc-seal {
+  width: 18px;
+  height: 18px;
+  display: inline-block;
+  flex: none;
+}
+
+.mc-badge {
+  padding: 3px 7px;
+  background: rgba(51, 71, 214, 0.1);
+  color: var(--accent);
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.mc h3 {
+  margin: 0 0 8px;
+  font-family: var(--serif);
+  font-size: 25px;
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+}
+
+.mc-desc {
+  margin: 0 0 14px;
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: var(--ink-2);
+  min-height: 41px;
+}
+
+/* Spec pills */
+.mc-specs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.mc-spec {
+  padding: 3px 7px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  font-family: var(--mono);
+  font-size: 10.5px;
+  color: var(--ink-2);
+}
+
+/* Aligned metrics with deltas */
+.mc-stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin: auto 0 16px;
+  padding: 14px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.mc-stat {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 6px;
+}
+
+.mc-stat dt {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--muted);
+  line-height: 1.3;
+}
+
+.mc-stat dd {
+  margin: 0;
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  font-family: var(--serif);
+  font-size: 27px;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+
+.mc-delta {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  font-weight: 500;
+  color: #1c6b3a;
+  letter-spacing: 0;
+}
+
+.mc-delta.muted {
+  color: var(--muted);
+}
+
+/* Copyable HF repo pill */
+.mc-repo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  width: 100%;
+  padding: 7px 10px;
+  margin-bottom: 14px;
+  background: #f6f7fa;
+  border: 1px solid var(--line);
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink);
+  cursor: pointer;
+  text-align: left;
+  transition: border-color 140ms, background 140ms;
+}
+
+.mc-repo:hover {
+  border-color: var(--accent);
+  background: rgba(51, 71, 214, 0.04);
+}
+
+.mc-repo-id {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.mc-repo-act {
+  flex: none;
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--accent);
+}
+
+.mc-repo.copied {
+  border-color: #1c6b3a;
+  background: rgba(28, 107, 58, 0.06);
+}
+
+.mc-repo.copied .mc-repo-act {
+  color: #1c6b3a;
+}
+
+/* Footer links */
+.mc-links {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 12.5px;
+  color: var(--ink-2);
+}
+
+.mc-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--ink);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.mc-links a:hover {
+  color: var(--accent);
+}
+
+.mc-links .icon {
+  width: 14px;
+  height: 14px;
+}
+
+.mc-links time {
+  margin-left: auto;
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.fam-note {
+  margin: 12px 0 0;
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+/* Comparison matrix view */
+.matrix-wrap {
+  padding: 28px var(--pad) 0;
+  max-width: calc(1080px + 2 * var(--pad));
+}
+
+.matrix-wrap[hidden] {
+  display: none;
+}
+
+.matrix-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px 20px;
+  margin-bottom: 16px;
+}
+
+.matrix-head h2 {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: 28px;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.matrix-head p {
+  margin: 0;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.matrix-scroll {
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  background: #ffffff;
+}
+
+table.mmatrix {
+  width: 100%;
+  min-width: 820px;
+  border-collapse: collapse;
+  font-family: var(--sans);
+  font-size: 13.5px;
+  font-variant-numeric: tabular-nums;
+}
+
+.mmatrix th,
+.mmatrix td {
+  padding: 12px 14px;
+  text-align: left;
+  border-bottom: 1px solid var(--line);
+  vertical-align: middle;
+}
+
+.mmatrix thead th {
+  background: var(--panel);
+  font-family: var(--mono);
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.mmatrix tbody tr:hover {
+  background: rgba(51, 71, 214, 0.025);
+}
+
+.mmatrix tbody tr.is-flagship {
+  background: rgba(51, 71, 214, 0.045);
+}
+
+.mmatrix tbody th {
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.mmatrix tbody th a {
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.mmatrix tbody th a:hover {
+  color: var(--accent);
+}
+
+.mmatrix .num {
+  text-align: right;
+  font-family: var(--mono);
+  font-size: 12.5px;
+}
+
+.mmatrix .fam-pill {
+  display: inline-block;
+  padding: 2px 7px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  font-family: var(--mono);
+  font-size: 10.5px;
+  color: var(--ink-2);
+}
+
+@media (max-width: 960px) {
+  .quick-picks,
+  .mc-grid {
+    grid-template-columns: 1fr;
+  }
+  .fam-banner {
+    height: auto;
+    padding: 56px 14px 14px;
+  }
+  .fam-banner-card {
+    position: relative;
+    inset: auto;
+    max-width: none;
+  }
+}

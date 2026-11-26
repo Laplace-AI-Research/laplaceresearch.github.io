@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>Models</title>
+    <title>Models | Laplace Research</title>
     <meta
       name="description"
       content="Open-weight models from Laplace Research: Signet and the Conviction Series for belief revision, and Tarot-Draw for calibrated binary forecasting."
@@ -20,10 +20,7 @@
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Laplace Research" />
     <meta property="og:title" content="Models | Laplace Research" />
-    <meta
-      property="og:description"
-      content="Open-weight models for calibrated forecasting and belief revision."
-    />
+    <meta property="og:description" content="Open-weight models for calibrated forecasting and belief revision." />
     <meta property="og:url" content="https://laplaceresearch.org/models/" />
     <meta property="og:image" content="https://laplaceresearch.org/assets/laplace-social.png" />
     <meta property="og:image:width" content="1200" />
@@ -39,7 +36,8 @@
     <link rel="preload" href="/assets/fonts/inter-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/assets/fonts/newsreader-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin />
     <script>document.documentElement.classList.add("js")</script>
-    <link rel="stylesheet" href="/site.css?v=20261123-8" />
+    <link rel="stylesheet" href="/site.css?v=20261126-1" />
+    <link rel="stylesheet" href="/models/models.css?v=20261126-2" />
   </head>
 
   <body>
@@ -69,171 +67,522 @@
         <img class="dither" src="/assets/dither.svg" alt="" width="248" height="64" />
       </header>
 
-      <main>
-        <section class="sec" id="content" aria-labelledby="t">
-          <p class="num">Models</p>
-          <div class="body">
+      <main class="models-main" id="content">
+        <!-- HERO + QUICK-PICK STRIP -->
+        <section class="models-hero" aria-labelledby="t">
+          <div class="models-hero-inner">
             <h1 id="t">Open models</h1>
             <p class="lede">
-              Nine open-weight models across three families. Each card links the
-              weights and the run that produced its numbers, so every figure
-              on this page can be recomputed.
+              Nine open-weight models across three families. Every card links
+              the weights, the exact Hugging Face repo ID, and the run that
+              produced its numbers so every metric can be recomputed.
             </p>
             <div class="btns">
-              <a class="btn ext" href="https://huggingface.co/Laplace-AI-Research" target="_blank" rel="noopener noreferrer">All on Hugging Face</a>
+              <a class="btn solid ext" href="https://huggingface.co/Laplace-AI-Research" target="_blank" rel="noopener noreferrer">All on Hugging Face</a>
               <a class="btn" href="/research/">Read the research</a>
             </div>
+
+            <div class="quick-picks" aria-label="Recommended starting points">
+              <a class="qpick" href="#signet">
+                <span class="qpick-use">Best overall provenance</span>
+                <span class="qpick-name">Signet-9B <span>Apache-2.0</span></span>
+                <p class="qpick-note">97.8% held-out accuracy &middot; +0.95 unseen-paste channel gap &middot; merged bf16.</p>
+              </a>
+              <a class="qpick" href="#signet">
+                <span class="qpick-use">Best per parameter</span>
+                <span class="qpick-name">Signet-4B <span>Apache-2.0</span></span>
+                <p class="qpick-note">98.5% held-out accuracy &middot; 98.1% forged-record resistance &middot; LoRA adapter.</p>
+              </a>
+              <a class="qpick" href="#tarot-draw">
+                <span class="qpick-use">Default forecasting prior</span>
+                <span class="qpick-name">Tarot-Draw 4B <span>CC BY-NC</span></span>
+                <p class="qpick-note">0.1684 Dev Brier &middot; matches 8B within experimental resolution at half the size.</p>
+              </a>
+            </div>
           </div>
         </section>
 
-        <section class="sec" id="signet" aria-labelledby="signet-title">
-          <p class="num">Signet</p>
-          <div class="wide">
-            <div class="mfamily">
-              <div>
-                <h2 id="signet-title">Signet</h2>
-                <p>Qwen3.5 models that check where a record came from before they believe it.</p>
+        <!-- STICKY FILTER & VIEW TOOLBAR -->
+        <div class="models-bar" role="region" aria-label="Filter and view controls">
+          <div class="filter-pills" role="group" aria-label="Filter by model family">
+            <button type="button" class="fpill" data-filter="all" aria-pressed="true">All families (9)</button>
+            <button type="button" class="fpill" data-filter="signet" aria-pressed="false">Signet (3)</button>
+            <button type="button" class="fpill" data-filter="conviction" aria-pressed="false">Conviction Series (3)</button>
+            <button type="button" class="fpill" data-filter="tarot-draw" aria-pressed="false">Tarot-Draw (3)</button>
+          </div>
+          <div class="view-switch" role="group" aria-label="Display mode">
+            <button type="button" class="vbtn" data-view="cards" aria-pressed="true">Cards</button>
+            <button type="button" class="vbtn" data-view="table" aria-pressed="false">Compare table</button>
+          </div>
+        </div>
+
+        <!-- CARDS VIEW -->
+        <div class="models-wrap" id="models-cards">
+          <!-- SIGNET -->
+          <section class="fam-block" id="signet" data-family="signet" aria-labelledby="signet-title">
+            <div class="fam-banner">
+              <img src="/assets/covers/signet-hero.svg" alt="" width="1600" height="720" />
+              <div class="fam-banner-card">
+                <div>
+                  <h2 id="signet-title">Signet</h2>
+                  <p>Qwen3.5 models that check where a record came from before they believe it.</p>
+                </div>
+                <div class="fam-banner-meta">
+                  <a class="fam-lic" href="/licenses/#signet">Apache-2.0</a>
+                  <a class="fam-release" href="/signet/">Release article &rarr;</a>
+                </div>
               </div>
-              <div class="mfamily-meta"><a class="mlicense" href="/licenses/#signet" aria-label="License: Apache-2.0. Licensing details">Apache-2.0</a><a href="/signet/">Release &rarr;</a></div>
             </div>
-            <div class="mgrid">
-              <article class="mcard" style="--c: var(--s1)">
-                <div class="mcard-top"><span class="mdot" aria-hidden="true"></span><span class="kicker">Signet · 9B</span><span class="mtag">Flagship</span></div>
+
+            <div class="mc-grid">
+              <article class="mc is-flagship">
+                <div class="mc-head">
+                  <span class="mc-kicker">
+                    <svg class="mc-seal" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="none" stroke="#3347d6" stroke-width="1.3"/><circle cx="12" cy="12" r="6.5" fill="none" stroke="#3347d6" stroke-width="1.1"/><circle cx="12" cy="12" r="3" fill="#3347d6"/></svg>
+                    Signet &middot; 9B
+                  </span>
+                  <span class="mc-badge">Flagship</span>
+                </div>
                 <h3>Signet-9B</h3>
-                <p class="mdesc">Light warm-start, then GRPO. Our largest model; ships as merged weights and adapters.</p>
-                <dl class="mstats"><div><dt>Final accuracy</dt><dd>0.978</dd></div><div><dt>Forged-record resistance</dt><dd>0.979</dd></div></dl>
-                <div class="mlinks">
-                  <a href="https://huggingface.co/Laplace-AI-Research/Signet-9B" target="_blank" rel="noopener noreferrer" aria-label="Signet-9B weights on Hugging Face"><svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/icons.svg#hf" /></svg>Weights</a>
-                  <a href="https://github.com/Laplace-AI-Research/signet/tree/main/results/SIG_9B_a6w250" target="_blank" rel="noopener noreferrer" aria-label="Signet-9B results on GitHub"><svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/icons.svg#gh" /></svg>Results</a>
+                <p class="mc-desc">Light warm-start, then GRPO. Our strongest channel check; ships as merged weights and adapters.</p>
+                <div class="mc-specs">
+                  <span class="mc-spec">Qwen3.5-9B</span>
+                  <span class="mc-spec">Merged bf16 + LoRA</span>
+                  <span class="mc-spec">~20 GB VRAM</span>
+                </div>
+                <dl class="mc-stats">
+                  <div class="mc-stat">
+                    <dt>Held-out accuracy</dt>
+                    <dd>97.8% <span class="mc-delta">+29.0</span></dd>
+                  </div>
+                  <div class="mc-stat">
+                    <dt>Forged resistance</dt>
+                    <dd>97.9% <span class="mc-delta">+82.1</span></dd>
+                  </div>
+                </dl>
+                <button type="button" class="mc-repo" data-repo="Laplace-AI-Research/Signet-9B" aria-label="Copy Hugging Face repo ID Laplace-AI-Research/Signet-9B">
+                  <span class="mc-repo-id">Laplace-AI-Research/Signet-9B</span>
+                  <span class="mc-repo-act">Copy</span>
+                </button>
+                <div class="mc-links">
+                  <a href="https://huggingface.co/Laplace-AI-Research/Signet-9B" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#hf" /></svg>Weights</a>
+                  <a href="https://github.com/Laplace-AI-Research/signet/tree/main/results/SIG_9B_a6w250" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#gh" /></svg>Results</a>
                   <time datetime="2026-11-24">2026.11.24</time>
                 </div>
               </article>
-              <article class="mcard" style="--c: var(--s2)">
-                <div class="mcard-top"><span class="mdot" aria-hidden="true"></span><span class="kicker">Signet · 4B</span></div>
+
+              <article class="mc">
+                <div class="mc-head">
+                  <span class="mc-kicker">
+                    <svg class="mc-seal" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9.5" fill="none" stroke="#3347d6" stroke-width="1.3"/><circle cx="12" cy="12" r="5" fill="none" stroke="#3347d6" stroke-width="1.2"/></svg>
+                    Signet &middot; 4B
+                  </span>
+                </div>
                 <h3>Signet-4B</h3>
-                <p class="mdesc">GRPO from the base model. Highest held-out accuracy in the family.</p>
-                <dl class="mstats"><div><dt>Final accuracy</dt><dd>0.985</dd></div><div><dt>Forged-record resistance</dt><dd>0.981</dd></div></dl>
-                <div class="mlinks">
-                  <a href="https://huggingface.co/Laplace-AI-Research/Signet-4B" target="_blank" rel="noopener noreferrer" aria-label="Signet-4B weights on Hugging Face"><svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/icons.svg#hf" /></svg>Weights</a>
-                  <a href="https://github.com/Laplace-AI-Research/signet/tree/main/results/SIG_4B_r1" target="_blank" rel="noopener noreferrer" aria-label="Signet-4B results on GitHub"><svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/icons.svg#gh" /></svg>Results</a>
+                <p class="mc-desc">GRPO from the base model. Highest held-out accuracy in the family and best per parameter.</p>
+                <div class="mc-specs">
+                  <span class="mc-spec">Qwen3.5-4B</span>
+                  <span class="mc-spec">LoRA r16</span>
+                  <span class="mc-spec">RL-only</span>
+                </div>
+                <dl class="mc-stats">
+                  <div class="mc-stat">
+                    <dt>Held-out accuracy</dt>
+                    <dd>98.5% <span class="mc-delta">+37.9</span></dd>
+                  </div>
+                  <div class="mc-stat">
+                    <dt>Forged resistance</dt>
+                    <dd>98.1% <span class="mc-delta">+85.3</span></dd>
+                  </div>
+                </dl>
+                <button type="button" class="mc-repo" data-repo="Laplace-AI-Research/Signet-4B" aria-label="Copy Hugging Face repo ID Laplace-AI-Research/Signet-4B">
+                  <span class="mc-repo-id">Laplace-AI-Research/Signet-4B</span>
+                  <span class="mc-repo-act">Copy</span>
+                </button>
+                <div class="mc-links">
+                  <a href="https://huggingface.co/Laplace-AI-Research/Signet-4B" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#hf" /></svg>Weights</a>
+                  <a href="https://github.com/Laplace-AI-Research/signet/tree/main/results/SIG_4B_r1" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#gh" /></svg>Results</a>
                   <time datetime="2026-11-24">2026.11.24</time>
                 </div>
               </article>
-              <article class="mcard" style="--c: var(--s3)">
-                <div class="mcard-top"><span class="mdot" aria-hidden="true"></span><span class="kicker">Signet · 2B</span></div>
+
+              <article class="mc">
+                <div class="mc-head">
+                  <span class="mc-kicker">
+                    <svg class="mc-seal" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="#3347d6" stroke-width="1.3"/><circle cx="12" cy="12" r="2.2" fill="#3347d6"/></svg>
+                    Signet &middot; 2B
+                  </span>
+                </div>
                 <h3>Signet-2B</h3>
-                <p class="mdesc">GRPO from the base model. The smallest Signet.</p>
-                <dl class="mstats"><div><dt>Final accuracy</dt><dd>0.796</dd></div><div><dt>Forged-record resistance</dt><dd>0.863</dd></div></dl>
-                <div class="mlinks">
-                  <a href="https://huggingface.co/Laplace-AI-Research/Signet-2B" target="_blank" rel="noopener noreferrer" aria-label="Signet-2B weights on Hugging Face"><svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/icons.svg#hf" /></svg>Weights</a>
-                  <a href="https://github.com/Laplace-AI-Research/signet/tree/main/results/SIG_2B_r1" target="_blank" rel="noopener noreferrer" aria-label="Signet-2B results on GitHub"><svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/icons.svg#gh" /></svg>Results</a>
+                <p class="mc-desc">GRPO from the base model. The smallest Signet, built for tight memory budgets and scaling studies.</p>
+                <div class="mc-specs">
+                  <span class="mc-spec">Qwen3.5-2B</span>
+                  <span class="mc-spec">LoRA 16.8M</span>
+                  <span class="mc-spec">RL-only</span>
+                </div>
+                <dl class="mc-stats">
+                  <div class="mc-stat">
+                    <dt>Held-out accuracy</dt>
+                    <dd>79.6% <span class="mc-delta">+37.1</span></dd>
+                  </div>
+                  <div class="mc-stat">
+                    <dt>Forged resistance</dt>
+                    <dd>86.3% <span class="mc-delta">+64.2</span></dd>
+                  </div>
+                </dl>
+                <button type="button" class="mc-repo" data-repo="Laplace-AI-Research/Signet-2B" aria-label="Copy Hugging Face repo ID Laplace-AI-Research/Signet-2B">
+                  <span class="mc-repo-id">Laplace-AI-Research/Signet-2B</span>
+                  <span class="mc-repo-act">Copy</span>
+                </button>
+                <div class="mc-links">
+                  <a href="https://huggingface.co/Laplace-AI-Research/Signet-2B" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#hf" /></svg>Weights</a>
+                  <a href="https://github.com/Laplace-AI-Research/signet/tree/main/results/SIG_2B_r1" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#gh" /></svg>Results</a>
                   <time datetime="2026-11-24">2026.11.24</time>
                 </div>
               </article>
             </div>
-            <p class="mnote">Held-out structural split, point estimates. Higher is better for both measures.</p>
-          </div>
-        </section>
+            <p class="fam-note">Held-out structural split, point estimates. Green deltas show percentage-point gains over each model&rsquo;s untrained Qwen3.5 base.</p>
+          </section>
 
-        <section class="sec" id="conviction" aria-labelledby="conviction-title">
-          <p class="num">Conviction Series</p>
-          <div class="wide">
-            <div class="mfamily">
-              <div>
-                <h2 id="conviction-title">Laplace Conviction Series</h2>
-                <p>Qwen3-1.7B LoRA adapters for evidence-sensitive belief revision.</p>
+          <!-- CONVICTION SERIES -->
+          <section class="fam-block" id="conviction" data-family="conviction" aria-labelledby="conviction-title">
+            <div class="fam-banner">
+              <img src="/assets/covers/conviction-series-hero.svg" alt="" width="1600" height="720" />
+              <div class="fam-banner-card">
+                <div>
+                  <h2 id="conviction-title">Laplace Conviction Series</h2>
+                  <p>Qwen3-1.7B LoRA adapters for studying evidence-sensitive belief revision.</p>
+                </div>
+                <div class="fam-banner-meta">
+                  <a class="fam-lic" href="/licenses/#conviction">Apache-2.0</a>
+                  <a class="fam-release" href="/convictionbench/#models">Release article &rarr;</a>
+                </div>
               </div>
-              <div class="mfamily-meta"><a class="mlicense" href="/licenses/#conviction" aria-label="License: Apache-2.0. Licensing details">Apache-2.0</a><a href="/convictionbench/#models">Release &rarr;</a></div>
             </div>
-            <div class="mgrid">
-              <article class="mcard" style="--c: var(--s1)">
-                <div class="mcard-top"><span class="mdot" aria-hidden="true"></span><span class="kicker">Conviction · 1.7B</span></div>
+
+            <div class="mc-grid">
+              <article class="mc">
+                <div class="mc-head">
+                  <span class="mc-kicker"><span class="mc-dot" aria-hidden="true"></span>Conviction &middot; 1.7B</span>
+                </div>
                 <h3>Anchor</h3>
-                <p class="mdesc">Supervised fine-tuning.</p>
-                <dl class="mstats"><div><dt>Final accuracy</dt><dd>0.580</dd></div><div><dt>Forged-record resistance</dt><dd>0.531</dd></div></dl>
-                <div class="mlinks">
-                  <a href="https://huggingface.co/Laplace-AI-Research/Conviction-Anchor-1.7B" target="_blank" rel="noopener noreferrer" aria-label="Anchor weights on Hugging Face"><svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/icons.svg#hf" /></svg>Weights</a>
-                  <a href="https://github.com/Laplace-AI-Research/conviction/tree/main/results/E2_sft" target="_blank" rel="noopener noreferrer" aria-label="Anchor results on GitHub"><svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/icons.svg#gh" /></svg>Results</a>
+                <p class="mc-desc">Supervised fine-tuning baseline on ConvictionBench v0.1 belief-revision episodes.</p>
+                <div class="mc-specs">
+                  <span class="mc-spec">Qwen3-1.7B</span>
+                  <span class="mc-spec">LoRA</span>
+                  <span class="mc-spec">SFT</span>
+                </div>
+                <dl class="mc-stats">
+                  <div class="mc-stat">
+                    <dt>Held-out accuracy</dt>
+                    <dd>58.0% <span class="mc-delta">+15.6</span></dd>
+                  </div>
+                  <div class="mc-stat">
+                    <dt>Forged resistance</dt>
+                    <dd>53.1% <span class="mc-delta">+19.1</span></dd>
+                  </div>
+                </dl>
+                <button type="button" class="mc-repo" data-repo="Laplace-AI-Research/Conviction-Anchor-1.7B" aria-label="Copy Hugging Face repo ID Laplace-AI-Research/Conviction-Anchor-1.7B">
+                  <span class="mc-repo-id">Laplace-AI-Research/Conviction-Anchor-1.7B</span>
+                  <span class="mc-repo-act">Copy</span>
+                </button>
+                <div class="mc-links">
+                  <a href="https://huggingface.co/Laplace-AI-Research/Conviction-Anchor-1.7B" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#hf" /></svg>Weights</a>
+                  <a href="https://github.com/Laplace-AI-Research/conviction/tree/main/results/E2_sft" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#gh" /></svg>Results</a>
                   <time datetime="2026-11-10">2026.11.10</time>
                 </div>
               </article>
-              <article class="mcard" style="--c: var(--s2)">
-                <div class="mcard-top"><span class="mdot" aria-hidden="true"></span><span class="kicker">Conviction · 1.7B</span></div>
-                <h3>Vector</h3>
-                <p class="mdesc">GRPO from the base model. Highest held-out accuracy of the three.</p>
-                <dl class="mstats"><div><dt>Final accuracy</dt><dd>0.644</dd></div><div><dt>Forged-record resistance</dt><dd>0.315</dd></div></dl>
-                <div class="mlinks">
-                  <a href="https://huggingface.co/Laplace-AI-Research/Conviction-Vector-1.7B" target="_blank" rel="noopener noreferrer" aria-label="Vector weights on Hugging Face"><svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/icons.svg#hf" /></svg>Weights</a>
-                  <a href="https://github.com/Laplace-AI-Research/conviction/tree/main/results/E3b_grpo_base" target="_blank" rel="noopener noreferrer" aria-label="Vector results on GitHub"><svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/icons.svg#gh" /></svg>Results</a>
-                  <time datetime="2026-11-10">2026.11.10</time>
-                </div>
-              </article>
-              <article class="mcard" style="--c: var(--s3)">
-                <div class="mcard-top"><span class="mdot" aria-hidden="true"></span><span class="kicker">Conviction · 1.7B</span></div>
-                <h3>Meridian</h3>
-                <p class="mdesc">Light supervised fine-tuning, then GRPO. Resisted the most forged records.</p>
-                <dl class="mstats"><div><dt>Final accuracy</dt><dd>0.560</dd></div><div><dt>Forged-record resistance</dt><dd>0.578</dd></div></dl>
-                <div class="mlinks">
-                  <a href="https://huggingface.co/Laplace-AI-Research/Conviction-Meridian-1.7B" target="_blank" rel="noopener noreferrer" aria-label="Meridian weights on Hugging Face"><svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/icons.svg#hf" /></svg>Weights</a>
-                  <a href="https://github.com/Laplace-AI-Research/conviction/tree/main/results/V2" target="_blank" rel="noopener noreferrer" aria-label="Meridian results on GitHub"><svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/icons.svg#gh" /></svg>Results</a>
-                  <time datetime="2026-11-10">2026.11.10</time>
-                </div>
-              </article>
-            </div>
-            <p class="mnote">Held-out structural split, point estimates. Higher is better for both measures.</p>
-          </div>
-        </section>
 
-        <section class="sec" id="tarot-draw" aria-labelledby="tarot-draw-title">
-          <p class="num">Tarot-Draw</p>
-          <div class="wide">
-            <div class="mfamily">
-              <div>
-                <h2 id="tarot-draw-title">Tarot-Draw</h2>
-                <p>Binary forecasting priors at three scales, trained on the same 81,870 questions.</p>
-              </div>
-              <div class="mfamily-meta"><a class="mlicense" href="/licenses/#tarot-draw" aria-label="License: CC BY-NC 4.0, non-commercial use only. Licensing details">CC BY-NC 4.0</a><a href="/tarot-draw/">Release &rarr;</a></div>
+              <article class="mc">
+                <div class="mc-head">
+                  <span class="mc-kicker"><span class="mc-dot" aria-hidden="true"></span>Conviction &middot; 1.7B</span>
+                </div>
+                <h3>Vector</h3>
+                <p class="mc-desc">GRPO from the base model. Highest held-out final accuracy among the 1.7B Conviction adapters.</p>
+                <div class="mc-specs">
+                  <span class="mc-spec">Qwen3-1.7B</span>
+                  <span class="mc-spec">LoRA</span>
+                  <span class="mc-spec">GRPO</span>
+                </div>
+                <dl class="mc-stats">
+                  <div class="mc-stat">
+                    <dt>Held-out accuracy</dt>
+                    <dd>64.4% <span class="mc-delta">+22.0</span></dd>
+                  </div>
+                  <div class="mc-stat">
+                    <dt>Forged resistance</dt>
+                    <dd>31.5% <span class="mc-delta muted">&minus;2.5</span></dd>
+                  </div>
+                </dl>
+                <button type="button" class="mc-repo" data-repo="Laplace-AI-Research/Conviction-Vector-1.7B" aria-label="Copy Hugging Face repo ID Laplace-AI-Research/Conviction-Vector-1.7B">
+                  <span class="mc-repo-id">Laplace-AI-Research/Conviction-Vector-1.7B</span>
+                  <span class="mc-repo-act">Copy</span>
+                </button>
+                <div class="mc-links">
+                  <a href="https://huggingface.co/Laplace-AI-Research/Conviction-Vector-1.7B" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#hf" /></svg>Weights</a>
+                  <a href="https://github.com/Laplace-AI-Research/conviction/tree/main/results/E3b_grpo_base" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#gh" /></svg>Results</a>
+                  <time datetime="2026-11-10">2026.11.10</time>
+                </div>
+              </article>
+
+              <article class="mc">
+                <div class="mc-head">
+                  <span class="mc-kicker"><span class="mc-dot" aria-hidden="true"></span>Conviction &middot; 1.7B</span>
+                </div>
+                <h3>Meridian</h3>
+                <p class="mc-desc">Light supervised fine-tuning, then GRPO. Resisted the most forged records in the 1.7B series.</p>
+                <div class="mc-specs">
+                  <span class="mc-spec">Qwen3-1.7B</span>
+                  <span class="mc-spec">LoRA</span>
+                  <span class="mc-spec">SFT &rarr; GRPO</span>
+                </div>
+                <dl class="mc-stats">
+                  <div class="mc-stat">
+                    <dt>Held-out accuracy</dt>
+                    <dd>56.0% <span class="mc-delta">+13.6</span></dd>
+                  </div>
+                  <div class="mc-stat">
+                    <dt>Forged resistance</dt>
+                    <dd>57.8% <span class="mc-delta">+23.8</span></dd>
+                  </div>
+                </dl>
+                <button type="button" class="mc-repo" data-repo="Laplace-AI-Research/Conviction-Meridian-1.7B" aria-label="Copy Hugging Face repo ID Laplace-AI-Research/Conviction-Meridian-1.7B">
+                  <span class="mc-repo-id">Laplace-AI-Research/Conviction-Meridian-1.7B</span>
+                  <span class="mc-repo-act">Copy</span>
+                </button>
+                <div class="mc-links">
+                  <a href="https://huggingface.co/Laplace-AI-Research/Conviction-Meridian-1.7B" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#hf" /></svg>Weights</a>
+                  <a href="https://github.com/Laplace-AI-Research/conviction/tree/main/results/V2" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#gh" /></svg>Results</a>
+                  <time datetime="2026-11-10">2026.11.10</time>
+                </div>
+              </article>
             </div>
-            <div class="mgrid">
-              <article class="mcard" style="--c: var(--accent)">
-                <div class="mcard-top"><span class="mdot" aria-hidden="true"></span><span class="kicker">Tarot-Draw · 4B</span><span class="mtag">Recommended</span></div>
+            <p class="fam-note">Held-out structural split, point estimates. Deltas compared against untrained Qwen3-1.7B base (42.4% accuracy, 34.0% forged resistance).</p>
+          </section>
+
+          <!-- TAROT-DRAW -->
+          <section class="fam-block" id="tarot-draw" data-family="tarot-draw" aria-labelledby="tarot-draw-title">
+            <div class="fam-banner">
+              <img src="/assets/covers/tarot-draw-hero.svg" alt="" width="1600" height="720" />
+              <div class="fam-banner-card">
+                <div>
+                  <h2 id="tarot-draw-title">Tarot-Draw</h2>
+                  <p>Binary forecasting priors at three scales, trained on the same 81,870 questions.</p>
+                </div>
+                <div class="fam-banner-meta">
+                  <a class="fam-lic" href="/licenses/#tarot-draw">CC BY-NC 4.0</a>
+                  <a class="fam-release" href="/tarot-draw/">Release article &rarr;</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="mc-grid">
+              <article class="mc is-flagship">
+                <div class="mc-head">
+                  <span class="mc-kicker"><span class="mc-dot" aria-hidden="true"></span>Tarot-Draw &middot; 4B</span>
+                  <span class="mc-badge">Recommended</span>
+                </div>
                 <h3>Tarot-Draw 4B</h3>
-                <p class="mdesc">The default. Matches the 8B within the resolution of the experiment.</p>
-                <dl class="mstats"><div><dt>Dev Brier</dt><dd>0.1684</dd></div><div><dt>Resolution</dt><dd>0.0708</dd></div></dl>
-                <div class="mlinks">
-                  <a href="https://huggingface.co/Laplace-AI-Research/tarot-draw-4b" target="_blank" rel="noopener noreferrer" aria-label="Tarot-Draw 4B weights on Hugging Face"><svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/icons.svg#hf" /></svg>Weights</a>
-                  <a href="https://github.com/Laplace-AI-Research/tarot-draw-4b" target="_blank" rel="noopener noreferrer" aria-label="Tarot-Draw 4B evidence on GitHub"><svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/icons.svg#gh" /></svg>Evidence</a>
+                <p class="mc-desc">The default forecasting prior. Matches the 8B within the resolution of the experiment.</p>
+                <div class="mc-specs">
+                  <span class="mc-spec">Qwen3-4B</span>
+                  <span class="mc-spec">LoRA</span>
+                  <span class="mc-spec">81,870 Qs</span>
+                </div>
+                <dl class="mc-stats">
+                  <div class="mc-stat">
+                    <dt>Dev Brier &darr;</dt>
+                    <dd>0.1684</dd>
+                  </div>
+                  <div class="mc-stat">
+                    <dt>Resolution &uarr;</dt>
+                    <dd>0.0708</dd>
+                  </div>
+                </dl>
+                <button type="button" class="mc-repo" data-repo="Laplace-AI-Research/tarot-draw-4b" aria-label="Copy Hugging Face repo ID Laplace-AI-Research/tarot-draw-4b">
+                  <span class="mc-repo-id">Laplace-AI-Research/tarot-draw-4b</span>
+                  <span class="mc-repo-act">Copy</span>
+                </button>
+                <div class="mc-links">
+                  <a href="https://huggingface.co/Laplace-AI-Research/tarot-draw-4b" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#hf" /></svg>Weights</a>
+                  <a href="https://github.com/Laplace-AI-Research/tarot-draw-4b" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#gh" /></svg>Evidence</a>
                   <time datetime="2026-08-28">2026.08.28</time>
                 </div>
               </article>
-              <article class="mcard" style="--c: var(--accent)">
-                <div class="mcard-top"><span class="mdot" aria-hidden="true"></span><span class="kicker">Tarot-Draw · 8B</span></div>
+
+              <article class="mc">
+                <div class="mc-head">
+                  <span class="mc-kicker"><span class="mc-dot" aria-hidden="true"></span>Tarot-Draw &middot; 8B</span>
+                </div>
                 <h3>Tarot-Draw 8B</h3>
-                <p class="mdesc">The largest. For capacity-rich serving and scale studies.</p>
-                <dl class="mstats"><div><dt>Dev Brier</dt><dd>0.1674</dd></div><div><dt>Resolution</dt><dd>0.0718</dd></div></dl>
-                <div class="mlinks">
-                  <a href="https://huggingface.co/Laplace-AI-Research/tarot-draw-8b" target="_blank" rel="noopener noreferrer" aria-label="Tarot-Draw 8B weights on Hugging Face"><svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/icons.svg#hf" /></svg>Weights</a>
-                  <a href="https://github.com/Laplace-AI-Research/tarot-draw-8b" target="_blank" rel="noopener noreferrer" aria-label="Tarot-Draw 8B evidence on GitHub"><svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/icons.svg#gh" /></svg>Evidence</a>
+                <p class="mc-desc">The largest Tarot-Draw checkpoint. Built for capacity-rich serving and scale studies.</p>
+                <div class="mc-specs">
+                  <span class="mc-spec">Qwen3-8B</span>
+                  <span class="mc-spec">LoRA</span>
+                  <span class="mc-spec">81,870 Qs</span>
+                </div>
+                <dl class="mc-stats">
+                  <div class="mc-stat">
+                    <dt>Dev Brier &darr;</dt>
+                    <dd>0.1674</dd>
+                  </div>
+                  <div class="mc-stat">
+                    <dt>Resolution &uarr;</dt>
+                    <dd>0.0718</dd>
+                  </div>
+                </dl>
+                <button type="button" class="mc-repo" data-repo="Laplace-AI-Research/tarot-draw-8b" aria-label="Copy Hugging Face repo ID Laplace-AI-Research/tarot-draw-8b">
+                  <span class="mc-repo-id">Laplace-AI-Research/tarot-draw-8b</span>
+                  <span class="mc-repo-act">Copy</span>
+                </button>
+                <div class="mc-links">
+                  <a href="https://huggingface.co/Laplace-AI-Research/tarot-draw-8b" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#hf" /></svg>Weights</a>
+                  <a href="https://github.com/Laplace-AI-Research/tarot-draw-8b" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#gh" /></svg>Evidence</a>
                   <time datetime="2026-08-28">2026.08.28</time>
                 </div>
               </article>
-              <article class="mcard" style="--c: var(--accent)">
-                <div class="mcard-top"><span class="mdot" aria-hidden="true"></span><span class="kicker">Tarot-Draw · 1.7B</span></div>
+
+              <article class="mc">
+                <div class="mc-head">
+                  <span class="mc-kicker"><span class="mc-dot" aria-hidden="true"></span>Tarot-Draw &middot; 1.7B</span>
+                </div>
                 <h3>Tarot-Draw 1.7B</h3>
-                <p class="mdesc">The smallest. For laptops, CPUs, and tight memory budgets.</p>
-                <dl class="mstats"><div><dt>Dev Brier</dt><dd>0.1803</dd></div><div><dt>Resolution</dt><dd>0.0593</dd></div></dl>
-                <div class="mlinks">
-                  <a href="https://huggingface.co/Laplace-AI-Research/tarot-draw-1-7b" target="_blank" rel="noopener noreferrer" aria-label="Tarot-Draw 1.7B weights on Hugging Face"><svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/icons.svg#hf" /></svg>Weights</a>
-                  <a href="https://github.com/Laplace-AI-Research/tarot-draw-1-7b" target="_blank" rel="noopener noreferrer" aria-label="Tarot-Draw 1.7B evidence on GitHub"><svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/icons.svg#gh" /></svg>Evidence</a>
+                <p class="mc-desc">The smallest and best-calibrated checkpoint. Fits laptops, CPUs, and tight memory budgets.</p>
+                <div class="mc-specs">
+                  <span class="mc-spec">Qwen3-1.7B</span>
+                  <span class="mc-spec">LoRA</span>
+                  <span class="mc-spec">81,870 Qs</span>
+                </div>
+                <dl class="mc-stats">
+                  <div class="mc-stat">
+                    <dt>Dev Brier &darr;</dt>
+                    <dd>0.1803</dd>
+                  </div>
+                  <div class="mc-stat">
+                    <dt>Resolution &uarr;</dt>
+                    <dd>0.0593</dd>
+                  </div>
+                </dl>
+                <button type="button" class="mc-repo" data-repo="Laplace-AI-Research/tarot-draw-1-7b" aria-label="Copy Hugging Face repo ID Laplace-AI-Research/tarot-draw-1-7b">
+                  <span class="mc-repo-id">Laplace-AI-Research/tarot-draw-1-7b</span>
+                  <span class="mc-repo-act">Copy</span>
+                </button>
+                <div class="mc-links">
+                  <a href="https://huggingface.co/Laplace-AI-Research/tarot-draw-1-7b" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#hf" /></svg>Weights</a>
+                  <a href="https://github.com/Laplace-AI-Research/tarot-draw-1-7b" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#gh" /></svg>Evidence</a>
                   <time datetime="2026-08-29">2026.08.29</time>
                 </div>
               </article>
             </div>
-            <p class="mnote">Development split, n = 3,000. Lower Brier is better; higher resolution is better.</p>
-            <p class="mnote">Research artifacts, provided as is. Forecasts are not financial, investment, legal, or betting advice. <a href="/licenses/#disclaimer">Disclaimer</a></p>
+            <p class="fam-note">Development split, n = 3,000. Lower Brier is better; higher resolution is better. Research artifacts provided as is. <a href="/licenses/#disclaimer">Disclaimer</a></p>
+          </section>
+        </div>
+
+        <!-- COMPARE TABLE VIEW -->
+        <section class="matrix-wrap" id="models-matrix" aria-label="Compare all models" hidden>
+          <div class="matrix-head">
+            <h2>Compare all models</h2>
+            <p>All nine open-weight checkpoints side by side.</p>
+          </div>
+          <div class="matrix-scroll" role="region" aria-label="Model comparison table" tabindex="0">
+            <table class="mmatrix">
+              <thead>
+                <tr>
+                  <th scope="col">Model</th>
+                  <th scope="col">Family</th>
+                  <th scope="col">Base</th>
+                  <th scope="col">Format</th>
+                  <th scope="col">License</th>
+                  <th scope="col" class="num">Primary metric</th>
+                  <th scope="col" class="num">Secondary metric</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="is-flagship" data-family="signet">
+                  <th scope="row"><a href="https://huggingface.co/Laplace-AI-Research/Signet-9B" target="_blank" rel="noopener noreferrer">Signet-9B</a></th>
+                  <td><span class="fam-pill">Signet</span></td>
+                  <td>Qwen3.5-9B</td>
+                  <td>Merged bf16 + LoRA</td>
+                  <td>Apache-2.0</td>
+                  <td class="num">97.8% acc</td>
+                  <td class="num">97.9% resist</td>
+                </tr>
+                <tr data-family="signet">
+                  <th scope="row"><a href="https://huggingface.co/Laplace-AI-Research/Signet-4B" target="_blank" rel="noopener noreferrer">Signet-4B</a></th>
+                  <td><span class="fam-pill">Signet</span></td>
+                  <td>Qwen3.5-4B</td>
+                  <td>LoRA adapter</td>
+                  <td>Apache-2.0</td>
+                  <td class="num">98.5% acc</td>
+                  <td class="num">98.1% resist</td>
+                </tr>
+                <tr data-family="signet">
+                  <th scope="row"><a href="https://huggingface.co/Laplace-AI-Research/Signet-2B" target="_blank" rel="noopener noreferrer">Signet-2B</a></th>
+                  <td><span class="fam-pill">Signet</span></td>
+                  <td>Qwen3.5-2B</td>
+                  <td>LoRA adapter</td>
+                  <td>Apache-2.0</td>
+                  <td class="num">79.6% acc</td>
+                  <td class="num">86.3% resist</td>
+                </tr>
+                <tr data-family="conviction">
+                  <th scope="row"><a href="https://huggingface.co/Laplace-AI-Research/Conviction-Anchor-1.7B" target="_blank" rel="noopener noreferrer">Anchor 1.7B</a></th>
+                  <td><span class="fam-pill">Conviction</span></td>
+                  <td>Qwen3-1.7B</td>
+                  <td>LoRA (SFT)</td>
+                  <td>Apache-2.0</td>
+                  <td class="num">58.0% acc</td>
+                  <td class="num">53.1% resist</td>
+                </tr>
+                <tr data-family="conviction">
+                  <th scope="row"><a href="https://huggingface.co/Laplace-AI-Research/Conviction-Vector-1.7B" target="_blank" rel="noopener noreferrer">Vector 1.7B</a></th>
+                  <td><span class="fam-pill">Conviction</span></td>
+                  <td>Qwen3-1.7B</td>
+                  <td>LoRA (GRPO)</td>
+                  <td>Apache-2.0</td>
+                  <td class="num">64.4% acc</td>
+                  <td class="num">31.5% resist</td>
+                </tr>
+                <tr data-family="conviction">
+                  <th scope="row"><a href="https://huggingface.co/Laplace-AI-Research/Conviction-Meridian-1.7B" target="_blank" rel="noopener noreferrer">Meridian 1.7B</a></th>
+                  <td><span class="fam-pill">Conviction</span></td>
+                  <td>Qwen3-1.7B</td>
+                  <td>LoRA (SFT &rarr; GRPO)</td>
+                  <td>Apache-2.0</td>
+                  <td class="num">56.0% acc</td>
+                  <td class="num">57.8% resist</td>
+                </tr>
+                <tr class="is-flagship" data-family="tarot-draw">
+                  <th scope="row"><a href="https://huggingface.co/Laplace-AI-Research/tarot-draw-4b" target="_blank" rel="noopener noreferrer">Tarot-Draw 4B</a></th>
+                  <td><span class="fam-pill">Tarot-Draw</span></td>
+                  <td>Qwen3-4B</td>
+                  <td>LoRA adapter</td>
+                  <td>CC BY-NC 4.0</td>
+                  <td class="num">0.1684 Brier</td>
+                  <td class="num">0.0708 res</td>
+                </tr>
+                <tr data-family="tarot-draw">
+                  <th scope="row"><a href="https://huggingface.co/Laplace-AI-Research/tarot-draw-8b" target="_blank" rel="noopener noreferrer">Tarot-Draw 8B</a></th>
+                  <td><span class="fam-pill">Tarot-Draw</span></td>
+                  <td>Qwen3-8B</td>
+                  <td>LoRA adapter</td>
+                  <td>CC BY-NC 4.0</td>
+                  <td class="num">0.1674 Brier</td>
+                  <td class="num">0.0718 res</td>
+                </tr>
+                <tr data-family="tarot-draw">
+                  <th scope="row"><a href="https://huggingface.co/Laplace-AI-Research/tarot-draw-1-7b" target="_blank" rel="noopener noreferrer">Tarot-Draw 1.7B</a></th>
+                  <td><span class="fam-pill">Tarot-Draw</span></td>
+                  <td>Qwen3-1.7B</td>
+                  <td>LoRA adapter</td>
+                  <td>CC BY-NC 4.0</td>
+                  <td class="num">0.1803 Brier</td>
+                  <td class="num">0.0593 res</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </section>
-
       </main>
 
       <footer class="foot">
@@ -245,11 +594,12 @@
         </div>
         <div class="copy">
           <p>&copy; 2026 Laplace Research &middot; <a href="mailto:inquiries@laplaceresearch.org">inquiries@laplaceresearch.org</a></p>
-          <nav aria-label="Legal"><a href="/privacy/">Privacy</a><a href="/licenses/">Licenses</a><a href="/accessibility/">Accessibility</a></nav>
+          <nav aria-label="Legal"><a href="/privacy/">Privacy</a> &middot; <a href="/licenses/">Licenses</a> &middot; <a href="/accessibility/">Accessibility</a></nav>
           <p class="disclaimer">Research artifacts provided &lsquo;as is&rsquo;, without warranty. Forecasts are not financial, investment, legal, or betting advice. <a href="/licenses/#disclaimer">Full disclaimer</a></p>
         </div>
       </footer>
     </div>
-      <script src="/site.js?v=20261122-2" defer></script>
+    <script src="/site.js?v=20261122-2" defer></script>
+    <script src="/models/models.js?v=20261126-1" defer></script>
   </body>
 </html>
