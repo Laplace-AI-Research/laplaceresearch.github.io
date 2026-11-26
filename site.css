@@ -20,9 +20,9 @@
   --faint: rgba(35, 38, 45, 0.38);
   --line: #e8e8e8;
   --line-strong: #e0e0df;
-  --accent: #3347d6;
-  --accent-ink: #2335b8;
-  --brand: #0f3487;
+  --accent: #02338a;
+  --accent-ink: #01276b;
+  --brand: var(--accent);
   --s1: #2a78d6;
   --s2: #eb6834;
   --s3: #1baf7a;
@@ -36,7 +36,7 @@
   --col: 700px;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
   --offset: max(0px, calc((100vw - 1600px) / 2));
-  --metal-stops: #c3cad6 0%, #8d97a8 14%, #d5dae3 28%, #5c6678 42%, #3347d6 56%, #b9c4ff 66%, #6a7486 80%, #cfd5df 92%, #7b8597 100%;
+  --metal-stops: #c3cad6 0%, #8d97a8 14%, #d5dae3 28%, #5c6678 42%, #02338a 56%, #b9c4ff 66%, #6a7486 80%, #cfd5df 92%, #7b8597 100%;
   --metal: linear-gradient(135deg, var(--metal-stops));
   --metal-h: linear-gradient(90deg, var(--metal-stops));
   /* aliases for the figure, table, and release components */

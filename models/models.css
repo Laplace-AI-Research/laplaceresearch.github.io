@@ -202,7 +202,7 @@
   padding: 14px;
   display: flex;
   align-items: flex-end;
-  background: #08104a;
+  background: #011a47;
   overflow: hidden;
   margin-bottom: 18px;
 }
@@ -298,12 +298,12 @@
 }
 
 .mc:hover {
-  border-color: rgba(51, 71, 214, 0.55);
+  border-color: rgba(2, 51, 138, 0.55);
 }
 
 .mc.is-flagship {
-  border-color: rgba(51, 71, 214, 0.42);
-  background: linear-gradient(180deg, rgba(51, 71, 214, 0.032) 0%, #ffffff 48%);
+  border-color: rgba(2, 51, 138, 0.42);
+  background: linear-gradient(180deg, rgba(2, 51, 138, 0.032) 0%, #ffffff 48%);
 }
 
 .mc-head {
@@ -343,7 +343,7 @@
 
 .mc-badge {
   padding: 3px 7px;
-  background: rgba(51, 71, 214, 0.1);
+  background: rgba(2, 51, 138, 0.1);
   color: var(--accent);
   font-family: var(--mono);
   font-size: 10px;
@@ -462,7 +462,7 @@
 
 .mc-repo:hover {
   border-color: var(--accent);
-  background: rgba(51, 71, 214, 0.04);
+  background: rgba(2, 51, 138, 0.04);
 }
 
 .mc-repo-id {
@@ -595,11 +595,11 @@ table.mmatrix {
 }
 
 .mmatrix tbody tr:hover {
-  background: rgba(51, 71, 214, 0.025);
+  background: rgba(2, 51, 138, 0.025);
 }
 
 .mmatrix tbody tr.is-flagship {
-  background: rgba(51, 71, 214, 0.045);
+  background: rgba(2, 51, 138, 0.045);
 }
 
 .mmatrix tbody th {
