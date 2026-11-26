@@ -1,4 +1,4 @@
-# Figures: When thinking helps models believe forged records (draft)
+# Figures: When thinking helps models believe forged records
 
 All charts are drawn by code; no generated imagery is used for data marks.
 

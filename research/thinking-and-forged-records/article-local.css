@@ -1,16 +1,5 @@
-/* Page-specific styles for the thinking-and-forged-records draft. */
+/* Page-specific styles for the thinking-and-forged-records note. */
 
-.draft-banner {
-  margin: 0 0 28px;
-  padding: 12px 16px;
-  border: 1px dashed var(--accent);
-  background: color-mix(in srgb, var(--accent) 5%, #fff);
-  font-family: var(--sans);
-  font-size: 14px;
-  line-height: 1.5;
-  color: var(--ink);
-}
-.draft-banner strong { color: var(--accent-ink); }
 
 .post-toc {
   margin: 28px 0 8px;
@@ -66,3 +55,5 @@
 
 .fig-downloads { font-family: var(--sans); font-size: 13px; color: var(--muted); }
 .fig-downloads a { color: inherit; }
+
+.post-hero-media { object-position: 50% 62%; }
