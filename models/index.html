@@ -37,7 +37,7 @@
     <link rel="preload" href="/assets/fonts/newsreader-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin />
     <script>document.documentElement.classList.add("js")</script>
     <link rel="stylesheet" href="/site.css?v=20261126-1" />
-    <link rel="stylesheet" href="/models/models.css?v=20261126-2" />
+    <link rel="stylesheet" href="/models/models.css?v=20261126-4" />
   </head>
 
   <body>
@@ -104,20 +104,23 @@
 
         <!-- STICKY FILTER & VIEW TOOLBAR -->
         <div class="models-bar" role="region" aria-label="Filter and view controls">
-          <div class="filter-pills" role="group" aria-label="Filter by model family">
-            <button type="button" class="fpill" data-filter="all" aria-pressed="true">All families (9)</button>
-            <button type="button" class="fpill" data-filter="signet" aria-pressed="false">Signet (3)</button>
-            <button type="button" class="fpill" data-filter="conviction" aria-pressed="false">Conviction Series (3)</button>
-            <button type="button" class="fpill" data-filter="tarot-draw" aria-pressed="false">Tarot-Draw (3)</button>
-          </div>
-          <div class="view-switch" role="group" aria-label="Display mode">
-            <button type="button" class="vbtn" data-view="cards" aria-pressed="true">Cards</button>
-            <button type="button" class="vbtn" data-view="table" aria-pressed="false">Compare table</button>
+          <div class="models-bar-inner">
+            <div class="filter-pills" role="group" aria-label="Filter by model family">
+              <button type="button" class="fpill" data-filter="all" aria-pressed="true">All families (9)</button>
+              <button type="button" class="fpill" data-filter="signet" aria-pressed="false">Signet (3)</button>
+              <button type="button" class="fpill" data-filter="conviction" aria-pressed="false">Conviction Series (3)</button>
+              <button type="button" class="fpill" data-filter="tarot-draw" aria-pressed="false">Tarot-Draw (3)</button>
+            </div>
+            <div class="view-switch" role="group" aria-label="Display mode">
+              <button type="button" class="vbtn" data-view="cards" aria-pressed="true">Cards</button>
+              <button type="button" class="vbtn" data-view="table" aria-pressed="false">Compare table</button>
+            </div>
           </div>
         </div>
 
         <!-- CARDS VIEW -->
         <div class="models-wrap" id="models-cards">
+          <div class="models-wrap-inner">
           <!-- SIGNET -->
           <section class="fam-block" id="signet" data-family="signet" aria-labelledby="signet-title">
             <div class="fam-banner">
@@ -476,10 +479,12 @@
             </div>
             <p class="fam-note">Development split, n = 3,000. Lower Brier is better; higher resolution is better. Research artifacts provided as is. <a href="/licenses/#disclaimer">Disclaimer</a></p>
           </section>
+          </div>
         </div>
 
         <!-- COMPARE TABLE VIEW -->
         <section class="matrix-wrap" id="models-matrix" aria-label="Compare all models" hidden>
+          <div class="matrix-inner">
           <div class="matrix-head">
             <h2>Compare all models</h2>
             <p>All nine open-weight checkpoints side by side.</p>
@@ -582,6 +587,7 @@
               </tbody>
             </table>
           </div>
+          </div>
         </section>
       </main>
 
@@ -594,7 +600,7 @@
         </div>
         <div class="copy">
           <p>&copy; 2026 Laplace Research &middot; <a href="mailto:inquiries@laplaceresearch.org">inquiries@laplaceresearch.org</a></p>
-          <nav aria-label="Legal"><a href="/privacy/">Privacy</a> &middot; <a href="/licenses/">Licenses</a> &middot; <a href="/accessibility/">Accessibility</a></nav>
+          <nav aria-label="Legal"><a href="/privacy/">Privacy</a><a href="/licenses/">Licenses</a><a href="/accessibility/">Accessibility</a></nav>
           <p class="disclaimer">Research artifacts provided &lsquo;as is&rsquo;, without warranty. Forecasts are not financial, investment, legal, or betting advice. <a href="/licenses/#disclaimer">Full disclaimer</a></p>
         </div>
       </footer>

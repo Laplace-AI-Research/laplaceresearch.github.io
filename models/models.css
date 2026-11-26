@@ -6,15 +6,20 @@
   padding-bottom: 56px;
 }
 
+/* Shared content measure so hero, toolbar, banners, cards, and table share exact left/right edges */
+.models-hero-inner,
+.models-bar-inner,
+.models-wrap-inner,
+.matrix-inner {
+  width: 100%;
+  max-width: 1080px;
+}
+
 /* Header section */
 .models-hero {
   padding: 52px var(--pad) 40px;
   background: var(--panel);
   border-bottom: 1px solid var(--line);
-}
-
-.models-hero-inner {
-  max-width: 1080px;
 }
 
 .models-hero h1 {
@@ -88,6 +93,7 @@
   font-family: var(--mono);
   font-size: 11px;
   color: var(--muted);
+  white-space: nowrap;
 }
 
 .qpick-note {
@@ -97,20 +103,23 @@
   color: var(--ink-2);
 }
 
-/* Toolbar: family filter + Cards/Table toggle */
+/* Sticky toolbar aligned to the exact same 1080px measure as hero and cards */
 .models-bar {
   position: sticky;
   top: 0;
   z-index: 25;
+  padding: 14px var(--pad);
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+
+.models-bar-inner {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   gap: 12px 20px;
-  padding: 14px var(--pad);
-  background: rgba(255, 255, 255, 0.94);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--line);
 }
 
 .filter-pills {
@@ -172,21 +181,27 @@
 /* Family blocks */
 .models-wrap {
   padding: 36px var(--pad) 0;
-  max-width: calc(1080px + 2 * var(--pad));
 }
 
 .fam-block {
   margin-bottom: 64px;
 }
 
+.fam-block:last-child {
+  margin-bottom: 0;
+}
+
 .fam-block[hidden] {
   display: none;
 }
 
-/* Vibrant family hero banner */
+/* Vibrant family hero banner — flex bottom-left card so artwork always breathes on the right */
 .fam-banner {
   position: relative;
-  height: 196px;
+  min-height: 196px;
+  padding: 14px;
+  display: flex;
+  align-items: flex-end;
   background: #08104a;
   overflow: hidden;
   margin-bottom: 18px;
@@ -202,9 +217,9 @@
 }
 
 .fam-banner-card {
-  position: absolute;
-  left: 14px;
-  bottom: 14px;
+  position: relative;
+  z-index: 1;
+  width: 100%;
   max-width: 520px;
   background: #ffffff;
   padding: 16px 20px;
@@ -270,6 +285,7 @@
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 14px;
+  align-items: stretch;
 }
 
 .mc {
@@ -295,6 +311,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 8px;
+  min-height: 22px;
   margin-bottom: 12px;
 }
 
@@ -312,8 +329,9 @@
 .mc-dot {
   width: 6px;
   height: 6px;
-  background: var(--accent);
   display: inline-block;
+  flex: none;
+  border: 3px solid var(--accent);
 }
 
 .mc-seal {
@@ -349,7 +367,6 @@
   font-size: 13.5px;
   line-height: 1.5;
   color: var(--ink-2);
-  min-height: 41px;
 }
 
 /* Spec pills */
@@ -369,12 +386,12 @@
   color: var(--ink-2);
 }
 
-/* Aligned metrics with deltas */
+/* Aligned metrics with deltas — pinned to bottom band so all 3 cards align horizontally */
 .mc-stats {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 12px;
-  margin: auto 0 16px;
+  gap: 10px;
+  margin: auto 0 14px;
   padding: 14px 0;
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
@@ -385,12 +402,13 @@
   flex-direction: column;
   justify-content: space-between;
   gap: 6px;
+  min-width: 0;
 }
 
 .mc-stat dt {
   font-family: var(--mono);
   font-size: 10px;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
   color: var(--muted);
   line-height: 1.3;
@@ -399,10 +417,11 @@
 .mc-stat dd {
   margin: 0;
   display: flex;
+  flex-wrap: wrap;
   align-items: baseline;
-  gap: 6px;
+  gap: 4px 6px;
   font-family: var(--serif);
-  font-size: 27px;
+  font-size: clamp(22px, 2vw, 27px);
   font-weight: 400;
   line-height: 1;
   letter-spacing: -0.02em;
@@ -513,7 +532,6 @@
 /* Comparison matrix view */
 .matrix-wrap {
   padding: 28px var(--pad) 0;
-  max-width: calc(1080px + 2 * var(--pad));
 }
 
 .matrix-wrap[hidden] {
@@ -614,18 +632,40 @@ table.mmatrix {
   color: var(--ink-2);
 }
 
-@media (max-width: 960px) {
+/* Responsive breakpoints — keep 3-up on desktop & laptops so 3-card families never orphan */
+@media (max-width: 900px) {
+  .mc-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 720px) {
   .quick-picks,
   .mc-grid {
     grid-template-columns: 1fr;
   }
   .fam-banner {
-    height: auto;
-    padding: 56px 14px 14px;
+    min-height: 0;
+    padding-top: 84px;
   }
   .fam-banner-card {
-    position: relative;
-    inset: auto;
     max-width: none;
+  }
+}
+
+/* Clean print / PDF rendering */
+@media print {
+  .skip-link,
+  .models-bar .view-switch {
+    display: none !important;
+  }
+  .models-bar {
+    position: static;
+  }
+  .fam-banner,
+  .mc,
+  .qpick {
+    break-inside: avoid;
+    page-break-inside: avoid;
   }
 }
