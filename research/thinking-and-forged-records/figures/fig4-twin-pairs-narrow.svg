@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 396" width="400" height="396" role="img" aria-labelledby="t d" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" fill="#23262d">
+<title id="t">Outcomes on 84 matched forged and authenticated record pairs (exploratory)</title><desc id="d">Qwen3-1.7B thinking off: both right 3, genuine right, forged wrong 19, forged right, genuine wrong 30, both wrong 32; Qwen3-1.7B thinking on: both right 4, genuine right, forged wrong 73, forged right, genuine wrong 2, both wrong 5; Qwen3-8B thinking off: both right 2, genuine right, forged wrong 32, forged right, genuine wrong 5, both wrong 45; Qwen3-8B thinking on: both right 0, genuine right, forged wrong 84, forged right, genuine wrong 0, both wrong 0; Qwen3.5-9B thinking off: both right 2, genuine right, forged wrong 71, forged right, genuine wrong 1, both wrong 10; Qwen3.5-9B thinking on: both right 4, genuine right, forged wrong 79, forged right, genuine wrong 0, both wrong 1; Granite-4.2-8B thinking off: both right 1, genuine right, forged wrong 45, forged right, genuine wrong 5, both wrong 33; Granite-4.2-8B thinking on: both right 0, genuine right, forged wrong 84, forged right, genuine wrong 0, both wrong 0.</desc>
+<rect width="400" height="396" fill="#ffffff"/>
+<rect x="20" y="13" width="13" height="13" fill="#3347d6"/>
+<text x="40" y="25" font-size="13">Both right</text>
+<rect x="121.0" y="13" width="13" height="13" fill="#a9b3ee"/>
+<text x="141.0" y="25" font-size="13">Genuine right, forged wrong</text>
+<rect x="20" y="37" width="13" height="13" fill="#8d9199"/>
+<text x="40" y="49" font-size="13">Forged right, genuine wrong</text>
+<rect x="241.7" y="37" width="13" height="13" fill="#e3e1dc"/>
+<text x="261.7" y="49" font-size="13">Both wrong</text>
+<text x="20" y="92" font-size="13" font-weight="600">Qwen3-1.7B</text>
+<text x="114" y="96" font-size="13" fill="#5d626b" text-anchor="end">off</text>
+<rect x="124.0" y="82" width="9.1" height="20" fill="#3347d6" stroke="#fff" stroke-width="1"/>
+<rect x="133.1" y="82" width="57.9" height="20" fill="#a9b3ee" stroke="#fff" stroke-width="1"/>
+<text x="162.1" y="97" font-size="12" text-anchor="middle" fill="#23262d">19</text>
+<rect x="191.0" y="82" width="91.4" height="20" fill="#8d9199" stroke="#fff" stroke-width="1"/>
+<text x="236.8" y="97" font-size="12" text-anchor="middle" fill="#fff">30</text>
+<rect x="282.5" y="82" width="97.5" height="20" fill="#e3e1dc" stroke="#fff" stroke-width="1"/>
+<text x="331.2" y="97" font-size="12" text-anchor="middle" fill="#23262d">32</text>
+<text x="114" y="122" font-size="13" fill="#5d626b" text-anchor="end">on</text>
+<rect x="124.0" y="108" width="12.2" height="20" fill="#3347d6" stroke="#fff" stroke-width="1"/>
+<rect x="136.2" y="108" width="222.5" height="20" fill="#a9b3ee" stroke="#fff" stroke-width="1"/>
+<text x="247.4" y="123" font-size="12" text-anchor="middle" fill="#23262d">73</text>
+<rect x="358.7" y="108" width="6.1" height="20" fill="#8d9199" stroke="#fff" stroke-width="1"/>
+<rect x="364.8" y="108" width="15.2" height="20" fill="#e3e1dc" stroke="#fff" stroke-width="1"/>
+<text x="20" y="164" font-size="13" font-weight="600">Qwen3-8B</text>
+<text x="114" y="168" font-size="13" fill="#5d626b" text-anchor="end">off</text>
+<rect x="124.0" y="154" width="6.1" height="20" fill="#3347d6" stroke="#fff" stroke-width="1"/>
+<rect x="130.1" y="154" width="97.5" height="20" fill="#a9b3ee" stroke="#fff" stroke-width="1"/>
+<text x="178.9" y="169" font-size="12" text-anchor="middle" fill="#23262d">32</text>
+<rect x="227.6" y="154" width="15.2" height="20" fill="#8d9199" stroke="#fff" stroke-width="1"/>
+<rect x="242.9" y="154" width="137.1" height="20" fill="#e3e1dc" stroke="#fff" stroke-width="1"/>
+<text x="311.4" y="169" font-size="12" text-anchor="middle" fill="#23262d">45</text>
+<text x="114" y="194" font-size="13" fill="#5d626b" text-anchor="end">on</text>
+<rect x="124.0" y="180" width="256.0" height="20" fill="#a9b3ee" stroke="#fff" stroke-width="1"/>
+<text x="252.0" y="195" font-size="12" text-anchor="middle" fill="#23262d">84</text>
+<text x="20" y="236" font-size="13" font-weight="600">Qwen3.5-9B</text>
+<text x="114" y="240" font-size="13" fill="#5d626b" text-anchor="end">off</text>
+<rect x="124.0" y="226" width="6.1" height="20" fill="#3347d6" stroke="#fff" stroke-width="1"/>
+<rect x="130.1" y="226" width="216.4" height="20" fill="#a9b3ee" stroke="#fff" stroke-width="1"/>
+<text x="238.3" y="241" font-size="12" text-anchor="middle" fill="#23262d">71</text>
+<rect x="346.5" y="226" width="3.0" height="20" fill="#8d9199" stroke="#fff" stroke-width="1"/>
+<rect x="349.5" y="226" width="30.5" height="20" fill="#e3e1dc" stroke="#fff" stroke-width="1"/>
+<text x="364.8" y="241" font-size="12" text-anchor="middle" fill="#23262d">10</text>
+<text x="114" y="266" font-size="13" fill="#5d626b" text-anchor="end">on</text>
+<rect x="124.0" y="252" width="12.2" height="20" fill="#3347d6" stroke="#fff" stroke-width="1"/>
+<rect x="136.2" y="252" width="240.8" height="20" fill="#a9b3ee" stroke="#fff" stroke-width="1"/>
+<text x="256.6" y="267" font-size="12" text-anchor="middle" fill="#23262d">79</text>
+<rect x="377.0" y="252" width="3.0" height="20" fill="#e3e1dc" stroke="#fff" stroke-width="1"/>
+<text x="20" y="308" font-size="13" font-weight="600">Granite-4.2-8B</text>
+<text x="114" y="312" font-size="13" fill="#5d626b" text-anchor="end">off</text>
+<rect x="124.0" y="298" width="3.0" height="20" fill="#3347d6" stroke="#fff" stroke-width="1"/>
+<rect x="127.0" y="298" width="137.1" height="20" fill="#a9b3ee" stroke="#fff" stroke-width="1"/>
+<text x="195.6" y="313" font-size="12" text-anchor="middle" fill="#23262d">45</text>
+<rect x="264.2" y="298" width="15.2" height="20" fill="#8d9199" stroke="#fff" stroke-width="1"/>
+<rect x="279.4" y="298" width="100.6" height="20" fill="#e3e1dc" stroke="#fff" stroke-width="1"/>
+<text x="329.7" y="313" font-size="12" text-anchor="middle" fill="#23262d">33</text>
+<text x="114" y="338" font-size="13" fill="#5d626b" text-anchor="end">on</text>
+<rect x="124.0" y="324" width="256.0" height="20" fill="#a9b3ee" stroke="#fff" stroke-width="1"/>
+<text x="252.0" y="339" font-size="12" text-anchor="middle" fill="#23262d">84</text>
+<text x="20" y="382" font-size="13" fill="#5d626b">Number of pairs (of 84).</text>
+</svg>
