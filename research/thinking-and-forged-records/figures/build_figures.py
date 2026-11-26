@@ -29,7 +29,7 @@ METRICS = {
     "insufficient_accuracy": ("Correct abstention", "higher is better", +1),
 }
 FONT = "Inter, 'Helvetica Neue', Arial, sans-serif"
-INK, MUTED, RULE, OFF, ON = "#23262d", "#5d626b", "#d9d6cf", "#6b7079", "#3347d6"
+INK, MUTED, RULE, OFF, ON = "#23262d", "#5d626b", "#d9d6cf", "#6b7079", "#02338a"
 W = 640
 NARROW = False
 
@@ -149,7 +149,7 @@ def fig2(d):
     return "\n".join(out)
 
 
-TWIN = [("both", "Both right", "#3347d6"), ("accept_trusted_only", "Genuine right, forged wrong", "#a9b3ee"),
+TWIN = [("both", "Both right", "#02338a"), ("accept_trusted_only", "Genuine right, forged wrong", "#a5b8dd"),
         ("reject_forged_only", "Forged right, genuine wrong", "#8d9199"), ("neither", "Both wrong", "#e3e1dc")]
 
 
