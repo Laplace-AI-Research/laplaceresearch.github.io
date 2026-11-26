@@ -2,11 +2,13 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>Tarot-Draw</title>
+    <title>Tarot-Draw | Laplace Research</title>
     <meta
       name="description"
       content="Tarot-Draw is a family of forecasting models trained in a controlled experiment across three model sizes."
     />
+    <meta name="theme-color" content="#f6f5f2" />
+    <meta name="color-scheme" content="only light" />
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1.0, viewport-fit=cover"
@@ -56,7 +58,7 @@
       {
         "@context": "https://schema.org",
         "@type": "Article",
-        "headline": "Tarot-Draw",
+        "headline": "Tarot-Draw: A controlled study of what model scale changes in probabilistic forecasting",
         "description": "Three forecasting models trained on the same 81,870 questions. A controlled look at what model size changes, and what it does not.",
         "datePublished": "2026-08-29",
         "dateModified": "2026-09-21",
@@ -89,6 +91,7 @@
     <link rel="preload" href="/assets/fonts/newsreader-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin />
     <script>document.documentElement.classList.add("js")</script>
     <link rel="stylesheet" href="/site.css?v=20261123-8" />
+    <link rel="stylesheet" href="/article.css?v=20261126-1" />
   </head>
 
   <body>
@@ -118,284 +121,398 @@
         <img class="dither" src="/assets/dither.svg" alt="" width="248" height="64" />
       </header>
 
-      <main>
-        <section class="sec" id="content" aria-labelledby="t">
-          <p class="num">01</p>
-          <div class="body">
-            <p class="article-meta"><span>Model release</span><time datetime="2026-08-29">2026.08.29</time><span>8 minute read</span></p>
-            <h1 id="t">Tarot-Draw</h1>
-            <p class="dek">
-              Three forecasting models trained on the same 81,870 questions. A
-              controlled look at what model size changes, and what it does not.
-            </p>
-            <p class="byline">
-              By <a href="https://aryasomu.com/" target="_blank" rel="noopener noreferrer">Arya Somu</a>
-              and <a href="https://brucenh.com/" target="_blank" rel="noopener noreferrer">Bruce Nshuti Hirwa</a>
-            </p>
-            <nav class="btns" aria-label="Release links">
-              <a class="btn solid ext" href="https://huggingface.co/collections/Laplace-AI-Research/tarot-draw-family" target="_blank" rel="noopener noreferrer">Model collection</a>
-              <a class="btn" href="#artifacts">Code and evidence</a>
-            </nav>
-            <dl class="release-facts">
-              <div><dt>Family</dt><dd>1.7B, 4B, 8B</dd></div>
-              <div><dt>Task</dt><dd>Binary forecasting</dd></div>
-              <div><dt>Output</dt><dd>Probability in [0, 1]</dd></div>
-              <div><dt>Recommended</dt><dd>Tarot-Draw 4B</dd></div>
-            </dl>
-          </div>
-          <nav class="toc" aria-label="On this page">
-            <p>On this page</p>
-            <a href="#overview">Overview</a>
-            <a href="#experiment">Experiment</a>
-            <a href="#family">Choosing a model</a>
-            <a href="#evidence">Evidence</a>
-            <a href="#limits">Limits</a>
-            <a href="#release">Release</a>
-          </nav>
-        </section>
-
-        <section class="sec" id="overview" aria-labelledby="overview-title">
-          <p class="num">02</p>
-          <div class="body prose">
-            <h2 id="overview-title">What Tarot-Draw is</h2>
-            <p class="lead">
-              Tarot-Draw is a family of probability estimators for binary
-              questions about future events.
-            </p>
-            <p>
-              Give a model a question, its resolution criteria, a scheduled
-              resolution date, and an <code>as_of</code> date. It returns one
-              number between zero and one. The models are intended to provide a
-              calibrated prior when current evidence is sparse, a market does not
-              exist, or a forecaster needs a consistent place to begin.
-            </p>
-            <p>
-              This is deliberately narrower than a general forecasting agent.
-              There is no retrieval layer, news feed, market price, or generated
-              explanation. The release isolates a single capability so that the
-              effect of model scale can be measured cleanly.
-            </p>
-            <div class="input-output" aria-label="Model input and output">
-              <div>
-                <p>Input</p>
-                <ul>
-                  <li>Question</li>
-                  <li>Resolution criteria</li>
-                  <li>Resolution date</li>
-                  <li>As-of date</li>
-                </ul>
-              </div>
-              <div>
-                <p>Output</p>
-                <strong>0.73</strong>
-                <span>estimated probability</span>
-              </div>
+      <main class="post-main" id="content">
+        <!-- Full-bleed hero artwork + floating white editorial title card -->
+        <header class="post-hero">
+          <img
+            class="post-hero-media"
+            src="/assets/covers/tarot-draw-hero.svg"
+            alt="Radial probability calibration lattice in cobalt blue and warm amber"
+            width="1600"
+            height="720"
+          />
+          <div class="post-hero-card">
+            <a class="post-back" href="/research/">
+              <span class="arrow" aria-hidden="true">&larr;</span>
+              <span>Back to Research</span>
+            </a>
+            <h1 id="t">Tarot-Draw: Three binary forecasting models trained on the same 81,870 questions</h1>
+            <div class="post-meta">
+              <span class="post-tag">Model release</span>
+              <time datetime="2026-08-29">August 29, 2026</time>
+              <span class="post-meta-sep" aria-hidden="true">&middot;</span>
+              <span>
+                <a href="https://aryasomu.com/" target="_blank" rel="noopener noreferrer">Arya Somu</a>,
+                <a href="https://brucenh.com/" target="_blank" rel="noopener noreferrer">Bruce Nshuti Hirwa</a>
+              </span>
+              <span class="post-meta-sep" aria-hidden="true">&middot;</span>
+              <span>8 min read</span>
             </div>
           </div>
-        </section>
+        </header>
 
-        <section class="sec" id="experiment" aria-labelledby="experiment-title">
-          <p class="num">03</p>
-          <div class="body prose">
-            <h2 id="experiment-title">One variable: model size</h2>
-            <p class="lead">
-              The 1.7B, 4B, and 8B models share the same corpus, targets, seed,
-              learning rate, and evaluation footing.
+        <!-- Opening narrative before the stat band -->
+        <div class="post-col post-body post-lead-section">
+          <p>
+            Today we are releasing Tarot-Draw, a family of three binary probability
+            estimators (1.7B, 4B, and 8B) trained on the exact same 81,870 forecasting
+            questions. It is a controlled study of what model scale changes in
+            probabilistic judgment, and what it does not.
+          </p>
+          <p>
+            Give a Tarot-Draw model a question, its resolution criteria, a scheduled
+            resolution date, and an <code>as_of</code> date, and it returns a single
+            calibrated number between zero and one. There is no retrieval layer, news
+            feed, market price, or generated explanation. Isolating this single
+            capability lets us hold corpus, targets, seed, learning rate, and
+            evaluation footing completely fixed so that parameter count is the only
+            variable.
+          </p>
+        </div>
+
+        <!-- Full-bleed cobalt metric band (Redwood signature element) -->
+        <div class="post-stat-band" aria-label="Key release metrics">
+          <dl class="post-stat-grid">
+            <div class="post-stat">
+              <dt>4B dev Brier score (matches 8B)</dt>
+              <dd>0.1684</dd>
+            </div>
+            <div class="post-stat">
+              <dt>calibration error on 4B</dt>
+              <dd>0.0007</dd>
+            </div>
+            <div class="post-stat">
+              <dt>shared training questions</dt>
+              <dd>81,870</dd>
+            </div>
+          </dl>
+        </div>
+
+        <!-- Main article prose -->
+        <div class="post-col post-body">
+          <p>
+            Our central finding is simple: <strong>calibration stayed flat, while resolution did not.</strong>
+            All three models learn when to be cautious, achieving near-zero calibration
+            error regardless of size. What the smallest 1.7B model gives up is
+            resolution&mdash;the ability to separate easier questions from harder ones.
+            Above 4B, however, gains flatten out: Tarot-Draw 4B and 8B are statistically
+            indistinguishable on the development split.
+          </p>
+          <p>
+            All three model weights are available in the
+            <a href="https://huggingface.co/collections/Laplace-AI-Research/tarot-draw-family" target="_blank" rel="noopener noreferrer">Hugging Face model collection</a>,
+            and every forecast, split definition, and metric script ships with the
+            <a href="#artifacts">open verification repositories</a>.
+          </p>
+
+          <!-- Section 1 -->
+          <section aria-labelledby="overview-title">
+            <h2 id="overview-title">What Tarot-Draw is</h2>
+            <p>
+              Tarot-Draw is a family of no-retrieval probability estimators for binary
+              questions about future events. The models are intended to provide a
+              calibrated prior when current evidence is sparse, a prediction market
+              does not exist, or a forecaster needs a consistent baseline before
+              incorporating external updates.
             </p>
             <p>
-              Holding those choices fixed turns the family into a controlled
-              experiment. The central question is not simply whether a larger
-              model scores better. It is which part of forecast quality changes as
-              capacity increases.
+              This scope is deliberately narrower than a general forecasting agent.
+              Because nothing is fetched at inference time, every number reflects only
+              the model&rsquo;s parametric prior conditioned on the question framing and
+              horizon.
             </p>
-            <blockquote class="finding">
+
+            <figure class="post-fig">
+              <div class="post-fig-frame" data-zoomable tabindex="0" role="button" aria-label="Enlarge Figure 1">
+                <img
+                  src="/assets/covers/tarot-draw-fig1.svg"
+                  alt="Tarot-Draw pipeline: structured question input into 1.7B, 4B, or 8B prior outputting a single calibrated probability in [0, 1]"
+                  width="760"
+                  height="250"
+                />
+              </div>
+              <figcaption>
+                Fig. 1. Tarot-Draw inference interface: four structured inputs map directly to a single calibrated probability in [0, 1] with no retrieval or chain-of-thought layer.
+              </figcaption>
+            </figure>
+          </section>
+
+          <!-- Section 2 -->
+          <section aria-labelledby="experiment-title">
+            <h2 id="experiment-title">One variable: model size</h2>
+            <p>
+              The 1.7B, 4B, and 8B models share the same corpus, targets, seed,
+              learning rate, and evaluation footing. Holding those choices fixed turns
+              the family into a controlled experiment. The central question is not
+              simply whether a larger model scores better&mdash;it is which component of
+              forecast quality actually moves as capacity increases.
+            </p>
+
+            <blockquote class="post-quote">
               <p>Calibration stayed flat. Resolution did not.</p>
             </blockquote>
+
             <p>
-              All three models learn when to be cautious. The smallest model is
-              worse at separating easier questions from harder ones. In Murphy
-              terms, its loss is in resolution rather than calibration.
+              Under the Murphy decomposition of the Brier score, total error splits into
+              uncertainty (a property of the questions), calibration error (how well
+              predicted probabilities match empirical frequencies), and resolution (how
+              sharply predictions separate outcomes that happen from those that do not).
+              Every size learns calibration to within a thousandth of a Brier point.
+              The 1.7B trails the 4B by 0.0119 Brier (paired 95% interval: +0.0080 to
+              +0.0158), and virtually all of that gap comes from lower resolution.
             </p>
-            <p>
-              The 4B and 8B results are statistically indistinguishable. The 1.7B
-              trails the 4B by 0.0119 Brier, with a paired 95% interval of +0.0080
-              to +0.0158.
-            </p>
-          </div>
-          <div class="wide" style="margin-top: 28px">
-            <figure class="figure" aria-labelledby="fig-murphy-title">
-            <div class="figure-head">
-              <p class="figure-title" id="fig-murphy-title">Where the Brier score comes from</p>
-              <p class="figure-sub">Murphy decomposition on the development split (n = 3,000), both panels in Brier units on the same scale. Calibration error is near zero at every size; resolution is what the 1.7B gives up.</p>
-            </div>
-            <div class="panels" style="--panels: 2">
-              <div class="panel"><p class="panel-title">Resolution <span>· higher is better</span></p><ul class="chart-rows has-values" style="--label-w: 112px"><li class="chart-row"><span class="row-label">Tarot-Draw 8B</span><span class="track" style="--ticks: 2"><span class="bar" style="--v: 0.8975" tabindex="0" role="img" aria-label="Tarot-Draw 8B: Resolution 0.0718" data-tip-title="Tarot-Draw 8B" data-tip="Resolution 0.0718"></span><span class="bar-value" style="--v: 0.8975">0.0718</span></span></li><li class="chart-row"><span class="row-label">Tarot-Draw 4B</span><span class="track" style="--ticks: 2"><span class="bar" style="--v: 0.8850" tabindex="0" role="img" aria-label="Tarot-Draw 4B: Resolution 0.0708" data-tip-title="Tarot-Draw 4B" data-tip="Resolution 0.0708"></span><span class="bar-value" style="--v: 0.8850">0.0708</span></span></li><li class="chart-row"><span class="row-label">Tarot-Draw 1.7B</span><span class="track" style="--ticks: 2"><span class="bar" style="--v: 0.7412" tabindex="0" role="img" aria-label="Tarot-Draw 1.7B: Resolution 0.0593" data-tip-title="Tarot-Draw 1.7B" data-tip="Resolution 0.0593"></span><span class="bar-value" style="--v: 0.7412">0.0593</span></span></li></ul><div class="axis has-values" aria-hidden="true" style="--label-w: 112px"><span style="--t: 0">0</span><span style="--t: 0.5">0.04</span><span style="--t: 1">0.08</span></div></div>
-              <div class="panel"><p class="panel-title">Calibration error <span>· lower is better</span></p><ul class="chart-rows has-values" style="--label-w: 112px"><li class="chart-row"><span class="row-label">Tarot-Draw 8B</span><span class="track" style="--ticks: 2"><span class="bar" style="--v: 0.0125" tabindex="0" role="img" aria-label="Tarot-Draw 8B: Calibration error 0.0010" data-tip-title="Tarot-Draw 8B" data-tip="Calibration error 0.0010"></span><span class="bar-value" style="--v: 0.0125">0.0010</span></span></li><li class="chart-row"><span class="row-label">Tarot-Draw 4B</span><span class="track" style="--ticks: 2"><span class="bar" style="--v: 0.0087" tabindex="0" role="img" aria-label="Tarot-Draw 4B: Calibration error 0.0007" data-tip-title="Tarot-Draw 4B" data-tip="Calibration error 0.0007"></span><span class="bar-value" style="--v: 0.0087">0.0007</span></span></li><li class="chart-row"><span class="row-label">Tarot-Draw 1.7B</span><span class="track" style="--ticks: 2"><span class="bar" style="--v: 0.0050" tabindex="0" role="img" aria-label="Tarot-Draw 1.7B: Calibration error 0.0004" data-tip-title="Tarot-Draw 1.7B" data-tip="Calibration error 0.0004"></span><span class="bar-value" style="--v: 0.0050">0.0004</span></span></li></ul><div class="axis has-values" aria-hidden="true" style="--label-w: 112px"><span style="--t: 0">0</span><span style="--t: 0.5">0.04</span><span style="--t: 1">0.08</span></div></div>
-            </div>
-          </figure>
-            <figure class="results-figure">
+
+            <figure class="post-fig" aria-labelledby="fig-murphy-title">
+              <div class="post-fig-frame">
+                <div class="figure">
+                  <div class="figure-head">
+                    <p class="figure-title" id="fig-murphy-title">Where the Brier score comes from</p>
+                    <p class="figure-sub">Murphy decomposition on the development split (n = 3,000), both panels in Brier units on the same scale.</p>
+                  </div>
+                  <div class="panels" style="--panels: 2">
+                    <div class="panel">
+                      <p class="panel-title">Resolution <span>&middot; higher is better</span></p>
+                      <ul class="chart-rows has-values" style="--label-w: 112px">
+                        <li class="chart-row"><span class="row-label">Tarot-Draw 8B</span><span class="track" style="--ticks: 2"><span class="bar" style="--v: 0.8975" tabindex="0" role="img" aria-label="Tarot-Draw 8B: Resolution 0.0718" data-tip-title="Tarot-Draw 8B" data-tip="Resolution 0.0718"></span><span class="bar-value" style="--v: 0.8975">0.0718</span></span></li>
+                        <li class="chart-row"><span class="row-label">Tarot-Draw 4B</span><span class="track" style="--ticks: 2"><span class="bar" style="--v: 0.8850" tabindex="0" role="img" aria-label="Tarot-Draw 4B: Resolution 0.0708" data-tip-title="Tarot-Draw 4B" data-tip="Resolution 0.0708"></span><span class="bar-value" style="--v: 0.8850">0.0708</span></span></li>
+                        <li class="chart-row"><span class="row-label">Tarot-Draw 1.7B</span><span class="track" style="--ticks: 2"><span class="bar" style="--v: 0.7412" tabindex="0" role="img" aria-label="Tarot-Draw 1.7B: Resolution 0.0593" data-tip-title="Tarot-Draw 1.7B" data-tip="Resolution 0.0593"></span><span class="bar-value" style="--v: 0.7412">0.0593</span></span></li>
+                      </ul>
+                      <div class="axis has-values" aria-hidden="true" style="--label-w: 112px"><span style="--t: 0">0</span><span style="--t: 0.5">0.04</span><span style="--t: 1">0.08</span></div>
+                    </div>
+                    <div class="panel">
+                      <p class="panel-title">Calibration error <span>&middot; lower is better</span></p>
+                      <ul class="chart-rows has-values" style="--label-w: 112px">
+                        <li class="chart-row"><span class="row-label">Tarot-Draw 8B</span><span class="track" style="--ticks: 2"><span class="bar" style="--v: 0.0125" tabindex="0" role="img" aria-label="Tarot-Draw 8B: Calibration error 0.0010" data-tip-title="Tarot-Draw 8B" data-tip="Calibration error 0.0010"></span><span class="bar-value" style="--v: 0.0125">0.0010</span></span></li>
+                        <li class="chart-row"><span class="row-label">Tarot-Draw 4B</span><span class="track" style="--ticks: 2"><span class="bar" style="--v: 0.0087" tabindex="0" role="img" aria-label="Tarot-Draw 4B: Calibration error 0.0007" data-tip-title="Tarot-Draw 4B" data-tip="Calibration error 0.0007"></span><span class="bar-value" style="--v: 0.0087">0.0007</span></span></li>
+                        <li class="chart-row"><span class="row-label">Tarot-Draw 1.7B</span><span class="track" style="--ticks: 2"><span class="bar" style="--v: 0.0050" tabindex="0" role="img" aria-label="Tarot-Draw 1.7B: Calibration error 0.0004" data-tip-title="Tarot-Draw 1.7B" data-tip="Calibration error 0.0004"></span><span class="bar-value" style="--v: 0.0050">0.0004</span></span></li>
+                      </ul>
+                      <div class="axis has-values" aria-hidden="true" style="--label-w: 112px"><span style="--t: 0">0</span><span style="--t: 0.5">0.04</span><span style="--t: 1">0.08</span></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
               <figcaption>
-                Development split, n = 3,000. Lower Brier and calibration are
-                better; higher resolution is better.
+                Fig. 2. Murphy decomposition across model sizes (n = 3,000 development questions). Calibration error is near zero at every scale; resolution accounts for the gap between 1.7B and 4B/8B.
               </figcaption>
-              <div class="table-scroll" tabindex="0" role="region" aria-label="Development results table">
-                <table class="data-table">
-                  <thead>
-                    <tr>
-                      <th scope="col">Model</th>
-                      <th scope="col" class="num">Dev Brier</th>
-                      <th scope="col" class="num">Calibration</th>
-                      <th scope="col" class="num">Resolution</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr><th scope="row">Tarot-Draw 8B</th><td class="num">0.1674</td><td class="num">0.0010</td><td class="num">0.0718</td></tr>
-                    <tr class="recommended-row"><th scope="row">Tarot-Draw 4B <span class="tag">Recommended</span></th><td class="num">0.1684</td><td class="num">0.0007</td><td class="num">0.0708</td></tr>
-                    <tr><th scope="row">Tarot-Draw 1.7B</th><td class="num">0.1803</td><td class="num">0.0004</td><td class="num">0.0593</td></tr>
-                  </tbody>
-                </table>
-              </div>
-              <p class="figure-note">
-                Question-level intervals do not include run-to-run training
-                variance. Differences below roughly 0.008 Brier should be treated
-                as unresolved.
-              </p>
             </figure>
-          </div>
-        </section>
 
-        <section class="sec" id="family" aria-labelledby="family-title">
-          <p class="num">04</p>
-          <div class="body prose">
-            <h2 id="family-title">Choosing a model</h2>
-            <p class="lead">
-              Start with the 4B. It matches the 8B within the resolution of this
-              experiment and requires a smaller deployment footprint.
-            </p>
+            <h3>Development split summary</h3>
             <p>
-              The other sizes remain useful when hardware is the binding
-              constraint or when reproducing the scaling comparison matters more
-              than choosing a default.
+              Table 1 reports headline Brier, calibration, and resolution scores on the
+              development split. Question-level intervals do not include run-to-run
+              training variance; differences below roughly 0.008 Brier should be treated
+              as unresolved.
             </p>
-          </div>
-          <div class="wide">
-            <div class="model-list" id="artifacts">
-              <div class="model-row model-row-head" aria-hidden="true">
-                <span>Model</span>
-                <span>Best fit</span>
-                <span>Artifacts</span>
-              </div>
-              <div class="model-row">
-                <div><h3>Tarot-Draw 4B</h3><p>Recommended</p></div>
-                <p>General use and most deployments</p>
-                <p class="artifact-links">
-                  <a href="https://huggingface.co/Laplace-AI-Research/tarot-draw-4b" target="_blank" rel="noopener noreferrer">Weights</a>
-                  <a href="https://github.com/Laplace-AI-Research/tarot-draw-4b" target="_blank" rel="noopener noreferrer">Evidence</a>
-                </p>
-              </div>
-              <div class="model-row">
-                <div><h3>Tarot-Draw 8B</h3><p>Largest</p></div>
-                <p>Capacity-rich serving and scale studies</p>
-                <p class="artifact-links">
-                  <a href="https://huggingface.co/Laplace-AI-Research/tarot-draw-8b" target="_blank" rel="noopener noreferrer">Weights</a>
-                  <a href="https://github.com/Laplace-AI-Research/tarot-draw-8b" target="_blank" rel="noopener noreferrer">Evidence</a>
-                </p>
-              </div>
-              <div class="model-row">
-                <div><h3>Tarot-Draw 1.7B</h3><p>Smallest</p></div>
-                <p>Laptops, CPUs, and tight memory budgets</p>
-                <p class="artifact-links">
-                  <a href="https://huggingface.co/Laplace-AI-Research/tarot-draw-1-7b" target="_blank" rel="noopener noreferrer">Weights</a>
-                  <a href="https://github.com/Laplace-AI-Research/tarot-draw-1-7b" target="_blank" rel="noopener noreferrer">Evidence</a>
-                </p>
-              </div>
+
+            <div class="post-table-wrap" role="region" aria-label="Development results table" tabindex="0">
+              <table class="post-table">
+                <thead>
+                  <tr>
+                    <th scope="col">Model</th>
+                    <th scope="col" class="num">Dev Brier</th>
+                    <th scope="col" class="num">Calibration</th>
+                    <th scope="col" class="num">Resolution</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">Tarot-Draw 8B</th>
+                    <td class="num">0.1674</td>
+                    <td class="num">0.0010</td>
+                    <td class="num">0.0718</td>
+                  </tr>
+                  <tr class="is-recommended">
+                    <th scope="row">Tarot-Draw 4B <span class="post-badge">Recommended</span></th>
+                    <td class="num">0.1684</td>
+                    <td class="num">0.0007</td>
+                    <td class="num">0.0708</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Tarot-Draw 1.7B</th>
+                    <td class="num">0.1803</td>
+                    <td class="num">0.0004</td>
+                    <td class="num">0.0593</td>
+                  </tr>
+                </tbody>
+              </table>
+              <p class="post-table-cap">
+                Table 1. Development split (n = 3,000). Lower Brier and calibration error are better; higher resolution is better.
+              </p>
             </div>
-          </div>
-        </section>
+          </section>
 
-        <section class="sec" id="evidence" aria-labelledby="evidence-title">
-          <p class="num">05</p>
-          <div class="body prose">
-            <h2 id="evidence-title">A result you can inspect</h2>
-            <p class="lead">
-              The forecasts, split metadata, metric code, and verification script
-              ship with each release.
-            </p>
+          <!-- Section 3 -->
+          <section aria-labelledby="family-title" id="artifacts">
+            <h2 id="family-title">Choosing a model</h2>
             <p>
-              The published forward split contains 277 questions that resolved
-              after a freeze date committed in public before it passed. The 4B
-              scored 0.1831 Brier, the 8B scored 0.1893, and the 1.7B scored
-              0.2030. These are clean point estimates, but the split is too small
-              to support a ranking between the 4B and 8B.
+              Start with Tarot-Draw 4B. It matches the 8B model within the statistical
+              resolution of this experiment while requiring half the deployment
+              footprint. The other two sizes remain useful when hardware is the binding
+              constraint or when reproducing the scaling curve directly.
+            </p>
+
+            <div class="post-table-wrap" role="region" aria-label="Model artifacts table" tabindex="0">
+              <table class="post-table">
+                <thead>
+                  <tr>
+                    <th scope="col">Model</th>
+                    <th scope="col">Best fit</th>
+                    <th scope="col" class="num">Artifacts</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="is-recommended">
+                    <th scope="row">Tarot-Draw 4B <span class="post-badge">Recommended</span></th>
+                    <td>General use and most deployments</td>
+                    <td class="num">
+                      <a href="https://huggingface.co/Laplace-AI-Research/tarot-draw-4b" target="_blank" rel="noopener noreferrer">Weights</a>
+                      &nbsp;&middot;&nbsp;
+                      <a href="https://github.com/Laplace-AI-Research/tarot-draw-4b" target="_blank" rel="noopener noreferrer">Evidence</a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Tarot-Draw 8B</th>
+                    <td>Capacity-rich serving and scale studies</td>
+                    <td class="num">
+                      <a href="https://huggingface.co/Laplace-AI-Research/tarot-draw-8b" target="_blank" rel="noopener noreferrer">Weights</a>
+                      &nbsp;&middot;&nbsp;
+                      <a href="https://github.com/Laplace-AI-Research/tarot-draw-8b" target="_blank" rel="noopener noreferrer">Evidence</a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Tarot-Draw 1.7B</th>
+                    <td>Laptops, CPUs, and tight memory budgets</td>
+                    <td class="num">
+                      <a href="https://huggingface.co/Laplace-AI-Research/tarot-draw-1-7b" target="_blank" rel="noopener noreferrer">Weights</a>
+                      &nbsp;&middot;&nbsp;
+                      <a href="https://github.com/Laplace-AI-Research/tarot-draw-1-7b" target="_blank" rel="noopener noreferrer">Evidence</a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h3>A result you can inspect</h3>
+            <p>
+              The published forward split contains 277 questions that resolved after a
+              freeze date committed in public before it passed. On that forward split,
+              the 4B scored 0.1831 Brier, the 8B scored 0.1893, and the 1.7B scored
+              0.2030. These are clean point estimates, though the split is too small to
+              support a ranking between the 4B and 8B.
             </p>
             <p>
               Confidence intervals use 10,000 paired, question-clustered bootstrap
-              samples. Recomputing every headline number requires no model, GPU,
-              or network access.
+              samples. Every forecast, split metadata file, metric implementation, and
+              verification script ships with the release, and recomputing every headline
+              number requires no model, GPU, or network access.
             </p>
-            <div class="verification-block">
-              <p>Verify the published results</p>
+
+            <div class="post-cmd">
+              <span class="post-cmd-label">Verify published results locally</span>
               <code>uv run python verify.py</code>
             </div>
-          </div>
-        </section>
+          </section>
 
-        <section class="sec" id="limits" aria-labelledby="limits-title">
-          <p class="num">06</p>
-          <div class="body prose">
+          <!-- Section 4 -->
+          <section aria-labelledby="limits-title">
             <h2 id="limits-title">Where the prior stops</h2>
-            <p class="lead">
-              Tarot-Draw is a starting estimate, not an oracle. Its calibration
-              should be measured again when the venue or question distribution
-              changes.
+            <p>
+              Tarot-Draw is a starting estimate, not an oracle. Its calibration should
+              be re-measured whenever the venue, horizon distribution, or question type
+              changes. Four structural limits apply to the current release:
             </p>
-            <ol class="limitations">
-              <li><h3>Current information is absent.</h3><p>The models cannot see breaking news, private evidence, or live market prices. A forecast that depends on them needs an external update.</p></li>
-              <li><h3>Mechanical questions remain difficult.</h3><p>Thresholds, counts, scores, and questions requiring precise arithmetic sit outside the strengths of a judgment prior.</p></li>
-              <li><h3>Very short horizons are weak.</h3><p>At horizons under seven days, the tested small model does not beat a market crowd at any point in a question's life.</p></li>
-              <li><h3>Some domains are underrepresented.</h3><p>Sports and obscure local elections are measured weaknesses in the present release.</p></li>
-            </ol>
-          </div>
-        </section>
 
-        <section class="sec" id="release" aria-labelledby="release-title">
-          <p class="num">07</p>
-          <div class="body prose">
+            <ul class="post-list">
+              <li>
+                <strong>Current information is absent.</strong> The models cannot see
+                breaking news, private evidence, or live market prices. Any forecast
+                that depends on recent developments requires an external update step.
+              </li>
+              <li>
+                <strong>Mechanical questions remain difficult.</strong> Thresholds,
+                counts, scores, and questions requiring precise arithmetic sit outside
+                the strengths of a parametric judgment prior.
+              </li>
+              <li>
+                <strong>Very short horizons are weak.</strong> At horizons under seven
+                days, the tested small model does not beat a market crowd at any point
+                in a question&rsquo;s life.
+              </li>
+              <li>
+                <strong>Some domains are underrepresented.</strong> Sports and obscure
+                local elections are measured weaknesses in the present release.
+              </li>
+            </ul>
+          </section>
+
+          <!-- Section 5 -->
+          <section aria-labelledby="release-title">
             <h2 id="release-title">Models, code, and terms</h2>
             <p>
-              Adapter weights, forecasts, and evaluation metadata are released
-              under CC BY-NC 4.0, so they may be used for non-commercial purposes
-              only. Verification and inference code are Apache 2.0. The adapters
-              are built on Qwen3-1.7B, Qwen3-4B, and Qwen3-8B (Apache-2.0,
-              Qwen / Alibaba Cloud). The training corpus is derived from Manifold
-              Markets data and is documented, not redistributed. See
+              Adapter weights, forecasts, and evaluation metadata are released under
+              CC BY-NC 4.0 for non-commercial use. Verification and inference code are
+              Apache 2.0. The adapters are built on Qwen3-1.7B, Qwen3-4B, and Qwen3-8B
+              (Apache-2.0, Qwen / Alibaba Cloud). The training corpus is derived from
+              Manifold Markets data and is documented, not redistributed. See
               <a href="/licenses/#tarot-draw">licenses and attribution</a>.
             </p>
-            <p class="note">
+            <p class="post-note">
               Tarot-Draw models and their forecasts are research artifacts provided
-              &lsquo;as is&rsquo;, without warranty. The probabilities they produce are not
-              financial, investment, legal, or betting advice. Don&rsquo;t rely on
-              them for trading or other consequential decisions.
+              &lsquo;as is&rsquo;, without warranty. The probabilities they produce are
+              not financial, investment, legal, or betting advice. Do not rely on them
+              for trading or other consequential decisions.
               <a href="/licenses/#disclaimer">Full disclaimer</a>.
             </p>
-            <dl class="publication-details">
+
+            <dl class="post-details">
               <div><dt>Version</dt><dd>1.0</dd></div>
               <div><dt>Published</dt><dd>29 August 2026</dd></div>
-              <div><dt>Authors</dt><dd>Arya Somu; Bruce Nshuti Hirwa</dd></div>
+              <div><dt>Authors</dt><dd>Arya Somu, Bruce Nshuti Hirwa</dd></div>
               <div><dt>Publisher</dt><dd>Laplace Research</dd></div>
             </dl>
+
             <h3>Cite this release</h3>
-            <pre class="citation-bib"><code>@misc{somu2026tarotdraw,
+            <pre class="post-bib"><code>@misc{somu2026tarotdraw,
   title     = {Tarot-Draw},
   author    = {Somu, Arya and Nshuti Hirwa, Bruce},
   year      = {2026},
   publisher = {Laplace Research},
   url       = {https://laplaceresearch.org/tarot-draw/}
 }</code></pre>
-            <nav class="btns" aria-label="Release resources">
-              <a class="btn ext" href="https://huggingface.co/collections/Laplace-AI-Research/tarot-draw-family" target="_blank" rel="noopener noreferrer">Browse the model family</a>
-              <a class="btn ext" href="https://github.com/Laplace-AI-Research" target="_blank" rel="noopener noreferrer">Inspect the evidence</a>
-            </nav>
+          </section>
+        </div>
+
+        <!-- Bottom 2-column CTA section (Redwood closing cards) -->
+        <section class="post-cta-grid" aria-label="Explore Tarot-Draw">
+          <div class="post-cta-panel">
+            <h2>Inspect the evidence</h2>
+            <p>
+              Every published forecast, bootstrap script, and split definition is open
+              to audit. Reproduce all headline Brier, calibration, and resolution
+              numbers without a GPU.
+            </p>
+            <div class="post-cta-actions">
+              <a class="post-cta-btn" href="https://github.com/Laplace-AI-Research" target="_blank" rel="noopener noreferrer">
+                <span>View on GitHub</span>
+                <span class="arrow" aria-hidden="true">&rarr;</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="post-cta-art">
+            <img
+              src="/assets/covers/laplace-cta.svg"
+              alt=""
+              width="960"
+              height="720"
+            />
+            <div class="post-cta-float">
+              <h2>Browse the models</h2>
+              <a class="post-cta-btn" href="https://huggingface.co/collections/Laplace-AI-Research/tarot-draw-family" target="_blank" rel="noopener noreferrer">
+                <span>Open Hugging Face</span>
+                <span class="arrow" aria-hidden="true">&rarr;</span>
+              </a>
+            </div>
           </div>
         </section>
       </main>
@@ -415,6 +532,7 @@
       </footer>
     </div>
     <script src="/figures.js?v=20261119" defer></script>
-      <script src="/site.js?v=20261122-2" defer></script>
+    <script src="/site.js?v=20261122-2" defer></script>
+    <script src="/article.js?v=20261126-1" defer></script>
   </body>
 </html>

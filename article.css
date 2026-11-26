@@ -1,0 +1,754 @@
+/* Laplace Research — Editorial research article stylesheet
+   Inspired by Architect Labs' Redwood article layout, adapted to Laplace
+   Research's design tokens (Newsreader, Inter, Geist Mono, cobalt accent). */
+
+:root {
+  --post-gutter: clamp(24px, 5vw, 110px);
+  --post-measure: 720px;
+}
+
+main.post-main {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 40px;
+  overflow-x: clip;
+}
+
+/* ---------- hero header ---------- */
+
+.post-hero {
+  position: relative;
+  width: 100%;
+  background: #08104a;
+}
+
+.post-hero-media {
+  display: block;
+  width: 100%;
+  height: clamp(300px, 34vw, 450px);
+  object-fit: cover;
+  border-radius: 0;
+}
+
+.post-hero-card {
+  position: relative;
+  z-index: 10;
+  margin: -44px 16px 0;
+  background: #ffffff;
+  padding: 24px;
+  box-shadow: 0 10px 40px rgba(35, 38, 45, 0.08);
+}
+
+@media (min-width: 1024px) {
+  .post-hero-card {
+    position: absolute;
+    bottom: 16px;
+    left: 16px;
+    margin: 0;
+    width: min(820px, calc(100% - 32px));
+    padding: 32px;
+    box-shadow: none;
+  }
+}
+
+.post-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: rgba(35, 38, 45, 0.62);
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1;
+  text-decoration: none;
+  transition: color 150ms;
+}
+
+.post-back:hover {
+  color: var(--ink);
+}
+
+.post-back .arrow {
+  display: inline-block;
+  transition: transform 220ms var(--ease);
+}
+
+.post-back:hover .arrow {
+  transform: translateX(-3px);
+}
+
+.post-hero-card h1 {
+  margin: 22px 0 0;
+  color: var(--ink);
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 24;
+  font-size: clamp(24px, 2.35vw, 34px);
+  font-weight: 450;
+  line-height: 1.18;
+  letter-spacing: -0.02em;
+  max-width: none;
+  text-wrap: balance;
+}
+
+.post-meta {
+  margin-top: 22px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 14px;
+  font-family: var(--sans);
+  font-size: 12px;
+  line-height: 1;
+  color: var(--muted);
+}
+
+.post-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 9px;
+  background: var(--panel);
+  color: var(--ink-2);
+  font-weight: 450;
+  letter-spacing: 0.01em;
+}
+
+.post-meta-sep {
+  color: var(--faint);
+}
+
+.post-meta a {
+  color: var(--ink-2);
+  text-decoration: none;
+  transition: color 150ms;
+}
+
+.post-meta a:hover {
+  color: var(--accent);
+}
+
+/* ---------- centered editorial column ---------- */
+
+.post-col {
+  width: 100%;
+  max-width: calc(var(--post-measure) + 2 * var(--post-gutter));
+  margin-inline: auto;
+  padding-inline: var(--post-gutter);
+}
+
+.post-lead-section {
+  margin-top: 48px;
+}
+
+.post-body {
+  color: rgba(35, 38, 45, 0.9);
+}
+
+.post-body p {
+  margin: 0;
+  color: rgba(35, 38, 45, 0.88);
+  font-family: var(--sans);
+  font-size: clamp(15.5px, 1.1vw, 17px);
+  font-weight: 400;
+  line-height: 1.65;
+  text-wrap: pretty;
+}
+
+.post-body p + p {
+  margin-top: 24px;
+}
+
+.post-body strong {
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.post-body a:not(.post-btn):not(.post-cta-btn):not(.btn):not(.model) {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-color: color-mix(in srgb, var(--accent) 35%, transparent);
+  transition: color 180ms, text-decoration-color 180ms;
+}
+
+.post-body a:not(.post-btn):not(.post-cta-btn):not(.btn):not(.model):hover {
+  color: var(--accent-ink);
+  text-decoration-color: var(--accent);
+}
+
+.post-body code {
+  padding: 1px 5px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  font-family: var(--mono);
+  font-size: 0.86em;
+  color: var(--ink);
+}
+
+/* ---------- section headings (bold editorial rhythm) ---------- */
+
+.post-body h2 {
+  margin: 64px 0 24px;
+  color: var(--ink);
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 24;
+  font-size: clamp(26px, 2.35vw, 33px);
+  font-weight: 500;
+  line-height: 1.18;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+.post-body h3 {
+  margin: 52px 0 18px;
+  color: var(--ink);
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 24;
+  font-size: clamp(21px, 1.85vw, 25px);
+  font-weight: 500;
+  line-height: 1.24;
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+}
+
+.post-body h2 + p,
+.post-body h3 + p {
+  margin-top: 0;
+}
+
+/* ---------- full-bleed accent stat band ---------- */
+
+.post-stat-band {
+  margin: 40px 0;
+  width: 100%;
+  background: var(--accent);
+  color: #ffffff;
+}
+
+.post-stat-grid {
+  width: 100%;
+  max-width: calc(var(--post-measure) + 2 * var(--post-gutter));
+  margin: 0 auto;
+  padding: 40px var(--post-gutter);
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 28px 0;
+}
+
+.post-stat {
+  display: flex;
+  flex-direction: column-reverse;
+  border-left: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 0 16px 0 24px;
+}
+
+.post-stat dd {
+  margin: 0;
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 36;
+  font-size: clamp(34px, 3.2vw, 44px);
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: #ffffff;
+  font-variant-numeric: tabular-nums;
+}
+
+.post-stat dt {
+  margin: 12px 0 0;
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.25;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+@media (max-width: 640px) {
+  .post-stat-grid {
+    grid-template-columns: 1fr;
+    padding-block: 32px;
+    gap: 24px;
+  }
+}
+
+/* ---------- pull quote / key finding ---------- */
+
+.post-quote {
+  margin: 36px 0;
+  padding: 4px 0 4px 24px;
+  border-left: 2px solid var(--accent);
+}
+
+.post-quote p {
+  color: var(--ink);
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 24;
+  font-size: clamp(22px, 2vw, 26px);
+  font-weight: 450;
+  line-height: 1.3;
+  letter-spacing: -0.015em;
+}
+
+/* ---------- framed figures & click-to-enlarge ---------- */
+
+.post-fig {
+  margin: 40px 0;
+}
+
+.post-fig-frame {
+  position: relative;
+  border: 1px solid #e7e8e8;
+  background: #ffffff;
+  padding: 20px 24px;
+  transition: border-color 180ms;
+}
+
+.post-fig-frame[data-zoomable] {
+  cursor: zoom-in;
+}
+
+.post-fig-frame[data-zoomable]:hover {
+  border-color: #cfd2da;
+}
+
+.post-fig-frame[data-zoomable]::after {
+  content: "Enlarge";
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  padding: 3px 7px;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid var(--line);
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  opacity: 0;
+  transition: opacity 160ms;
+  pointer-events: none;
+}
+
+.post-fig-frame[data-zoomable]:hover::after,
+.post-fig-frame[data-zoomable]:focus-visible::after {
+  opacity: 1;
+}
+
+.post-fig-frame img,
+.post-fig-frame svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.post-fig figcaption {
+  margin-top: 12px;
+  color: var(--muted);
+  font-family: var(--sans);
+  font-size: 12.5px;
+  font-style: normal;
+  line-height: 1.45;
+}
+
+/* Embedded interactive chart inside post-fig-frame */
+.post-fig-frame .figure {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+
+.post-fig-frame .figure-head {
+  margin-bottom: 18px;
+}
+
+.post-fig-frame .figure-title {
+  margin: 0 0 4px;
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.post-fig-frame .figure-sub {
+  margin: 0;
+  color: var(--muted);
+  font-size: 12.5px;
+  line-height: 1.45;
+}
+
+/* ---------- editorial lists (Redwood airy un-bulleted / bold-lead) ---------- */
+
+.post-list {
+  margin: 28px 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.post-list li {
+  color: rgba(35, 38, 45, 0.88);
+  font-family: var(--sans);
+  font-size: clamp(15.5px, 1.1vw, 17px);
+  font-weight: 400;
+  line-height: 1.65;
+  padding-left: 18px;
+  border-left: 1px solid var(--line-strong);
+}
+
+.post-list li strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+/* ---------- clean data tables ---------- */
+
+.post-table-wrap {
+  margin: 36px 0;
+  overflow-x: auto;
+}
+
+.post-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--sans);
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.post-table thead th {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--ink);
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.post-table thead th:first-child,
+.post-table tbody th:first-child {
+  padding-left: 0;
+}
+
+.post-table thead th:last-child,
+.post-table tbody td:last-child {
+  padding-right: 0;
+}
+
+.post-table th.num,
+.post-table td.num {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.post-table tbody th,
+.post-table tbody td {
+  padding: 13px 12px;
+  border-bottom: 1px solid var(--line);
+  color: var(--ink-2);
+  font-weight: 400;
+  text-align: left;
+}
+
+.post-table tbody th {
+  color: var(--ink);
+  font-weight: 500;
+}
+
+.post-table tbody tr.is-recommended th,
+.post-table tbody tr.is-recommended td {
+  color: var(--ink);
+  background: color-mix(in srgb, var(--accent) 4%, transparent);
+}
+
+.post-table tbody tr.is-recommended th {
+  padding-left: 10px;
+  border-left: 2px solid var(--accent);
+}
+
+.post-badge {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 2px 6px;
+  background: color-mix(in srgb, var(--accent) 10%, transparent);
+  color: var(--accent);
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  vertical-align: middle;
+}
+
+.post-table-cap {
+  margin: 12px 0 0;
+  color: var(--muted);
+  font-size: 12.5px;
+  line-height: 1.5;
+}
+
+/* ---------- verification / code / citation blocks ---------- */
+
+.post-cmd {
+  margin: 28px 0;
+  padding: 16px 20px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 16px;
+}
+
+.post-cmd-label {
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.post-cmd code {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  font-family: var(--mono);
+  font-size: 13.5px;
+  color: var(--ink);
+}
+
+.post-bib {
+  margin: 20px 0 0;
+  padding: 18px 20px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  font-family: var(--mono);
+  font-size: 12.5px;
+  line-height: 1.65;
+  color: var(--ink);
+  overflow-x: auto;
+  white-space: pre;
+}
+
+.post-bib code {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  font-size: inherit;
+}
+
+.post-details {
+  margin: 28px 0 0;
+  padding: 18px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px 24px;
+}
+
+.post-details dt {
+  margin: 0 0 4px;
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.post-details dd {
+  margin: 0;
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 13.5px;
+  line-height: 1.4;
+}
+
+@media (max-width: 640px) {
+  .post-details {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.post-note {
+  margin-top: 24px !important;
+  color: var(--muted) !important;
+  font-size: 13.5px !important;
+  line-height: 1.6 !important;
+}
+
+/* ---------- bottom 2-column CTA section (Redwood closing cards) ---------- */
+
+.post-cta-grid {
+  margin: 80px 0 0;
+  padding: 0 32px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+@media (max-width: 900px) {
+  .post-cta-grid {
+    grid-template-columns: 1fr;
+    padding: 0 16px;
+    margin-top: 64px;
+  }
+}
+
+.post-cta-panel {
+  display: flex;
+  flex-direction: column;
+  min-height: 320px;
+  padding: 28px;
+  background: var(--panel);
+}
+
+.post-cta-panel h2,
+.post-cta-float h2 {
+  margin: 0;
+  color: var(--ink);
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 36;
+  font-size: clamp(26px, 2.4vw, 36px);
+  font-weight: 400;
+  line-height: 1.06;
+  letter-spacing: -0.025em;
+}
+
+.post-cta-panel p {
+  margin: 18px 0 0;
+  max-width: 390px;
+  color: rgba(35, 38, 45, 0.72);
+  font-family: var(--sans);
+  font-size: 13.5px;
+  line-height: 1.6;
+}
+
+.post-cta-actions {
+  margin-top: auto;
+  padding-top: 32px;
+}
+
+.post-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  height: 44px;
+  min-width: 212px;
+  padding: 0 16px;
+  background: var(--accent);
+  color: #ffffff;
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1;
+  text-decoration: none;
+  transition: background-color 180ms;
+}
+
+.post-cta-btn:hover {
+  background: var(--accent-ink);
+  color: #ffffff;
+}
+
+.post-cta-btn .arrow {
+  display: inline-block;
+  transition: transform 220ms var(--ease);
+}
+
+.post-cta-btn:hover .arrow {
+  transform: translateX(3px);
+}
+
+.post-cta-art {
+  position: relative;
+  min-height: 320px;
+  overflow: hidden;
+  background: #08104a;
+}
+
+.post-cta-art img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.post-cta-float {
+  position: absolute;
+  bottom: 18px;
+  left: 18px;
+  right: 18px;
+  max-width: 268px;
+  background: #ffffff;
+  padding: 20px 22px;
+}
+
+.post-cta-float .post-cta-btn {
+  margin-top: 18px;
+}
+
+/* ---------- figure zoom lightbox ---------- */
+
+.post-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(16, 18, 24, 0.78);
+  backdrop-filter: blur(4px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 180ms, visibility 180ms;
+}
+
+.post-lightbox.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.post-lightbox-card {
+  position: relative;
+  max-width: min(1080px, 94vw);
+  max-height: 90vh;
+  overflow: auto;
+  background: #ffffff;
+  padding: 28px 32px;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
+}
+
+.post-lightbox-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--line);
+  background: #ffffff;
+  color: var(--ink);
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.post-lightbox-close:hover {
+  border-color: var(--ink);
+}
+
+.post-lightbox-cap {
+  margin: 14px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
