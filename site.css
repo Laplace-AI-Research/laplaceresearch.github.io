@@ -359,6 +359,56 @@ main {
   text-transform: uppercase;
 }
 .tile-tag::before { content: ""; width: 5px; height: 5px; background: var(--accent); }
+.tile-cap {
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  max-width: calc(100% - 20px);
+  padding: 9px 13px;
+  background: rgba(255, 255, 255, 0.96);
+  color: var(--ink);
+  transition: background 200ms var(--ease);
+}
+.tile-lead .tile-cap {
+  left: 14px;
+  bottom: 14px;
+  max-width: 310px;
+  padding: 12px 16px;
+  gap: 3px;
+}
+.tile:hover .tile-cap { background: #ffffff; }
+.tile-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--mono);
+  font-size: 9.5px;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.tile-kicker::before { content: ""; width: 5px; height: 5px; background: var(--accent); }
+.tile-title {
+  font-family: var(--serif);
+  font-size: 16.5px;
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.012em;
+  color: var(--ink);
+  transition: color 200ms var(--ease);
+}
+.tile-lead .tile-title { font-size: 21px; }
+.tile:hover .tile-title { color: var(--accent); }
+.tile-sub {
+  font-family: var(--sans);
+  font-size: 12px;
+  line-height: 1.4;
+  color: var(--ink-2);
+}
 
 /* ---------- home: title, collage, new work ---------- */
 
