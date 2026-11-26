@@ -198,14 +198,47 @@ main {
   font-size: 13px;
   text-decoration: none;
   overflow: hidden;
-  transition: background-color 200ms;
+  transition: background-color 320ms var(--ease), transform 240ms var(--ease), box-shadow 320ms var(--ease);
 }
-.cta:hover { background: var(--accent-ink); }
-.cta-roll { position: relative; display: block; height: 18px; overflow: hidden; line-height: 18px; }
+.cta::before {
+  content: "";
+  position: absolute;
+  inset: -40% -20%;
+  background: linear-gradient(
+    112deg,
+    rgba(255, 255, 255, 0) 30%,
+    rgba(255, 255, 255, 0.28) 48%,
+    rgba(165, 196, 255, 0.22) 54%,
+    rgba(255, 255, 255, 0) 70%
+  );
+  transform: translateX(-115%);
+  transition: transform 0ms;
+  pointer-events: none;
+}
+.cta:hover {
+  background: #1b278f;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(27, 39, 143, 0.24);
+}
+.cta:hover::before {
+  transform: translateX(115%);
+  transition: transform 640ms var(--ease);
+}
+.cta:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(27, 39, 143, 0.2);
+}
+.cta-roll { position: relative; z-index: 1; display: block; height: 18px; overflow: hidden; line-height: 18px; }
 .cta-roll span { display: block; transition: transform 380ms var(--ease); }
 .cta:hover .cta-roll span { transform: translateY(-100%); }
-.cta .icon-arrow { width: 14px; height: 14px; transition: transform 380ms var(--ease); }
-.cta:hover .icon-arrow { transform: translateX(3px); }
+.cta .icon-arrow { position: relative; z-index: 1; width: 14px; height: 14px; }
+.cta:hover .icon-arrow { animation: cta-arrow-loop 460ms var(--ease) both; }
+@keyframes cta-arrow-loop {
+  0% { transform: translateX(0); opacity: 1; }
+  42% { transform: translateX(10px); opacity: 0; }
+  43% { transform: translateX(-10px); opacity: 0; }
+  100% { transform: translateX(0); opacity: 1; }
+}
 
 .rail-end { margin-top: auto; padding: 0 24px 18px; }
 .rail-icons { display: flex; gap: 6px; margin-bottom: 18px; }
