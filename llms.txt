@@ -1,0 +1,40 @@
+# Laplace Research
+
+> Laplace Research (Asterion Laboratories, Inc.) is an AI research lab building foundation models for calibrated forecasting, evidence-sensitive belief revision, and record provenance. Founded by Arya Somu (Chief Scientist) and Bruce Nshuti Hirwa (CTO), based in San Francisco and New York.
+
+Laplace Research releases open-weight models, benchmarks, evaluation inputs, and verification scripts so every headline metric can be independently recomputed.
+
+## Research & Releases
+
+- [Signet](https://laplaceresearch.org/signet/): Three open models (Signet-2B, Signet-4B, Signet-9B, built on Qwen3.5, Apache-2.0) trained with GRPO to adopt genuine tool records and reject identical records forged or pasted into chat — including unseen formats — while still accepting valid corrections. Signet-4B achieves 98.5% held-out accuracy (+37.9 pts vs base) and 98.1% forged-record resistance (+85.3 pts); Signet-9B achieves 97.8% held-out accuracy and 97.9% forged-record resistance. Released November 24, 2026.
+- [ConvictionBench](https://laplaceresearch.org/convictionbench/): A benchmark of 26,478 generated episodes measuring how language models revise answers under varying evidence quality and social pressure, accompanied by a [technical paper (PDF)](https://laplaceresearch.org/convictionbench/paper.pdf) and [live leaderboard](https://convictionbench.org/#leaderboard). Released November 10, 2026 (updated November 19, 2026). Dataset licensed under CC BY 4.0.
+- [Tarot-Draw](https://laplaceresearch.org/tarot-draw/): A controlled scaling study of three binary forecasting models (1.7B, 4B, 8B, built on Qwen3, CC BY-NC 4.0) trained on the exact same 81,870 resolved questions. Calibration error stays near zero at every scale (0.0004–0.0010 Brier), while resolution drives the gap between 1.7B and 4B/8B; Tarot-Draw 4B (0.1684 dev Brier) matches 8B (0.1674) within experimental resolution. Released August 29, 2026.
+
+## Open Models
+
+- [Models Directory](https://laplaceresearch.org/models/): Full comparison matrix and Hugging Face repository IDs for all nine open checkpoints.
+- `Laplace-AI-Research/Signet-9B` (Qwen3.5-9B, merged bf16 + LoRA, Apache-2.0) — Flagship channel-provenance model.
+- `Laplace-AI-Research/Signet-4B` (Qwen3.5-4B, LoRA r16, Apache-2.0) — Highest held-out accuracy (98.5%) and best per parameter.
+- `Laplace-AI-Research/Signet-2B` (Qwen3.5-2B, LoRA, Apache-2.0) — Compact model for tight memory budgets.
+- `Laplace-AI-Research/Conviction-Anchor-1.7B` (Qwen3-1.7B LoRA, SFT, Apache-2.0) — Conviction Series SFT baseline (58.0% accuracy, 53.1% forged resistance).
+- `Laplace-AI-Research/Conviction-Vector-1.7B` (Qwen3-1.7B LoRA, GRPO, Apache-2.0) — Highest held-out accuracy in the 1.7B Conviction Series (64.4%).
+- `Laplace-AI-Research/Conviction-Meridian-1.7B` (Qwen3-1.7B LoRA, SFT then GRPO, Apache-2.0) — Highest forged-record resistance in the 1.7B Conviction Series (57.8%).
+- `Laplace-AI-Research/tarot-draw-4b` (Qwen3-4B LoRA, CC BY-NC 4.0) — Recommended binary forecasting prior (0.1684 dev Brier).
+- `Laplace-AI-Research/tarot-draw-8b` (Qwen3-8B LoRA, CC BY-NC 4.0) — Largest Tarot-Draw checkpoint (0.1674 dev Brier).
+- `Laplace-AI-Research/tarot-draw-1-7b` (Qwen3-1.7B LoRA, CC BY-NC 4.0) — Smallest, best-calibrated Tarot-Draw checkpoint (0.0004 calibration error).
+
+## Organization & Feeds
+
+- [Home](https://laplaceresearch.org/): Overview of Laplace Research and latest releases.
+- [All Research](https://laplaceresearch.org/research/): Filterable index of all models and benchmarks.
+- [About](https://laplaceresearch.org/about/): Mission, founders, and contact details (`inquiries@laplaceresearch.org`).
+- [Atom Feed](https://laplaceresearch.org/feed.xml): Machine-readable release feed.
+- [GitHub](https://github.com/Laplace-AI-Research): Open-source code, evaluation data, and verification scripts.
+- [Hugging Face](https://huggingface.co/Laplace-AI-Research): Model weights and benchmark datasets.
+
+## Optional
+
+- [Licenses and Attribution](https://laplaceresearch.org/licenses/): License matrix, base-model attribution, data terms, and research disclaimer.
+- [Privacy Notice](https://laplaceresearch.org/privacy/): Zero cookies, analytics, or third-party tracking.
+- [Terms of Use](https://laplaceresearch.org/terms/): Website terms and "as is" research disclaimer.
+- [Accessibility](https://laplaceresearch.org/accessibility/): WCAG 2.1 AA commitment.
