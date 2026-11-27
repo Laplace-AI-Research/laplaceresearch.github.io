@@ -1,0 +1,108 @@
+/* Research Agenda (/agenda/) and Collaborations (/collaborate/).
+   Both build on site.css and the document layout in /safety/safety.css
+   (sections beside a contents list, status tags, lists); only new pieces live here. */
+
+.ag-main .sec.sf-hero h1 { max-width: 16ch; }
+.ag-main .sf-doc .body > h3 { margin: 40px 0 12px; }
+
+/* ---------- temporal diagram ---------- */
+
+.ag-figure { margin: 28px 0 0; padding: 22px 22px 16px; border: 1px solid var(--line-strong); background: #fff; }
+.ag-figure svg { display: block; width: 100%; height: auto; overflow: visible; }
+.ag-figure figcaption { margin: 14px 0 0; color: var(--muted); font-size: 12.5px; line-height: 1.55; }
+.ag-past path, .ag-future path { fill: none; stroke-width: 1.25; }
+.ag-past path { stroke: var(--ink); stroke-opacity: 0.34; }
+.ag-future path { stroke: var(--accent); }
+.ag-band { fill: var(--accent); }
+.ag-evidence { stroke: var(--ink); stroke-width: 1.5; }
+.ag-now { stroke: var(--ink); stroke-opacity: 0.3; stroke-dasharray: 3 4; }
+.ag-axis { stroke: var(--line-strong); }
+.ag-label { fill: var(--ink); font-family: var(--mono); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; }
+.ag-sub { fill: var(--muted); font-family: var(--sans); font-size: 12px; }
+
+/* ---------- research directions ---------- */
+
+.ag-core { margin: 4px 0 24px; }
+.ag-core span { display: block; margin: 0 0 8px; color: var(--accent); font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.06em; text-transform: uppercase; }
+.ag-core p { max-width: 680px; margin: 0; color: var(--ink); font-family: var(--serif); font-variation-settings: "opsz" 24; font-size: 25px; font-weight: 300; line-height: 1.3; letter-spacing: -0.018em; }
+
+.ag-questions { margin: 8px 0 0; padding: 0; list-style: none; counter-reset: q; border-top: 1px solid var(--line); }
+.ag-questions li { counter-increment: q; display: grid; grid-template-columns: 34px minmax(0, 1fr); padding: 11px 0; border-bottom: 1px solid var(--line); color: var(--ink-2); font-size: 14.5px; line-height: 1.55; }
+.ag-questions li::before { content: "Q" counter(q); padding-top: 2px; color: var(--faint); font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.04em; }
+
+.ag-objective { margin: 32px 0 0; padding: 4px 0 4px 20px; border-left: 2px solid var(--accent); }
+.ag-objective h3 { margin: 0 0 6px; color: var(--muted); font-family: var(--mono); font-size: 10.5px; font-weight: 400; letter-spacing: 0.06em; text-transform: uppercase; }
+.ag-objective p { max-width: 640px; margin: 0; color: var(--ink); font-size: 16px; line-height: 1.6; }
+
+.ag-none { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 16px; margin: 8px 0 0; padding: 14px 0 15px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); color: var(--ink-2); font-size: 14px; line-height: 1.55; }
+.ag-none .sf-tag { flex: none; }
+
+.sf-doc .sf-apps + h3, .sf-doc .ag-questions + .ag-objective { margin-top: 32px; }
+.sf-doc .sf-pubs + p, .sf-doc .ag-none + p, .sf-doc .sf-flow + p { margin-top: 24px; }
+
+/* ---------- horizons ---------- */
+
+.sf-tiers.ag-horizons > li { grid-template-columns: minmax(0, 1fr); gap: 0; }
+.ag-horizons p { max-width: 640px; }
+
+/* ---------- collaboration pathways ---------- */
+
+.cl-index { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin: 24px 0 0; padding: 0; list-style: none; border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
+.cl-index li { border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.cl-index a { display: flex; flex-direction: column; gap: 22px; height: 100%; box-sizing: border-box; padding: 14px 16px 16px; color: var(--ink); font-size: 14.5px; font-weight: 500; line-height: 1.3; text-decoration: none; transition: background 150ms, color 150ms; }
+.cl-index a span { color: var(--accent); font-family: var(--mono); font-size: 10.5px; font-weight: 400; letter-spacing: 0.06em; }
+.cl-index a:hover { background: var(--panel); color: var(--accent); }
+
+.cl-path { margin: 48px 0 0; padding: 28px 0 0; border-top: 1px solid var(--line-strong); }
+.cl-path > .cl-n { margin: 0 0 10px; color: var(--accent); font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.06em; text-transform: uppercase; }
+.cl-path > h3 { margin: 0 0 14px; font-size: 26px; font-weight: 400; line-height: 1.15; letter-spacing: -0.02em; }
+.cl-path > p { max-width: 640px; margin: 0 0 14px; color: var(--ink-2); font-size: 16px; line-height: 1.6; }
+.cl-path > p a { color: var(--ink); text-decoration: underline; text-decoration-color: var(--line-strong); text-underline-offset: 3px; }
+.cl-path > p a:hover { text-decoration-color: var(--accent); }
+.cl-path > p.cl-note { margin: 16px 0 0; color: var(--muted); font-size: 13.5px; }
+.cl-path h4 { margin: 18px 0 8px; }
+
+.sf-flow.cl-steps ol { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; }
+.sf-flow.cl-steps li + li::before { left: -17px; }
+
+.cl-notice { margin: 24px 0 0; padding: 16px 18px; border: 1px solid var(--line-strong); background: var(--panel); color: var(--ink-2); font-size: 14px; line-height: 1.6; }
+.cl-notice b { color: var(--ink); font-weight: 500; }
+.cl-notice a { color: var(--ink); text-decoration: underline; text-decoration-color: var(--line-strong); text-underline-offset: 3px; }
+
+.ag-main a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+/* ---------- responsive ---------- */
+
+@media (max-width: 1100px) {
+  .sf-flow.cl-steps ol { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .sf-flow.cl-steps li:nth-child(3)::before { display: none; }
+}
+
+@media (max-width: 860px) {
+  .ag-core p { font-size: 21px; }
+  .ag-figure { padding: 14px 12px 12px; }
+  .cl-index { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .sf-flow.cl-steps ol { grid-template-columns: minmax(0, 1fr); }
+  .sf-flow.cl-steps li:nth-child(3)::before { display: block; }
+  .sf-flow.cl-steps li + li::before { left: 50%; }
+}
+
+@media (max-width: 520px) {
+  .cl-index { grid-template-columns: minmax(0, 1fr); }
+  .cl-index a { flex-direction: row; gap: 14px; }
+}
+
+/* Light hero: undo the Safety page's navy-hero colours. */
+.ag-main .sf-hero .sf-label { color: var(--muted); }
+.ag-main .sf-hero .sf-label::before { background: var(--accent); }
+.ag-main .sf-hero .sf-meta { border-top-color: var(--line-strong); }
+.ag-main .sf-hero .sf-meta dt, .ag-main .sf-hero .sf-key-title { color: var(--muted); }
+.ag-main .sf-hero .sf-meta dd, .ag-main .sf-hero .sf-meta a { color: var(--ink); }
+.ag-main .sf-hero .sf-meta a { text-decoration-color: var(--line-strong); }
+.ag-main .sf-hero .sf-meta a:hover { text-decoration-color: var(--accent); }
+.ag-main .sf-hero .sf-key li { color: var(--ink-2); }
+.ag-main .sf-hero .sf-tag[data-kind] { color: var(--accent); }
+.ag-main .sf-hero .sf-tag[data-kind="future"] { color: var(--ink-2); }
+.ag-main .sf-hero .sf-tag[data-kind="open"] { color: var(--muted); }
+.ag-main .sf-hero .sf-tag[data-kind="practice"]::before { background: var(--accent); border-color: var(--accent); }
+.ag-main .sf-hero a:focus-visible { outline-color: var(--accent); }

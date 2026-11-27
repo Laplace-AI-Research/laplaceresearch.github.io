@@ -1,0 +1,33 @@
+<!doctype html>
+<!-- Source for /assets/og/agenda.png (1200x630). Serve the repo root and run:
+     google-chrome --headless --hide-scrollbars --window-size=1200,630 \
+       --screenshot=assets/og/agenda.png http://localhost:8765/tools/og/agenda.html -->
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="/site.css" />
+<style>
+  html, body { margin: 0; width: 1200px; height: 630px; overflow: hidden; }
+  body::before { display: none; }
+  .og { position: relative; width: 1200px; height: 630px; background: #02338a; }
+  .og-mark { position: absolute; right: 96px; top: 96px; width: 220px; opacity: 0.22; }
+  .og-url { position: absolute; top: 32px; right: 42px; padding: 8px 14px; background: #fff; color: #23262d; font: 14px var(--mono); letter-spacing: 0.02em; }
+  .og-card { position: absolute; left: 48px; bottom: 48px; width: 860px; padding: 40px 44px 44px; background: #f5f5f3; }
+  .og-kicker { display: flex; align-items: center; gap: 12px; margin: 0 0 24px; color: rgba(35,38,45,.62); font: 15px var(--mono); letter-spacing: 0.08em; text-transform: uppercase; }
+  .og-kicker::before { content: ""; width: 8px; height: 8px; background: #02338a; }
+  .og h1 { margin: 0 0 18px; color: #23262d; font: 500 54px/1.04 var(--serif); letter-spacing: -0.028em; }
+  .og p { margin: 0; color: rgba(35,38,45,.72); font: 21px/1.45 var(--sans); }
+</style>
+</head>
+<body>
+  <div class="og">
+    <img class="og-mark" src="/assets/brand/laplace-mark-white.svg" alt="" />
+    <span class="og-url">laplaceresearch.org/agenda</span>
+    <div class="og-card">
+      <p class="og-kicker">Research Agenda</p>
+      <h1>Understanding an uncertain world.</h1>
+      <p>Five connected directions in forecasting and temporal intelligence at Laplace Research.</p>
+    </div>
+  </div>
+</body>
+</html>
