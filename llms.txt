@@ -27,6 +27,8 @@ Laplace Research releases open-weight models, benchmarks, evaluation inputs, and
 ## Organization & Feeds
 
 - [Home](https://laplaceresearch.org/): Overview of Laplace Research and latest releases.
+- [Playground](https://laplaceresearch.org/playground/): Short browser experiments that replay recorded Laplace model behaviour beside the exact answer. No model runs in the browser.
+- [Oracle and the Second Sensor](https://laplaceresearch.org/playground/oracle/): A playable replay of one recorded Oracle Aquila episode. Prior 50%, sensor 80% accurate; one positive gives exactly 80%. If display B copies sensor A, a second positive still gives 80%; if B is an independent sensor, 16/17 (94.1%). Aquila stopped after one reading at 80% and, in separate fixed-history tests, answered 90.5% under both wirings. Includes the same-sensor results for six Oracle checkpoints and the base model.
 - [All Research](https://laplaceresearch.org/research/): Filterable index of all models and benchmarks.
 - [About](https://laplaceresearch.org/about/): Mission, founders, and contact details (`inquiries@laplaceresearch.org`).
 - [Safety & Responsibility](https://laplaceresearch.org/safety/): Principles, forecasting-integrity risks, the proposed model evaluation and release framework, the proposed Laplace Responsible Scaling Framework (LRSF), research integrity standards, and how to report a concern (`safety@laplaceresearch.org`). Version 1.0.
