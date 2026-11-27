@@ -30,6 +30,8 @@ Laplace Research releases open-weight models, benchmarks, evaluation inputs, and
 - [All Research](https://laplaceresearch.org/research/): Filterable index of all models and benchmarks.
 - [About](https://laplaceresearch.org/about/): Mission, founders, and contact details (`inquiries@laplaceresearch.org`).
 - [Safety & Responsibility](https://laplaceresearch.org/safety/): Principles, forecasting-integrity risks, the proposed model evaluation and release framework, the proposed Laplace Responsible Scaling Framework (LRSF), research integrity standards, and how to report a concern (`safety@laplaceresearch.org`). Version 1.0.
+- [Research Agenda](https://laplaceresearch.org/agenda/): The scientific questions behind Laplace's work, in five directions: forecasting; retrodiction and state estimation; epistemic intelligence; world simulation and counterfactual reasoning; and forecasting infrastructure. Each lists open questions, a long-term objective and the related published research. Version 1.0.
+- [Collaborations](https://laplaceresearch.org/collaborate/): Ways to collaborate (academic research, open-source contributions, compute, data and evaluation, applied research, research funding), what Laplace looks for, how collaboration works, and how to make an introduction (`inquiries@laplaceresearch.org`). Laplace has no formal partnerships or open positions at present.
 - [Atom Feed](https://laplaceresearch.org/feed.xml): Machine-readable release feed.
 - [GitHub](https://github.com/Laplace-AI-Research): Open-source code, evaluation data, and verification scripts.
 - [Hugging Face](https://huggingface.co/Laplace-AI-Research): Model weights and benchmark datasets.
