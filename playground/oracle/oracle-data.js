@@ -20,8 +20,9 @@
       }
     },
 
-    // Same-sensor (copy) fixture for every checkpoint. No independent-wiring
-    // values exist for the other models, and none are filled in.
+    // Same-sensor (copy) fixture for every checkpoint. The experiment archive also
+    // holds independent-wiring records for these models; this demo includes only
+    // Aquila's independent-wiring record.
     family: [
       { id: "base", name: "Inkling 2 Mini (base)", training: "Base control", action: "buy", afterA: 800, afterAB: 800 },
       { id: "lyra", name: "Oracle Lyra", training: "Supervised", action: "stop", afterA: 667, afterAB: 889 },

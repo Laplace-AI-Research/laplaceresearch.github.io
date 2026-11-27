@@ -129,7 +129,7 @@
               <div class="or-step" data-step="start">
                 <h2 id="or-q" tabindex="-1">Is the hidden signal on?</h2>
                 <p class="or-prior"><span class="or-big">50%</span> to start. On and off are equally likely.</p>
-                <p>Sensor A reads positive 80% of the time when the signal is on, and 20% of the time when it is off. Both displays are wired to it. Reading a display costs two credits.</p>
+                <p>Sensor A reads positive 80% of the time when the signal is on and 20% when it is off. Both displays are wired to it. Each reading costs two credits.</p>
                 <div class="or-actions">
                   <button class="or-btn solid" type="button" data-move="readA">Read A &middot; 2 credits</button>
                 </div>
@@ -195,8 +195,6 @@
                     <p>After A <span data-bind="aquilaAfterA">80%</span> &rarr; after A and B <span data-bind="aquilaAfterAB">90.5%</span></p>
                   </div>
                 </dl>
-                <p class="or-why" data-bind="why">B reports whatever A reports, so seeing the same positive twice adds no evidence.</p>
-                <p class="or-gap" data-bind="gap">Aquila&rsquo;s 90.5% is 10.5 percentage points above the exact result.</p>
 
                 <fieldset class="or-rewire">
                   <legend>Rewire display B</legend>
@@ -206,6 +204,8 @@
                   </div>
                   <p class="or-hint">Both displays stay positive. Rewiring compares two worlds after the episode and costs no credits.</p>
                 </fieldset>
+                <p class="or-why" data-bind="why">B reports whatever A reports, so seeing the same positive twice adds no evidence.</p>
+                <p class="or-gap" data-bind="gap">Aquila&rsquo;s 90.5% is 10.5 percentage points above the exact result.</p>
 
                 <dl class="or-trail" aria-label="Three separate records">
                   <div><dt>Your episode</dt><dd data-bind="trailYou">Read A and B. 0 credits left.</dd></div>

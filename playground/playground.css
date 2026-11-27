@@ -201,7 +201,7 @@
 
 @media (max-width: 1180px) {
   .or-grid { grid-template-columns: minmax(0, 1fr); gap: 28px; }
-  .or-instrument { position: static; }
+  .or-instrument { top: 0; z-index: 5; }
 }
 
 @media (max-width: 860px) {
@@ -210,26 +210,40 @@
   .pg-feature-copy { padding: 26px 22px 28px; }
   .or-main .pg-head { padding-top: 32px; padding-bottom: 22px; }
   .js .or-player { padding: 20px var(--pad) 40px; }
+  .or-instrument { top: 53px; }
 }
 
 @media (max-width: 560px) {
   .pg-main { --pad: 16px; }
-  .or-instrument { padding: 12px 10px 12px; }
-  .or-board { height: 236px; }
+  .or-main .pg-head { padding-top: 12px; padding-bottom: 12px; }
+  .or-main .pg-head .pg-crumb { margin-bottom: 6px; }
+  .or-main .pg-head h1 { margin-bottom: 6px; font-size: 29px; }
+  .or-main .pg-head .pg-replay { font-size: 13px; line-height: 1.45; }
+  .js .or-player { padding-top: 12px; }
+  .or-grid { gap: 10px; }
+  .or-instrument { margin: 0 calc(-1 * var(--pad)); padding: 8px 10px; border-width: 0 0 1px; box-shadow: 0 6px 12px -10px rgba(35, 38, 45, 0.35); }
+  .or-board { height: 164px; }
+  .or-instrument .or-wiring { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+  .or-step h2 { margin-bottom: 10px; }
+  .or-step p { margin-bottom: 10px; font-size: 15px; line-height: 1.5; }
+  .or-prior .or-big { font-size: 32px; }
+  .or-step .or-prior { margin-bottom: 6px; }
+  .or-rewire { margin-top: 14px; padding-top: 12px; }
   .or-node { padding: 7px 7px 8px; }
   .or-node-k { font-size: 9.5px; letter-spacing: 0.04em; }
   .or-node-s { font-size: 11px; }
   .or-read { font-size: 13.5px; }
   .or-display[data-state="supplied"] .or-read::after { content: ""; }
   .or-wiring { font-size: 13px; }
-  .or-ledger { margin-bottom: 22px; }
+  .or-ledger { margin-bottom: 16px; }
+  .or-ledger div { padding-top: 7px; padding-bottom: 8px; }
   .or-ledger div { padding-right: 6px; }
   .or-ledger div + div { padding-left: 10px; }
   .or-ledger dd { font-size: 14px; }
   .or-three { grid-template-columns: minmax(0, 1fr); }
-  .or-three > div { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: baseline; gap: 0 12px; padding: 10px 0; }
+  .or-three > div { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: baseline; gap: 0 12px; padding: 7px 0; }
   .or-three > div + div { padding-left: 0; border-left: 0; border-top: 1px solid var(--line); }
-  .or-three dd { grid-column: 2; grid-row: 1 / 3; margin: 0; font-size: 36px; }
+  .or-three dd { grid-column: 2; grid-row: 1 / 3; margin: 0; font-size: 32px; }
   .or-three p { margin-top: 4px; }
   .or-step .or-why { font-size: 19px; }
   .or-seg { display: flex; }

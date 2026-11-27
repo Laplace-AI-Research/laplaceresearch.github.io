@@ -173,12 +173,20 @@ async def no_overflow(page):
 async def phone(browser, shots, width):
     ctx = await browser.new_context(viewport={"width": width, "height": 780}, device_scale_factor=2, is_mobile=True, has_touch=True)
     page, w = await oracle(ctx, f"phone {width}")
+    async def in_view(sel):
+        return await page.evaluate("(s) => { const r = document.querySelector(s).getBoundingClientRect(); return r.top >= 0 && r.bottom <= innerHeight; }", sel)
+    async def clear_of_instrument(sel):
+        return await page.evaluate("(s) => document.querySelector(s).getBoundingClientRect().top >= document.querySelector('.or-instrument').getBoundingClientRect().bottom", sel)
     check(f"phone {width}: no horizontal overflow (start)", await no_overflow(page))
+    check(f"phone {width}: Read A visible on load without scrolling", await in_view('[data-move="readA"]'))
     await page.tap('[data-move="readA"]'); await page.tap('[data-move="buyB"]')
     await page.fill("#or-guess", "82.5"); await page.tap('[data-step="forecast"] button[type="submit"]')
     await page.locator('input[value="independent"]').tap()
     await page.wait_for_timeout(600)
     check(f"phone {width}: rewired to 94.1%", await text(page, "exactAfterAB") == "94.1%")
+    seen = {sel: await in_view(sel) for sel in (".or-seg", ".or-board", ".or-display-b", '[data-step="revealed"] [data-bind="exactAfterAB"]', '[data-step="revealed"] [data-bind="aquilaAfterAB"]')}
+    check(f"phone {width}: switch, wiring and both forecasts on screen together", all(seen.values()), str(seen))
+    check(f"phone {width}: values not hidden under the sticky instrument", await clear_of_instrument('[data-step="revealed"] .or-three') and await clear_of_instrument(".or-seg"))
     check(f"phone {width}: no horizontal overflow (revealed)", await no_overflow(page))
     if width == 390:
         await page.locator(".or-instrument").scroll_into_view_if_needed()

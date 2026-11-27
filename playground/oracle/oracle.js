@@ -170,9 +170,32 @@
     setTimeout(function () { status.textContent = text; }, 30);
   }
 
+  var instrument = $(".or-instrument");
+  var consoleEl = $(".or-console");
+
+  // When the instrument sits above the console (narrow screens) it is sticky,
+  // so headings are scrolled to just below it instead of underneath it.
+  function stuckBottom() {
+    var cs = getComputedStyle(instrument);
+    var stacked = consoleEl.getBoundingClientRect().top >= instrument.getBoundingClientRect().bottom - 1;
+    if (cs.position !== "sticky" || !stacked) return 0;
+    return (parseFloat(cs.top) || 0) + instrument.offsetHeight;
+  }
+
   function focusStep(name) {
     var h = steps[name] && steps[name].querySelector("h2");
-    if (h) h.focus();
+    if (!h) return;
+    h.focus({ preventScroll: true });
+    var below = stuckBottom();
+    var r = h.getBoundingClientRect();
+    if (name === "start") {
+      var top = $("#player").getBoundingClientRect().top - (below ? parseFloat(getComputedStyle(instrument).top) || 0 : 0);
+      if (top < 0) window.scrollBy(0, top);
+    } else if (below) {
+      window.scrollBy(0, r.top - below - 14);
+    } else if (r.top < 0 || r.bottom > window.innerHeight) {
+      window.scrollBy(0, r.top - 24);
+    }
   }
 
   function dispatch(move, arg) {
