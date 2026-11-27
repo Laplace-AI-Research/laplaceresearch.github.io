@@ -2,11 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://laplaceresearch.org/</loc>
-    <lastmod>2026-11-25</lastmod>
+    <lastmod>2026-11-27</lastmod>
   </url>
   <url>
     <loc>https://laplaceresearch.org/research/</loc>
-    <lastmod>2026-11-25</lastmod>
+    <lastmod>2026-11-27</lastmod>
   </url>
   <url>
     <loc>https://laplaceresearch.org/models/</loc>
@@ -15,6 +15,10 @@
   <url>
     <loc>https://laplaceresearch.org/about/</loc>
     <lastmod>2026-11-25</lastmod>
+  </url>
+  <url>
+    <loc>https://laplaceresearch.org/research/thinking-and-forged-records/</loc>
+    <lastmod>2026-11-27</lastmod>
   </url>
   <url>
     <loc>https://laplaceresearch.org/signet/</loc>

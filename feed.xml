@@ -5,11 +5,23 @@
   <link href="https://laplaceresearch.org/feed.xml" rel="self" type="application/atom+xml" />
   <link href="https://laplaceresearch.org/" rel="alternate" type="text/html" />
   <id>https://laplaceresearch.org/</id>
-  <updated>2026-11-24T00:00:00Z</updated>
+  <updated>2026-11-27T00:00:00Z</updated>
   <author>
     <name>Laplace Research</name>
     <email>inquiries@laplaceresearch.org</email>
   </author>
+
+  <entry>
+    <title>When thinking helps models believe forged records</title>
+    <link href="https://laplaceresearch.org/research/thinking-and-forged-records/" rel="alternate" type="text/html" />
+    <id>https://laplaceresearch.org/research/thinking-and-forged-records/</id>
+    <published>2026-11-27T00:00:00Z</published>
+    <updated>2026-11-27T00:00:00Z</updated>
+    <author><name>Arya Somu</name></author>
+    <author><name>Bruce Nshuti Hirwa</name></author>
+    <category term="Research" />
+    <summary>In a paired experiment on four open models, thinking mode raised final-answer accuracy by 10 to 34 points and made most models harder to pressure, but every model became worse at rejecting a record pasted into the chat.</summary>
+  </entry>
 
   <entry>
     <title>Signet: open models that check where a record came from before they believe it</title>

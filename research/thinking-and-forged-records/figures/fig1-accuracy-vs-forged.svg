@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 494" width="640" height="494" role="img" aria-labelledby="t d" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" fill="#23262d">
+<title id="t">Final-answer accuracy and forged-record resistance, thinking off and on</title><desc id="d">Two dot plots, one row per model. In every model, thinking-on raises final-answer accuracy and lowers forged-record resistance. Values: Qwen3-1.7B: accuracy 41.7% to 75.8%, forged-record resistance 35.7% to 15.4%; Qwen3-8B: accuracy 47.8% to 78.6%, forged-record resistance 17.4% to 9.1%; Qwen3.5-9B: accuracy 67.3% to 77.5%, forged-record resistance 16.2% to 12.4%; Granite-4.2-8B: accuracy 60.2% to 75.9%, forged-record resistance 17.4% to 9.1%.</desc>
+<rect width="640" height="494" fill="#ffffff"/>
+<circle cx="26" cy="20" r="6" fill="#fff" stroke="#6b7079" stroke-width="2.5"/>
+<text x="40" y="25" font-size="13">Thinking off (greedy, 200-token cap)</text>
+<circle cx="311.6" cy="20" r="6.5" fill="#02338a"/>
+<text x="325.6" y="25" font-size="13">Thinking on (sampled, 4,096-token cap)</text>
+<text x="20" y="62" font-size="16" font-weight="600">Final-answer accuracy</text>
+<text x="620" y="62" font-size="13" fill="#5d626b" text-anchor="end">higher is better</text>
+<line x1="170.0" x2="170.0" y1="80" y2="230" stroke="#d9d6cf"/>
+<text x="170.0" y="246" font-size="12" fill="#5d626b" text-anchor="middle">0%</text>
+<line x1="277.5" x2="277.5" y1="80" y2="230" stroke="#d9d6cf"/>
+<text x="277.5" y="246" font-size="12" fill="#5d626b" text-anchor="middle">25%</text>
+<line x1="385.0" x2="385.0" y1="80" y2="230" stroke="#d9d6cf"/>
+<text x="385.0" y="246" font-size="12" fill="#5d626b" text-anchor="middle">50%</text>
+<line x1="492.5" x2="492.5" y1="80" y2="230" stroke="#d9d6cf"/>
+<text x="492.5" y="246" font-size="12" fill="#5d626b" text-anchor="middle">75%</text>
+<line x1="600.0" x2="600.0" y1="80" y2="230" stroke="#d9d6cf"/>
+<text x="600.0" y="246" font-size="12" fill="#5d626b" text-anchor="middle">100%</text>
+<text x="20" y="103" font-size="14">Qwen3-1.7B</text>
+<line x1="349.4" x2="496.1" y1="98" y2="98" stroke="#02338a" stroke-opacity=".35" stroke-width="4"/>
+<circle cx="349.4" cy="98" r="6" fill="#ffffff" stroke="#6b7079" stroke-width="2.5"/>
+<circle cx="496.1" cy="98" r="6.5" fill="#02338a"/>
+<text x="337.4" y="102" font-size="12" text-anchor="end" fill="#6b7079">41.7%</text>
+<text x="508.1" y="102" font-size="12" fill="#02338a">75.8%</text>
+<text x="20" y="143" font-size="14">Qwen3-8B</text>
+<line x1="375.6" x2="507.9" y1="138" y2="138" stroke="#02338a" stroke-opacity=".35" stroke-width="4"/>
+<circle cx="375.6" cy="138" r="6" fill="#ffffff" stroke="#6b7079" stroke-width="2.5"/>
+<circle cx="507.9" cy="138" r="6.5" fill="#02338a"/>
+<text x="363.6" y="142" font-size="12" text-anchor="end" fill="#6b7079">47.8%</text>
+<text x="519.9" y="142" font-size="12" fill="#02338a">78.6%</text>
+<text x="20" y="183" font-size="14">Qwen3.5-9B</text>
+<line x1="459.2" x2="503.1" y1="178" y2="178" stroke="#02338a" stroke-opacity=".35" stroke-width="4"/>
+<circle cx="459.2" cy="178" r="6" fill="#ffffff" stroke="#6b7079" stroke-width="2.5"/>
+<circle cx="503.1" cy="178" r="6.5" fill="#02338a"/>
+<text x="447.2" y="182" font-size="12" text-anchor="end" fill="#6b7079">67.3%</text>
+<text x="515.1" y="182" font-size="12" fill="#02338a">77.5%</text>
+<text x="20" y="223" font-size="14">Granite-4.2-8B</text>
+<line x1="429.0" x2="496.5" y1="218" y2="218" stroke="#02338a" stroke-opacity=".35" stroke-width="4"/>
+<circle cx="429.0" cy="218" r="6" fill="#ffffff" stroke="#6b7079" stroke-width="2.5"/>
+<circle cx="496.5" cy="218" r="6.5" fill="#02338a"/>
+<text x="417.0" y="222" font-size="12" text-anchor="end" fill="#6b7079">60.2%</text>
+<text x="508.5" y="222" font-size="12" fill="#02338a">75.9%</text>
+<text x="20" y="286" font-size="16" font-weight="600">Forged-record resistance</text>
+<text x="620" y="286" font-size="13" fill="#5d626b" text-anchor="end">higher is better</text>
+<line x1="170.0" x2="170.0" y1="304" y2="454" stroke="#d9d6cf"/>
+<text x="170.0" y="470" font-size="12" fill="#5d626b" text-anchor="middle">0%</text>
+<line x1="277.5" x2="277.5" y1="304" y2="454" stroke="#d9d6cf"/>
+<text x="277.5" y="470" font-size="12" fill="#5d626b" text-anchor="middle">25%</text>
+<line x1="385.0" x2="385.0" y1="304" y2="454" stroke="#d9d6cf"/>
+<text x="385.0" y="470" font-size="12" fill="#5d626b" text-anchor="middle">50%</text>
+<line x1="492.5" x2="492.5" y1="304" y2="454" stroke="#d9d6cf"/>
+<text x="492.5" y="470" font-size="12" fill="#5d626b" text-anchor="middle">75%</text>
+<line x1="600.0" x2="600.0" y1="304" y2="454" stroke="#d9d6cf"/>
+<text x="600.0" y="470" font-size="12" fill="#5d626b" text-anchor="middle">100%</text>
+<text x="20" y="327" font-size="14">Qwen3-1.7B</text>
+<line x1="323.4" x2="236.0" y1="322" y2="322" stroke="#02338a" stroke-opacity=".35" stroke-width="4"/>
+<circle cx="323.4" cy="322" r="6" fill="#ffffff" stroke="#6b7079" stroke-width="2.5"/>
+<circle cx="236.0" cy="322" r="6.5" fill="#02338a"/>
+<text x="224.0" y="326" font-size="12" text-anchor="end" fill="#02338a">15.4%</text>
+<text x="335.4" y="326" font-size="12" fill="#6b7079">35.7%</text>
+<text x="20" y="367" font-size="14">Qwen3-8B</text>
+<line x1="244.9" x2="209.3" y1="362" y2="362" stroke="#02338a" stroke-opacity=".35" stroke-width="4"/>
+<circle cx="244.9" cy="362" r="6" fill="#ffffff" stroke="#6b7079" stroke-width="2.5"/>
+<circle cx="209.3" cy="362" r="6.5" fill="#02338a"/>
+<text x="197.3" y="366" font-size="12" text-anchor="end" fill="#02338a">9.1%</text>
+<text x="256.9" y="366" font-size="12" fill="#6b7079">17.4%</text>
+<text x="20" y="407" font-size="14">Qwen3.5-9B</text>
+<line x1="239.6" x2="223.5" y1="402" y2="402" stroke="#02338a" stroke-opacity=".35" stroke-width="4"/>
+<circle cx="239.6" cy="402" r="6" fill="#ffffff" stroke="#6b7079" stroke-width="2.5"/>
+<circle cx="223.5" cy="402" r="6.5" fill="#02338a"/>
+<text x="211.5" y="406" font-size="12" text-anchor="end" fill="#02338a">12.4%</text>
+<text x="251.6" y="406" font-size="12" fill="#6b7079">16.2%</text>
+<text x="20" y="447" font-size="14">Granite-4.2-8B</text>
+<line x1="244.9" x2="209.3" y1="442" y2="442" stroke="#02338a" stroke-opacity=".35" stroke-width="4"/>
+<circle cx="244.9" cy="442" r="6" fill="#ffffff" stroke="#6b7079" stroke-width="2.5"/>
+<circle cx="209.3" cy="442" r="6.5" fill="#02338a"/>
+<text x="197.3" y="446" font-size="12" text-anchor="end" fill="#02338a">9.1%</text>
+<text x="256.9" y="446" font-size="12" fill="#6b7079">17.4%</text>
+</svg>

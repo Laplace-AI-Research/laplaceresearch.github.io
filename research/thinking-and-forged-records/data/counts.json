@@ -1,0 +1,221 @@
+{
+ "note": "Episode counts behind each rate, reconstructed offline from item-level prediction files (not in the public repo). Rates equal the canonical JSON exactly.",
+ "models": {
+  "Qwen3-1.7B": {
+   "off": {
+    "final_accuracy": {
+     "k": 487,
+     "n": 1167
+    },
+    "pressure_flip_rate": {
+     "k": 207,
+     "n": 382
+    },
+    "fabricated_evidence_resistance": {
+     "k": 86,
+     "n": 241
+    },
+    "legitimate_correction_rate": {
+     "k": 74,
+     "n": 79
+    },
+    "insufficient_accuracy": {
+     "k": 31,
+     "n": 110
+    },
+    "authenticated_update_accuracy": {
+     "k": 109,
+     "n": 258
+    }
+   },
+   "on": {
+    "final_accuracy": {
+     "k": 885,
+     "n": 1167
+    },
+    "pressure_flip_rate": {
+     "k": 128,
+     "n": 382
+    },
+    "fabricated_evidence_resistance": {
+     "k": 37,
+     "n": 241
+    },
+    "legitimate_correction_rate": {
+     "k": 78,
+     "n": 79
+    },
+    "insufficient_accuracy": {
+     "k": 48,
+     "n": 110
+    },
+    "authenticated_update_accuracy": {
+     "k": 238,
+     "n": 258
+    }
+   }
+  },
+  "Qwen3-8B": {
+   "off": {
+    "final_accuracy": {
+     "k": 558,
+     "n": 1167
+    },
+    "pressure_flip_rate": {
+     "k": 242,
+     "n": 383
+    },
+    "fabricated_evidence_resistance": {
+     "k": 42,
+     "n": 241
+    },
+    "legitimate_correction_rate": {
+     "k": 72,
+     "n": 79
+    },
+    "insufficient_accuracy": {
+     "k": 40,
+     "n": 110
+    },
+    "authenticated_update_accuracy": {
+     "k": 128,
+     "n": 258
+    }
+   },
+   "on": {
+    "final_accuracy": {
+     "k": 917,
+     "n": 1167
+    },
+    "pressure_flip_rate": {
+     "k": 130,
+     "n": 380
+    },
+    "fabricated_evidence_resistance": {
+     "k": 22,
+     "n": 241
+    },
+    "legitimate_correction_rate": {
+     "k": 79,
+     "n": 79
+    },
+    "insufficient_accuracy": {
+     "k": 65,
+     "n": 110
+    },
+    "authenticated_update_accuracy": {
+     "k": 256,
+     "n": 258
+    }
+   }
+  },
+  "Qwen3.5-9B": {
+   "off": {
+    "final_accuracy": {
+     "k": 785,
+     "n": 1167
+    },
+    "pressure_flip_rate": {
+     "k": 151,
+     "n": 371
+    },
+    "fabricated_evidence_resistance": {
+     "k": 39,
+     "n": 241
+    },
+    "legitimate_correction_rate": {
+     "k": 68,
+     "n": 79
+    },
+    "insufficient_accuracy": {
+     "k": 53,
+     "n": 110
+    },
+    "authenticated_update_accuracy": {
+     "k": 226,
+     "n": 258
+    }
+   },
+   "on": {
+    "final_accuracy": {
+     "k": 904,
+     "n": 1167
+    },
+    "pressure_flip_rate": {
+     "k": 122,
+     "n": 374
+    },
+    "fabricated_evidence_resistance": {
+     "k": 30,
+     "n": 241
+    },
+    "legitimate_correction_rate": {
+     "k": 77,
+     "n": 79
+    },
+    "insufficient_accuracy": {
+     "k": 49,
+     "n": 110
+    },
+    "authenticated_update_accuracy": {
+     "k": 253,
+     "n": 258
+    }
+   }
+  },
+  "Granite-4.2-8B": {
+   "off": {
+    "final_accuracy": {
+     "k": 703,
+     "n": 1167
+    },
+    "pressure_flip_rate": {
+     "k": 135,
+     "n": 362
+    },
+    "fabricated_evidence_resistance": {
+     "k": 42,
+     "n": 241
+    },
+    "legitimate_correction_rate": {
+     "k": 61,
+     "n": 79
+    },
+    "insufficient_accuracy": {
+     "k": 57,
+     "n": 110
+    },
+    "authenticated_update_accuracy": {
+     "k": 162,
+     "n": 258
+    }
+   },
+   "on": {
+    "final_accuracy": {
+     "k": 886,
+     "n": 1167
+    },
+    "pressure_flip_rate": {
+     "k": 129,
+     "n": 376
+    },
+    "fabricated_evidence_resistance": {
+     "k": 22,
+     "n": 241
+    },
+    "legitimate_correction_rate": {
+     "k": 79,
+     "n": 79
+    },
+    "insufficient_accuracy": {
+     "k": 46,
+     "n": 110
+    },
+    "authenticated_update_accuracy": {
+     "k": 241,
+     "n": 258
+    }
+   }
+  }
+ }
+}

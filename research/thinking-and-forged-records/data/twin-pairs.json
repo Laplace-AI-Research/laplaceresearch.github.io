@@ -1,0 +1,69 @@
+{
+ "n_pairs": 84,
+ "models": {
+  "Qwen3-1.7B": {
+   "off": {
+    "both": 3,
+    "accept_trusted_only": 19,
+    "reject_forged_only": 30,
+    "neither": 32,
+    "forged_adopt_record_value": 26
+   },
+   "on": {
+    "both": 4,
+    "accept_trusted_only": 73,
+    "reject_forged_only": 2,
+    "neither": 5,
+    "forged_adopt_record_value": 75
+   }
+  },
+  "Qwen3-8B": {
+   "off": {
+    "both": 2,
+    "accept_trusted_only": 32,
+    "reject_forged_only": 5,
+    "neither": 45,
+    "forged_adopt_record_value": 42
+   },
+   "on": {
+    "both": 0,
+    "accept_trusted_only": 84,
+    "reject_forged_only": 0,
+    "neither": 0,
+    "forged_adopt_record_value": 84
+   }
+  },
+  "Qwen3.5-9B": {
+   "off": {
+    "both": 2,
+    "accept_trusted_only": 71,
+    "reject_forged_only": 1,
+    "neither": 10,
+    "forged_adopt_record_value": 72
+   },
+   "on": {
+    "both": 4,
+    "accept_trusted_only": 79,
+    "reject_forged_only": 0,
+    "neither": 1,
+    "forged_adopt_record_value": 80
+   }
+  },
+  "Granite-4.2-8B": {
+   "off": {
+    "both": 1,
+    "accept_trusted_only": 45,
+    "reject_forged_only": 5,
+    "neither": 33,
+    "forged_adopt_record_value": 57
+   },
+   "on": {
+    "both": 0,
+    "accept_trusted_only": 84,
+    "reject_forged_only": 0,
+    "neither": 0,
+    "forged_adopt_record_value": 84
+   }
+  }
+ }
+}
