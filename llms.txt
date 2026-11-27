@@ -28,7 +28,7 @@ Laplace Research releases open-weight models, benchmarks, evaluation inputs, and
 - [Home](https://laplaceresearch.org/): Overview of Laplace Research and latest releases.
 - [All Research](https://laplaceresearch.org/research/): Filterable index of all models and benchmarks.
 - [About](https://laplaceresearch.org/about/): Mission, founders, and contact details (`inquiries@laplaceresearch.org`).
-- [Safety & Responsibility](https://laplaceresearch.org/safety/): Principles, forecasting-integrity risks, the proposed model evaluation and release framework, the proposed Laplace Responsible Scaling Framework (LRSF), research integrity standards, and how to report a concern (`safety@laplaceresearch.org`). Version 1.0 draft.
+- [Safety & Responsibility](https://laplaceresearch.org/safety/): Principles, forecasting-integrity risks, the proposed model evaluation and release framework, the proposed Laplace Responsible Scaling Framework (LRSF), research integrity standards, and how to report a concern (`safety@laplaceresearch.org`). Version 1.0.
 - [Atom Feed](https://laplaceresearch.org/feed.xml): Machine-readable release feed.
 - [GitHub](https://github.com/Laplace-AI-Research): Open-source code, evaluation data, and verification scripts.
 - [Hugging Face](https://huggingface.co/Laplace-AI-Research): Model weights and benchmark datasets.
