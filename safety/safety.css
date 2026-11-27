@@ -219,3 +219,55 @@
   .sf-toc ol { columns: 1; }
   .sf-report > li { grid-template-columns: minmax(0, 1fr); }
 }
+
+/* ---------- navy theme: this page sits on the brand navy, with each section on a paper panel ---------- */
+
+main.sf-main { --sf-gap: 20px; position: relative; background: var(--accent); border-color: var(--accent); }
+
+.sf-main .sec.sf-hero { overflow: hidden; padding-top: 104px; padding-bottom: 88px; background: var(--accent); color: #fff; }
+.sf-mark { position: absolute; top: 96px; right: 8%; width: clamp(150px, 20vw, 280px); opacity: 0.2; pointer-events: none; user-select: none; }
+.sf-chip { position: absolute; top: 28px; right: var(--pad); padding: 7px 12px; background: #fff; color: var(--ink); font-family: var(--mono); font-size: 12px; letter-spacing: 0.02em; }
+.sf-hero .body { position: relative; }
+.sf-hero .sf-label { color: rgba(255, 255, 255, 0.74); }
+.sf-hero .sf-label::before { background: #fff; }
+.sf-main .sf-hero h1 { color: #fff; }
+.sf-main .sf-hero .body > p { color: rgba(255, 255, 255, 0.76); }
+.sf-main .sf-hero .body > p.lead { color: #fff; }
+.sf-hero .sf-meta { border-top-color: rgba(255, 255, 255, 0.24); }
+.sf-hero .sf-meta dt, .sf-hero .sf-key-title { color: rgba(255, 255, 255, 0.6); }
+.sf-hero .sf-meta dd, .sf-hero .sf-meta a { color: #fff; }
+.sf-hero .sf-meta a { text-decoration-color: rgba(255, 255, 255, 0.45); }
+.sf-hero .sf-meta a:hover { text-decoration-color: #fff; }
+.sf-hero .sf-key li { color: rgba(255, 255, 255, 0.8); }
+.sf-hero .sf-tag, .sf-hero .sf-tag[data-kind] { color: #fff; }
+.sf-hero .sf-tag[data-kind="practice"]::before { background: #fff; border-color: #fff; }
+.sf-hero a:focus-visible, .sf-toc a:focus-visible, .sf-toc summary:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+
+.sf-main .sf-doc { gap: var(--sf-gap); padding: 0 var(--sf-gap) var(--sf-gap); border-top: 0; background: var(--accent); }
+.sf-main .sf-sections { display: flex; flex-direction: column; gap: var(--sf-gap); border-right: 0; }
+.sf-main .sf-doc .sec { padding-top: 64px; border: 0; background: var(--panel); }
+.sf-main .sf-flow li { background: #fff; }
+
+.sf-main .sf-toc { top: var(--sf-gap); padding: 40px 4px 24px 18px; border-left: 1px solid rgba(255, 255, 255, 0.22); }
+.sf-main .sf-toc summary { color: rgba(255, 255, 255, 0.62); }
+.sf-main .sf-toc a { color: rgba(255, 255, 255, 0.72); }
+.sf-main .sf-toc a::before { color: rgba(255, 255, 255, 0.42); }
+.sf-main .sf-toc a:hover, .sf-main .sf-toc a[aria-current="true"] { color: #fff; }
+.sf-main .sf-toc a[aria-current="true"]::after { left: -19px; background: #fff; }
+.sf-main .sf-toc-foot { border-top-color: rgba(255, 255, 255, 0.22); color: rgba(255, 255, 255, 0.55); }
+
+@media (max-width: 1180px) {
+  .sf-main .sf-aside { border-bottom: 0; }
+  .sf-main .sf-toc { padding: 0 20px; border: 1px solid rgba(255, 255, 255, 0.3); }
+  .sf-main .sf-toc summary { color: #fff; }
+  .sf-main .sf-toc summary::after { color: #fff; }
+  .sf-mark { top: 150px; right: 4%; width: 150px; opacity: 0.16; }
+}
+
+@media (max-width: 860px) {
+  main.sf-main { --sf-gap: 12px; }
+  .sf-main .sec.sf-hero { padding-top: 80px; padding-bottom: 64px; }
+  .sf-mark { top: auto; right: -24px; bottom: 24px; width: 160px; opacity: 0.12; }
+  .sf-chip { top: 20px; left: var(--pad); right: auto; font-size: 11px; }
+  .sf-main .sf-doc .sec { padding-top: 48px; }
+}
