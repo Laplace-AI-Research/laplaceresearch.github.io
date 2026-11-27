@@ -35,6 +35,7 @@ Laplace Research releases open-weight models, benchmarks, evaluation inputs, and
 
 ## Optional
 
+- [Brand Guidelines](https://laplaceresearch.org/brand/): Logo files, colours, typography, clear space and usage rules for the Laplace Research name and mark.
 - [Licenses and Attribution](https://laplaceresearch.org/licenses/): License matrix, base-model attribution, data terms, and research disclaimer.
 - [Privacy Notice](https://laplaceresearch.org/privacy/): Zero cookies, analytics, or third-party tracking.
 - [Terms of Use](https://laplaceresearch.org/terms/): Website terms and "as is" research disclaimer.
