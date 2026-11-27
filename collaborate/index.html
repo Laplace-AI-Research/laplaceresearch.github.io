@@ -70,7 +70,7 @@
     <script>document.documentElement.classList.add("js")</script>
     <link rel="stylesheet" href="/site.css?v=20261126-7" />
     <link rel="stylesheet" href="/safety/safety.css?v=2" />
-    <link rel="stylesheet" href="/agenda/agenda.css?v=2" />
+    <link rel="stylesheet" href="/agenda/agenda.css?v=3" />
   </head>
 
   <body>
@@ -81,10 +81,12 @@
         <button class="menu" type="button" aria-expanded="false" aria-controls="primary-nav">Menu <i aria-hidden="true"></i></button>
         <nav id="primary-nav" aria-label="Primary">
           <a href="/">Home</a>
+          <a href="/agenda/">Agenda</a>
           <a href="/research/">Research</a>
           <a href="/models/">Models</a>
           <a href="/safety/">Safety</a>
           <a href="/about/">About</a>
+          <a href="/collaborate/" aria-current="page">Collaborations</a>
         </nav>
         <a class="cta" href="mailto:inquiries@laplaceresearch.org" aria-label="Get in touch">
           <span class="cta-roll"><span>Get in touch</span><span aria-hidden="true">Get in touch</span></span>
@@ -102,6 +104,12 @@
       </header>
       <main id="content" class="ag-main">
         <section class="sec sf-hero" id="introduction" aria-labelledby="t">
+          <svg class="ag-art" viewBox="0 0 480 360" aria-hidden="true" focusable="false">
+            <g class="ag-art-past"><path d="M0 40 C120 40 160 180 280 180" /><path d="M0 104 C120 104 160 180 280 180" /><path d="M0 152 C120 152 160 180 280 180" /><path d="M0 208 C120 208 160 180 280 180" /><path d="M0 256 C120 256 160 180 280 180" /><path d="M0 320 C120 320 160 180 280 180" /></g>
+            <g class="ag-art-future"><path class="ag-art-one" d="M280 180 L480 180" /></g>
+            <circle cx="280" cy="180" r="6" />
+          </svg>
+          <span class="sf-chip">laplaceresearch.org/collaborate</span>
           <p class="num">01</p>
           <div class="body">
             <p class="sf-label">Collaborations</p>
@@ -301,7 +309,7 @@
               </div>
             </section>
 
-            <section class="sec" id="principles" aria-labelledby="principles-title">
+            <section class="sec ag-ink" id="principles" aria-labelledby="principles-title">
               <p class="num">03</p>
               <div class="body">
                 <h2 id="principles-title">What we look for</h2>
@@ -402,7 +410,7 @@
               <p class="num">07</p>
               <div class="body">
                 <h2 id="partnerships-title">Current partnerships</h2>
-                <p>
+                <p class="cl-empty">
                   Laplace Research has no formal research partnerships, sponsors or
                   institutional affiliations to announce. When a partnership is agreed and both
                   sides have approved its announcement, it will be listed here with a short
@@ -412,7 +420,7 @@
               </div>
             </section>
 
-            <section class="sec" id="work-with-us" aria-labelledby="work-title">
+            <section class="sec ag-ink" id="work-with-us" aria-labelledby="work-title">
               <p class="num">08</p>
               <div class="body">
                 <h2 id="work-title">Work with us.</h2>

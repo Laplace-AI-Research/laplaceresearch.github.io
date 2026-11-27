@@ -71,7 +71,7 @@
     <script>document.documentElement.classList.add("js")</script>
     <link rel="stylesheet" href="/site.css?v=20261126-7" />
     <link rel="stylesheet" href="/safety/safety.css?v=2" />
-    <link rel="stylesheet" href="/agenda/agenda.css?v=2" />
+    <link rel="stylesheet" href="/agenda/agenda.css?v=3" />
   </head>
 
   <body>
@@ -82,10 +82,12 @@
         <button class="menu" type="button" aria-expanded="false" aria-controls="primary-nav">Menu <i aria-hidden="true"></i></button>
         <nav id="primary-nav" aria-label="Primary">
           <a href="/">Home</a>
+          <a href="/agenda/" aria-current="page">Agenda</a>
           <a href="/research/">Research</a>
           <a href="/models/">Models</a>
           <a href="/safety/">Safety</a>
           <a href="/about/">About</a>
+          <a href="/collaborate/">Collaborations</a>
         </nav>
         <a class="cta" href="mailto:inquiries@laplaceresearch.org" aria-label="Get in touch">
           <span class="cta-roll"><span>Get in touch</span><span aria-hidden="true">Get in touch</span></span>
@@ -103,6 +105,12 @@
       </header>
       <main id="content" class="ag-main">
         <section class="sec sf-hero" id="introduction" aria-labelledby="t">
+          <svg class="ag-art" viewBox="0 0 480 360" aria-hidden="true" focusable="false">
+            <g class="ag-art-past"><path d="M0 60 C80 70 140 170 240 180" /><path d="M0 120 C90 120 150 190 240 180" /><path d="M0 200 C70 190 150 160 240 180" /><path d="M0 260 C90 250 160 190 240 180" /><path d="M0 320 C80 300 170 200 240 180" /></g>
+            <g class="ag-art-future"><path d="M240 180 C320 170 400 60 480 30" /><path d="M240 180 C320 176 400 110 480 90" /><path d="M240 180 C320 179 400 150 480 140" /><path d="M240 180 C320 180 400 180 480 180" /><path d="M240 180 C320 181 400 210 480 220" /><path d="M240 180 C320 184 400 250 480 270" /><path d="M240 180 C320 190 400 300 480 330" /></g>
+            <line class="ag-art-now" x1="240" y1="0" x2="240" y2="360" /><circle cx="240" cy="180" r="6" />
+          </svg>
+          <span class="sf-chip">laplaceresearch.org/agenda</span>
           <p class="num">01</p>
           <div class="body">
             <p class="sf-label">Research Agenda</p>
@@ -216,10 +224,19 @@
                   of the past is an inference, not a record, and a forecast is a probability,
                   not knowledge of what will happen.
                 </p>
+
+                <h3>Five research directions</h3>
+                <ol class="ag-dirs">
+                  <li><a href="#forecasting"><span>01</span><b>Forecasting</b><em>Reliable, calibrated forecasts about an uncertain world.</em></a></li>
+                  <li><a href="#retrodiction"><span>02</span><b>Retrodiction and state estimation</b><em>Reconstructing unobserved states from incomplete evidence.</em></a></li>
+                  <li><a href="#epistemic-intelligence"><span>03</span><b>Epistemic intelligence</b><em>Forming, challenging and revising beliefs.</em></a></li>
+                  <li><a href="#world-simulation"><span>04</span><b>World simulation and counterfactual reasoning</b><em>Exploring how different conditions could change outcomes.</em></a></li>
+                  <li><a href="#infrastructure"><span>05</span><b>Forecasting infrastructure</b><em>Data, benchmarks and tools others can build on.</em></a></li>
+                </ol>
               </div>
             </section>
 
-            <section class="sec" id="forecasting" aria-labelledby="forecasting-title">
+            <section class="sec ag-dir" data-n="01" id="forecasting" aria-labelledby="forecasting-title">
               <p class="num">03 &middot; Direction 01</p>
               <div class="body">
                 <h2 id="forecasting-title">Forecasting</h2>
@@ -266,7 +283,7 @@
               </div>
             </section>
 
-            <section class="sec" id="retrodiction" aria-labelledby="retrodiction-title">
+            <section class="sec ag-dir" data-n="02" id="retrodiction" aria-labelledby="retrodiction-title">
               <p class="num">04 &middot; Direction 02</p>
               <div class="body">
                 <h2 id="retrodiction-title">Retrodiction and state estimation</h2>
@@ -307,7 +324,7 @@
               </div>
             </section>
 
-            <section class="sec" id="epistemic-intelligence" aria-labelledby="epistemic-title">
+            <section class="sec ag-dir" data-n="03" id="epistemic-intelligence" aria-labelledby="epistemic-title">
               <p class="num">05 &middot; Direction 03</p>
               <div class="body">
                 <h2 id="epistemic-title">Epistemic intelligence</h2>
@@ -363,7 +380,7 @@
               </div>
             </section>
 
-            <section class="sec" id="world-simulation" aria-labelledby="simulation-title">
+            <section class="sec ag-dir" data-n="04" id="world-simulation" aria-labelledby="simulation-title">
               <p class="num">06 &middot; Direction 04</p>
               <div class="body">
                 <h2 id="simulation-title">World simulation and counterfactual reasoning</h2>
@@ -405,7 +422,7 @@
               </div>
             </section>
 
-            <section class="sec" id="infrastructure" aria-labelledby="infrastructure-title">
+            <section class="sec ag-dir" data-n="05" id="infrastructure" aria-labelledby="infrastructure-title">
               <p class="num">07 &middot; Direction 05</p>
               <div class="body">
                 <h2 id="infrastructure-title">Forecasting infrastructure</h2>
@@ -457,7 +474,7 @@
               </div>
             </section>
 
-            <section class="sec" id="methodology" aria-labelledby="methodology-title">
+            <section class="sec ag-ink" id="methodology" aria-labelledby="methodology-title">
               <p class="num">08</p>
               <div class="body">
                 <h2 id="methodology-title">How we do research</h2>
@@ -514,7 +531,7 @@
               </div>
             </section>
 
-            <section class="sec" id="open-pursuit" aria-labelledby="pursuit-title">
+            <section class="sec ag-ink" id="open-pursuit" aria-labelledby="pursuit-title">
               <p class="num">10</p>
               <div class="body">
                 <h2 id="pursuit-title">An open scientific pursuit.</h2>
