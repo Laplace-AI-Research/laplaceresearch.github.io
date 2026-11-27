@@ -482,7 +482,7 @@ main {
   text-decoration: none;
 }
 .post-copy { display: flex; flex-direction: column; min-width: 0; padding: 26px 28px 24px; }
-.post-copy h3 { max-width: 30ch; margin: 0 0 14px; font-size: clamp(19px, 1.6vw, 22px); line-height: 1.25; letter-spacing: -0.012em; text-wrap: pretty; transition: color 250ms; }
+.post-copy h3 { max-width: 30ch; margin: 0 0 14px; font-size: clamp(19px, 1.6vw, 22px); line-height: 1.25; font-weight: 400; letter-spacing: -0.012em; text-wrap: pretty; transition: color 250ms; }
 .post-row:hover h3 { color: var(--accent); }
 .post-copy > p:not(.meta) { display: -webkit-box; max-width: 58ch; margin: 0; overflow: hidden; color: var(--ink-2); font-size: 14px; line-height: 1.6; -webkit-box-orient: vertical; -webkit-line-clamp: 3; }
 .meta {
