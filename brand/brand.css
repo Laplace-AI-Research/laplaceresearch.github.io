@@ -20,6 +20,9 @@ h2 + .bk-lede { margin-top: 0; }
 .bk-files .bk-prev img { width: 52%; height: auto; }
 .bk-files .bk-span .bk-prev { aspect-ratio: 2 / 1; }
 .bk-files .bk-lock img { width: 64%; }
+.bk-files .bk-full { grid-column: 1 / -1; }
+.bk-files .bk-banner { aspect-ratio: auto; place-items: stretch; border-color: transparent; background: var(--accent); }
+.bk-files .bk-banner img { display: block; width: 100%; }
 .bk-files h3, .bk-swatches h3, .bk-type h3, .bk-rules h3 { margin: 16px 0 6px; color: var(--ink); font-family: var(--sans); font-size: 14px; font-weight: 600; letter-spacing: -0.01em; }
 .bk-files p, .bk-swatches p, .bk-type p, .bk-rules p, .bk-donts p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.55; }
 .bk-dl { display: flex; flex-wrap: wrap; gap: 6px 14px; margin-top: 10px !important; font-family: var(--mono); font-size: 11px !important; letter-spacing: 0.04em; text-transform: uppercase; }
