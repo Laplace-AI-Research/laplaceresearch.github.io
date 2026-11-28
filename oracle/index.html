@@ -4,12 +4,12 @@
     <meta charset="utf-8" />
     <title>Introducing Laplace Oracle: Our family of models that buy evidence before they forecast | Laplace Research</title>
     <meta name="description" content="We trained six internal models to buy observations, report probabilities and decide when to stop. In one diagnostic, every trained model declined a duplicate reading, yet every one changed its forecast when it was supplied." />
-    <meta name="robots" content="noindex, nofollow" />
     <meta name="theme-color" content="#f6f5f2" />
     <meta name="color-scheme" content="only light" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 
     <link rel="canonical" href="https://laplaceresearch.org/oracle/" />
+    <link rel="alternate" type="application/atom+xml" title="Laplace Research" href="/feed.xml" />
     <link rel="icon" href="/favicon.ico?v=4" sizes="16x16 32x32 48x48" />
     <link rel="icon" type="image/png" href="/favicon-96.png?v=4" sizes="96x96" />
     <link rel="icon" type="image/png" href="/favicon-192.png?v=4" sizes="192x192" />
@@ -36,12 +36,14 @@
         "@type": "Article",
         "headline": "Introducing Laplace Oracle: Our family of models that buy evidence before they forecast",
         "description": "We trained six internal models to buy observations, report probabilities and decide when to stop. In one diagnostic, every trained model declined a duplicate reading, yet every one changed its forecast when it was supplied.",
+        "datePublished": "2026-11-30",
+        "dateModified": "2026-11-30",
         "mainEntityOfPage": "https://laplaceresearch.org/oracle/",
         "image": "https://laplaceresearch.org/oracle/assets/social-1200x630.jpg",
         "author": [
-        { "@type": "Person", "name": "Arya Somu", "url": "https://aryasomu.com/" },
-        { "@type": "Person", "name": "Bruce Nshuti Hirwa", "url": "https://brucenh.com/" }
-      ],
+          { "@type": "Person", "name": "Arya Somu", "url": "https://aryasomu.com/" },
+          { "@type": "Person", "name": "Bruce Nshuti Hirwa", "url": "https://brucenh.com/" }
+        ],
         "publisher": {
           "@type": "Organization",
           "name": "Laplace Research",
@@ -58,7 +60,7 @@
     <script>document.documentElement.classList.add("js")</script>
     <link rel="stylesheet" href="/site.css?v=20261126-7" />
     <link rel="stylesheet" href="/article.css?v=20261126-2" />
-    <link rel="stylesheet" href="/oracle/article-local.css?v=20261127-1" />
+    <link rel="stylesheet" href="/oracle/article-local.css?v=20261130-1" />
   </head>
 
   <body>
@@ -112,7 +114,7 @@
             <h1 id="t">Introducing Laplace Oracle: Our family of models that buy evidence before they forecast</h1>
             <div class="post-meta">
               <span class="post-tag">Model release</span>
-              <span>Unpublished review draft</span>
+              <time datetime="2026-11-30">November 30, 2026</time>
               <span class="sep" aria-hidden="true">&middot;</span>
               <span>By <a href="https://aryasomu.com/" target="_blank" rel="noopener noreferrer">Arya Somu</a> &amp; <a href="https://brucenh.com/" target="_blank" rel="noopener noreferrer">Bruce Nshuti Hirwa</a></span>
               <span class="sep" aria-hidden="true">&middot;</span>
@@ -122,10 +124,6 @@
         </header>
 
         <div class="post-col post-body">
-
-          <p class="oracle-draft" role="note">
-            Review draft. This page is not published and its publication date has not been set.
-          </p>
 
           <p class="post-lead">
             We trained six internal models to buy observations, report probabilities and decide when to stop. In one
@@ -601,17 +599,18 @@
           <section aria-labelledby="availability">
             <h2 id="availability">Availability</h2>
             <div class="oracle-availability">
-              <p><strong>Oracle is a source-and-report research candidate, not a model release.</strong></p>
+              <p><strong>What this release includes.</strong> Oracle is released as an article, figures and data. The models themselves stay internal.</p>
               <ul>
-                <li>Prepared for release: the simulator, training and replay source code, the research report, figures,
-                  aggregate results and the disclosed scripted fixture used in the Playground.</li>
+                <li>Published with this page: the figures, the <a href="/oracle/data/results.json">aggregate results</a>, the
+                  <a href="/oracle/data/figure-data.json">plotted values</a> and the disclosed scripted fixture used in the
+                  <a href="/playground/oracle/">Playground</a>.</li>
                 <li>The six trained adapters remain internal and are not available for download.</li>
                 <li>Replaying the original episodes in full requires private artifacts that are not included.</li>
                 <li>Code is licensed under Apache-2.0. Documentation, figures and disclosed data are licensed under CC BY
                   4.0, within the scope stated with each artifact.</li>
                 <li>Model redistribution is a separate question and is not granted.</li>
               </ul>
-              <p class="oracle-availability-note">Public links to the source code and full report will be added here only after their release is approved. Until then, the figures and aggregate data on this page are the public record.</p>
+              <p class="oracle-availability-note">The simulator, training and replay code and the full report are not public yet. The figures and aggregate data on this page are the public record.</p>
             </div>
           </section>
 
@@ -639,9 +638,25 @@
               script, and <a href="/oracle/data/figure-data.json">figure-data.json</a> lists every plotted value.
             </p>
             <p class="post-note">
-              Cover photograph: a CC0 stock photograph of the night sky, cropped for this page. The photographer and source page are recorded in the site&rsquo;s license notes. It is illustrative and contains no data.
+              Cover photograph: a CC0 editorial stock photograph of the night sky, cropped for this page. It is illustrative and contains no data.
             </p>
           </section>
+
+          <dl class="facts">
+            <div><dt>Version</dt><dd>1.0</dd></div>
+            <div><dt>Published</dt><dd>30 November 2026</dd></div>
+            <div><dt>Authors</dt><dd>Arya Somu, Bruce Nshuti Hirwa</dd></div>
+            <div><dt>Licence</dt><dd>Article, figures and data CC BY 4.0; models not distributed</dd></div>
+          </dl>
+
+          <h3>Cite this release</h3>
+          <pre class="post-bib">@misc{somu2026oracle,
+  title     = {Introducing Laplace Oracle: Our Family of Models That Buy Evidence Before They Forecast},
+  author    = {Somu, Arya and Nshuti Hirwa, Bruce},
+  year      = {2026},
+  publisher = {Laplace Research},
+  url       = {https://laplaceresearch.org/oracle/}
+}</pre>
 
         </div>
         </article>

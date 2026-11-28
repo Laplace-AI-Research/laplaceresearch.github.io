@@ -87,8 +87,9 @@ for ref in set(re.findall(r'(?:href|src|srcset)="([^"]+)"', page)):
             check(path.exists(), f"broken local link {u}")
 for anchor in re.findall(r'href="#([^"]+)"', page):
     check(f'id="{anchor}"' in page, f"missing anchor #{anchor}")
-check("datePublished" not in page and "article:published_time" not in page, "page sets a publication date")
-check('name="robots" content="noindex' in page, "draft page lacks noindex")
+check('"datePublished": "2026-11-30"' in page and '<time datetime="2026-11-30">' in page, "release date missing or inconsistent")
+check("noindex" not in page and "oracle-draft" not in page and "review draft" not in page.lower(), "draft markers remain")
+check("https://laplaceresearch.org/oracle/" in (ROOT / "feed.xml").read_text(), "feed entry missing")
 
 if fails:
     print("FAIL"); [print(" -", f) for f in fails]; sys.exit(1)
