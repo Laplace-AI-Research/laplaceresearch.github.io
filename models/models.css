@@ -248,6 +248,7 @@
 .fam-banner-meta {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: 12px;
   flex-shrink: 0;
 }

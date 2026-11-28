@@ -76,6 +76,14 @@ for p in bundle:
                     continue
                 if pat.startswith("github") and p.name == "results.json":
                     continue
+                if "system-card" in p.parts:  # card: only pinned model links, the repository link and named exclusions
+                    tail = s[m.start(): m.end() + 60]
+                    if pat.startswith("huggingface") and re.match(r"huggingface\.co/Laplace-AI-Research/Oracle-(?:Lyra|Vega|Aquila|Altair|Cygnus|Deneb)(?:/tree/[0-9a-f]{40})?\"", tail):
+                        continue
+                    if pat.startswith("github") and re.match(r"github\.com/Laplace-AI-Research/oracle[\"<]", tail):
+                        continue
+                    if pat in ("sealed", r"seed[_ -]?bank") and re.match(r"(?:sealed (?:manifests|access|world-generation roots|evaluation)|seed banks)", tail, re.I):
+                        continue
                 fails.append(f"private pattern {pat!r} in {p.relative_to(ROOT)}: {ctx!r}")
 
 # local links and assets
