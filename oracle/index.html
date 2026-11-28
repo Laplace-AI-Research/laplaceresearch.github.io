@@ -38,11 +38,10 @@
         "description": "We trained six internal models to buy observations, report probabilities and decide when to stop. In one diagnostic, every trained model declined a duplicate reading, yet every one changed its forecast when it was supplied.",
         "mainEntityOfPage": "https://laplaceresearch.org/oracle/",
         "image": "https://laplaceresearch.org/oracle/assets/social-1200x630.jpg",
-        "author": {
-          "@type": "Organization",
-          "name": "Laplace Research",
-          "url": "https://laplaceresearch.org/"
-        },
+        "author": [
+        { "@type": "Person", "name": "Arya Somu", "url": "https://aryasomu.com/" },
+        { "@type": "Person", "name": "Bruce Nshuti Hirwa", "url": "https://brucenh.com/" }
+      ],
         "publisher": {
           "@type": "Organization",
           "name": "Laplace Research",
@@ -115,7 +114,7 @@
               <span class="post-tag">Model release</span>
               <span>Unpublished review draft</span>
               <span class="sep" aria-hidden="true">&middot;</span>
-              <span>By Laplace Research</span>
+              <span>By <a href="https://aryasomu.com/" target="_blank" rel="noopener noreferrer">Arya Somu</a> &amp; <a href="https://brucenh.com/" target="_blank" rel="noopener noreferrer">Bruce Nshuti Hirwa</a></span>
               <span class="sep" aria-hidden="true">&middot;</span>
               <span>11 min read</span>
             </div>
@@ -171,7 +170,7 @@
             </figure>
 
             <p>
-              Oracle Aquila, one of the six internal models in this study, played this world in an ordinary recorded
+              Oracle Aquila, one of the six Oracle models, played this world in an ordinary recorded
               episode. It bought display A, saw a positive reading, reported 80% and stopped without buying display B.
               That is the exact answer, reached without paying for the copy.
             </p>
@@ -192,7 +191,7 @@
 
             <p>
               Those two results are the subject of this article. Deciding which evidence to buy and reporting what the
-              evidence supports are different skills, and a model can show one without the other. The full study also
+              evidence supports are different skills, and a model can show one without the other. The full evaluation also
               tested whether reinforcement learning helped, and found that a policy which never buys anything beat
               every trained model on held-out worlds.
             </p>
@@ -219,7 +218,7 @@
           <section aria-labelledby="decisions">
             <h2 id="decisions">Three decisions</h2>
             <p>
-              Oracle is a controlled study of evidence acquisition. In every episode the model faces the same three
+              Oracle models are trained and evaluated in a controlled setting for evidence acquisition. In every episode the model faces the same three
               decisions, turn by turn:
             </p>
             <ol>
@@ -617,7 +616,7 @@
           <section aria-labelledby="sources">
             <h2 id="sources">Sources and data</h2>
             <p>
-              Every aggregate number in this article comes from the study&rsquo;s scorecard, pinned to a fixed revision
+              Every aggregate number in this article comes from the evaluation scorecard, pinned to a fixed revision
               of the Oracle research repository and extracted to <a href="/oracle/data/results.json">results.json</a>.
               The copy-sensor values come from the same fixture that drives the
               <a href="/playground/oracle/">Playground</a>. The figures are generated from those two files by a
