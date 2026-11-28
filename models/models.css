@@ -248,6 +248,7 @@
 .fam-banner-meta {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: 12px;
   flex-shrink: 0;
 }
@@ -642,7 +643,7 @@ table.mmatrix {
 @media (max-width: 720px) {
   .quick-picks,
   .mc-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
   .fam-banner {
     min-height: 0;

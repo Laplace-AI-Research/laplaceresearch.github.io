@@ -5,11 +5,23 @@
   <link href="https://laplaceresearch.org/feed.xml" rel="self" type="application/atom+xml" />
   <link href="https://laplaceresearch.org/" rel="alternate" type="text/html" />
   <id>https://laplaceresearch.org/</id>
-  <updated>2026-11-27T00:00:00Z</updated>
+  <updated>2026-11-30T00:00:00Z</updated>
   <author>
     <name>Laplace Research</name>
     <email>inquiries@laplaceresearch.org</email>
   </author>
+
+  <entry>
+    <title>Introducing Laplace Oracle: Our family of models that buy evidence before they forecast</title>
+    <link href="https://laplaceresearch.org/oracle/" rel="alternate" type="text/html" />
+    <id>https://laplaceresearch.org/oracle/</id>
+    <published>2026-11-30T00:00:00Z</published>
+    <updated>2026-11-30T00:00:00Z</updated>
+    <author><name>Arya Somu</name></author>
+    <author><name>Bruce Nshuti Hirwa</name></author>
+    <category term="Models" />
+    <summary>Six open models trained to buy observations, report probabilities and decide when to stop. Every one declined a copied reading, yet every one changed its forecast when that reading was supplied. RL's effect on held-out worlds was uncertain, and a prior-only baseline scored above all six.</summary>
+  </entry>
 
   <entry>
     <title>When thinking helps models believe forged records</title>

@@ -1,0 +1,728 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Introducing Laplace Oracle: Our family of models that buy evidence before they forecast | Laplace Research</title>
+    <meta name="description" content="We trained six models to buy observations, report probabilities and decide when to stop, and we are releasing all six with their code and report. In one diagnostic, every trained model declined a duplicate reading, yet every one changed its forecast when it was supplied." />
+    <meta name="theme-color" content="#f6f5f2" />
+    <meta name="color-scheme" content="only light" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+
+    <link rel="canonical" href="https://laplaceresearch.org/oracle/" />
+    <link rel="alternate" type="application/atom+xml" title="Laplace Research" href="/feed.xml" />
+    <link rel="icon" href="/favicon.ico?v=4" sizes="16x16 32x32 48x48" />
+    <link rel="icon" type="image/png" href="/favicon-96.png?v=4" sizes="96x96" />
+    <link rel="icon" type="image/png" href="/favicon-192.png?v=4" sizes="192x192" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=4" />
+
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Laplace Research" />
+    <meta property="og:title" content="Introducing Laplace Oracle: Our family of models that buy evidence before they forecast" />
+    <meta property="og:description" content="Six open models declined a duplicate reading, yet their forecasts moved when it was supplied. RL's effect was uncertain and a do-nothing baseline beat every adapter." />
+    <meta property="og:url" content="https://laplaceresearch.org/oracle/" />
+    <meta property="og:image" content="https://laplaceresearch.org/oracle/assets/social-1200x630.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Night sky with the Milky Way behind the article title and a small diagram of one sensor wired to two displays" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Introducing Laplace Oracle: Our family of models that buy evidence before they forecast" />
+    <meta name="twitter:description" content="Six open models declined a duplicate reading, yet their forecasts moved when it was supplied. RL's effect was uncertain and a do-nothing baseline beat every adapter." />
+    <meta name="twitter:image" content="https://laplaceresearch.org/oracle/assets/social-1200x630.jpg" />
+    <meta name="twitter:image:alt" content="Night sky with the Milky Way behind the article title and a small diagram of one sensor wired to two displays" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "Introducing Laplace Oracle: Our family of models that buy evidence before they forecast",
+        "description": "We trained six open models to buy observations, report probabilities and decide when to stop. In one diagnostic, every trained model declined a duplicate reading, yet every one changed its forecast when it was supplied.",
+        "datePublished": "2026-11-30",
+        "dateModified": "2026-11-30",
+        "mainEntityOfPage": "https://laplaceresearch.org/oracle/",
+        "image": "https://laplaceresearch.org/oracle/assets/social-1200x630.jpg",
+        "author": [
+          { "@type": "Person", "name": "Arya Somu", "url": "https://aryasomu.com/" },
+          { "@type": "Person", "name": "Bruce Nshuti Hirwa", "url": "https://brucenh.com/" }
+        ],
+        "publisher": {
+          "@type": "Organization",
+          "name": "Laplace Research",
+          "url": "https://laplaceresearch.org/",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://laplaceresearch.org/assets/mark.png"
+          }
+        }
+      }
+    </script>
+    <link rel="preload" href="/assets/fonts/newsreader-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/assets/fonts/inter-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <script>document.documentElement.classList.add("js")</script>
+    <link rel="stylesheet" href="/site.css?v=20261126-7" />
+    <link rel="stylesheet" href="/article.css?v=20261126-2" />
+    <link rel="stylesheet" href="/oracle/article-local.css?v=20261130-2" />
+  </head>
+
+  <body>
+    <a class="skip-link" href="#content">Skip to content</a>
+    <div class="frame">
+      <header class="rail">
+        <a class="brand" href="/" aria-label="Laplace Research home"><span class="mark" aria-hidden="true"></span>Laplace Research</a>
+        <button class="menu" type="button" aria-expanded="false" aria-controls="primary-nav">Menu <i aria-hidden="true"></i></button>
+        <nav id="primary-nav" aria-label="Primary">
+          <a href="/">Home</a>
+          <a href="/agenda/">Agenda</a>
+          <a href="/research/" aria-current="page">Research</a>
+          <a href="/models/">Models</a>
+          <a href="/playground/">Playground</a>
+          <a href="/safety/">Safety</a>
+          <a href="/about/">About</a>
+          <a href="/collaborate/">Collaborations</a>
+        </nav>
+        <a class="cta" href="mailto:inquiries@laplaceresearch.org" aria-label="Get in touch">
+          <span class="cta-roll"><span>Get in touch</span><span aria-hidden="true">Get in touch</span></span>
+          <svg class="icon-arrow" aria-hidden="true" focusable="false"><use href="/assets/icons.svg#arrow" /></svg>
+        </a>
+        <div class="rail-end">
+          <div class="rail-icons">
+            <a href="mailto:inquiries@laplaceresearch.org" aria-label="Email"><svg class="stroke" aria-hidden="true" focusable="false"><use href="/assets/icons.svg#mail" /></svg></a>
+            <a href="https://x.com/laplaceaires" target="_blank" rel="noopener noreferrer" aria-label="X"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#x" /></svg></a>
+            <a href="https://github.com/Laplace-AI-Research" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#gh" /></svg></a>
+            <a href="https://huggingface.co/Laplace-AI-Research" target="_blank" rel="noopener noreferrer" aria-label="Hugging Face"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#hf" /></svg></a>
+            <a href="https://www.linkedin.com/company/laplaceairesearch/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#li" /></svg></a>
+          </div>
+          <p class="rail-legal"><a href="/privacy/">Privacy</a> &middot; <a href="/terms/">Terms</a> &middot; <a href="/licenses/">Licenses</a><br /><a href="/accessibility/">Accessibility</a> &middot; <a href="/brand/">Brand</a><br />&copy; 2026 Laplace Research &middot; SF &amp; NYC</p>
+        </div>
+        <img class="dither" src="/assets/dither.svg?v=2" alt="" width="248" height="12" />
+      </header>
+
+      <main class="post-main" id="content">
+        <article aria-labelledby="t">
+        <header class="post-hero">
+          <img
+            class="post-hero-media"
+            src="/oracle/assets/hero-1600.jpg"
+            srcset="/oracle/assets/hero-800.jpg 800w, /oracle/assets/hero-1600.jpg 1600w"
+            sizes="100vw"
+            alt="A star field with the band of the Milky Way against a green-tinted night sky"
+            width="1600"
+            height="1067"
+          />
+          <div class="post-hero-card">
+            <a class="post-back" href="/research/">
+              <span class="arrow" aria-hidden="true">&larr;</span>
+              <span>Back to Research</span>
+            </a>
+            <h1 id="t">Introducing Laplace Oracle: Our family of models that buy evidence before they forecast</h1>
+            <div class="post-meta">
+              <span class="post-tag">Model release</span>
+              <time datetime="2026-11-30">November 30, 2026</time>
+              <span class="sep" aria-hidden="true">&middot;</span>
+              <span>By <a href="https://aryasomu.com/" target="_blank" rel="noopener noreferrer">Arya Somu</a> &amp; <a href="https://brucenh.com/" target="_blank" rel="noopener noreferrer">Bruce Nshuti Hirwa</a></span>
+              <span class="sep" aria-hidden="true">&middot;</span>
+              <span>11 min read</span>
+            </div>
+          </div>
+        </header>
+
+        <div class="post-col post-lead-section post-body">
+
+          <p class="post-lead">
+            We trained six open models to buy observations, report probabilities and decide when to stop. In one
+            controlled diagnostic, every trained model declined a duplicate reading, yet every model changed its
+            forecast when that reading was supplied anyway.
+          </p>
+
+          <section aria-labelledby="scene">
+            <h2 id="scene">One sensor, two displays</h2>
+            <p>
+              A hidden signal is either on or off, and each is equally likely. A sensor, call it A, watches the
+              signal. When the signal is on, sensor A reads positive 80% of the time. When the signal is off, it reads
+              positive 20% of the time. Display A shows sensor A&rsquo;s reading. Next to it, display B also shows a
+              reading, but display B is wired to the same sensor. It cannot disagree with display A, because it is the
+              same measurement shown on a second screen.
+            </p>
+            <p>
+              Suppose display A shows positive. A positive reading is four times as likely when the signal is on
+              (80%) as when it is off (20%), so the odds move from 1:1 to 4:1. The exact probability that the signal is
+              on is 80%. Display B will also show positive, so paying to read it buys nothing, and seeing it anyway
+              should change nothing: the answer stays at 80%. If B were a second, independent sensor with the same
+              accuracy, its positive reading would multiply the odds by four again, to 16:1. That is 16/17, about 94.1%.
+            </p>
+
+            <figure class="post-fig" aria-labelledby="fig1-cap">
+              <div class="post-fig-frame" data-zoomable tabindex="0" role="button" aria-label="Enlarge Figure 1">
+                <picture><source media="(max-width: 560px)" srcset="/oracle/figures/fig1-wiring-narrow.svg" width="400" height="638" /><img
+                  src="/oracle/figures/fig1-wiring.svg"
+                  alt="Two wiring diagrams with both displays positive. Same sensor: one physical sensor A feeds display A and display B; the exact probability is 80% after A is positive and still 80% after the copy. Independent sensors: separate sensors A and B feed the two displays; the exact probability is 80% after A is positive and 16/17, 94.1%, after both are positive."
+                  width="640"
+                  height="324"
+                /></picture>
+              </div>
+              <figcaption id="fig1-cap">
+                Fig. 1. The generative law behind the diagnostic and the exact probabilities it implies. Solid boxes are
+                physical sensors; dashed boxes are displays. Prior 50%; each sensor reads positive 80% of the time when
+                the signal is on and 20% when it is off. Everything here is calculated from that law. No model behavior
+                is shown.
+                <span class="fig-downloads">Download: <a href="/oracle/figures/fig1-wiring.svg">SVG</a>
+                &middot; <a href="/oracle/figures/fig1-wiring.png">PNG</a></span>
+              </figcaption>
+            </figure>
+
+            <p>
+              Oracle Aquila, one of the six Oracle models, played this world in an ordinary recorded
+              episode. It bought display A, saw a positive reading, reported 80% and stopped without buying display B.
+              That is the exact answer, reached without paying for the copy.
+            </p>
+            <p>
+              In a separate test, Aquila did not get to choose. We supplied a history in which both displays had
+              already been read and both were positive, with the same wiring description and the same instruction
+              every model receives: a copied reading provides no new evidence. Aquila reported 90.5%. It had declined
+              to pay for the copy, but when the copy was put in front of it, its forecast moved.
+            </p>
+
+            <p class="oracle-try">
+              <a class="post-cta-btn" href="/playground/oracle/">
+                <span>Try Oracle and the Second Sensor</span>
+                <span class="arrow" aria-hidden="true">&rarr;</span>
+              </a>
+              <span class="oracle-try-note">Play the same world in the Playground, then compare the recorded episode with the forced-history test.</span>
+            </p>
+
+            <p>
+              Those two results are the subject of this article. Deciding which evidence to buy and reporting what the
+              evidence supports are different skills, and a model can show one without the other. The full evaluation also
+              tested whether reinforcement learning helped, and found that a policy which never buys anything beat
+              every trained model on held-out worlds.
+            </p>
+          </section>
+
+          <nav class="post-toc" aria-labelledby="toc-title">
+            <h2 id="toc-title">Contents</h2>
+            <ol>
+              <li><a href="#decisions">Three decisions</a></li>
+              <li><a href="#worlds">Worlds where the answer is known</a></li>
+              <li><a href="#experiment">The experiment</a></li>
+              <li><a href="#copy">Declining a copy is not ignoring it</a></li>
+              <li><a href="#rl">The RL effect depends on the seed</a></li>
+              <li><a href="#baselines">A policy that never looks scored higher</a></li>
+              <li><a href="#validity">Valid output is not correct reasoning</a></li>
+              <li><a href="#lessons">What we take from it</a></li>
+              <li><a href="#limits">Limitations</a></li>
+              <li><a href="#availability">Get Oracle</a></li>
+              <li><a href="#methods">Methods</a></li>
+              <li><a href="#sources">Sources and data</a></li>
+            </ol>
+          </nav>
+
+          <section aria-labelledby="decisions">
+            <h2 id="decisions">Three decisions</h2>
+            <p>
+              Oracle models are trained and evaluated in a controlled setting for evidence acquisition. In every episode the model faces the same three
+              decisions, turn by turn:
+            </p>
+            <ol>
+              <li><strong>Which observation is worth buying?</strong> Each sensor reading costs credits from a fixed
+                budget. Some readings are informative, some are redundant and some are overpriced.</li>
+              <li><strong>What probability does the purchased evidence support?</strong> The model reports the
+                probability that a hidden yes-or-no outcome is true, given only what it has bought.</li>
+              <li><strong>When should investigation stop?</strong> Another reading is worth buying only if the expected
+                improvement in the forecast exceeds its price.</li>
+            </ol>
+            <p>
+              These can fail independently. A model can buy the right reading and misread it, or read evidence
+              correctly and keep paying after more evidence stops being worth the price. A single score that blends
+              all three can hide which one went wrong.
+            </p>
+          </section>
+
+          <section aria-labelledby="worlds">
+            <h2 id="worlds">Worlds where the answer is known</h2>
+            <p>
+              Every episode takes place in a synthetic binary world: a small probability model with one hidden
+              outcome and a few sensors that can be read. The law of each world is written out in the prompt: the
+              prior, each sensor&rsquo;s likelihoods, how the sensors depend on one another and what each reading
+              costs. That public description, plus the readings bought so far, is the only input the policy receives.
+              The hidden state, meaning the realized outcome and every reading not yet bought, stays inside the
+              simulator. So do the evaluator&rsquo;s labels.
+            </p>
+            <p>
+              Because each law is explicit and small, the exact posterior, the probability that a perfect reasoner
+              would report after any history, can be computed by enumerating every possibility. That lets us score a
+              model&rsquo;s probability against the correct answer, not only against the outcome that happened to be
+              drawn. It also gives an <em>exact acquisition reference</em>: a symbolic policy that plans its purchases
+              from the known law and reports exact posteriors. It is a reference point, not a trained model.
+            </p>
+            <p>
+              The motivation is familiar. Several reports that look independent can trace back to one source, and
+              counting them separately overstates confidence. That analogy is why we built a copy-sensor diagnostic.
+              It is not what we tested. Oracle did not evaluate news aggregation, financial forecasting or real-world
+              source tracing.
+            </p>
+          </section>
+
+          <section aria-labelledby="experiment">
+            <h2 id="experiment">The experiment</h2>
+            <p>
+              The base model is Thinking Machines&rsquo; Inkling 2 Mini. On top of it we trained six rank-16 LoRA
+              adapters: small low-rank weight updates to the attention and unembedding layers that leave the base
+              weights unchanged. Training had two stages.
+            </p>
+            <p>
+              First, supervised fine-tuning (SFT) on 3,315 demonstration turns from an exact teacher. The teacher saw
+              only the public law and the evidence it had bought, computed beliefs exactly and never looked at an
+              unbought reading or the outcome. We ran SFT with three random seeds, 173, 271 and 389, producing Oracle
+              Lyra, Oracle Aquila and Oracle Cygnus. Second, each SFT model continued with reinforcement learning (RL)
+              on the evaluation reward, producing one descendant each: Oracle Vega from Lyra, Oracle Altair from Aquila
+              and Oracle Deneb from Cygnus.
+            </p>
+
+            <figure class="post-fig" aria-labelledby="fig5-cap">
+              <div class="post-fig-frame" data-zoomable tabindex="0" role="button" aria-label="Enlarge Figure 2">
+                <picture><source media="(max-width: 560px)" srcset="/oracle/figures/fig5-lineage-narrow.svg" width="400" height="422" /><img
+                  src="/oracle/figures/fig5-lineage.svg"
+                  alt="Lineage diagram. Synthetic laws from three training families (independent, shared source, common cause) feed exact teacher demonstrations, which train three supervised models: Oracle Lyra (seed 173), Oracle Aquila (seed 271) and Oracle Cygnus (seed 389). Each has one RL descendant: Oracle Vega, Oracle Altair and Oracle Deneb. All arms are evaluated on the same held-out worlds and budgets: 384 IID worlds and 452 structural-holdout worlds using XOR and switch mechanisms never used in training."
+                  width="640"
+                  height="246"
+                  loading="lazy"
+                /></picture>
+              </div>
+              <figcaption id="fig5-cap">
+                Fig. 2. How the six adapters relate. Training families supplied every training world; the XOR
+                and switch mechanisms appear only in evaluation. Each RL model is compared with its own SFT parent on
+                the same held-out worlds and budgets.
+                <span class="fig-downloads">Download: <a href="/oracle/figures/fig5-lineage.svg">SVG</a>
+                &middot; <a href="/oracle/figures/fig5-lineage.png">PNG</a></span>
+              </figcaption>
+            </figure>
+
+            <p>
+              Training worlds came from three families. In <em>independent</em> worlds, sensors err independently
+              given the outcome. In <em>shared-source</em> worlds, two views descend from one noisy instrument,
+              including exact copies and near copies. In <em>common-cause</em> worlds, a hidden regime drives the
+              outcome and several sensors together. Two structural holdouts never appeared in training. In
+              <em>XOR</em> worlds, the outcome is a noisy exclusive-or of two hidden bits, so neither bit&rsquo;s sensor
+              is useful alone. In <em>switch</em> worlds, a regime decides which sensor is informative, and one of its
+              reports is duplicated.
+            </p>
+            <p>
+              The reward used for RL and for evaluation is, for a valid final forecast <var>p</var> and outcome
+              <var>y</var> (1 if true, 0 if false):
+            </p>
+            <div class="oracle-eq">
+              <math display="block" alttext="r equals minus open p minus y close squared, minus 0.01 c, minus 0.02 times t over 512">
+                <mrow>
+                  <mi mathvariant="normal">r</mi><mo>=</mo><mo>&minus;</mo>
+                  <msup><mrow><mo stretchy="false">(</mo><mi mathvariant="normal">p</mi><mo>&minus;</mo><mi mathvariant="normal">y</mi><mo stretchy="false">)</mo></mrow><mn>2</mn></msup>
+                  <mo>&minus;</mo><mn>0.01</mn><mo>&InvisibleTimes;</mo><mi mathvariant="normal">c</mi>
+                  <mo>&minus;</mo><mn>0.02</mn><mspace width="0.12em"></mspace><mfrac><mi mathvariant="normal">t</mi><mn>512</mn></mfrac>
+                </mrow>
+              </math>
+              <p class="oracle-eq-key">
+                <span><var>r</var>&ensp;reward</span>
+                <span><var>p</var>&ensp;reported probability</span>
+                <span><var>y</var>&ensp;outcome</span>
+                <span><var>c</var>&ensp;credits spent</span>
+                <span><var>t</var>&ensp;generated tokens</span>
+              </p>
+            </div>
+            <p>
+              The first term is the Brier score, a squared-error measure that is best on average when the reported
+              probability equals the exact posterior. An episode without a valid final forecast scores &minus;2.1,
+              below any valid result. Credits and the token penalty are accounting units for the experiment, not
+              money. Higher reward is better, and every reward in this article is negative.
+            </p>
+            <p>
+              Every model was evaluated on the same worlds at four evidence budgets: 0, 2, 4 and 8 credits. There were
+              384 in-distribution (IID) worlds from the training families and 452 structural-holdout worlds, 226 XOR
+              and 226 switch. With seven model arms (the base and six adapters), that is
+              <strong>23,408 model episodes</strong>: 10,752 IID and 12,656 structural-holdout. Those are episodes, not
+              independent worlds. Each world appears 28 times, once per arm and budget, so our intervals resample
+              worlds, not episodes. The primary comparison, fixed in advance, is the paired change in mean net reward
+              after RL on the structural holdouts, with a practical threshold of +0.010.
+            </p>
+          </section>
+
+          <section aria-labelledby="copy">
+            <h2 id="copy">Declining a copy is not ignoring it</h2>
+            <p>
+              We ran the copy-sensor world from the opening on all seven models under two fixed conditions. In the
+              first, the model sees display A&rsquo;s positive reading and chooses whether to buy display B or stop,
+              with a forecast. In the second, the forced history, both positive readings are already in the
+              transcript and the model only reports a forecast.
+            </p>
+
+            <figure class="post-fig" aria-labelledby="fig2-cap">
+              <div class="post-fig-frame" data-zoomable tabindex="0" role="button" aria-label="Enlarge Figure 3">
+                <picture><source media="(max-width: 560px)" srcset="/oracle/figures/fig2-copy-sensor-narrow.svg" width="400" height="622" /><img
+                  src="/oracle/figures/fig2-copy-sensor.svg"
+                  alt="Paired dot chart of recorded forecasts on a 0 to 100% scale with a dashed line at the exact 80%. Values are listed in Table 1 below."
+                  width="640"
+                  height="410"
+                  loading="lazy"
+                /></picture>
+              </div>
+              <figcaption id="fig2-cap">
+                Fig. 3. Recorded single responses on one fixed history per condition. Circles: forecast after A is
+                positive, with the model free to buy B. Squares: forecast when A and its copy B are both supplied as
+                positive. The model did not buy B in the forced condition. The exact posterior is 80% in both
+                conditions. An arrow shows the direction of change, not an improvement. These are not averages or
+                behavior frequencies.
+                <span class="fig-downloads">Download: <a href="/oracle/figures/fig2-copy-sensor.svg">SVG</a>
+                &middot; <a href="/oracle/figures/fig2-copy-sensor.png">PNG</a>
+                &middot; <a href="/oracle/data/figure-data.json">data (JSON)</a></span>
+              </figcaption>
+            </figure>
+
+            <div class="post-table-wrap" role="region" aria-label="Table 1: copy-sensor diagnostic" tabindex="0">
+              <table class="post-table">
+                <caption class="post-table-cap">Table 1. Copy-sensor diagnostic, one recorded response per cell.</caption>
+                <thead>
+                  <tr><th scope="col">Model</th><th scope="col">Training</th><th scope="col">Action after A+</th><th scope="col" class="num">Forecast after A+</th><th scope="col" class="num">After forced A+, B+</th></tr>
+                </thead>
+                <tbody>
+                  <tr><th scope="row">Inkling 2 Mini</th><td>Untrained base</td><td>Bought B</td><td class="num">80.0%</td><td class="num">80.0%</td></tr>
+                  <tr><th scope="row">Oracle Lyra</th><td>SFT, seed 173</td><td>Stopped</td><td class="num">66.7%</td><td class="num">88.9%</td></tr>
+                  <tr><th scope="row">Oracle Vega</th><td>RL from Lyra</td><td>Stopped</td><td class="num">71.4%</td><td class="num">88.9%</td></tr>
+                  <tr><th scope="row">Oracle Aquila</th><td>SFT, seed 271</td><td>Stopped</td><td class="num">80.0%</td><td class="num">90.5%</td></tr>
+                  <tr><th scope="row">Oracle Altair</th><td>RL from Aquila</td><td>Stopped</td><td class="num">66.7%</td><td class="num">80.0%</td></tr>
+                  <tr><th scope="row">Oracle Cygnus</th><td>SFT, seed 389</td><td>Stopped</td><td class="num">72.7%</td><td class="num">94.1%</td></tr>
+                  <tr><th scope="row">Oracle Deneb</th><td>RL from Cygnus</td><td>Stopped</td><td class="num">80.0%</td><td class="num">94.1%</td></tr>
+                  <tr><th scope="row">Exact posterior</th><td>Reference</td><td>Stop</td><td class="num">80.0%</td><td class="num">80.0%</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <p>
+              Every trained adapter stopped after display A without buying the copy. Every trained adapter also moved
+              its forecast when the copy was supplied, by between 10.5 percentage points (Aquila) and 22.2 points
+              (Lyra). The untrained base model did the reverse: it paid for display B, then held its forecast at 80%.
+              Choosing not to buy a reading and treating that reading as uninformative turned out to be separable
+              behaviors, in both directions.
+            </p>
+            <p>
+              Movement is not the same as error in both conditions. Only Aquila and Deneb reported the exact 80% after
+              display A. Oracle Altair reported 66.7% after display A and exactly 80% after the copy, so the copy moved
+              it from a wrong answer to the right one. The diagnostic shows that the trained models&rsquo; forecasts
+              were not invariant to a reading that carries no information. It does not show that every model
+              overshot.
+            </p>
+            <p>
+              These are individual recorded responses to one fixed history each, decoded at temperature zero. They
+              are evidence that the pattern exists in these models, not a measure of how often it occurs or of
+              reasoning ability in general.
+            </p>
+          </section>
+
+          <section aria-labelledby="rl">
+            <h2 id="rl">The RL effect depends on the seed</h2>
+            <p>
+              On the structural holdouts, the RL models averaged <strong>+0.01325</strong> more net reward per episode
+              than their SFT parents, just above the +0.010 threshold. The 95% world-and-seed interval runs from
+              <strong>&minus;0.00825 to +0.03314</strong> and includes zero. These data leave the direction of the RL
+              effect uncertain.
+            </p>
+            <p>
+              We report two intervals because they answer different questions. The narrower world-cluster interval,
+              +0.00857 to +0.01800, treats the three seeds as fixed and resamples only worlds. It says how precisely we
+              measured these three particular pairs. The world-and-seed interval resamples seeds as well, so it speaks
+              to what another training run might produce. It is wide because the three pairs disagree: Lyra to Vega
+              gained 0.01648, Aquila to Altair gained 0.03304 and Cygnus to Deneb lost 0.00976.
+            </p>
+
+            <figure class="post-fig" aria-labelledby="fig3-cap">
+              <div class="post-fig-frame" data-zoomable tabindex="0" role="button" aria-label="Enlarge Figure 4">
+                <picture><source media="(max-width: 560px)" srcset="/oracle/figures/fig3-rl-effect-narrow.svg" width="400" height="508" /><img
+                  src="/oracle/figures/fig3-rl-effect.svg"
+                  alt="Interval chart of RL minus SFT mean net reward. Structural holdout pooled +0.01325 with 95% world-and-seed interval −0.00825 to +0.03314, crossing zero; seed pairs +0.01648, +0.03304 and −0.00976. In-distribution pooled +0.00207, interval −0.00249 to +0.00873; seed pairs +0.00146, +0.00652 and −0.00178. Values are listed in Table 2."
+                  width="640"
+                  height="448"
+                  loading="lazy"
+                /></picture>
+              </div>
+              <figcaption id="fig3-cap">
+                Fig. 4. Paired change in mean net reward after RL. The bar is the 95% world-and-seed bootstrap interval
+                (4,000 draws) around the pooled estimate. Diamonds are the three individual pair effects; each comes
+                from one training run, so none has its own interval. Structural holdout: 452 worlds; in-distribution:
+                384 worlds; four budgets each.
+                <span class="fig-downloads">Download: <a href="/oracle/figures/fig3-rl-effect.svg">SVG</a>
+                &middot; <a href="/oracle/figures/fig3-rl-effect.png">PNG</a>
+                &middot; <a href="/oracle/data/results.json">data (JSON)</a></span>
+              </figcaption>
+            </figure>
+
+            <div class="post-table-wrap" role="region" aria-label="Table 2: RL minus SFT" tabindex="0">
+              <table class="post-table">
+                <caption class="post-table-cap">Table 2. RL minus SFT, mean net reward per episode. Higher favors RL.</caption>
+                <thead>
+                  <tr><th scope="col">Comparison</th><th scope="col" class="num">Structural holdout</th><th scope="col" class="num">In-distribution</th></tr>
+                </thead>
+                <tbody>
+                  <tr><th scope="row">Pooled estimate</th><td class="num">+0.01325</td><td class="num">+0.00207</td></tr>
+                  <tr><th scope="row">95% world-and-seed interval</th><td class="num">[&minus;0.00825, +0.03314]</td><td class="num">[&minus;0.00249, +0.00873]</td></tr>
+                  <tr><th scope="row">95% world-cluster interval (seeds fixed)</th><td class="num">[+0.00857, +0.01800]</td><td class="num">[&minus;0.00116, +0.00554]</td></tr>
+                  <tr><th scope="row">Lyra &rarr; Vega (seed 173)</th><td class="num">+0.01648</td><td class="num">+0.00146</td></tr>
+                  <tr><th scope="row">Aquila &rarr; Altair (seed 271)</th><td class="num">+0.03304</td><td class="num">+0.00652</td></tr>
+                  <tr><th scope="row">Cygnus &rarr; Deneb (seed 389)</th><td class="num">&minus;0.00976</td><td class="num">&minus;0.00178</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <p>
+              In distribution, the pooled change was +0.00207, with a world-and-seed interval of &minus;0.00249 to
+              +0.00873. Three seeds are too few to say whether Deneb&rsquo;s decline is an unlucky draw or a common
+              outcome of this RL recipe.
+            </p>
+          </section>
+
+          <section aria-labelledby="baselines">
+            <h2 id="baselines">A policy that never looks scored higher</h2>
+            <p>
+              The prior-only baseline buys nothing. It reports the public prior and stops. On the structural holdouts
+              it scored <strong>&minus;0.21697</strong>. Every trained adapter scored lower, from Oracle Altair at
+              &minus;0.23034 to Oracle Deneb at &minus;0.26787. The exact acquisition reference scored &minus;0.18166.
+            </p>
+
+            <figure class="post-fig" aria-labelledby="fig4-cap">
+              <div class="post-fig-frame" data-zoomable tabindex="0" role="button" aria-label="Enlarge Figure 5">
+                <picture><source media="(max-width: 560px)" srcset="/oracle/figures/fig4-baselines-narrow.svg" width="400" height="896" /><img
+                  src="/oracle/figures/fig4-baselines.svg"
+                  alt="Two dot plots of structural-holdout mean net reward. Panel A, full axis from −1.2 to 0, includes the base at −1.14332. Panel B zooms to −0.28 to −0.17: exact reference −0.18166 and prior-only −0.21697 are to the right of all six adapters. Values are listed in Table 3."
+                  width="640"
+                  height="624"
+                  loading="lazy"
+                /></picture>
+              </div>
+              <figcaption id="fig4-cap">
+                Fig. 5. Structural-holdout mean net reward, 1,808 episodes per arm (452 worlds &times; 4 budgets).
+                Higher is better. Panel A shows every arm on one full axis; panel B enlarges the region holding the
+                adapters and baselines, without the base. Symbolic policies pay no token penalty. No error bars are
+                drawn because the scorecard gives intervals for paired differences, not for each arm.
+                <span class="fig-downloads">Download: <a href="/oracle/figures/fig4-baselines.svg">SVG</a>
+                &middot; <a href="/oracle/figures/fig4-baselines.png">PNG</a>
+                &middot; <a href="/oracle/data/results.json">data (JSON)</a></span>
+              </figcaption>
+            </figure>
+
+            <div class="post-table-wrap" role="region" aria-label="Table 3: structural-holdout results by arm" tabindex="0">
+              <table class="post-table">
+                <caption class="post-table-cap">Table 3. Structural holdout, 1,808 episodes per arm. Brier is mean squared forecast error (lower is better); credits are mean credits spent per episode.</caption>
+                <thead>
+                  <tr><th scope="col">Arm</th><th scope="col" class="num">Mean net reward</th><th scope="col" class="num">Valid forecasts</th><th scope="col" class="num">Brier</th><th scope="col" class="num">Credits</th></tr>
+                </thead>
+                <tbody>
+                  <tr><th scope="row">Exact acquisition reference (symbolic)</th><td class="num">&minus;0.18166</td><td class="num">100.0%</td><td class="num">0.16763</td><td class="num">1.403</td></tr>
+                  <tr><th scope="row">Fixed price order, exact readout</th><td class="num">&minus;0.19237</td><td class="num">100.0%</td><td class="num">0.16803</td><td class="num">2.434</td></tr>
+                  <tr><th scope="row">Greedy one-step value, exact readout</th><td class="num">&minus;0.19292</td><td class="num">100.0%</td><td class="num">0.18231</td><td class="num">1.061</td></tr>
+                  <tr><th scope="row">Random legal purchases, exact readout</th><td class="num">&minus;0.21100</td><td class="num">100.0%</td><td class="num">0.19702</td><td class="num">1.398</td></tr>
+                  <tr><th scope="row">Prior-only (symbolic)</th><td class="num">&minus;0.21697</td><td class="num">100.0%</td><td class="num">0.21697</td><td class="num">0.000</td></tr>
+                  <tr><th scope="row">Oracle Altair</th><td class="num">&minus;0.23034</td><td class="num">100.0%</td><td class="num">0.21675</td><td class="num">1.204</td></tr>
+                  <tr><th scope="row">Oracle Vega</th><td class="num">&minus;0.23291</td><td class="num">100.0%</td><td class="num">0.21757</td><td class="num">1.381</td></tr>
+                  <tr><th scope="row">Oracle Lyra</th><td class="num">&minus;0.24938</td><td class="num">100.0%</td><td class="num">0.23399</td><td class="num">1.386</td></tr>
+                  <tr><th scope="row">Oracle Cygnus</th><td class="num">&minus;0.25811</td><td class="num">100.0%</td><td class="num">0.24767</td><td class="num">0.914</td></tr>
+                  <tr><th scope="row">Oracle Aquila</th><td class="num">&minus;0.26338</td><td class="num">100.0%</td><td class="num">0.24445</td><td class="num">1.714</td></tr>
+                  <tr><th scope="row">Oracle Deneb</th><td class="num">&minus;0.26787</td><td class="num">100.0%</td><td class="num">0.25342</td><td class="num">1.295</td></tr>
+                  <tr><th scope="row">Inkling 2 Mini (base)</th><td class="num">&minus;1.14332</td><td class="num">52.5%</td><td class="num">0.61297</td><td class="num">0.916</td></tr>
+                  <tr><th scope="row">All-evidence diagnostic (privileged, free readings)</th><td class="num">&minus;0.10064</td><td class="num">100.0%</td><td class="num">0.10064</td><td class="num">0.000</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <p>
+              The prior-only result is not a fluke of one baseline. Three other symbolic policies, which choose
+              purchases with a simple rule and then report the exact posterior, also beat every adapter: random legal
+              purchases (&minus;0.21100), buying in ascending price order (&minus;0.19237) and greedy one-step value
+              (&minus;0.19292). Nor is the gap an artifact of token accounting. The largest average token penalty among
+              the adapters was under 0.002 per episode, while the gap between prior-only and the best adapter is
+              0.01337.
+            </p>
+            <p>
+              Table 3 shows where the gap comes from. Oracle Altair&rsquo;s Brier score, 0.21675, is almost identical
+              to prior-only&rsquo;s 0.21697, but Altair spent an average of 1.204 credits per episode to get there. On
+              these holdouts the adapters&rsquo; purchases did not improve their forecasts enough to pay for
+              themselves. The all-evidence row, at &minus;0.10064, is a privileged diagnostic: it receives every
+              reading free of charge. It shows how much the evidence could support, and it is not a policy anyone
+              could deploy.
+            </p>
+          </section>
+
+          <section aria-labelledby="validity">
+            <h2 id="validity">Valid output is not correct reasoning</h2>
+            <p>
+              The clearest change from training was in output validity. On the structural holdouts, the base model
+              produced a valid final forecast in 52.5% of episodes; every adapter did so in 100%. Each invalid episode
+              scores &minus;2.1, so invalid episodes alone account for about &minus;1.0 of the base model&rsquo;s
+              &minus;1.14332 mean (47.5% &times; &minus;2.1).
+            </p>
+            <p>
+              Validity is necessary, but it is a different property from reporting the right probability or buying
+              the right evidence. A well-formed forecast can still be wrong, and a well-formed purchase can still be
+              poor value. The copy diagnostic and the baseline comparison each show one of those gaps in models that
+              never produced an invalid answer on these holdouts.
+            </p>
+          </section>
+
+          <section aria-labelledby="lessons">
+            <h2 id="lessons">What we take from it</h2>
+            <div class="claim-grid">
+              <div>
+                <h3>Test acquisition and reporting separately</h3>
+                <p>A model that declines redundant evidence can still be moved by it. Fixed-history tests, where the
+                  model cannot choose its evidence, measured something that purchase decisions alone did not.</p>
+              </div>
+              <div>
+                <h3>Include cheap policies and exact references</h3>
+                <p>Without the prior-only baseline, the adapters&rsquo; large gain over the base would read as success.
+                  An exact reference and a do-nothing policy put that gain in context.</p>
+              </div>
+              <div>
+                <h3>Report seed uncertainty with world uncertainty</h3>
+                <p>An interval that holds seeds fixed excluded zero here; one that resamples seeds did not. With three
+                  seeds, the second is the honest one for claims about the training method.</p>
+              </div>
+            </div>
+          </section>
+
+          <section aria-labelledby="limits">
+            <h2 id="limits">Limitations</h2>
+            <ul>
+              <li>The tasks are synthetic binary worlds with explicit, stated probability laws.</li>
+              <li>Episodes are short, and the registry has three training families.</li>
+              <li>Structural generalization was tested on two held-out mechanisms, XOR and switch.</li>
+              <li>Three training seeds give limited evidence about training variability.</li>
+              <li>We do not know what the base model saw in pretraining, including any overlap with these tasks.</li>
+              <li>The copy-sensor results are fixed diagnostic examples, not a broad reasoning benchmark.</li>
+              <li>We have not shown any improvement in real-world forecasting.</li>
+              <li>Running the base model with an adapter outside the training provider has not been shown to match the
+                evaluated outputs.</li>
+            </ul>
+          </section>
+
+          <section aria-labelledby="availability">
+            <h2 id="availability">Get Oracle</h2>
+            <div class="oracle-availability">
+              <p><strong>Everything is public.</strong> Oracle is released as six models, the source code, a research report and data.</p>
+              <ul>
+                <li>Models on Hugging Face, each a rank-16 LoRA adapter for Thinking Machines Inkling 2 Mini:
+                  <ul class="oracle-model-links">
+                  <li><a href="https://huggingface.co/Laplace-AI-Research/Oracle-Lyra" target="_blank" rel="noopener noreferrer">Oracle-Lyra</a></li>
+                  <li><a href="https://huggingface.co/Laplace-AI-Research/Oracle-Vega" target="_blank" rel="noopener noreferrer">Oracle-Vega</a></li>
+                  <li><a href="https://huggingface.co/Laplace-AI-Research/Oracle-Aquila" target="_blank" rel="noopener noreferrer">Oracle-Aquila</a></li>
+                  <li><a href="https://huggingface.co/Laplace-AI-Research/Oracle-Altair" target="_blank" rel="noopener noreferrer">Oracle-Altair</a></li>
+                  <li><a href="https://huggingface.co/Laplace-AI-Research/Oracle-Cygnus" target="_blank" rel="noopener noreferrer">Oracle-Cygnus</a></li>
+                  <li><a href="https://huggingface.co/Laplace-AI-Research/Oracle-Deneb" target="_blank" rel="noopener noreferrer">Oracle-Deneb</a></li>
+                  </ul>
+                </li>
+                <li>On GitHub: the <a href="https://github.com/Laplace-AI-Research/oracle" target="_blank" rel="noopener noreferrer">Oracle repository</a> with the simulator, training and replay code, the
+                  <a href="https://github.com/Laplace-AI-Research/oracle/blob/main/docs/research-report.md" target="_blank" rel="noopener noreferrer">full research report</a> and the
+                  <a href="https://github.com/Laplace-AI-Research/oracle/blob/main/docs/results/scorecard.json" target="_blank" rel="noopener noreferrer">aggregate scorecard</a>.</li>
+                <li>Published with this page: the figures, the <a href="/oracle/data/results.json">aggregate results</a>, the
+                  <a href="/oracle/data/figure-data.json">plotted values</a> and the disclosed scripted fixture used in the
+                  <a href="/playground/oracle/">Playground</a>.</li>
+                <li>The <a href="/oracle/system-card/">Laplace Oracle System Card</a> (<a href="/oracle/system-card.pdf">PDF</a>) documents the environment, training, evaluation, limitations and release in full.</li>
+                <li>Code and adapters are Apache-2.0. Documentation, figures and data are CC BY 4.0. The base model is used
+                  under its own terms and use policy; see <a href="/licenses/#oracle">licenses</a>.</li>
+              </ul>
+              <p class="oracle-availability-note">All numbers here were measured through the hosted training stack. Running an adapter on a local copy of the base model has not been checked for exact parity with them.</p>
+            </div>
+          </section>
+
+          <section aria-labelledby="methods">
+            <h2 id="methods">Methods</h2>
+            <dl class="oracle-methods">
+              <dt>Base model</dt><dd>Thinking Machines Inkling 2 Mini, used under its upstream terms. See <a href="/licenses/">Licenses</a>.</dd>
+              <dt>Adapters</dt><dd>Rank-16 LoRA on attention and unembedding layers; MLP frozen.</dd>
+              <dt>SFT</dt><dd>3,315 exact-teacher turns (76,476 supervised tokens); loss on assistant output only. Learning rate 0.0002; checkpoint chosen on 256 development worlds.</dd>
+              <dt>RL</dt><dd>32 batches of 16 worlds, four trajectories per world, learning rate 0.00003, sampling temperature 1.</dd>
+              <dt>Evaluation</dt><dd>Temperature 0; at most 128 generated tokens per turn and 512 per episode. Budgets 0, 2, 4, 8 credits. Same worlds for every arm.</dd>
+              <dt>Data</dt><dd>2,000 SFT worlds and 512 RL worlds from the three training families. 384 IID and 452 structural-holdout evaluation worlds.</dd>
+              <dt>Intervals</dt><dd>Paired bootstrap, 4,000 draws, families weighted equally. World-cluster intervals resample worlds; world-and-seed intervals also resample seed pairs. Both condition on the family registry.</dd>
+              <dt>Invalid output</dt><dd>Malformed output, illegal queries or no valid stop: reward &minus;2.1.</dd>
+            </dl>
+          </section>
+
+          <section aria-labelledby="sources">
+            <h2 id="sources">Sources and data</h2>
+            <p>
+              Every aggregate number in this article comes from the evaluation scorecard, pinned to a fixed revision
+              of the <a href="https://github.com/Laplace-AI-Research/oracle" target="_blank" rel="noopener noreferrer">Oracle repository</a> and extracted to <a href="/oracle/data/results.json">results.json</a>.
+              The copy-sensor values come from the same fixture that drives the
+              <a href="/playground/oracle/">Playground</a>. The figures are generated from those two files by a
+              script, and <a href="/oracle/data/figure-data.json">figure-data.json</a> lists every plotted value.
+            </p>
+            <p class="post-note">
+              Cover photograph: a CC0 editorial stock photograph of the night sky, cropped for this page. It is illustrative and contains no data.
+            </p>
+          </section>
+
+          <dl class="facts">
+            <div><dt>Version</dt><dd>1.0</dd></div>
+            <div><dt>Published</dt><dd>30 November 2026</dd></div>
+            <div><dt>Authors</dt><dd>Arya Somu, Bruce Nshuti Hirwa</dd></div>
+            <div><dt>System Card</dt><dd><a href="/oracle/system-card/">Read online</a> &middot; <a href="/oracle/system-card.pdf">PDF</a></dd></div>
+            <div><dt>Licence</dt><dd>Models and code Apache-2.0; article, figures and data CC BY 4.0</dd></div>
+          </dl>
+
+          <h3>Cite this release</h3>
+          <pre class="post-bib">@misc{somu2026oracle,
+  title     = {Introducing Laplace Oracle: Our Family of Models That Buy Evidence Before They Forecast},
+  author    = {Somu, Arya and Nshuti Hirwa, Bruce},
+  year      = {2026},
+  publisher = {Laplace Research},
+  url       = {https://laplaceresearch.org/oracle/}
+}</pre>
+
+        </div>
+        </article>
+
+        <!-- BOTTOM 2-COLUMN CTA CARDS -->
+        <section class="post-cta-grid" aria-label="Next steps">
+          <div class="post-cta-panel">
+            <div>
+              <h2>Browse the collection</h2>
+              <p>
+                See all six Oracle models, their lineage and their held-out scores on the models page. Each one links its
+                weights on Hugging Face.
+              </p>
+            </div>
+            <a class="post-cta-btn" href="/models/#oracle">
+              <span>Oracle models</span>
+              <span class="arrow" aria-hidden="true">&rarr;</span>
+            </a>
+          </div>
+          <div class="post-cta-art">
+            <img src="/assets/covers/oracle-cta.svg" alt="" width="960" height="720" />
+            <div class="post-cta-float">
+              <h2>Try it out</h2>
+              <p>
+                Buy a reading, make a forecast, then rewire the second display and compare your answer with Oracle
+                Aquila&rsquo;s.
+              </p>
+              <a class="post-cta-btn" href="/playground/oracle/">
+                <span>Open the Playground</span>
+                <span class="arrow" aria-hidden="true">&rarr;</span>
+              </a>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="foot">
+        <a class="brand" href="/"><span class="mark" aria-hidden="true"></span>Laplace Research</a>
+        <div class="cols">
+          <nav aria-label="Research"><a href="/oracle/">Oracle</a><a href="/signet/">Signet</a><a href="/convictionbench/">ConvictionBench</a><a href="/tarot-draw/">Tarot-Draw</a><a href="/research/">All research</a><a href="/agenda/">Research agenda</a></nav>
+          <nav aria-label="Lab"><a href="/about/">About</a><a href="/models/">Models</a><a href="/playground/">Playground</a><a href="/safety/">Safety</a><a href="/collaborate/">Collaborate</a><a href="mailto:inquiries@laplaceresearch.org">Inquiries</a></nav>
+          <nav aria-label="Elsewhere"><a href="https://github.com/Laplace-AI-Research" target="_blank" rel="noopener noreferrer">GitHub</a><a href="https://huggingface.co/Laplace-AI-Research" target="_blank" rel="noopener noreferrer">Hugging Face</a><a href="https://www.linkedin.com/company/laplaceairesearch/" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="https://x.com/laplaceaires" target="_blank" rel="noopener noreferrer">X</a><a href="https://convictionbench.org/#leaderboard" target="_blank" rel="noopener noreferrer">Leaderboard</a></nav>
+        </div>
+        <div class="copy">
+          <p>&copy; 2026 Laplace Research &middot; <a href="mailto:inquiries@laplaceresearch.org">inquiries@laplaceresearch.org</a></p>
+          <nav aria-label="Legal"><a href="/privacy/">Privacy</a> &middot; <a href="/terms/">Terms</a> &middot; <a href="/licenses/">Licenses</a> &middot; <a href="/accessibility/">Accessibility</a></nav>
+          <p class="disclaimer">Research artifacts provided &lsquo;as is&rsquo;, without warranty. Forecasts are not financial, investment, legal, or betting advice. <a href="/licenses/#disclaimer">Full disclaimer</a></p>
+        </div>
+      </footer>
+    </div>
+
+    <script src="/site.js?v=20261122-2" defer></script>
+    <script src="/article.js?v=20261126-1" defer></script>
+  </body>
+</html>

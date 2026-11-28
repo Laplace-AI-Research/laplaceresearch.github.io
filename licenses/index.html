@@ -83,6 +83,7 @@
           <a href="/agenda/">Agenda</a>
           <a href="/research/">Research</a>
           <a href="/models/">Models</a>
+          <a href="/playground/">Playground</a>
           <a href="/safety/">Safety</a>
           <a href="/about/">About</a>
           <a href="/collaborate/">Collaborations</a>
@@ -131,6 +132,7 @@
                   <tr id="signet"><th scope="row">Signet models (2B, 4B, 9B),<br />adapters and merged weights</th><td><a href="https://www.apache.org/licenses/LICENSE-2.0">Apache-2.0</a></td><td>Permitted</td></tr>
                   <tr id="conviction"><th scope="row">Laplace Conviction Series adapters<br />(Anchor, Vector, Meridian)</th><td><a href="https://www.apache.org/licenses/LICENSE-2.0">Apache-2.0</a></td><td>Permitted</td></tr>
                   <tr id="convictionbench"><th scope="row">ConvictionBench dataset</th><td><a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>, plus its <a href="https://huggingface.co/datasets/Laplace-AI-Research/ConvictionBench">Hugging Face access agreement</a></td><td>Permitted, with attribution</td></tr>
+                  <tr id="oracle"><th scope="row">Laplace Oracle (six adapters)</th><td>Apache-2.0</td><td>Inkling 2 Mini terms and use policy apply</td></tr>
                   <tr id="tarot-draw"><th scope="row">Tarot-Draw adapters (1.7B, 4B, 8B),<br />forecasts, and evaluation metadata</th><td><a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a></td><td>Not permitted</td></tr>
                 </tbody>
               </table>
@@ -144,7 +146,7 @@
           <div class="body">
             <h2 id="base-title">Base models</h2>
             <p>
-              All of our models are fine-tuned from Qwen3 and Qwen3.5 models released by the
+              Our open-weight models are fine-tuned from Qwen3 and Qwen3.5 models released by the
               Qwen team at Alibaba Cloud under
               <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache-2.0</a>.
               Their licence is unaffected by ours.
@@ -158,6 +160,16 @@
               <li><b>Tarot-Draw 4B</b>: <a href="https://huggingface.co/Qwen/Qwen3-4B">Qwen3-4B</a></li>
               <li><b>Tarot-Draw 8B</b>: <a href="https://huggingface.co/Qwen/Qwen3-8B">Qwen3-8B</a></li>
             </ul>
+            <p>
+              The six adapters in the <a href="/oracle/">Laplace Oracle family</a> were trained from
+              <b>Thinking Machines Inkling 2 Mini</b>, under its upstream
+              <a href="https://huggingface.co/thinkingmachines/Inkling-2-Mini/blob/c9d028302cd0f035fdf8e7e91f089a4ce94d2195/README.md">model card</a>,
+              <a href="https://thinkingmachines.ai/legal/terms/">terms</a> and
+              <a href="https://thinkingmachines.ai/model-acceptable-use-policy/">acceptable use policy</a>.
+              The adapters are released under Apache-2.0 and are used with the base model under those terms. Oracle source code is
+              Apache-2.0; its documentation, figures, aggregate results and disclosed fixture data are CC BY 4.0
+              within the scope stated with each artifact.
+            </p>
           </div>
         </section>
 
@@ -236,8 +248,8 @@
       <footer class="foot">
         <a class="brand" href="/"><span class="mark" aria-hidden="true"></span>Laplace Research</a>
         <div class="cols">
-          <nav aria-label="Research"><a href="/signet/">Signet</a><a href="/convictionbench/">ConvictionBench</a><a href="/tarot-draw/">Tarot-Draw</a><a href="/research/">All research</a><a href="/agenda/">Research agenda</a></nav>
-          <nav aria-label="Lab"><a href="/about/">About</a><a href="/models/">Models</a><a href="/safety/">Safety</a><a href="/collaborate/">Collaborate</a><a href="mailto:inquiries@laplaceresearch.org">Inquiries</a></nav>
+          <nav aria-label="Research"><a href="/oracle/">Oracle</a><a href="/signet/">Signet</a><a href="/convictionbench/">ConvictionBench</a><a href="/tarot-draw/">Tarot-Draw</a><a href="/research/">All research</a><a href="/agenda/">Research agenda</a></nav>
+          <nav aria-label="Lab"><a href="/about/">About</a><a href="/models/">Models</a><a href="/playground/">Playground</a><a href="/safety/">Safety</a><a href="/collaborate/">Collaborate</a><a href="mailto:inquiries@laplaceresearch.org">Inquiries</a></nav>
           <nav aria-label="Elsewhere"><a href="https://github.com/Laplace-AI-Research" target="_blank" rel="noopener noreferrer">GitHub</a><a href="https://huggingface.co/Laplace-AI-Research" target="_blank" rel="noopener noreferrer">Hugging Face</a><a href="https://www.linkedin.com/company/laplaceairesearch/" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="https://x.com/laplaceaires" target="_blank" rel="noopener noreferrer">X</a><a href="https://convictionbench.org/#leaderboard" target="_blank" rel="noopener noreferrer">Leaderboard</a></nav>
         </div>
         <div class="copy">

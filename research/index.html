@@ -49,6 +49,12 @@
         "hasPart": [
           {
             "@type": "Article",
+            "headline": "Introducing Laplace Oracle: Our family of models that buy evidence before they forecast",
+            "datePublished": "2026-11-30",
+            "url": "https://laplaceresearch.org/oracle/"
+          },
+          {
+            "@type": "Article",
             "headline": "When thinking helps models believe forged records",
             "datePublished": "2026-11-27",
             "url": "https://laplaceresearch.org/research/thinking-and-forged-records/"
@@ -92,6 +98,7 @@
           <a href="/agenda/">Agenda</a>
           <a href="/research/" aria-current="page">Research</a>
           <a href="/models/">Models</a>
+          <a href="/playground/">Playground</a>
           <a href="/safety/">Safety</a>
           <a href="/about/">About</a>
           <a href="/collaborate/">Collaborations</a>
@@ -133,8 +140,8 @@
         <div class="res-bar" role="region" aria-label="Filter research releases">
           <div class="res-bar-inner">
             <div class="res-pills" role="group" aria-label="Filter by category">
-              <button type="button" class="rpill" data-rfilter="all" aria-pressed="true">All releases (4)</button>
-              <button type="button" class="rpill" data-rfilter="models" aria-pressed="false">Models (3)</button>
+              <button type="button" class="rpill" data-rfilter="all" aria-pressed="true">All releases (5)</button>
+              <button type="button" class="rpill" data-rfilter="models" aria-pressed="false">Models (4)</button>
               <button type="button" class="rpill" data-rfilter="benchmark" aria-pressed="false">Benchmarks (1)</button>
               <button type="button" class="rpill" data-rfilter="research" aria-pressed="false">Research notes (1)</button>
             </div>
@@ -146,6 +153,31 @@
           <div class="res-list-inner">
             <p class="res-year">2026</p>
             <div class="res-cards">
+              <article class="rcard" data-rcats="models">
+                <div class="rcard-copy">
+                  <div class="rcard-meta">
+                    <span class="rcard-kicker">Models</span>
+                    <time datetime="2026-11-30">November 30, 2026</time>
+                  </div>
+                  <h2><a href="/oracle/">Introducing Laplace Oracle: Our family of models that buy evidence before they forecast</a></h2>
+                  <p class="rcard-desc">
+                    Six open models trained to buy evidence and report probabilities in synthetic worlds. They
+                    declined a copied reading but still moved their forecasts when it was supplied, and a do-nothing
+                    baseline scored above all of them on held-out worlds.
+                  </p>
+                  <p class="rcard-authors">Arya Somu, Bruce Nshuti Hirwa</p>
+                  <div class="rcard-links">
+                    <a class="primary" href="/oracle/">Read release &rarr;</a>
+                    <a href="/models/#oracle">Models</a>
+                    <a href="/playground/oracle/">Try the second sensor</a>
+                    <a href="https://github.com/Laplace-AI-Research/oracle" target="_blank" rel="noopener noreferrer">Code &amp; results</a>
+                  </div>
+                </div>
+                <a class="rcard-art" href="/oracle/" aria-label="Read the Oracle release">
+                  <img src="/oracle/assets/hero-800.jpg" alt="" width="800" height="533" />
+                </a>
+              </article>
+
               <article class="rcard" data-rcats="research">
                 <div class="rcard-copy">
                   <div class="rcard-meta">
@@ -250,8 +282,8 @@
       <footer class="foot">
         <a class="brand" href="/"><span class="mark" aria-hidden="true"></span>Laplace Research</a>
         <div class="cols">
-          <nav aria-label="Research"><a href="/signet/">Signet</a><a href="/convictionbench/">ConvictionBench</a><a href="/tarot-draw/">Tarot-Draw</a><a href="/research/">All research</a><a href="/agenda/">Research agenda</a></nav>
-          <nav aria-label="Lab"><a href="/about/">About</a><a href="/models/">Models</a><a href="/safety/">Safety</a><a href="/collaborate/">Collaborate</a><a href="mailto:inquiries@laplaceresearch.org">Inquiries</a></nav>
+          <nav aria-label="Research"><a href="/oracle/">Oracle</a><a href="/signet/">Signet</a><a href="/convictionbench/">ConvictionBench</a><a href="/tarot-draw/">Tarot-Draw</a><a href="/research/">All research</a><a href="/agenda/">Research agenda</a></nav>
+          <nav aria-label="Lab"><a href="/about/">About</a><a href="/models/">Models</a><a href="/playground/">Playground</a><a href="/safety/">Safety</a><a href="/collaborate/">Collaborate</a><a href="mailto:inquiries@laplaceresearch.org">Inquiries</a></nav>
           <nav aria-label="Elsewhere"><a href="https://github.com/Laplace-AI-Research" target="_blank" rel="noopener noreferrer">GitHub</a><a href="https://huggingface.co/Laplace-AI-Research" target="_blank" rel="noopener noreferrer">Hugging Face</a><a href="https://www.linkedin.com/company/laplaceairesearch/" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="https://x.com/laplaceaires" target="_blank" rel="noopener noreferrer">X</a><a href="https://convictionbench.org/#leaderboard" target="_blank" rel="noopener noreferrer">Leaderboard</a></nav>
         </div>
         <div class="copy">

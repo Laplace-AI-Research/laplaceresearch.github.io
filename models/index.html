@@ -38,7 +38,7 @@
     <link rel="preload" href="/assets/fonts/newsreader-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin />
     <script>document.documentElement.classList.add("js")</script>
     <link rel="stylesheet" href="/site.css?v=20261126-7" />
-    <link rel="stylesheet" href="/models/models.css?v=20261126-4" />
+    <link rel="stylesheet" href="/models/models.css?v=20261130-1" />
   </head>
 
   <body>
@@ -52,6 +52,7 @@
           <a href="/agenda/">Agenda</a>
           <a href="/research/">Research</a>
           <a href="/models/" aria-current="page">Models</a>
+          <a href="/playground/">Playground</a>
           <a href="/safety/">Safety</a>
           <a href="/about/">About</a>
           <a href="/collaborate/">Collaborations</a>
@@ -79,9 +80,9 @@
           <div class="models-hero-inner">
             <h1 id="t">Open models</h1>
             <p class="lede">
-              Nine open-weight models across three families. Every card links
-              the weights, the exact Hugging Face repo ID, and the run that
-              produced its numbers so every metric can be recomputed. How we evaluate
+              Fifteen open-weight models across four families. Every card links the weights, the exact
+              Hugging Face repo ID, and the run that produced its numbers so every
+              metric can be recomputed. How we evaluate
               and release them is described in <a href="/safety/#evaluation-and-release">Safety &amp; Responsibility</a>.
             </p>
             <div class="btns">
@@ -90,15 +91,15 @@
             </div>
 
             <div class="quick-picks" aria-label="Recommended starting points">
+              <a class="qpick" href="#oracle">
+                <span class="qpick-use">Buys evidence before forecasting</span>
+                <span class="qpick-name">Oracle-Altair <span>Apache-2.0</span></span>
+                <p class="qpick-note">&minus;0.23034 held-out reward &middot; +0.03304 over its SFT parent &middot; LoRA adapter.</p>
+              </a>
               <a class="qpick" href="#signet">
                 <span class="qpick-use">Best overall provenance</span>
                 <span class="qpick-name">Signet-9B <span>Apache-2.0</span></span>
                 <p class="qpick-note">97.8% held-out accuracy &middot; +0.95 unseen-paste channel gap &middot; merged bf16.</p>
-              </a>
-              <a class="qpick" href="#signet">
-                <span class="qpick-use">Best per parameter</span>
-                <span class="qpick-name">Signet-4B <span>Apache-2.0</span></span>
-                <p class="qpick-note">98.5% held-out accuracy &middot; 98.1% forged-record resistance &middot; LoRA adapter.</p>
               </a>
               <a class="qpick" href="#tarot-draw">
                 <span class="qpick-use">Default forecasting prior</span>
@@ -113,7 +114,8 @@
         <div class="models-bar" role="region" aria-label="Filter and view controls">
           <div class="models-bar-inner">
             <div class="filter-pills" role="group" aria-label="Filter by model family">
-              <button type="button" class="fpill" data-filter="all" aria-pressed="true">All families (9)</button>
+              <button type="button" class="fpill" data-filter="all" aria-pressed="true">All families (15)</button>
+              <button type="button" class="fpill" data-filter="oracle" aria-pressed="false">Oracle (6)</button>
               <button type="button" class="fpill" data-filter="signet" aria-pressed="false">Signet (3)</button>
               <button type="button" class="fpill" data-filter="conviction" aria-pressed="false">Conviction Series (3)</button>
               <button type="button" class="fpill" data-filter="tarot-draw" aria-pressed="false">Tarot-Draw (3)</button>
@@ -128,6 +130,215 @@
         <!-- CARDS VIEW -->
         <div class="models-wrap" id="models-cards">
           <div class="models-wrap-inner">
+          <!-- ORACLE -->
+          <section class="fam-block" id="oracle" data-family="oracle" aria-labelledby="oracle-title">
+            <div class="fam-banner">
+              <img src="/assets/covers/oracle-photo.jpg" alt="" width="1600" height="1067" />
+              <div class="fam-banner-card">
+                <div>
+                  <h2 id="oracle-title">Oracle</h2>
+                  <p>Inkling 2 Mini adapters that decide which evidence to buy, what probability it supports and when to stop.</p>
+                </div>
+                <div class="fam-banner-meta">
+                  <a class="fam-lic" href="/licenses/#oracle">Apache-2.0</a>
+                  <a class="fam-release" href="/oracle/">Release article &rarr;</a>
+                  <a class="fam-release" href="/oracle/system-card/">System Card &rarr;</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="mc-grid">
+              <article class="mc">
+                <div class="mc-head">
+                  <span class="mc-kicker"><span class="mc-dot" aria-hidden="true"></span>Oracle &middot; seed 173</span>
+                </div>
+                <h3>Lyra</h3>
+                <p class="mc-desc">Supervised on exact-teacher demonstrations. Parent of Vega.</p>
+                <div class="mc-specs">
+                  <span class="mc-spec">Inkling 2 Mini</span>
+                  <span class="mc-spec">LoRA r16</span>
+                  <span class="mc-spec">SFT</span>
+                </div>
+                <dl class="mc-stats">
+                  <div class="mc-stat">
+                    <dt>Held-out reward</dt>
+                    <dd>&minus;0.24938</dd>
+                  </div>
+                  <div class="mc-stat">
+                    <dt>Credits spent</dt>
+                    <dd>1.39</dd>
+                  </div>
+                </dl>
+                <button type="button" class="mc-repo" data-repo="Laplace-AI-Research/Oracle-Lyra" aria-label="Copy Hugging Face repo ID Laplace-AI-Research/Oracle-Lyra">
+                  <span class="mc-repo-id">Laplace-AI-Research/Oracle-Lyra</span>
+                  <span class="mc-repo-act">Copy</span>
+                </button>
+                <div class="mc-links">
+                  <a href="https://huggingface.co/Laplace-AI-Research/Oracle-Lyra" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#hf" /></svg>Weights</a>
+                  <a href="https://github.com/Laplace-AI-Research/oracle/blob/main/docs/results/scorecard.json" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#gh" /></svg>Results</a>
+                  <time datetime="2026-11-30">2026.11.30</time>
+                </div>
+              </article>
+              <article class="mc">
+                <div class="mc-head">
+                  <span class="mc-kicker"><span class="mc-dot" aria-hidden="true"></span>Oracle &middot; seed 173</span>
+                </div>
+                <h3>Vega</h3>
+                <p class="mc-desc">Reinforcement learning from Lyra. Second-best held-out reward in the family.</p>
+                <div class="mc-specs">
+                  <span class="mc-spec">Inkling 2 Mini</span>
+                  <span class="mc-spec">LoRA r16</span>
+                  <span class="mc-spec">SFT &rarr; RL</span>
+                </div>
+                <dl class="mc-stats">
+                  <div class="mc-stat">
+                    <dt>Held-out reward</dt>
+                    <dd>&minus;0.23291 <span class="mc-delta">+0.01648</span></dd>
+                  </div>
+                  <div class="mc-stat">
+                    <dt>Credits spent</dt>
+                    <dd>1.38</dd>
+                  </div>
+                </dl>
+                <button type="button" class="mc-repo" data-repo="Laplace-AI-Research/Oracle-Vega" aria-label="Copy Hugging Face repo ID Laplace-AI-Research/Oracle-Vega">
+                  <span class="mc-repo-id">Laplace-AI-Research/Oracle-Vega</span>
+                  <span class="mc-repo-act">Copy</span>
+                </button>
+                <div class="mc-links">
+                  <a href="https://huggingface.co/Laplace-AI-Research/Oracle-Vega" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#hf" /></svg>Weights</a>
+                  <a href="https://github.com/Laplace-AI-Research/oracle/blob/main/docs/results/scorecard.json" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#gh" /></svg>Results</a>
+                  <time datetime="2026-11-30">2026.11.30</time>
+                </div>
+              </article>
+              <article class="mc">
+                <div class="mc-head">
+                  <span class="mc-kicker"><span class="mc-dot" aria-hidden="true"></span>Oracle &middot; seed 271</span>
+                </div>
+                <h3>Aquila</h3>
+                <p class="mc-desc">Supervised on exact-teacher demonstrations. The model replayed in the Playground.</p>
+                <div class="mc-specs">
+                  <span class="mc-spec">Inkling 2 Mini</span>
+                  <span class="mc-spec">LoRA r16</span>
+                  <span class="mc-spec">SFT</span>
+                </div>
+                <dl class="mc-stats">
+                  <div class="mc-stat">
+                    <dt>Held-out reward</dt>
+                    <dd>&minus;0.26338</dd>
+                  </div>
+                  <div class="mc-stat">
+                    <dt>Credits spent</dt>
+                    <dd>1.71</dd>
+                  </div>
+                </dl>
+                <button type="button" class="mc-repo" data-repo="Laplace-AI-Research/Oracle-Aquila" aria-label="Copy Hugging Face repo ID Laplace-AI-Research/Oracle-Aquila">
+                  <span class="mc-repo-id">Laplace-AI-Research/Oracle-Aquila</span>
+                  <span class="mc-repo-act">Copy</span>
+                </button>
+                <div class="mc-links">
+                  <a href="https://huggingface.co/Laplace-AI-Research/Oracle-Aquila" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#hf" /></svg>Weights</a>
+                  <a href="https://github.com/Laplace-AI-Research/oracle/blob/main/docs/results/scorecard.json" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#gh" /></svg>Results</a>
+                  <time datetime="2026-11-30">2026.11.30</time>
+                </div>
+              </article>
+              <article class="mc is-flagship">
+                <div class="mc-head">
+                  <span class="mc-kicker"><span class="mc-dot" aria-hidden="true"></span>Oracle &middot; seed 271</span>
+                  <span class="mc-badge">Highest reward</span>
+                </div>
+                <h3>Altair</h3>
+                <p class="mc-desc">Reinforcement learning from Aquila. Highest held-out reward in the family.</p>
+                <div class="mc-specs">
+                  <span class="mc-spec">Inkling 2 Mini</span>
+                  <span class="mc-spec">LoRA r16</span>
+                  <span class="mc-spec">SFT &rarr; RL</span>
+                </div>
+                <dl class="mc-stats">
+                  <div class="mc-stat">
+                    <dt>Held-out reward</dt>
+                    <dd>&minus;0.23034 <span class="mc-delta">+0.03304</span></dd>
+                  </div>
+                  <div class="mc-stat">
+                    <dt>Credits spent</dt>
+                    <dd>1.20</dd>
+                  </div>
+                </dl>
+                <button type="button" class="mc-repo" data-repo="Laplace-AI-Research/Oracle-Altair" aria-label="Copy Hugging Face repo ID Laplace-AI-Research/Oracle-Altair">
+                  <span class="mc-repo-id">Laplace-AI-Research/Oracle-Altair</span>
+                  <span class="mc-repo-act">Copy</span>
+                </button>
+                <div class="mc-links">
+                  <a href="https://huggingface.co/Laplace-AI-Research/Oracle-Altair" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#hf" /></svg>Weights</a>
+                  <a href="https://github.com/Laplace-AI-Research/oracle/blob/main/docs/results/scorecard.json" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#gh" /></svg>Results</a>
+                  <time datetime="2026-11-30">2026.11.30</time>
+                </div>
+              </article>
+              <article class="mc">
+                <div class="mc-head">
+                  <span class="mc-kicker"><span class="mc-dot" aria-hidden="true"></span>Oracle &middot; seed 389</span>
+                </div>
+                <h3>Cygnus</h3>
+                <p class="mc-desc">Supervised on exact-teacher demonstrations. Spent the fewest credits.</p>
+                <div class="mc-specs">
+                  <span class="mc-spec">Inkling 2 Mini</span>
+                  <span class="mc-spec">LoRA r16</span>
+                  <span class="mc-spec">SFT</span>
+                </div>
+                <dl class="mc-stats">
+                  <div class="mc-stat">
+                    <dt>Held-out reward</dt>
+                    <dd>&minus;0.25811</dd>
+                  </div>
+                  <div class="mc-stat">
+                    <dt>Credits spent</dt>
+                    <dd>0.91</dd>
+                  </div>
+                </dl>
+                <button type="button" class="mc-repo" data-repo="Laplace-AI-Research/Oracle-Cygnus" aria-label="Copy Hugging Face repo ID Laplace-AI-Research/Oracle-Cygnus">
+                  <span class="mc-repo-id">Laplace-AI-Research/Oracle-Cygnus</span>
+                  <span class="mc-repo-act">Copy</span>
+                </button>
+                <div class="mc-links">
+                  <a href="https://huggingface.co/Laplace-AI-Research/Oracle-Cygnus" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#hf" /></svg>Weights</a>
+                  <a href="https://github.com/Laplace-AI-Research/oracle/blob/main/docs/results/scorecard.json" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#gh" /></svg>Results</a>
+                  <time datetime="2026-11-30">2026.11.30</time>
+                </div>
+              </article>
+              <article class="mc">
+                <div class="mc-head">
+                  <span class="mc-kicker"><span class="mc-dot" aria-hidden="true"></span>Oracle &middot; seed 389</span>
+                </div>
+                <h3>Deneb</h3>
+                <p class="mc-desc">Reinforcement learning from Cygnus. The one pair where RL lowered held-out reward.</p>
+                <div class="mc-specs">
+                  <span class="mc-spec">Inkling 2 Mini</span>
+                  <span class="mc-spec">LoRA r16</span>
+                  <span class="mc-spec">SFT &rarr; RL</span>
+                </div>
+                <dl class="mc-stats">
+                  <div class="mc-stat">
+                    <dt>Held-out reward</dt>
+                    <dd>&minus;0.26787 <span class="mc-delta muted">&minus;0.00976</span></dd>
+                  </div>
+                  <div class="mc-stat">
+                    <dt>Credits spent</dt>
+                    <dd>1.30</dd>
+                  </div>
+                </dl>
+                <button type="button" class="mc-repo" data-repo="Laplace-AI-Research/Oracle-Deneb" aria-label="Copy Hugging Face repo ID Laplace-AI-Research/Oracle-Deneb">
+                  <span class="mc-repo-id">Laplace-AI-Research/Oracle-Deneb</span>
+                  <span class="mc-repo-act">Copy</span>
+                </button>
+                <div class="mc-links">
+                  <a href="https://huggingface.co/Laplace-AI-Research/Oracle-Deneb" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#hf" /></svg>Weights</a>
+                  <a href="https://github.com/Laplace-AI-Research/oracle/blob/main/docs/results/scorecard.json" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#gh" /></svg>Results</a>
+                  <time datetime="2026-11-30">2026.11.30</time>
+                </div>
+              </article>
+            </div>
+            <p class="fam-note">Structural holdout, 452 worlds &times; 4 budgets (1,808 model episodes per model). Mean net reward per episode; higher is better. RL deltas are paired changes from the supervised parent, one training run each. The prior-only baseline scored &minus;0.21697, above every model.</p>
+          </section>
+
           <!-- SIGNET -->
           <section class="fam-block" id="signet" data-family="signet" aria-labelledby="signet-title">
             <div class="fam-banner">
@@ -494,7 +705,7 @@
           <div class="matrix-inner">
           <div class="matrix-head">
             <h2>Compare all models</h2>
-            <p>All nine open-weight checkpoints side by side.</p>
+            <p>All fifteen open-weight checkpoints side by side. Oracle metrics are structural-holdout mean net reward and credits spent.</p>
           </div>
           <div class="matrix-scroll" role="region" aria-label="Model comparison table" tabindex="0">
             <table class="mmatrix">
@@ -510,6 +721,60 @@
                 </tr>
               </thead>
               <tbody>
+                <tr data-family="oracle">
+                  <th scope="row"><a href="https://huggingface.co/Laplace-AI-Research/Oracle-Lyra" target="_blank" rel="noopener noreferrer">Oracle-Lyra</a></th>
+                  <td><span class="fam-pill">Oracle</span></td>
+                  <td>Inkling 2 Mini</td>
+                  <td>LoRA adapter</td>
+                  <td>Apache-2.0</td>
+                  <td class="num">&minus;0.24938 reward</td>
+                  <td class="num">1.39 credits</td>
+                </tr>
+                <tr data-family="oracle">
+                  <th scope="row"><a href="https://huggingface.co/Laplace-AI-Research/Oracle-Vega" target="_blank" rel="noopener noreferrer">Oracle-Vega</a></th>
+                  <td><span class="fam-pill">Oracle</span></td>
+                  <td>Inkling 2 Mini</td>
+                  <td>LoRA adapter</td>
+                  <td>Apache-2.0</td>
+                  <td class="num">&minus;0.23291 reward</td>
+                  <td class="num">1.38 credits</td>
+                </tr>
+                <tr data-family="oracle">
+                  <th scope="row"><a href="https://huggingface.co/Laplace-AI-Research/Oracle-Aquila" target="_blank" rel="noopener noreferrer">Oracle-Aquila</a></th>
+                  <td><span class="fam-pill">Oracle</span></td>
+                  <td>Inkling 2 Mini</td>
+                  <td>LoRA adapter</td>
+                  <td>Apache-2.0</td>
+                  <td class="num">&minus;0.26338 reward</td>
+                  <td class="num">1.71 credits</td>
+                </tr>
+                <tr data-family="oracle">
+                  <th scope="row"><a href="https://huggingface.co/Laplace-AI-Research/Oracle-Altair" target="_blank" rel="noopener noreferrer">Oracle-Altair</a></th>
+                  <td><span class="fam-pill">Oracle</span></td>
+                  <td>Inkling 2 Mini</td>
+                  <td>LoRA adapter</td>
+                  <td>Apache-2.0</td>
+                  <td class="num">&minus;0.23034 reward</td>
+                  <td class="num">1.20 credits</td>
+                </tr>
+                <tr data-family="oracle">
+                  <th scope="row"><a href="https://huggingface.co/Laplace-AI-Research/Oracle-Cygnus" target="_blank" rel="noopener noreferrer">Oracle-Cygnus</a></th>
+                  <td><span class="fam-pill">Oracle</span></td>
+                  <td>Inkling 2 Mini</td>
+                  <td>LoRA adapter</td>
+                  <td>Apache-2.0</td>
+                  <td class="num">&minus;0.25811 reward</td>
+                  <td class="num">0.91 credits</td>
+                </tr>
+                <tr data-family="oracle">
+                  <th scope="row"><a href="https://huggingface.co/Laplace-AI-Research/Oracle-Deneb" target="_blank" rel="noopener noreferrer">Oracle-Deneb</a></th>
+                  <td><span class="fam-pill">Oracle</span></td>
+                  <td>Inkling 2 Mini</td>
+                  <td>LoRA adapter</td>
+                  <td>Apache-2.0</td>
+                  <td class="num">&minus;0.26787 reward</td>
+                  <td class="num">1.30 credits</td>
+                </tr>
                 <tr class="is-flagship" data-family="signet">
                   <th scope="row"><a href="https://huggingface.co/Laplace-AI-Research/Signet-9B" target="_blank" rel="noopener noreferrer">Signet-9B</a></th>
                   <td><span class="fam-pill">Signet</span></td>
@@ -601,8 +866,8 @@
       <footer class="foot">
         <a class="brand" href="/"><span class="mark" aria-hidden="true"></span>Laplace Research</a>
         <div class="cols">
-          <nav aria-label="Research"><a href="/signet/">Signet</a><a href="/convictionbench/">ConvictionBench</a><a href="/tarot-draw/">Tarot-Draw</a><a href="/research/">All research</a><a href="/agenda/">Research agenda</a></nav>
-          <nav aria-label="Lab"><a href="/about/">About</a><a href="/models/">Models</a><a href="/safety/">Safety</a><a href="/collaborate/">Collaborate</a><a href="mailto:inquiries@laplaceresearch.org">Inquiries</a></nav>
+          <nav aria-label="Research"><a href="/oracle/">Oracle</a><a href="/signet/">Signet</a><a href="/convictionbench/">ConvictionBench</a><a href="/tarot-draw/">Tarot-Draw</a><a href="/research/">All research</a><a href="/agenda/">Research agenda</a></nav>
+          <nav aria-label="Lab"><a href="/about/">About</a><a href="/models/">Models</a><a href="/playground/">Playground</a><a href="/safety/">Safety</a><a href="/collaborate/">Collaborate</a><a href="mailto:inquiries@laplaceresearch.org">Inquiries</a></nav>
           <nav aria-label="Elsewhere"><a href="https://github.com/Laplace-AI-Research" target="_blank" rel="noopener noreferrer">GitHub</a><a href="https://huggingface.co/Laplace-AI-Research" target="_blank" rel="noopener noreferrer">Hugging Face</a><a href="https://www.linkedin.com/company/laplaceairesearch/" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="https://x.com/laplaceaires" target="_blank" rel="noopener noreferrer">X</a><a href="https://convictionbench.org/#leaderboard" target="_blank" rel="noopener noreferrer">Leaderboard</a></nav>
         </div>
         <div class="copy">

@@ -1,0 +1,102 @@
+/* Page-specific styles for /oracle/. Shared article styles live in /article.css. */
+
+.post-toc {
+  margin: 28px 0 8px;
+  padding: 16px 20px;
+  background: var(--panel);
+  font-family: var(--sans);
+  font-size: 14px;
+}
+.post-toc h2 { margin: 0 0 8px; font-size: 13px; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); }
+.post-toc ol { margin: 0; padding-left: 20px; columns: 2 240px; column-gap: 32px; }
+.post-toc li { margin: 2px 0; break-inside: avoid; }
+
+.oracle-try {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 20px;
+  margin: 28px 0 !important;
+  padding: 18px 20px;
+  background: var(--panel);
+}
+.oracle-try .post-cta-btn { flex: none; }
+.oracle-try-note { flex: 1 1 220px; color: var(--muted); font-family: var(--sans); font-size: 13.5px; line-height: 1.5; }
+
+.post-body var { font-style: italic; }
+
+.oracle-eq {
+  margin: 24px 0;
+  padding: 22px 20px 16px;
+  background: var(--panel);
+  overflow-x: auto;
+}
+.oracle-eq math {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: 1.45em;
+  color: var(--ink);
+}
+.oracle-eq mi { font-style: italic; }
+.oracle-eq mfrac { font-size: 0.9em; }
+.oracle-eq .oracle-eq-key {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 4px 18px;
+  margin: 14px 0 0 !important;
+  color: var(--muted);
+  font-family: var(--sans);
+  font-size: 13px !important;
+}
+.oracle-eq-key var { font-family: var(--serif); font-size: 1.15em; color: var(--ink); }
+
+.oracle-availability {
+  padding: 18px 22px;
+  border-left: 3px solid var(--accent);
+  background: var(--panel);
+}
+.oracle-availability p { margin: 0 0 10px; }
+.oracle-availability ul { margin: 0 0 10px; }
+.oracle-availability .oracle-availability-note { margin: 0; color: var(--muted); font-size: 0.92em; }
+
+.oracle-methods {
+  display: grid;
+  grid-template-columns: 9em 1fr;
+  gap: 10px 20px;
+  margin: 16px 0 0;
+  font-family: var(--sans);
+  font-size: 14px;
+  line-height: 1.55;
+}
+.oracle-methods dt { color: var(--muted); font-weight: 500; }
+.oracle-methods dd { margin: 0; }
+@media (max-width: 560px) {
+  .oracle-methods { grid-template-columns: 1fr; gap: 2px; }
+  .oracle-methods dd { margin-bottom: 10px; }
+}
+
+.post-body .claim-grid { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); margin: 20px 0; }
+.post-body .claim-grid > div { padding: 14px 16px; background: var(--panel); font-size: 0.95em; }
+.post-body .claim-grid h3 { margin: 0 0 6px; font-family: var(--sans); font-size: 14px; }
+.post-body .claim-grid p { margin: 0; }
+
+.fig-downloads { font-family: var(--sans); font-size: 13px; color: var(--muted); }
+.fig-downloads a { color: inherit; }
+
+.post-hero-media { object-position: 50% 40%; }
+
+.post-body dl.facts {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin: 36px 0 28px;
+  border-top: 1px solid var(--line);
+  font: 400 13px/1.45 var(--sans);
+}
+.post-body dl.facts div { padding: 12px 12px 0 0; }
+.post-body dl.facts dt { color: var(--muted); font: 400 11px/1.3 var(--mono); text-transform: uppercase; letter-spacing: 0.05em; }
+.post-body dl.facts dd { margin: 4px 0 0; color: var(--ink); }
+@media (max-width: 640px) { .post-body dl.facts { grid-template-columns: 1fr 1fr; row-gap: 10px; } }
+
+.oracle-model-links { display: flex; flex-wrap: wrap; gap: 4px 18px; margin: 6px 0 0 !important; padding: 0 !important; list-style: none; }
+.oracle-model-links li { margin: 0 !important; }

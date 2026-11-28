@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Oracle and the Second Sensor | Playground</title>
+    <meta
+      name="description"
+      content="A one-minute Laplace Playground experiment: buy a sensor reading, make a forecast, and rewire one display to see when two positive readings are one piece of evidence or two. A replay of one recorded Oracle Aquila case."
+    />
+    <meta name="theme-color" content="#f6f5f2" />
+    <meta name="color-scheme" content="only light" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+
+    <link rel="canonical" href="https://laplaceresearch.org/playground/oracle/" />
+    <link rel="alternate" type="application/atom+xml" title="Laplace Research" href="/feed.xml" />
+    <link rel="icon" href="/favicon.ico?v=4" sizes="16x16 32x32 48x48" />
+    <link rel="icon" type="image/png" href="/favicon-96.png?v=4" sizes="96x96" />
+    <link rel="icon" type="image/png" href="/favicon-192.png?v=4" sizes="192x192" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=4" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Laplace Research" />
+    <meta property="og:title" content="Oracle and the Second Sensor | Laplace Research" />
+    <meta property="og:description" content="Would you pay twice for the same evidence? A one-minute replay of a recorded Oracle Aquila case." />
+    <meta property="og:url" content="https://laplaceresearch.org/playground/oracle/" />
+    <meta property="og:image" content="https://laplaceresearch.org/assets/og/playground-oracle.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Laplace Playground: Oracle and the Second Sensor, one sensor wired to two displays" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Oracle and the Second Sensor | Laplace Research" />
+    <meta name="twitter:description" content="Would you pay twice for the same evidence? A one-minute replay of a recorded Oracle Aquila case." />
+    <meta name="twitter:image" content="https://laplaceresearch.org/assets/og/playground-oracle.png" />
+    <meta name="twitter:image:alt" content="Laplace Playground: Oracle and the Second Sensor, one sensor wired to two displays" />
+
+    <link rel="preload" href="/assets/fonts/inter-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/assets/fonts/newsreader-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <script>document.documentElement.classList.add("js")</script>
+    <link rel="stylesheet" href="/site.css?v=20261126-7" />
+    <link rel="stylesheet" href="/playground/playground.css?v=1" />
+  </head>
+
+  <body>
+    <a class="skip-link" href="#content">Skip to content</a>
+    <div class="frame">
+      <header class="rail">
+        <a class="brand" href="/" aria-label="Laplace Research home"><span class="mark" aria-hidden="true"></span>Laplace Research</a>
+        <button class="menu" type="button" aria-expanded="false" aria-controls="primary-nav">Menu <i aria-hidden="true"></i></button>
+        <nav id="primary-nav" aria-label="Primary">
+          <a href="/">Home</a>
+          <a href="/agenda/">Agenda</a>
+          <a href="/research/">Research</a>
+          <a href="/models/">Models</a>
+          <a href="/playground/" aria-current="page">Playground</a>
+          <a href="/safety/">Safety</a>
+          <a href="/about/">About</a>
+          <a href="/collaborate/">Collaborations</a>
+        </nav>
+        <a class="cta" href="mailto:inquiries@laplaceresearch.org" aria-label="Get in touch">
+          <span class="cta-roll"><span>Get in touch</span><span aria-hidden="true">Get in touch</span></span>
+          <svg class="icon-arrow" aria-hidden="true" focusable="false"><use href="/assets/icons.svg#arrow" /></svg>
+        </a>
+        <div class="rail-end">
+          <div class="rail-icons">
+            <a href="mailto:inquiries@laplaceresearch.org" aria-label="Email"><svg class="stroke" aria-hidden="true" focusable="false"><use href="/assets/icons.svg#mail" /></svg></a>
+            <a href="https://x.com/laplaceaires" target="_blank" rel="noopener noreferrer" aria-label="X"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#x" /></svg></a>
+            <a href="https://github.com/Laplace-AI-Research" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#gh" /></svg></a>
+            <a href="https://huggingface.co/Laplace-AI-Research" target="_blank" rel="noopener noreferrer" aria-label="Hugging Face"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#hf" /></svg></a>
+            <a href="https://www.linkedin.com/company/laplaceairesearch/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#li" /></svg></a>
+          </div>
+          <p class="rail-legal"><a href="/privacy/">Privacy</a> &middot; <a href="/terms/">Terms</a> &middot; <a href="/licenses/">Licenses</a><br /><a href="/accessibility/">Accessibility</a> &middot; <a href="/brand/">Brand</a><br />&copy; 2026 Laplace Research &middot; SF &amp; NYC</p>
+        </div>
+        <img class="dither" src="/assets/dither.svg?v=2" alt="" width="248" height="12" />
+      </header>
+
+      <main class="pg-main or-main" id="content">
+        <section class="sec pg-head or-head" aria-labelledby="t">
+          <div class="wide">
+            <p class="pg-crumb"><a href="/playground/">Playground</a></p>
+            <h1 id="t">Oracle and the Second Sensor</h1>
+            <p class="pg-replay"><span class="pg-tag">Oracle replay</span>One recorded case, replayed exactly. Every reading in it came back positive, so playing again shows the same readings.</p>
+          </div>
+        </section>
+
+        <section class="sec or-player" id="player" aria-labelledby="or-q">
+          <div class="wide or-grid">
+            <figure class="or-instrument" aria-labelledby="or-wiring-text">
+              <div class="or-board" data-wiring="copy">
+                <svg class="or-wires" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+                  <path class="or-sense" d="M22 50 C29 50 29 25 36 25" />
+                  <path class="or-sense or-sense-b" d="M22 50 C29 50 29 75 36 75" />
+                  <path class="or-wire" d="M64 25 L76 25" />
+                  <path class="or-wire or-wire-b" id="or-wire-b" d="M64 31 C70 31 70 75 76 75" />
+                </svg>
+                <span class="or-jack" id="or-jack" aria-hidden="true"></span>
+                <div class="or-node or-signal">
+                  <span class="or-node-k">Hidden signal</span>
+                  <span class="or-node-v">?</span>
+                  <span class="or-node-s">on or off</span>
+                </div>
+                <div class="or-node or-sensor or-sensor-a">
+                  <span class="or-node-k">Sensor A</span>
+                  <span class="or-node-s">80% accurate</span>
+                </div>
+                <div class="or-node or-sensor or-sensor-b" id="or-sensor-b">
+                  <span class="or-node-k">Sensor B</span>
+                  <span class="or-node-s">80% accurate</span>
+                </div>
+                <div class="or-node or-display or-display-a" data-state="unread">
+                  <span class="or-node-k">Display A</span>
+                  <span class="or-read" data-bind="displayA">Unread</span>
+                  <span class="or-node-s">from sensor A</span>
+                </div>
+                <div class="or-node or-display or-display-b" data-state="unread">
+                  <span class="or-node-k">Display B</span>
+                  <span class="or-read" data-bind="displayB">Unread</span>
+                  <span class="or-node-s" data-bind="displayBSource">copy of sensor A</span>
+                </div>
+              </div>
+              <figcaption class="or-wiring" id="or-wiring-text" data-bind="wiringText">Wiring: one physical sensor, sensor A, feeds both displays. Display B shows a copy of whatever sensor A reports.</figcaption>
+            </figure>
+
+            <div class="or-console">
+              <dl class="or-ledger" aria-label="Your episode">
+                <div><dt>Your credits</dt><dd><span data-bind="credits">4</span><span class="or-pips" data-bind="pips" aria-hidden="true"><i></i><i></i><i></i><i></i></span></dd></div>
+                <div><dt>Display A</dt><dd data-bind="ledgerA">Unread</dd></div>
+                <div><dt>Display B</dt><dd data-bind="ledgerB">Unread</dd></div>
+              </dl>
+
+              <div class="or-step" data-step="start">
+                <h2 id="or-q" tabindex="-1">Is the hidden signal on?</h2>
+                <p class="or-prior"><span class="or-big">50%</span> to start. On and off are equally likely.</p>
+                <p>Sensor A reads positive 80% of the time when the signal is on and 20% when it is off. Both displays are wired to it. Each reading costs two credits.</p>
+                <div class="or-actions">
+                  <button class="or-btn solid" type="button" data-move="readA">Read A &middot; 2 credits</button>
+                </div>
+              </div>
+
+              <div class="or-step" data-step="decide" hidden>
+                <h2 tabindex="-1">Display A reads <span class="or-pos">Positive</span></h2>
+                <dl class="or-pair">
+                  <div><dt>Exact calculation</dt><dd data-bind="exactAfterA">80%</dd></div>
+                  <div><dt>Oracle Aquila <span>recorded</span></dt><dd data-bind="aquilaEpisode">80%</dd></div>
+                </dl>
+                <p class="or-ask">Display B is wired to the same sensor. Spend your last two credits to read it?</p>
+                <div class="or-actions">
+                  <button class="or-btn solid" type="button" data-move="buyB">Buy B &middot; 2 credits</button>
+                  <button class="or-btn" type="button" data-move="stop">Stop</button>
+                </div>
+              </div>
+
+              <div class="or-step" data-step="aquila" hidden>
+                <h2 tabindex="-1" data-bind="aquilaTitle">You stopped with two credits</h2>
+                <p class="or-you" data-bind="aquilaYou">Display B is unread.</p>
+                <p class="or-note"><span class="or-who">Oracle Aquila</span> stopped with two credits left. Its forecast after A was <span data-bind="aquilaEpisode">80%</span>, and its episode ended there.</p>
+                <div class="or-copy-offer" data-show="stopped">
+                  <div class="or-actions">
+                    <button class="or-btn solid" type="button" data-move="showCopy">Show the copy anyway</button>
+                  </div>
+                  <p class="or-hint">Opens a separate recorded test in which Aquila was given both readings. It costs you nothing.</p>
+                </div>
+                <p class="or-hint" data-show="forced" hidden data-bind="forcedText">Next: a separate recorded test in which the evaluator gave Aquila both positive readings.</p>
+              </div>
+
+              <form class="or-step or-forecast" data-step="forecast" hidden novalidate>
+                <h2 tabindex="-1">Both displays read <span class="or-pos">Positive</span></h2>
+                <label class="or-label" for="or-guess">What probability would you give the signal now?</label>
+                <div class="or-field">
+                  <input id="or-guess" name="guess" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" aria-describedby="or-guess-help" />
+                  <span class="or-unit" aria-hidden="true">%</span>
+                </div>
+                <p class="or-hint" id="or-guess-help">A number from 0 to 100. Decimals are fine.</p>
+                <p class="or-error" id="or-guess-error" hidden></p>
+                <div class="or-actions">
+                  <button class="or-btn solid" type="submit">Reveal comparison</button>
+                  <button class="or-btn quiet" type="button" data-move="skip">Just show me</button>
+                </div>
+              </form>
+
+              <div class="or-step or-reveal" data-step="revealed" hidden>
+                <h2 tabindex="-1">Two positives: <span data-bind="revealTitle">one piece of evidence</span></h2>
+                <dl class="or-three">
+                  <div class="or-you-col">
+                    <dt data-bind="youLabel">Your forecast</dt>
+                    <dd data-bind="youValue">&mdash;</dd>
+                    <p data-bind="youNote">Same-sensor wiring</p>
+                  </div>
+                  <div>
+                    <dt>Exact calculation</dt>
+                    <dd data-bind="exactAfterAB">80%</dd>
+                    <p>After A <span data-bind="exactAfterA">80%</span> &rarr; after A and B <span data-bind="exactAfterAB">80%</span></p>
+                  </div>
+                  <div class="or-model-col">
+                    <dt>Oracle Aquila <span>recorded</span></dt>
+                    <dd data-bind="aquilaAfterAB">90.5%</dd>
+                    <p>After A <span data-bind="aquilaAfterA">80%</span> &rarr; after A and B <span data-bind="aquilaAfterAB">90.5%</span></p>
+                  </div>
+                </dl>
+
+                <fieldset class="or-rewire">
+                  <legend>Rewire display B</legend>
+                  <div class="or-seg">
+                    <label><input type="radio" name="wiring" value="copy" checked /><span>Same sensor</span></label>
+                    <label><input type="radio" name="wiring" value="independent" /><span>Independent sensors</span></label>
+                  </div>
+                  <p class="or-hint">Both displays stay positive. Rewiring compares two worlds after the episode and costs no credits.</p>
+                </fieldset>
+                <p class="or-why" data-bind="why">B reports whatever A reports, so seeing the same positive twice adds no evidence.</p>
+                <p class="or-gap" data-bind="gap">Aquila&rsquo;s 90.5% is 10.5 percentage points above the exact result.</p>
+
+                <dl class="or-trail" aria-label="Three separate records">
+                  <div><dt>Your episode</dt><dd data-bind="trailYou">Read A and B. 0 credits left.</dd></div>
+                  <div><dt>Aquila&rsquo;s episode</dt><dd>Read A, forecast <span data-bind="aquilaEpisode">80%</span>, stopped with 2 credits.</dd></div>
+                  <div><dt>Fixed-history test</dt><dd data-bind="trailTest">Aquila was given A and B, both positive, and told B copies A.</dd></div>
+                </dl>
+
+                <div class="or-actions">
+                  <button class="or-btn" type="button" data-move="reset">Play again</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <p class="sr-only" role="status" aria-live="polite" id="or-status"></p>
+        </section>
+
+        <section class="sec or-more" id="more" aria-label="Go deeper" hidden>
+          <div class="wide">
+            <p class="or-study-link"><a href="/oracle/">Read the Oracle release</a>: what the six Oracle models did across 23,408 model episodes, and where the evidence is uncertain.</p>
+            <details class="or-details" id="compare">
+              <summary>Compare the models</summary>
+              <div class="or-details-body">
+                <p>Same-sensor wiring only. Each row is one recorded response from the named checkpoint on the same fixed positive histories; none are averages. The exact answer is 80% in both columns.</p>
+                <div class="or-scroll" role="region" aria-label="Model comparison, same-sensor fixture" tabindex="0">
+                  <table class="or-table">
+                    <caption class="sr-only">Recorded actions and forecasts on the same-sensor fixture</caption>
+                    <thead>
+                      <tr>
+                        <th scope="col">Model</th>
+                        <th scope="col">Training</th>
+                        <th scope="col">Action after A</th>
+                        <th scope="col" class="num">Forecast after A</th>
+                        <th scope="col" class="num">After A and forced copy</th>
+                      </tr>
+                    </thead>
+                    <tbody id="or-family"></tbody>
+                    <tfoot>
+                      <tr>
+                        <th scope="row">Exact calculation</th>
+                        <td></td>
+                        <td>Stop</td>
+                        <td class="num" data-bind="exactCopyA">80%</td>
+                        <td class="num" data-bind="exactCopyAB">80%</td>
+                      </tr>
+                    </tfoot>
+                  </table>
+                </div>
+                <p class="or-small">Six trained adapters and the base control. Supervised &rarr; reinforcement-trained pairs: Lyra &rarr; Vega, Aquila &rarr; Altair, Cygnus &rarr; Deneb. Aquila leads the demo because its single-reading forecast was exact.</p>
+              </div>
+            </details>
+
+            <details class="or-details" id="odds">
+              <summary>How the odds work</summary>
+              <div class="or-details-body">
+                <ol class="or-math">
+                  <li><span>Start</span>On and off are equally likely: odds 1 : 1, or 50%.</li>
+                  <li><span>A positive</span>A positive is four times as likely when the signal is on (0.8 &divide; 0.2 = 4). Odds 4 : 1, or 4/5 = 80%.</li>
+                  <li><span>Same sensor</span>Once A reads positive, its copy is certain to read positive whether the signal is on or off. Its likelihood ratio is 1, so the odds stay 4 : 1, or 80%.</li>
+                  <li><span>Independent</span>A second sensor errs independently, given the signal. Its positive multiplies the odds by 4 again: 16 : 1, or 16/17 = 94.1%.</li>
+                </ol>
+                <h3>Where the model numbers come from</h3>
+                <p>Aquila&rsquo;s own episode read A at a 50% prior, saw a positive, and stopped at 80%. The two-reading numbers come from separate fixed-history tests run in November 2026, in which the evaluator supplied the readings: A positive, then A and B positive, under each wiring. In the same-sensor test the models had been told explicitly that B copies A. Every value is a single recorded response from a named checkpoint, so it describes this positive case, not how often a model behaves this way.</p>
+                <p>No model runs in your browser. The page replays stored numbers, and your answer stays in this page&rsquo;s memory.</p>
+              </div>
+            </details>
+          </div>
+        </section>
+
+        <section class="sec or-static" aria-labelledby="or-static-t">
+          <div class="body">
+            <h2 id="or-static-t">The experiment in brief</h2>
+            <p>The interactive version needs JavaScript. Here is what it shows.</p>
+            <p>A hidden signal is on or off, equally likely. Sensor A reads positive 80% of the time when the signal is on and 20% when it is off. Two displays are wired to sensor A, and each costs two of your four credits to read. In the recorded case, display A reads positive: the exact forecast is 80%, and Oracle Aquila also said 80%, then stopped with two credits left.</p>
+            <table class="or-table">
+              <caption>Forecast after two positive readings</caption>
+              <thead>
+                <tr><th scope="col">Display B wired to</th><th scope="col" class="num">Exact calculation</th><th scope="col" class="num">Oracle Aquila (recorded)</th></tr>
+              </thead>
+              <tbody>
+                <tr><th scope="row">Same sensor (a copy of A)</th><td class="num">80%</td><td class="num">90.5%</td></tr>
+                <tr><th scope="row">Independent second sensor</th><td class="num">94.1%</td><td class="num">90.5%</td></tr>
+              </tbody>
+            </table>
+            <p>A copy of A adds no evidence, so the exact answer stays at 80%. An independent sensor multiplies the odds by four again, to 16/17. Aquila&rsquo;s recorded answer was 90.5% under both wirings. It made the right purchasing decision but misjudged how much the copy told it.</p>
+            <p><a href="/oracle/">Read the Oracle release</a> &middot; <a href="/playground/">Back to Playground</a></p>
+          </div>
+        </section>
+      </main>
+
+      <footer class="foot">
+        <a class="brand" href="/"><span class="mark" aria-hidden="true"></span>Laplace Research</a>
+        <div class="cols">
+          <nav aria-label="Research"><a href="/oracle/">Oracle</a><a href="/signet/">Signet</a><a href="/convictionbench/">ConvictionBench</a><a href="/tarot-draw/">Tarot-Draw</a><a href="/research/">All research</a><a href="/agenda/">Research agenda</a></nav>
+          <nav aria-label="Lab"><a href="/about/">About</a><a href="/models/">Models</a><a href="/playground/">Playground</a><a href="/safety/">Safety</a><a href="/collaborate/">Collaborate</a><a href="mailto:inquiries@laplaceresearch.org">Inquiries</a></nav>
+          <nav aria-label="Elsewhere"><a href="https://github.com/Laplace-AI-Research" target="_blank" rel="noopener noreferrer">GitHub</a><a href="https://huggingface.co/Laplace-AI-Research" target="_blank" rel="noopener noreferrer">Hugging Face</a><a href="https://www.linkedin.com/company/laplaceairesearch/" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="https://x.com/laplaceaires" target="_blank" rel="noopener noreferrer">X</a><a href="https://convictionbench.org/#leaderboard" target="_blank" rel="noopener noreferrer">Leaderboard</a></nav>
+        </div>
+        <div class="copy">
+          <p>&copy; 2026 Laplace Research &middot; <a href="mailto:inquiries@laplaceresearch.org">inquiries@laplaceresearch.org</a></p>
+          <nav aria-label="Legal"><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a><a href="/licenses/">Licenses</a><a href="/accessibility/">Accessibility</a><a href="/brand/">Brand</a></nav>
+          <p class="disclaimer">Research artifacts provided &lsquo;as is&rsquo;, without warranty. Forecasts are not financial, investment, legal, or betting advice. <a href="/licenses/#disclaimer">Full disclaimer</a></p>
+        </div>
+      </footer>
+    </div>
+    <script src="/site.js?v=20261122-2" defer></script>
+    <script src="/playground/oracle/oracle-data.js?v=1" defer></script>
+    <script src="/playground/oracle/oracle-model.js?v=1" defer></script>
+    <script src="/playground/oracle/oracle.js?v=1" defer></script>
+  </body>
+</html>
