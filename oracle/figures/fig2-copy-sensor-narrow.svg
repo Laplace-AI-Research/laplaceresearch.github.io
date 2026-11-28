@@ -14,47 +14,47 @@
 <rect x="20.5" y="38.5" width="11" height="11" fill="#02338a"/>
 <text x="38.0" y="48.0" font-size="12.5" text-anchor="start" fill="#23262d">After forced A+, B+ (told B copies A)</text>
 <text x="20.0" y="92.0" font-size="10" text-anchor="start" fill="#5d626b" font-family="'Geist Mono', ui-monospace, Menlo, monospace" letter-spacing=".04em">BASE CONTROL</text>
-<text x="20.0" y="116.0" font-size="13" text-anchor="start" fill="#23262d" font-weight="600">Inkling 2 Mini</text>
-<text x="134.4" y="116.0" font-size="12" text-anchor="start" fill="#5d626b">base · Bought B</text>
-<text x="380.0" y="116.0" font-size="12" text-anchor="end" fill="#23262d">80.0% → 80.0%</text>
+<text x="20.0" y="116.0" font-size="13" text-anchor="start" fill="#23262d" font-weight="600" paint-order="stroke" stroke="#fff" stroke-width="4" stroke-linejoin="round">Inkling 2 Mini</text>
+<text x="134.4" y="116.0" font-size="12" text-anchor="start" fill="#5d626b" paint-order="stroke" stroke="#fff" stroke-width="4" stroke-linejoin="round">base · Bought B</text>
+<text x="380.0" y="116.0" font-size="12" text-anchor="end" fill="#23262d" paint-order="stroke" stroke="#fff" stroke-width="4" stroke-linejoin="round">80.0% → 80.0%</text>
 <rect x="302.5" y="132.5" width="11" height="11" fill="#02338a"/>
 <circle cx="308.0" cy="138.0" r="5.5" fill="#fff" stroke="#23262d" stroke-width="2"/>
 <text x="20.0" y="172.0" font-size="10" text-anchor="start" fill="#5d626b" font-family="'Geist Mono', ui-monospace, Menlo, monospace" letter-spacing=".04em">SEED 173  ·  supervised → RL</text>
-<text x="20.0" y="196.0" font-size="13" text-anchor="start" fill="#23262d" font-weight="600">Oracle Lyra</text>
-<text x="111.6" y="196.0" font-size="12" text-anchor="start" fill="#5d626b">SFT · Stopped</text>
-<text x="380.0" y="196.0" font-size="12" text-anchor="end" fill="#23262d">66.7% → 88.9%</text>
+<text x="20.0" y="196.0" font-size="13" text-anchor="start" fill="#23262d" font-weight="600" paint-order="stroke" stroke="#fff" stroke-width="4" stroke-linejoin="round">Oracle Lyra</text>
+<text x="111.6" y="196.0" font-size="12" text-anchor="start" fill="#5d626b" paint-order="stroke" stroke="#fff" stroke-width="4" stroke-linejoin="round">SFT · Stopped</text>
+<text x="380.0" y="196.0" font-size="12" text-anchor="end" fill="#23262d" paint-order="stroke" stroke="#fff" stroke-width="4" stroke-linejoin="round">66.7% → 88.9%</text>
 <line x1="266.1" y1="218.0" x2="332.0" y2="218.0" stroke="#02338a" stroke-width="1.6" marker-end="url(#ah)"/>
 <rect x="334.5" y="212.5" width="11" height="11" fill="#02338a"/>
 <circle cx="260.1" cy="218.0" r="5.5" fill="#fff" stroke="#23262d" stroke-width="2"/>
-<text x="20.0" y="250.0" font-size="13" text-anchor="start" fill="#23262d" font-weight="600">Oracle Vega</text>
-<text x="111.6" y="250.0" font-size="12" text-anchor="start" fill="#5d626b">RL · Stopped</text>
-<text x="380.0" y="250.0" font-size="12" text-anchor="end" fill="#23262d">71.4% → 88.9%</text>
+<text x="20.0" y="250.0" font-size="13" text-anchor="start" fill="#23262d" font-weight="600" paint-order="stroke" stroke="#fff" stroke-width="4" stroke-linejoin="round">Oracle Vega</text>
+<text x="111.6" y="250.0" font-size="12" text-anchor="start" fill="#5d626b" paint-order="stroke" stroke="#fff" stroke-width="4" stroke-linejoin="round">RL · Stopped</text>
+<text x="380.0" y="250.0" font-size="12" text-anchor="end" fill="#23262d" paint-order="stroke" stroke="#fff" stroke-width="4" stroke-linejoin="round">71.4% → 88.9%</text>
 <line x1="283.0" y1="272.0" x2="332.0" y2="272.0" stroke="#02338a" stroke-width="1.6" marker-end="url(#ah)"/>
 <rect x="334.5" y="266.5" width="11" height="11" fill="#02338a"/>
 <circle cx="277.0" cy="272.0" r="5.5" fill="#fff" stroke="#23262d" stroke-width="2"/>
 <text x="20.0" y="306.0" font-size="10" text-anchor="start" fill="#5d626b" font-family="'Geist Mono', ui-monospace, Menlo, monospace" letter-spacing=".04em">SEED 271  ·  supervised → RL</text>
-<text x="20.0" y="330.0" font-size="13" text-anchor="start" fill="#23262d" font-weight="600">Oracle Aquila</text>
-<text x="126.8" y="330.0" font-size="12" text-anchor="start" fill="#5d626b">SFT · Stopped</text>
-<text x="380.0" y="330.0" font-size="12" text-anchor="end" fill="#23262d">80.0% → 90.5%</text>
+<text x="20.0" y="330.0" font-size="13" text-anchor="start" fill="#23262d" font-weight="600" paint-order="stroke" stroke="#fff" stroke-width="4" stroke-linejoin="round">Oracle Aquila</text>
+<text x="126.8" y="330.0" font-size="12" text-anchor="start" fill="#5d626b" paint-order="stroke" stroke="#fff" stroke-width="4" stroke-linejoin="round">SFT · Stopped</text>
+<text x="380.0" y="330.0" font-size="12" text-anchor="end" fill="#23262d" paint-order="stroke" stroke="#fff" stroke-width="4" stroke-linejoin="round">80.0% → 90.5%</text>
 <line x1="314.0" y1="352.0" x2="337.8" y2="352.0" stroke="#02338a" stroke-width="1.6" marker-end="url(#ah)"/>
 <rect x="340.3" y="346.5" width="11" height="11" fill="#02338a"/>
 <circle cx="308.0" cy="352.0" r="5.5" fill="#fff" stroke="#23262d" stroke-width="2"/>
-<text x="20.0" y="384.0" font-size="13" text-anchor="start" fill="#23262d" font-weight="600">Oracle Altair</text>
-<text x="126.8" y="384.0" font-size="12" text-anchor="start" fill="#5d626b">RL · Stopped</text>
-<text x="380.0" y="384.0" font-size="12" text-anchor="end" fill="#23262d">66.7% → 80.0%</text>
+<text x="20.0" y="384.0" font-size="13" text-anchor="start" fill="#23262d" font-weight="600" paint-order="stroke" stroke="#fff" stroke-width="4" stroke-linejoin="round">Oracle Altair</text>
+<text x="126.8" y="384.0" font-size="12" text-anchor="start" fill="#5d626b" paint-order="stroke" stroke="#fff" stroke-width="4" stroke-linejoin="round">RL · Stopped</text>
+<text x="380.0" y="384.0" font-size="12" text-anchor="end" fill="#23262d" paint-order="stroke" stroke="#fff" stroke-width="4" stroke-linejoin="round">66.7% → 80.0%</text>
 <line x1="266.1" y1="406.0" x2="300.0" y2="406.0" stroke="#02338a" stroke-width="1.6" marker-end="url(#ah)"/>
 <rect x="302.5" y="400.5" width="11" height="11" fill="#02338a"/>
 <circle cx="260.1" cy="406.0" r="5.5" fill="#fff" stroke="#23262d" stroke-width="2"/>
 <text x="20.0" y="440.0" font-size="10" text-anchor="start" fill="#5d626b" font-family="'Geist Mono', ui-monospace, Menlo, monospace" letter-spacing=".04em">SEED 389  ·  supervised → RL</text>
-<text x="20.0" y="464.0" font-size="13" text-anchor="start" fill="#23262d" font-weight="600">Oracle Cygnus</text>
-<text x="126.8" y="464.0" font-size="12" text-anchor="start" fill="#5d626b">SFT · Stopped</text>
-<text x="380.0" y="464.0" font-size="12" text-anchor="end" fill="#23262d">72.7% → 94.1%</text>
+<text x="20.0" y="464.0" font-size="13" text-anchor="start" fill="#23262d" font-weight="600" paint-order="stroke" stroke="#fff" stroke-width="4" stroke-linejoin="round">Oracle Cygnus</text>
+<text x="126.8" y="464.0" font-size="12" text-anchor="start" fill="#5d626b" paint-order="stroke" stroke="#fff" stroke-width="4" stroke-linejoin="round">SFT · Stopped</text>
+<text x="380.0" y="464.0" font-size="12" text-anchor="end" fill="#23262d" paint-order="stroke" stroke="#fff" stroke-width="4" stroke-linejoin="round">72.7% → 94.1%</text>
 <line x1="287.7" y1="486.0" x2="350.8" y2="486.0" stroke="#02338a" stroke-width="1.6" marker-end="url(#ah)"/>
 <rect x="353.3" y="480.5" width="11" height="11" fill="#02338a"/>
 <circle cx="281.7" cy="486.0" r="5.5" fill="#fff" stroke="#23262d" stroke-width="2"/>
-<text x="20.0" y="518.0" font-size="13" text-anchor="start" fill="#23262d" font-weight="600">Oracle Deneb</text>
-<text x="119.2" y="518.0" font-size="12" text-anchor="start" fill="#5d626b">RL · Stopped</text>
-<text x="380.0" y="518.0" font-size="12" text-anchor="end" fill="#23262d">80.0% → 94.1%</text>
+<text x="20.0" y="518.0" font-size="13" text-anchor="start" fill="#23262d" font-weight="600" paint-order="stroke" stroke="#fff" stroke-width="4" stroke-linejoin="round">Oracle Deneb</text>
+<text x="119.2" y="518.0" font-size="12" text-anchor="start" fill="#5d626b" paint-order="stroke" stroke="#fff" stroke-width="4" stroke-linejoin="round">RL · Stopped</text>
+<text x="380.0" y="518.0" font-size="12" text-anchor="end" fill="#23262d" paint-order="stroke" stroke="#fff" stroke-width="4" stroke-linejoin="round">80.0% → 94.1%</text>
 <line x1="314.0" y1="540.0" x2="350.8" y2="540.0" stroke="#02338a" stroke-width="1.6" marker-end="url(#ah)"/>
 <rect x="353.3" y="534.5" width="11" height="11" fill="#02338a"/>
 <circle cx="308.0" cy="540.0" r="5.5" fill="#fff" stroke="#23262d" stroke-width="2"/>

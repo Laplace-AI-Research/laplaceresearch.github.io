@@ -188,9 +188,9 @@ def fig_copy(narrow):
             act = ACTION[m["action"]]
             vals = f"{pct(m['afterA'] / 1000)} \u2192 {pct(m['afterAB'] / 1000)}"
             if narrow:
-                body.append(T(20, y - 30, name, 13, weight=600))
-                body.append(T(20 + 7.6 * len(name) + 8, y - 30, f"{ROLE[mid]} \u00b7 {act}", 12, fill=MUTED))
-                body.append(T(w - 20, y - 30, vals, 12, "end"))
+                body.append(T(20, y - 30, name, 13, weight=600, halo=True))
+                body.append(T(20 + 7.6 * len(name) + 8, y - 30, f"{ROLE[mid]} \u00b7 {act}", 12, fill=MUTED, halo=True))
+                body.append(T(w - 20, y - 30, vals, 12, "end", halo=True))
             else:
                 body.append(T(20, cy + 4, name, 13, weight=600 if mid != "base" else None))
                 body.append(T(130, cy + 4, ROLE[mid], 11, fill=MUTED))
