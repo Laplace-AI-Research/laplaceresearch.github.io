@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <title>Introducing Laplace Oracle: Our family of models that buy evidence before they forecast | Laplace Research</title>
-    <meta name="description" content="We trained six internal models to buy observations, report probabilities and decide when to stop. In one diagnostic, every trained model declined a duplicate reading, yet every one changed its forecast when it was supplied." />
+    <meta name="description" content="We trained six models to buy observations, report probabilities and decide when to stop, and we are releasing all six with their code and report. In one diagnostic, every trained model declined a duplicate reading, yet every one changed its forecast when it was supplied." />
     <meta name="theme-color" content="#f6f5f2" />
     <meta name="color-scheme" content="only light" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
@@ -18,7 +18,7 @@
     <meta property="og:type" content="article" />
     <meta property="og:site_name" content="Laplace Research" />
     <meta property="og:title" content="Introducing Laplace Oracle: Our family of models that buy evidence before they forecast" />
-    <meta property="og:description" content="Six internal models declined a duplicate reading, yet their forecasts moved when it was supplied. RL's effect was uncertain and a do-nothing baseline beat every adapter." />
+    <meta property="og:description" content="Six open models declined a duplicate reading, yet their forecasts moved when it was supplied. RL's effect was uncertain and a do-nothing baseline beat every adapter." />
     <meta property="og:url" content="https://laplaceresearch.org/oracle/" />
     <meta property="og:image" content="https://laplaceresearch.org/oracle/assets/social-1200x630.jpg" />
     <meta property="og:image:width" content="1200" />
@@ -26,7 +26,7 @@
     <meta property="og:image:alt" content="Night sky with the Milky Way behind the article title and a small diagram of one sensor wired to two displays" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Introducing Laplace Oracle: Our family of models that buy evidence before they forecast" />
-    <meta name="twitter:description" content="Six internal models declined a duplicate reading, yet their forecasts moved when it was supplied. RL's effect was uncertain and a do-nothing baseline beat every adapter." />
+    <meta name="twitter:description" content="Six open models declined a duplicate reading, yet their forecasts moved when it was supplied. RL's effect was uncertain and a do-nothing baseline beat every adapter." />
     <meta name="twitter:image" content="https://laplaceresearch.org/oracle/assets/social-1200x630.jpg" />
     <meta name="twitter:image:alt" content="Night sky with the Milky Way behind the article title and a small diagram of one sensor wired to two displays" />
 
@@ -35,7 +35,7 @@
         "@context": "https://schema.org",
         "@type": "Article",
         "headline": "Introducing Laplace Oracle: Our family of models that buy evidence before they forecast",
-        "description": "We trained six internal models to buy observations, report probabilities and decide when to stop. In one diagnostic, every trained model declined a duplicate reading, yet every one changed its forecast when it was supplied.",
+        "description": "We trained six open models to buy observations, report probabilities and decide when to stop. In one diagnostic, every trained model declined a duplicate reading, yet every one changed its forecast when it was supplied.",
         "datePublished": "2026-11-30",
         "dateModified": "2026-11-30",
         "mainEntityOfPage": "https://laplaceresearch.org/oracle/",
@@ -60,7 +60,7 @@
     <script>document.documentElement.classList.add("js")</script>
     <link rel="stylesheet" href="/site.css?v=20261126-7" />
     <link rel="stylesheet" href="/article.css?v=20261126-2" />
-    <link rel="stylesheet" href="/oracle/article-local.css?v=20261130-1" />
+    <link rel="stylesheet" href="/oracle/article-local.css?v=20261130-2" />
   </head>
 
   <body>
@@ -126,7 +126,7 @@
         <div class="post-col post-body">
 
           <p class="post-lead">
-            We trained six internal models to buy observations, report probabilities and decide when to stop. In one
+            We trained six open models to buy observations, report probabilities and decide when to stop. In one
             controlled diagnostic, every trained model declined a duplicate reading, yet every model changed its
             forecast when that reading was supplied anyway.
           </p>
@@ -207,7 +207,7 @@
               <li><a href="#validity">Valid output is not correct reasoning</a></li>
               <li><a href="#lessons">What we take from it</a></li>
               <li><a href="#limits">Limitations</a></li>
-              <li><a href="#availability">Availability</a></li>
+              <li><a href="#availability">Get Oracle</a></li>
               <li><a href="#methods">Methods</a></li>
               <li><a href="#sources">Sources and data</a></li>
             </ol>
@@ -286,7 +286,7 @@
                 /></picture>
               </div>
               <figcaption id="fig5-cap">
-                Fig. 2. How the six internal adapters relate. Training families supplied every training world; the XOR
+                Fig. 2. How the six adapters relate. Training families supplied every training world; the XOR
                 and switch mechanisms appear only in evaluation. Each RL model is compared with its own SFT parent on
                 the same held-out worlds and budgets.
                 <span class="fig-downloads">Download: <a href="/oracle/figures/fig5-lineage.svg">SVG</a>
@@ -597,23 +597,30 @@
           </section>
 
           <section aria-labelledby="availability">
-            <h2 id="availability">Availability</h2>
+            <h2 id="availability">Get Oracle</h2>
             <div class="oracle-availability">
-              <p><strong>What this release includes.</strong> Oracle is released as source code, a research report and data. The models themselves stay internal.</p>
+              <p><strong>Everything is public.</strong> Oracle is released as six models, the source code, a research report and data.</p>
               <ul>
+                <li>Models on Hugging Face, each a rank-16 LoRA adapter for Thinking Machines Inkling 2 Mini:
+                  <ul class="oracle-model-links">
+                  <li><a href="https://huggingface.co/Laplace-AI-Research/Oracle-Lyra" target="_blank" rel="noopener noreferrer">Oracle-Lyra</a></li>
+                  <li><a href="https://huggingface.co/Laplace-AI-Research/Oracle-Vega" target="_blank" rel="noopener noreferrer">Oracle-Vega</a></li>
+                  <li><a href="https://huggingface.co/Laplace-AI-Research/Oracle-Aquila" target="_blank" rel="noopener noreferrer">Oracle-Aquila</a></li>
+                  <li><a href="https://huggingface.co/Laplace-AI-Research/Oracle-Altair" target="_blank" rel="noopener noreferrer">Oracle-Altair</a></li>
+                  <li><a href="https://huggingface.co/Laplace-AI-Research/Oracle-Cygnus" target="_blank" rel="noopener noreferrer">Oracle-Cygnus</a></li>
+                  <li><a href="https://huggingface.co/Laplace-AI-Research/Oracle-Deneb" target="_blank" rel="noopener noreferrer">Oracle-Deneb</a></li>
+                  </ul>
+                </li>
                 <li>On GitHub: the <a href="https://github.com/Laplace-AI-Research/oracle" target="_blank" rel="noopener noreferrer">Oracle repository</a> with the simulator, training and replay code, the
                   <a href="https://github.com/Laplace-AI-Research/oracle/blob/main/docs/research-report.md" target="_blank" rel="noopener noreferrer">full research report</a> and the
                   <a href="https://github.com/Laplace-AI-Research/oracle/blob/main/docs/results/scorecard.json" target="_blank" rel="noopener noreferrer">aggregate scorecard</a>.</li>
                 <li>Published with this page: the figures, the <a href="/oracle/data/results.json">aggregate results</a>, the
                   <a href="/oracle/data/figure-data.json">plotted values</a> and the disclosed scripted fixture used in the
                   <a href="/playground/oracle/">Playground</a>.</li>
-                <li>The six trained adapters remain internal and are not available for download.</li>
-                <li>Replaying the original episodes in full requires private artifacts that are not included.</li>
-                <li>Code is licensed under Apache-2.0. Documentation, figures and disclosed data are licensed under CC BY
-                  4.0, within the scope stated with each artifact.</li>
-                <li>Model redistribution is a separate question and is not granted.</li>
+                <li>Code and adapters are Apache-2.0. Documentation, figures and data are CC BY 4.0. The base model is used
+                  under its own terms and use policy; see <a href="/licenses/#oracle">licenses</a>.</li>
               </ul>
-              <p class="oracle-availability-note">The repository lets anyone run the simulator and inspect the fixture and aggregate results. It does not reproduce the learned results on its own, because the original episodes and weights are private.</p>
+              <p class="oracle-availability-note">All numbers here were measured through the hosted training stack. Running an adapter on a local copy of the base model has not been checked for exact parity with them.</p>
             </div>
           </section>
 
@@ -649,7 +656,7 @@
             <div><dt>Version</dt><dd>1.0</dd></div>
             <div><dt>Published</dt><dd>30 November 2026</dd></div>
             <div><dt>Authors</dt><dd>Arya Somu, Bruce Nshuti Hirwa</dd></div>
-            <div><dt>Licence</dt><dd>Article, figures and data CC BY 4.0; models not distributed</dd></div>
+            <div><dt>Licence</dt><dd>Models and code Apache-2.0; article, figures and data CC BY 4.0</dd></div>
           </dl>
 
           <h3>Cite this release</h3>
@@ -670,8 +677,8 @@
             <div>
               <h2>Browse the collection</h2>
               <p>
-                See all six Oracle models, their lineage and their held-out scores on the models page. The weights are
-                internal and not released.
+                See all six Oracle models, their lineage and their held-out scores on the models page. Each one links its
+                weights on Hugging Face.
               </p>
             </div>
             <a class="post-cta-btn" href="/models/#oracle">
@@ -699,7 +706,7 @@
       <footer class="foot">
         <a class="brand" href="/"><span class="mark" aria-hidden="true"></span>Laplace Research</a>
         <div class="cols">
-          <nav aria-label="Research"><a href="/signet/">Signet</a><a href="/convictionbench/">ConvictionBench</a><a href="/tarot-draw/">Tarot-Draw</a><a href="/research/">All research</a><a href="/agenda/">Research agenda</a></nav>
+          <nav aria-label="Research"><a href="/oracle/">Oracle</a><a href="/signet/">Signet</a><a href="/convictionbench/">ConvictionBench</a><a href="/tarot-draw/">Tarot-Draw</a><a href="/research/">All research</a><a href="/agenda/">Research agenda</a></nav>
           <nav aria-label="Lab"><a href="/about/">About</a><a href="/models/">Models</a><a href="/playground/">Playground</a><a href="/safety/">Safety</a><a href="/collaborate/">Collaborate</a><a href="mailto:inquiries@laplaceresearch.org">Inquiries</a></nav>
           <nav aria-label="Elsewhere"><a href="https://github.com/Laplace-AI-Research" target="_blank" rel="noopener noreferrer">GitHub</a><a href="https://huggingface.co/Laplace-AI-Research" target="_blank" rel="noopener noreferrer">Hugging Face</a><a href="https://convictionbench.org/#leaderboard" target="_blank" rel="noopener noreferrer">Leaderboard</a></nav>
         </div>

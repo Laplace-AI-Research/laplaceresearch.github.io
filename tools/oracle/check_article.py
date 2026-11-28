@@ -61,7 +61,7 @@ has(f"{eps:,} model episodes")
 check(fig["copy_sensor"]["exact"]["independent"] in ("16/17", 16/17) or abs(float(fig["copy_sensor"]["exact"]["independent"]) - 16/17) < 1e-9, "figure data exact independent mismatch") if isinstance(fig.get("copy_sensor"), dict) and "exact" in fig["copy_sensor"] else None
 
 # style and release boundary
-for bad in ("\u2014", "&mdash;", "fully open", "download the models", "independently reproducible from this page", "open-weight model launch"):
+for bad in ("\u2014", "&mdash;", "fully open", "independently reproducible from this page", "open-weight model launch"):
     check(bad not in page.lower() if bad.islower() else bad not in page, f"forbidden text: {bad!r}")
 bundle = [p for p in (ROOT / "oracle").rglob("*") if p.is_file()] + [ROOT / "tools/og/oracle.html"]
 for p in bundle:
@@ -69,7 +69,7 @@ for p in bundle:
     if p.suffix in (".html", ".json", ".svg", ".md", ".css", ".py", ".sh"):
         s = p.read_text()
         for pat in (r"github\.com/Laplace-AI-Research/oracle(?!\"|/blob/main/docs/research-report\.md\"|/blob/main/docs/results/scorecard\.json\")", r"tinker://", r"sk-[A-Za-z0-9]{16}", r"hf_[A-Za-z0-9]{20}",
-                    r"huggingface\.co/Laplace-AI-Research/Oracle", r"sealed", r"seed[_ -]?bank"):
+                    r"huggingface\.co/Laplace-AI-Research/Oracle(?!-(?:Lyra|Vega|Aquila|Altair|Cygnus|Deneb)\")", r"sealed", r"seed[_ -]?bank"):
             for m in re.finditer(pat, s, re.I):
                 ctx = s[max(0, m.start() - 40): m.end() + 40]
                 if pat == "sealed" and ("sealed instances" in ctx or "sealed evaluation" in ctx):

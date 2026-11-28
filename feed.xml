@@ -20,7 +20,7 @@
     <author><name>Arya Somu</name></author>
     <author><name>Bruce Nshuti Hirwa</name></author>
     <category term="Models" />
-    <summary>Six internal models trained to buy observations, report probabilities and decide when to stop. Every one declined a copied reading, yet every one changed its forecast when that reading was supplied. RL's effect on held-out worlds was uncertain, and a prior-only baseline scored above all six.</summary>
+    <summary>Six open models trained to buy observations, report probabilities and decide when to stop. Every one declined a copied reading, yet every one changed its forecast when that reading was supplied. RL's effect on held-out worlds was uncertain, and a prior-only baseline scored above all six.</summary>
   </entry>
 
   <entry>

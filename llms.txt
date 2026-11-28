@@ -6,7 +6,7 @@ Laplace Research releases open-weight models, benchmarks, evaluation inputs, and
 
 ## Research & Releases
 
-- [Introducing Laplace Oracle: Our family of models that buy evidence before they forecast](https://laplaceresearch.org/oracle/): A model family whose weights are internal and not released. Six rank-16 LoRA adapters on Thinking Machines Inkling 2 Mini (three SFT seeds and their RL descendants) learned to buy observations, report probabilities and stop in synthetic binary worlds. In a copy-sensor diagnostic every trained adapter declined a duplicate reading yet changed its forecast when it was supplied. On structural holdouts (452 worlds, 12,656 model episodes) RL minus SFT mean net reward was +0.01325 with a 95% world-and-seed interval of −0.00825 to +0.03314, and the prior-only baseline (−0.21697) beat every adapter. Code, report and aggregate results: https://github.com/Laplace-AI-Research/oracle. Released November 30, 2026.
+- [Introducing Laplace Oracle: Our family of models that buy evidence before they forecast](https://laplaceresearch.org/oracle/): Six rank-16 LoRA adapters on Thinking Machines Inkling 2 Mini (three SFT seeds and their RL descendants) learned to buy observations, report probabilities and stop in synthetic binary worlds. In a copy-sensor diagnostic every trained adapter declined a duplicate reading yet changed its forecast when it was supplied. On structural holdouts (452 worlds, 12,656 model episodes) RL minus SFT mean net reward was +0.01325 with a 95% world-and-seed interval of −0.00825 to +0.03314, and the prior-only baseline (−0.21697) beat every adapter. Code, report and aggregate results: https://github.com/Laplace-AI-Research/oracle. Released November 30, 2026.
 - [When thinking helps models believe forged records](https://laplaceresearch.org/research/thinking-and-forged-records/): A paired ConvictionBench experiment on four open models (Qwen3-1.7B, Qwen3-8B, Qwen3.5-9B, Granite-4.2-8B) over the same 1,257 synthetic episodes. Thinking mode (sampled, 4,096-token budget, vLLM) raised final-answer accuracy by 10–34 points versus non-thinking greedy decoding, while forged-record resistance fell in every model (significantly in three). Chart data is downloadable. Published November 27, 2026.
 - [Signet](https://laplaceresearch.org/signet/): Three open models (Signet-2B, Signet-4B, Signet-9B, built on Qwen3.5, Apache-2.0) trained with GRPO to adopt genuine tool records and reject identical records forged or pasted into chat — including unseen formats — while still accepting valid corrections. Signet-4B achieves 98.5% held-out accuracy (+37.9 pts vs base) and 98.1% forged-record resistance (+85.3 pts); Signet-9B achieves 97.8% held-out accuracy and 97.9% forged-record resistance. Released November 24, 2026.
 - [ConvictionBench](https://laplaceresearch.org/convictionbench/): A benchmark of 26,478 generated episodes measuring how language models revise answers under varying evidence quality and social pressure, accompanied by a [technical paper (PDF)](https://laplaceresearch.org/convictionbench/paper.pdf) and [live leaderboard](https://convictionbench.org/#leaderboard). Released November 10, 2026 (updated November 19, 2026). Dataset licensed under CC BY 4.0.
@@ -14,10 +14,16 @@ Laplace Research releases open-weight models, benchmarks, evaluation inputs, and
 
 ## Open Models
 
-- [Models Directory](https://laplaceresearch.org/models/): Full comparison matrix and Hugging Face repository IDs for all nine open checkpoints.
+- [Models Directory](https://laplaceresearch.org/models/): Full comparison matrix and Hugging Face repository IDs for all fifteen open checkpoints.
 - `Laplace-AI-Research/Signet-9B` (Qwen3.5-9B, merged bf16 + LoRA, Apache-2.0) — Flagship channel-provenance model.
 - `Laplace-AI-Research/Signet-4B` (Qwen3.5-4B, LoRA r16, Apache-2.0) — Highest held-out accuracy (98.5%) and best per parameter.
 - `Laplace-AI-Research/Signet-2B` (Qwen3.5-2B, LoRA, Apache-2.0) — Compact model for tight memory budgets.
+- `Laplace-AI-Research/Oracle-Lyra` (Inkling 2 Mini, LoRA r16, Apache-2.0) — SFT, seed 173.
+- `Laplace-AI-Research/Oracle-Vega` (Inkling 2 Mini, LoRA r16, Apache-2.0) — RL from Lyra.
+- `Laplace-AI-Research/Oracle-Aquila` (Inkling 2 Mini, LoRA r16, Apache-2.0) — SFT, seed 271; the model in the Playground.
+- `Laplace-AI-Research/Oracle-Altair` (Inkling 2 Mini, LoRA r16, Apache-2.0) — RL from Aquila; highest held-out reward.
+- `Laplace-AI-Research/Oracle-Cygnus` (Inkling 2 Mini, LoRA r16, Apache-2.0) — SFT, seed 389; fewest credits.
+- `Laplace-AI-Research/Oracle-Deneb` (Inkling 2 Mini, LoRA r16, Apache-2.0) — RL from Cygnus.
 - `Laplace-AI-Research/Conviction-Anchor-1.7B` (Qwen3-1.7B LoRA, SFT, Apache-2.0) — Conviction Series SFT baseline (58.0% accuracy, 53.1% forged resistance).
 - `Laplace-AI-Research/Conviction-Vector-1.7B` (Qwen3-1.7B LoRA, GRPO, Apache-2.0) — Highest held-out accuracy in the 1.7B Conviction Series (64.4%).
 - `Laplace-AI-Research/Conviction-Meridian-1.7B` (Qwen3-1.7B LoRA, SFT then GRPO, Apache-2.0) — Highest forged-record resistance in the 1.7B Conviction Series (57.8%).
