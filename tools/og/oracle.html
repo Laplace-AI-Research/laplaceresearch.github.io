@@ -1,0 +1,44 @@
+<!doctype html>
+<!-- Source for /oracle/assets/social-1200x630.jpg. Serve the repo root and run:
+     google-chrome --headless --hide-scrollbars --window-size=1200,630 \
+       --screenshot=/tmp/oracle-og.png http://127.0.0.1:8000/tools/og/oracle.html
+     convert /tmp/oracle-og.png -quality 86 oracle/assets/social-1200x630.jpg
+     The photograph is editorial (see /oracle/assets/PROVENANCE.md); the motif is the same-sensor wiring from Fig. 1. -->
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="/site.css" />
+<style>
+  html, body { margin: 0; width: 1200px; height: 630px; overflow: hidden; }
+  body::before { display: none; }
+  .og { position: relative; width: 1200px; height: 630px; background: #0b1220 url("/oracle/assets/photo-1200x630.jpg") center / cover; }
+  .og-mark { position: absolute; right: 48px; top: 40px; width: 64px; opacity: 0.9; }
+  .og-url { position: absolute; top: 48px; left: 48px; padding: 8px 14px; background: #fff; color: #23262d; font: 14px var(--mono); letter-spacing: 0.02em; }
+  .og-card { position: absolute; left: 48px; bottom: 48px; width: 760px; padding: 36px 40px 40px; background: #f5f5f3; }
+  .og-kicker { display: flex; align-items: center; gap: 12px; margin: 0 0 20px; color: rgba(35,38,45,.62); font: 15px var(--mono); letter-spacing: 0.08em; text-transform: uppercase; }
+  .og-kicker::before { content: ""; width: 8px; height: 8px; background: #02338a; }
+  .og h1 { margin: 0 0 16px; color: #23262d; font: 500 52px/1.05 var(--serif); letter-spacing: -0.028em; }
+  .og p { margin: 0; color: rgba(35,38,45,.72); font: 20px/1.45 var(--sans); }
+  .og-motif { position: absolute; right: 48px; bottom: 48px; width: 300px; height: 172px; background: rgba(245,245,243,.94); }
+</style>
+</head>
+<body>
+  <div class="og">
+    <span class="og-url">laplaceresearch.org/oracle</span>
+    <img class="og-mark" src="/assets/brand/laplace-mark-white.svg" alt="" />
+    <div class="og-card">
+      <p class="og-kicker">Research study &middot; Oracle</p>
+      <h1>Oracle: would you pay twice for the same evidence?</h1>
+      <p>In one controlled diagnostic, six internal models declined a duplicate reading. Their forecasts still moved when it was supplied.</p>
+    </div>
+    <svg class="og-motif" viewBox="0 0 300 172" font-family="Geist Mono, monospace" font-size="11" letter-spacing=".04em" aria-hidden="true">
+      <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#23262d"/></marker></defs>
+      <rect x="20" y="62" width="70" height="48" fill="#fff" stroke="#23262d" stroke-width="1.6"/><text x="55" y="91" text-anchor="middle" fill="#23262d">SENSOR</text>
+      <path d="M90 86 C130 86 130 44 176 44" fill="none" stroke="#02338a" stroke-width="1.6" marker-end="url(#a)"/>
+      <path d="M90 86 C130 86 130 128 176 128" fill="none" stroke="#02338a" stroke-width="1.6" marker-end="url(#a)"/>
+      <rect x="180" y="20" width="96" height="48" fill="#fff" stroke="#8d9199" stroke-dasharray="4 3"/><text x="228" y="49" text-anchor="middle" fill="#5d626b">DISPLAY A</text>
+      <rect x="180" y="104" width="96" height="48" fill="#fff" stroke="#8d9199" stroke-dasharray="4 3"/><text x="228" y="133" text-anchor="middle" fill="#5d626b">DISPLAY B</text>
+    </svg>
+  </div>
+</body>
+</html>

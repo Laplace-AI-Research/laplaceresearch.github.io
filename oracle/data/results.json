@@ -1,0 +1,315 @@
+{
+  "source": {
+    "repository": "Laplace-AI-Research/oracle (private)",
+    "revision": "d95df2495ca3c0e1eda946e01f2bae59cf747fd3",
+    "file": "docs/results/scorecard.json",
+    "sha256": "9aae7947e0b2471212cc1f078c1c3d1dd3cc689c2bdde33955c9673d2e1ae83b",
+    "license": "CC BY 4.0 (Laplace AI Research, Laplace Oracle)"
+  },
+  "units": "mean net reward per episode; higher is better; reward = -(p-y)^2 - 0.01*credits - 0.02*generated_tokens/512 for valid forecasts, -2.1 for invalid; symbolic baselines have no token penalty",
+  "panels": {
+    "iid": {
+      "worlds": 384,
+      "episodes_per_arm": 1536,
+      "rl_minus_sft": {
+        "estimate": 0.0020669691840277775,
+        "ci95_world_and_seed": [
+          -0.0024889944742838535,
+          0.008728010141330293
+        ],
+        "ci95_world_cluster": [
+          -0.0011561743286132827,
+          0.00553849683566623
+        ],
+        "practical_threshold": 0.01,
+        "by_seed_pair": {
+          "173": 0.001458128417968749,
+          "271": 0.006522107096354167,
+          "389": -0.0017793279622395832
+        },
+        "bootstrap_draws": 4000
+      },
+      "arms": {
+        "base": {
+          "name": "Inkling 2 Mini base",
+          "mean_net_reward": -0.889875208984375,
+          "valid_rate": 0.6432291666666666,
+          "episodes": 1536,
+          "brier": 0.49481376692708334,
+          "mean_credits": 0.21809895833333334,
+          "mean_generated_tokens": 22.805989583333332
+        },
+        "sft-173": {
+          "name": "Oracle Lyra",
+          "mean_net_reward": -0.188271521484375,
+          "valid_rate": 1.0,
+          "episodes": 1536,
+          "brier": 0.17221276497395832,
+          "mean_credits": 1.453125,
+          "mean_generated_tokens": 39.104166666666664
+        },
+        "rl-173": {
+          "name": "Oracle Vega",
+          "mean_net_reward": -0.18681339306640624,
+          "valid_rate": 1.0,
+          "episodes": 1536,
+          "brier": 0.17115228059895835,
+          "mean_credits": 1.4147135416666667,
+          "mean_generated_tokens": 38.7578125
+        },
+        "sft-271": {
+          "name": "Oracle Aquila",
+          "mean_net_reward": -0.19877938330078124,
+          "valid_rate": 1.0,
+          "episodes": 1536,
+          "brier": 0.18215350846354167,
+          "mean_credits": 1.5006510416666667,
+          "mean_generated_tokens": 41.455729166666664
+        },
+        "rl-271": {
+          "name": "Oracle Altair",
+          "mean_net_reward": -0.1922572762044271,
+          "valid_rate": 1.0,
+          "episodes": 1536,
+          "brier": 0.17791513346354168,
+          "mean_credits": 1.28125,
+          "mean_generated_tokens": 39.158854166666664
+        },
+        "sft-389": {
+          "name": "Oracle Cygnus",
+          "mean_net_reward": -0.1830254384765625,
+          "valid_rate": 1.0,
+          "episodes": 1536,
+          "brier": 0.17042188216145834,
+          "mean_credits": 1.1236979166666667,
+          "mean_generated_tokens": 34.984375
+        },
+        "rl-389": {
+          "name": "Oracle Deneb",
+          "mean_net_reward": -0.1848047664388021,
+          "valid_rate": 1.0,
+          "episodes": 1536,
+          "brier": 0.17049598958333334,
+          "mean_credits": 1.2864583333333333,
+          "mean_generated_tokens": 36.971354166666664
+        },
+        "control-exact": {
+          "name": "Exact acquisition reference",
+          "mean_net_reward": -0.18032672786458334,
+          "valid_rate": 1.0,
+          "episodes": 1536,
+          "brier": 0.16862750911458332,
+          "mean_credits": 1.169921875
+        },
+        "control-prior": {
+          "name": "Prior-only",
+          "mean_net_reward": -0.20919030989583334,
+          "valid_rate": 1.0,
+          "episodes": 1536,
+          "brier": 0.20919030989583334,
+          "mean_credits": 0
+        },
+        "control-all_evidence": {
+          "name": "All-evidence diagnostic (privileged)",
+          "mean_net_reward": -0.1376686953125,
+          "valid_rate": 1.0,
+          "episodes": 1536,
+          "brier": 0.1376686953125,
+          "mean_credits": 0
+        },
+        "control-random": {
+          "name": "Random legal purchases, exact readout",
+          "mean_net_reward": -0.19733455208333334,
+          "valid_rate": 1.0,
+          "episodes": 1536,
+          "brier": 0.18381892708333333,
+          "mean_credits": 1.3515625
+        },
+        "control-fixed": {
+          "name": "Fixed price order, exact readout",
+          "mean_net_reward": -0.19111788671875,
+          "valid_rate": 1.0,
+          "episodes": 1536,
+          "brier": 0.16891736588541667,
+          "mean_credits": 2.2200520833333335
+        },
+        "control-greedy": {
+          "name": "Greedy one-step value, exact readout",
+          "mean_net_reward": -0.180540736328125,
+          "valid_rate": 1.0,
+          "episodes": 1536,
+          "brier": 0.16884802799479168,
+          "mean_credits": 1.1692708333333333
+        }
+      }
+    },
+    "ood": {
+      "worlds": 452,
+      "episodes_per_arm": 1808,
+      "rl_minus_sft": {
+        "estimate": 0.013253068169247787,
+        "ci95_world_and_seed": [
+          -0.008246816119330746,
+          0.03313640525788164
+        ],
+        "ci95_world_cluster": [
+          0.008571910231148597,
+          0.01799928770510694
+        ],
+        "practical_threshold": 0.01,
+        "by_seed_pair": {
+          "173": 0.016476672842920353,
+          "271": 0.033037723727876105,
+          "389": -0.009755192063053097
+        },
+        "bootstrap_draws": 4000,
+        "by_family": {
+          "switch": {
+            "estimate": 0.00817656259218289,
+            "ci95_world": [
+              0.0039023559711467513,
+              0.012544174972345133
+            ],
+            "worlds": 226
+          },
+          "xor": {
+            "estimate": 0.018329573746312684,
+            "ci95_world": [
+              0.010039513866611366,
+              0.026772649071257378
+            ],
+            "worlds": 226
+          }
+        }
+      },
+      "arms": {
+        "base": {
+          "name": "Inkling 2 Mini base",
+          "mean_net_reward": -1.1433152558075221,
+          "valid_rate": 0.5248893805309734,
+          "episodes": 1808,
+          "brier": 0.6129687057522124,
+          "mean_credits": 0.915929203539823,
+          "mean_generated_tokens": 32.55862831858407
+        },
+        "sft-173": {
+          "name": "Oracle Lyra",
+          "mean_net_reward": -0.24938376534845133,
+          "valid_rate": 1.0,
+          "episodes": 1808,
+          "brier": 0.23398631305309733,
+          "mean_credits": 1.386061946902655,
+          "mean_generated_tokens": 39.3429203539823
+        },
+        "rl-173": {
+          "name": "Oracle Vega",
+          "mean_net_reward": -0.23290709250553096,
+          "valid_rate": 1.0,
+          "episodes": 1808,
+          "brier": 0.21757272787610618,
+          "mean_credits": 1.3810840707964602,
+          "mean_generated_tokens": 39.00221238938053
+        },
+        "sft-271": {
+          "name": "Oracle Aquila",
+          "mean_net_reward": -0.26338167436393806,
+          "valid_rate": 1.0,
+          "episodes": 1808,
+          "brier": 0.24445390542035397,
+          "mean_credits": 1.7140486725663717,
+          "mean_generated_tokens": 45.75442477876106
+        },
+        "rl-271": {
+          "name": "Oracle Altair",
+          "mean_net_reward": -0.23034395063606194,
+          "valid_rate": 1.0,
+          "episodes": 1808,
+          "brier": 0.21675478097345133,
+          "mean_credits": 1.2035398230088497,
+          "mean_generated_tokens": 39.77654867256637
+        },
+        "sft-389": {
+          "name": "Oracle Cygnus",
+          "mean_net_reward": -0.2581143434734513,
+          "valid_rate": 1.0,
+          "episodes": 1808,
+          "brier": 0.24766840873893806,
+          "mean_credits": 0.9137168141592921,
+          "mean_generated_tokens": 33.50442477876106
+        },
+        "rl-389": {
+          "name": "Oracle Deneb",
+          "mean_net_reward": -0.26786953553650444,
+          "valid_rate": 1.0,
+          "episodes": 1808,
+          "brier": 0.25342392920353984,
+          "mean_credits": 1.295353982300885,
+          "mean_generated_tokens": 38.19690265486726
+        },
+        "control-exact": {
+          "name": "Exact acquisition reference",
+          "mean_net_reward": -0.18166027378318583,
+          "valid_rate": 1.0,
+          "episodes": 1808,
+          "brier": 0.16763372511061947,
+          "mean_credits": 1.4026548672566372
+        },
+        "control-prior": {
+          "name": "Prior-only",
+          "mean_net_reward": -0.21697083849557522,
+          "valid_rate": 1.0,
+          "episodes": 1808,
+          "brier": 0.21697083849557522,
+          "mean_credits": 0
+        },
+        "control-all_evidence": {
+          "name": "All-evidence diagnostic (privileged)",
+          "mean_net_reward": -0.10063537389380531,
+          "valid_rate": 1.0,
+          "episodes": 1808,
+          "brier": 0.10063537389380531,
+          "mean_credits": 0
+        },
+        "control-random": {
+          "name": "Random legal purchases, exact readout",
+          "mean_net_reward": -0.21099973672566372,
+          "valid_rate": 1.0,
+          "episodes": 1808,
+          "brier": 0.1970229668141593,
+          "mean_credits": 1.3976769911504425
+        },
+        "control-fixed": {
+          "name": "Fixed price order, exact readout",
+          "mean_net_reward": -0.19236927433628317,
+          "valid_rate": 1.0,
+          "episodes": 1808,
+          "brier": 0.16803299115044248,
+          "mean_credits": 2.433628318584071
+        },
+        "control-greedy": {
+          "name": "Greedy one-step value, exact readout",
+          "mean_net_reward": -0.19292134955752213,
+          "valid_rate": 1.0,
+          "episodes": 1808,
+          "brier": 0.1823129424778761,
+          "mean_credits": 1.0608407079646018
+        }
+      }
+    }
+  },
+  "seed_pairs": {
+    "173": [
+      "Oracle Lyra",
+      "Oracle Vega"
+    ],
+    "271": [
+      "Oracle Aquila",
+      "Oracle Altair"
+    ],
+    "389": [
+      "Oracle Cygnus",
+      "Oracle Deneb"
+    ]
+  },
+  "units_note": "brier: all-attempt Brier (invalid scored 1); mean_credits: mean credits spent per episode; symbolic arms have zero token penalty"
+}

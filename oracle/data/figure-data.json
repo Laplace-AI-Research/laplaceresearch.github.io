@@ -1,0 +1,100 @@
+{
+  "source": {
+    "fixture": "playground/oracle/oracle-data.js",
+    "aggregates": {
+      "repository": "Laplace-AI-Research/oracle (private)",
+      "revision": "d95df2495ca3c0e1eda946e01f2bae59cf747fd3",
+      "file": "docs/results/scorecard.json",
+      "sha256": "9aae7947e0b2471212cc1f078c1c3d1dd3cc689c2bdde33955c9673d2e1ae83b",
+      "license": "CC BY 4.0 (Laplace AI Research, Laplace Oracle)"
+    }
+  },
+  "fig1_exact_posteriors": {
+    "after_A_positive": "4/5",
+    "after_A_and_copy": "4/5",
+    "after_A_and_independent_B": "16/17"
+  },
+  "fig2_copy_sensor_recorded": [
+    {
+      "model": "Inkling 2 Mini",
+      "action_after_A": "Bought B",
+      "forecast_after_A": 0.8,
+      "forecast_after_forced_A_B": 0.8
+    },
+    {
+      "model": "Oracle Lyra",
+      "action_after_A": "Stopped",
+      "forecast_after_A": 0.667,
+      "forecast_after_forced_A_B": 0.889
+    },
+    {
+      "model": "Oracle Vega",
+      "action_after_A": "Stopped",
+      "forecast_after_A": 0.714,
+      "forecast_after_forced_A_B": 0.889
+    },
+    {
+      "model": "Oracle Aquila",
+      "action_after_A": "Stopped",
+      "forecast_after_A": 0.8,
+      "forecast_after_forced_A_B": 0.905
+    },
+    {
+      "model": "Oracle Altair",
+      "action_after_A": "Stopped",
+      "forecast_after_A": 0.667,
+      "forecast_after_forced_A_B": 0.8
+    },
+    {
+      "model": "Oracle Cygnus",
+      "action_after_A": "Stopped",
+      "forecast_after_A": 0.727,
+      "forecast_after_forced_A_B": 0.941
+    },
+    {
+      "model": "Oracle Deneb",
+      "action_after_A": "Stopped",
+      "forecast_after_A": 0.8,
+      "forecast_after_forced_A_B": 0.941
+    }
+  ],
+  "fig3_rl_minus_sft": {
+    "ood": {
+      "estimate": 0.013253068169247787,
+      "ci95_world_and_seed": [
+        -0.008246816119330746,
+        0.03313640525788164
+      ],
+      "by_seed_pair": {
+        "173": 0.016476672842920353,
+        "271": 0.033037723727876105,
+        "389": -0.009755192063053097
+      },
+      "practical_threshold": 0.01
+    },
+    "iid": {
+      "estimate": 0.0020669691840277775,
+      "ci95_world_and_seed": [
+        -0.0024889944742838535,
+        0.008728010141330293
+      ],
+      "by_seed_pair": {
+        "173": 0.001458128417968749,
+        "271": 0.006522107096354167,
+        "389": -0.0017793279622395832
+      },
+      "practical_threshold": 0.01
+    }
+  },
+  "fig4_ood_mean_net_reward": {
+    "Exact acquisition reference": -0.18166027378318583,
+    "Prior-only": -0.21697083849557522,
+    "Oracle Altair": -0.23034395063606194,
+    "Oracle Vega": -0.23290709250553096,
+    "Oracle Lyra": -0.24938376534845133,
+    "Oracle Cygnus": -0.2581143434734513,
+    "Oracle Aquila": -0.26338167436393806,
+    "Oracle Deneb": -0.26786953553650444,
+    "Inkling 2 Mini base": -1.1433152558075221
+  }
+}

@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 638" width="400" height="638" role="img" aria-labelledby="t d" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" fill="#23262d">
+<title id="t">Same sensor versus independent sensors: exact probabilities</title><desc id="d">Two wiring diagrams with both displays positive. Same sensor: one physical sensor A feeds display A and display B; exact probability after A+ is 80% and after A+ and the copy is still 80%. Independent sensors: sensor A feeds display A and a separate sensor B feeds display B; exact probability after A+ is 80% and after A+ and B+ is 16/17, 94.1%. Generative law and exact calculation only; no model behavior.</desc>
+<rect width="400" height="638" fill="#ffffff"/>
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#23262d"/></marker></defs>
+<text x="20.0" y="30.0" font-size="15" text-anchor="start" fill="#23262d" font-weight="600">Same sensor</text>
+<text x="20.0" y="48.0" font-size="12" text-anchor="start" fill="#5d626b">Display B copies sensor A</text>
+<rect x="20.0" y="108.0" width="66.0" height="48.0" fill="#e8edf7" stroke="#02338a" stroke-width="1.2"/>
+<text x="53.0" y="128.0" font-size="10.5" text-anchor="middle" fill="#02338a" font-family="'Geist Mono', ui-monospace, Menlo, monospace" letter-spacing=".04em">SIGNAL</text>
+<text x="53.0" y="146.0" font-size="12" text-anchor="middle" fill="#23262d">on or off</text>
+<rect x="104.0" y="108.0" width="88.0" height="48.0" fill="#fff" stroke="#23262d" stroke-width="1.6"/>
+<text x="148.0" y="128.0" font-size="10.5" text-anchor="middle" fill="#23262d" font-family="'Geist Mono', ui-monospace, Menlo, monospace" letter-spacing=".04em">SENSOR A</text>
+<text x="148.0" y="145.0" font-size="12" text-anchor="middle" fill="#5d626b">80% accurate</text>
+<path d="M86 132.0 C95.0 132.0 95.0 132 102 132" fill="none" stroke="#23262d" stroke-width="1.4" marker-end="url(#ah)"/>
+<rect x="300.0" y="74.0" width="80.0" height="48.0" fill="#fff" stroke="#8d9199" stroke-width="1.2" stroke-dasharray="4 3"/>
+<text x="340.0" y="93.0" font-size="10.5" text-anchor="middle" fill="#5d626b" font-family="'Geist Mono', ui-monospace, Menlo, monospace" letter-spacing=".04em">DISPLAY A</text>
+<text x="340.0" y="112.0" font-size="13" text-anchor="middle" fill="#02338a" font-weight="600">Positive</text>
+<path d="M192 132 C246.0 132 246.0 98 298 98" fill="none" stroke="#02338a" stroke-width="1.4" marker-end="url(#ah)"/>
+<rect x="300.0" y="152.0" width="80.0" height="48.0" fill="#fff" stroke="#8d9199" stroke-width="1.2" stroke-dasharray="4 3"/>
+<text x="340.0" y="171.0" font-size="10.5" text-anchor="middle" fill="#5d626b" font-family="'Geist Mono', ui-monospace, Menlo, monospace" letter-spacing=".04em">DISPLAY B</text>
+<text x="340.0" y="190.0" font-size="13" text-anchor="middle" fill="#02338a" font-weight="600">Positive</text>
+<path d="M192 132 C246.0 132 246.0 176 298 176" fill="none" stroke="#02338a" stroke-width="1.4" marker-end="url(#ah)"/>
+<text x="340.0" y="136.0" font-size="11" text-anchor="middle" fill="#02338a">one wire, two ends</text>
+<line x1="20.0" y1="204.0" x2="380.0" y2="204.0" stroke="#d9d6cf" stroke-width="1"/>
+<text x="20.0" y="222.0" font-size="11" text-anchor="start" fill="#5d626b" font-family="'Geist Mono', ui-monospace, Menlo, monospace" letter-spacing=".04em">Exact probability the signal is on</text>
+<text x="20.0" y="244.0" font-size="13" text-anchor="start" fill="#23262d">After A+</text>
+<text x="380.0" y="244.0" font-size="15" text-anchor="end" fill="#02338a" font-weight="600">80%</text>
+<text x="20.0" y="266.0" font-size="13" text-anchor="start" fill="#23262d">After A+ and B+</text>
+<text x="380.0" y="266.0" font-size="15" text-anchor="end" fill="#02338a" font-weight="600">80%</text>
+<text x="20.0" y="294.0" font-size="12" text-anchor="start" fill="#5d626b">B adds a likelihood ratio of 1: odds stay 4:1</text>
+<text x="20.0" y="344.0" font-size="15" text-anchor="start" fill="#23262d" font-weight="600">Independent sensors</text>
+<text x="20.0" y="362.0" font-size="12" text-anchor="start" fill="#5d626b">Sensor B errs independently of A, given the signal</text>
+<rect x="20.0" y="422.0" width="66.0" height="48.0" fill="#e8edf7" stroke="#02338a" stroke-width="1.2"/>
+<text x="53.0" y="442.0" font-size="10.5" text-anchor="middle" fill="#02338a" font-family="'Geist Mono', ui-monospace, Menlo, monospace" letter-spacing=".04em">SIGNAL</text>
+<text x="53.0" y="460.0" font-size="12" text-anchor="middle" fill="#23262d">on or off</text>
+<rect x="104.0" y="388.0" width="88.0" height="48.0" fill="#fff" stroke="#23262d" stroke-width="1.6"/>
+<text x="148.0" y="408.0" font-size="10.5" text-anchor="middle" fill="#23262d" font-family="'Geist Mono', ui-monospace, Menlo, monospace" letter-spacing=".04em">SENSOR A</text>
+<text x="148.0" y="425.0" font-size="12" text-anchor="middle" fill="#5d626b">80% accurate</text>
+<path d="M86 446.0 C95.0 446.0 95.0 412 102 412" fill="none" stroke="#23262d" stroke-width="1.4" marker-end="url(#ah)"/>
+<rect x="104.0" y="466.0" width="88.0" height="48.0" fill="#fff" stroke="#23262d" stroke-width="1.6"/>
+<text x="148.0" y="486.0" font-size="10.5" text-anchor="middle" fill="#23262d" font-family="'Geist Mono', ui-monospace, Menlo, monospace" letter-spacing=".04em">SENSOR B</text>
+<text x="148.0" y="503.0" font-size="12" text-anchor="middle" fill="#5d626b">80% accurate</text>
+<path d="M86 446.0 C95.0 446.0 95.0 490 102 490" fill="none" stroke="#23262d" stroke-width="1.4" marker-end="url(#ah)"/>
+<rect x="300.0" y="388.0" width="80.0" height="48.0" fill="#fff" stroke="#8d9199" stroke-width="1.2" stroke-dasharray="4 3"/>
+<text x="340.0" y="407.0" font-size="10.5" text-anchor="middle" fill="#5d626b" font-family="'Geist Mono', ui-monospace, Menlo, monospace" letter-spacing=".04em">DISPLAY A</text>
+<text x="340.0" y="426.0" font-size="13" text-anchor="middle" fill="#02338a" font-weight="600">Positive</text>
+<path d="M192 412 C246.0 412 246.0 412 298 412" fill="none" stroke="#23262d" stroke-width="1.4" marker-end="url(#ah)"/>
+<rect x="300.0" y="466.0" width="80.0" height="48.0" fill="#fff" stroke="#8d9199" stroke-width="1.2" stroke-dasharray="4 3"/>
+<text x="340.0" y="485.0" font-size="10.5" text-anchor="middle" fill="#5d626b" font-family="'Geist Mono', ui-monospace, Menlo, monospace" letter-spacing=".04em">DISPLAY B</text>
+<text x="340.0" y="504.0" font-size="13" text-anchor="middle" fill="#02338a" font-weight="600">Positive</text>
+<path d="M192 490 C246.0 490 246.0 490 298 490" fill="none" stroke="#23262d" stroke-width="1.4" marker-end="url(#ah)"/>
+<line x1="20.0" y1="518.0" x2="380.0" y2="518.0" stroke="#d9d6cf" stroke-width="1"/>
+<text x="20.0" y="536.0" font-size="11" text-anchor="start" fill="#5d626b" font-family="'Geist Mono', ui-monospace, Menlo, monospace" letter-spacing=".04em">Exact probability the signal is on</text>
+<text x="20.0" y="558.0" font-size="13" text-anchor="start" fill="#23262d">After A+</text>
+<text x="380.0" y="558.0" font-size="15" text-anchor="end" fill="#02338a" font-weight="600">80%</text>
+<text x="20.0" y="580.0" font-size="13" text-anchor="start" fill="#23262d">After A+ and B+</text>
+<text x="380.0" y="580.0" font-size="15" text-anchor="end" fill="#02338a" font-weight="600">94.1% (16/17)</text>
+<text x="20.0" y="608.0" font-size="12" text-anchor="start" fill="#5d626b">B multiplies the odds by 4 again: 4:1 becomes 16:1</text>
+</svg>
