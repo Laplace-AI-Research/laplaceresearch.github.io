@@ -309,7 +309,23 @@
               The reward used for RL and for evaluation is, for a valid final forecast <var>p</var> and outcome
               <var>y</var> (1 if true, 0 if false):
             </p>
-            <p class="oracle-formula">reward = &minus;(<var>p</var> &minus; <var>y</var>)&sup2; &minus; 0.01 &times; credits spent &minus; 0.02 &times; generated tokens / 512</p>
+            <div class="oracle-eq">
+              <math display="block" alttext="r equals minus open p minus y close squared, minus 0.01 c, minus 0.02 times t over 512">
+                <mrow>
+                  <mi mathvariant="normal">r</mi><mo>=</mo><mo>&minus;</mo>
+                  <msup><mrow><mo stretchy="false">(</mo><mi mathvariant="normal">p</mi><mo>&minus;</mo><mi mathvariant="normal">y</mi><mo stretchy="false">)</mo></mrow><mn>2</mn></msup>
+                  <mo>&minus;</mo><mn>0.01</mn><mo>&InvisibleTimes;</mo><mi mathvariant="normal">c</mi>
+                  <mo>&minus;</mo><mn>0.02</mn><mspace width="0.12em"></mspace><mfrac><mi mathvariant="normal">t</mi><mn>512</mn></mfrac>
+                </mrow>
+              </math>
+              <p class="oracle-eq-key">
+                <span><var>r</var>&ensp;reward</span>
+                <span><var>p</var>&ensp;reported probability</span>
+                <span><var>y</var>&ensp;outcome</span>
+                <span><var>c</var>&ensp;credits spent</span>
+                <span><var>t</var>&ensp;generated tokens</span>
+              </p>
+            </div>
             <p>
               The first term is the Brier score, a squared-error measure that is best on average when the reported
               probability equals the exact posterior. An episode without a valid final forecast scores &minus;2.1,
