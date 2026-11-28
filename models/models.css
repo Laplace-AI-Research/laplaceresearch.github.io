@@ -669,5 +669,3 @@ table.mmatrix {
     page-break-inside: avoid;
   }
 }
-
-.models-study-note p { margin: 0; padding: 14px 18px; background: var(--panel); font-size: 14px; line-height: 1.55; }

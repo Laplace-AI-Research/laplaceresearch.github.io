@@ -78,9 +78,10 @@
           <div class="models-hero-inner">
             <h1 id="t">Open models</h1>
             <p class="lede">
-              Nine open-weight models across three families. Every card links
-              the weights, the exact Hugging Face repo ID, and the run that
-              produced its numbers so every metric can be recomputed. How we evaluate
+              Nine open-weight models across three families, plus the six internal
+              Oracle models. Every open-weight card links the weights, the exact
+              Hugging Face repo ID, and the run that produced its numbers so every
+              metric can be recomputed. How we evaluate
               and release them is described in <a href="/safety/#evaluation-and-release">Safety &amp; Responsibility</a>.
             </p>
             <div class="btns">
@@ -108,20 +109,15 @@
           </div>
         </section>
 
-        <aside class="models-wrap models-study-note" aria-labelledby="oracle-study-t">
-          <p><b id="oracle-study-t">Research study, not an open model:</b> <a href="/oracle/">Oracle</a> trained six
-            internal adapters on Thinking Machines Inkling 2 Mini to study evidence acquisition. They are not listed
-            below because their weights are not released.</p>
-        </aside>
-
         <!-- STICKY FILTER & VIEW TOOLBAR -->
         <div class="models-bar" role="region" aria-label="Filter and view controls">
           <div class="models-bar-inner">
             <div class="filter-pills" role="group" aria-label="Filter by model family">
-              <button type="button" class="fpill" data-filter="all" aria-pressed="true">All families (9)</button>
+              <button type="button" class="fpill" data-filter="all" aria-pressed="true">All families (15)</button>
               <button type="button" class="fpill" data-filter="signet" aria-pressed="false">Signet (3)</button>
               <button type="button" class="fpill" data-filter="conviction" aria-pressed="false">Conviction Series (3)</button>
               <button type="button" class="fpill" data-filter="tarot-draw" aria-pressed="false">Tarot-Draw (3)</button>
+              <button type="button" class="fpill" data-filter="oracle" aria-pressed="false">Oracle (6)</button>
             </div>
             <div class="view-switch" role="group" aria-label="Display mode">
               <button type="button" class="vbtn" data-view="cards" aria-pressed="true">Cards</button>
@@ -491,6 +487,190 @@
             </div>
             <p class="fam-note">Development split, n = 3,000. Lower Brier is better; higher resolution is better. Research artifacts provided as is. <a href="/licenses/#disclaimer">Disclaimer</a></p>
           </section>
+
+          <!-- ORACLE -->
+          <section class="fam-block" id="oracle" data-family="oracle" aria-labelledby="oracle-title">
+            <div class="fam-banner">
+              <img src="/assets/covers/oracle-photo.jpg" alt="" width="1600" height="1067" />
+              <div class="fam-banner-card">
+                <div>
+                  <h2 id="oracle-title">Oracle</h2>
+                  <p>Inkling 2 Mini adapters that decide which evidence to buy, what probability it supports and when to stop.</p>
+                </div>
+                <div class="fam-banner-meta">
+                  <a class="fam-lic" href="/licenses/#oracle">Internal</a>
+                  <a class="fam-release" href="/oracle/">Release article &rarr;</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="mc-grid">
+              <article class="mc">
+                <div class="mc-head">
+                  <span class="mc-kicker"><span class="mc-dot" aria-hidden="true"></span>Oracle &middot; seed 173</span>
+                </div>
+                <h3>Lyra</h3>
+                <p class="mc-desc">Supervised on exact-teacher demonstrations. Parent of Vega.</p>
+                <div class="mc-specs">
+                  <span class="mc-spec">Inkling 2 Mini</span>
+                  <span class="mc-spec">LoRA r16</span>
+                  <span class="mc-spec">SFT</span>
+                </div>
+                <dl class="mc-stats">
+                  <div class="mc-stat">
+                    <dt>Held-out reward</dt>
+                    <dd>&minus;0.24938</dd>
+                  </div>
+                  <div class="mc-stat">
+                    <dt>Credits spent</dt>
+                    <dd>1.39</dd>
+                  </div>
+                </dl>
+                <div class="mc-links">
+                  <a href="/oracle/#experiment">Release article</a>
+                  <a href="/playground/oracle/">Playground</a>
+                  <span>Weights internal</span>
+                </div>
+              </article>
+              <article class="mc">
+                <div class="mc-head">
+                  <span class="mc-kicker"><span class="mc-dot" aria-hidden="true"></span>Oracle &middot; seed 173</span>
+                </div>
+                <h3>Vega</h3>
+                <p class="mc-desc">Reinforcement learning from Lyra. Second-best held-out reward in the family.</p>
+                <div class="mc-specs">
+                  <span class="mc-spec">Inkling 2 Mini</span>
+                  <span class="mc-spec">LoRA r16</span>
+                  <span class="mc-spec">SFT &rarr; RL</span>
+                </div>
+                <dl class="mc-stats">
+                  <div class="mc-stat">
+                    <dt>Held-out reward</dt>
+                    <dd>&minus;0.23291 <span class="mc-delta">+0.01648</span></dd>
+                  </div>
+                  <div class="mc-stat">
+                    <dt>Credits spent</dt>
+                    <dd>1.38</dd>
+                  </div>
+                </dl>
+                <div class="mc-links">
+                  <a href="/oracle/#experiment">Release article</a>
+                  <a href="/playground/oracle/">Playground</a>
+                  <span>Weights internal</span>
+                </div>
+              </article>
+              <article class="mc">
+                <div class="mc-head">
+                  <span class="mc-kicker"><span class="mc-dot" aria-hidden="true"></span>Oracle &middot; seed 271</span>
+                </div>
+                <h3>Aquila</h3>
+                <p class="mc-desc">Supervised on exact-teacher demonstrations. The model replayed in the Playground.</p>
+                <div class="mc-specs">
+                  <span class="mc-spec">Inkling 2 Mini</span>
+                  <span class="mc-spec">LoRA r16</span>
+                  <span class="mc-spec">SFT</span>
+                </div>
+                <dl class="mc-stats">
+                  <div class="mc-stat">
+                    <dt>Held-out reward</dt>
+                    <dd>&minus;0.26338</dd>
+                  </div>
+                  <div class="mc-stat">
+                    <dt>Credits spent</dt>
+                    <dd>1.71</dd>
+                  </div>
+                </dl>
+                <div class="mc-links">
+                  <a href="/oracle/#experiment">Release article</a>
+                  <a href="/playground/oracle/">Playground</a>
+                  <span>Weights internal</span>
+                </div>
+              </article>
+              <article class="mc is-flagship">
+                <div class="mc-head">
+                  <span class="mc-kicker"><span class="mc-dot" aria-hidden="true"></span>Oracle &middot; seed 271</span>
+                  <span class="mc-badge">Highest reward</span>
+                </div>
+                <h3>Altair</h3>
+                <p class="mc-desc">Reinforcement learning from Aquila. Highest held-out reward in the family.</p>
+                <div class="mc-specs">
+                  <span class="mc-spec">Inkling 2 Mini</span>
+                  <span class="mc-spec">LoRA r16</span>
+                  <span class="mc-spec">SFT &rarr; RL</span>
+                </div>
+                <dl class="mc-stats">
+                  <div class="mc-stat">
+                    <dt>Held-out reward</dt>
+                    <dd>&minus;0.23034 <span class="mc-delta">+0.03304</span></dd>
+                  </div>
+                  <div class="mc-stat">
+                    <dt>Credits spent</dt>
+                    <dd>1.20</dd>
+                  </div>
+                </dl>
+                <div class="mc-links">
+                  <a href="/oracle/#experiment">Release article</a>
+                  <a href="/playground/oracle/">Playground</a>
+                  <span>Weights internal</span>
+                </div>
+              </article>
+              <article class="mc">
+                <div class="mc-head">
+                  <span class="mc-kicker"><span class="mc-dot" aria-hidden="true"></span>Oracle &middot; seed 389</span>
+                </div>
+                <h3>Cygnus</h3>
+                <p class="mc-desc">Supervised on exact-teacher demonstrations. Spent the fewest credits.</p>
+                <div class="mc-specs">
+                  <span class="mc-spec">Inkling 2 Mini</span>
+                  <span class="mc-spec">LoRA r16</span>
+                  <span class="mc-spec">SFT</span>
+                </div>
+                <dl class="mc-stats">
+                  <div class="mc-stat">
+                    <dt>Held-out reward</dt>
+                    <dd>&minus;0.25811</dd>
+                  </div>
+                  <div class="mc-stat">
+                    <dt>Credits spent</dt>
+                    <dd>0.91</dd>
+                  </div>
+                </dl>
+                <div class="mc-links">
+                  <a href="/oracle/#experiment">Release article</a>
+                  <a href="/playground/oracle/">Playground</a>
+                  <span>Weights internal</span>
+                </div>
+              </article>
+              <article class="mc">
+                <div class="mc-head">
+                  <span class="mc-kicker"><span class="mc-dot" aria-hidden="true"></span>Oracle &middot; seed 389</span>
+                </div>
+                <h3>Deneb</h3>
+                <p class="mc-desc">Reinforcement learning from Cygnus. The one pair where RL lowered held-out reward.</p>
+                <div class="mc-specs">
+                  <span class="mc-spec">Inkling 2 Mini</span>
+                  <span class="mc-spec">LoRA r16</span>
+                  <span class="mc-spec">SFT &rarr; RL</span>
+                </div>
+                <dl class="mc-stats">
+                  <div class="mc-stat">
+                    <dt>Held-out reward</dt>
+                    <dd>&minus;0.26787 <span class="mc-delta muted">&minus;0.00976</span></dd>
+                  </div>
+                  <div class="mc-stat">
+                    <dt>Credits spent</dt>
+                    <dd>1.30</dd>
+                  </div>
+                </dl>
+                <div class="mc-links">
+                  <a href="/oracle/#experiment">Release article</a>
+                  <a href="/playground/oracle/">Playground</a>
+                  <span>Weights internal</span>
+                </div>
+              </article>
+            </div>
+            <p class="fam-note">Structural holdout, 452 worlds &times; 4 budgets (1,808 model episodes per model). Mean net reward per episode; higher is better. RL deltas are paired changes from the supervised parent, one training run each. The prior-only baseline scored &minus;0.21697, above every model. Weights are internal and not released.</p>
+          </section>
           </div>
         </div>
 
@@ -499,7 +679,7 @@
           <div class="matrix-inner">
           <div class="matrix-head">
             <h2>Compare all models</h2>
-            <p>All nine open-weight checkpoints side by side.</p>
+            <p>All nine open-weight checkpoints and the six internal Oracle models side by side. Oracle metrics are structural-holdout mean net reward and credits spent.</p>
           </div>
           <div class="matrix-scroll" role="region" aria-label="Model comparison table" tabindex="0">
             <table class="mmatrix">
@@ -595,6 +775,60 @@
                   <td>CC BY-NC 4.0</td>
                   <td class="num">0.1803 Brier</td>
                   <td class="num">0.0593 res</td>
+                </tr>
+                <tr data-family="oracle">
+                  <th scope="row"><a href="/oracle/">Oracle Lyra</a></th>
+                  <td><span class="fam-pill">Oracle</span></td>
+                  <td>Inkling 2 Mini</td>
+                  <td>LoRA r16 (internal)</td>
+                  <td>Not released</td>
+                  <td class="num">&minus;0.24938 reward</td>
+                  <td class="num">1.39 credits</td>
+                </tr>
+                <tr data-family="oracle">
+                  <th scope="row"><a href="/oracle/">Oracle Vega</a></th>
+                  <td><span class="fam-pill">Oracle</span></td>
+                  <td>Inkling 2 Mini</td>
+                  <td>LoRA r16 (internal)</td>
+                  <td>Not released</td>
+                  <td class="num">&minus;0.23291 reward</td>
+                  <td class="num">1.38 credits</td>
+                </tr>
+                <tr data-family="oracle">
+                  <th scope="row"><a href="/oracle/">Oracle Aquila</a></th>
+                  <td><span class="fam-pill">Oracle</span></td>
+                  <td>Inkling 2 Mini</td>
+                  <td>LoRA r16 (internal)</td>
+                  <td>Not released</td>
+                  <td class="num">&minus;0.26338 reward</td>
+                  <td class="num">1.71 credits</td>
+                </tr>
+                <tr data-family="oracle">
+                  <th scope="row"><a href="/oracle/">Oracle Altair</a></th>
+                  <td><span class="fam-pill">Oracle</span></td>
+                  <td>Inkling 2 Mini</td>
+                  <td>LoRA r16 (internal)</td>
+                  <td>Not released</td>
+                  <td class="num">&minus;0.23034 reward</td>
+                  <td class="num">1.20 credits</td>
+                </tr>
+                <tr data-family="oracle">
+                  <th scope="row"><a href="/oracle/">Oracle Cygnus</a></th>
+                  <td><span class="fam-pill">Oracle</span></td>
+                  <td>Inkling 2 Mini</td>
+                  <td>LoRA r16 (internal)</td>
+                  <td>Not released</td>
+                  <td class="num">&minus;0.25811 reward</td>
+                  <td class="num">0.91 credits</td>
+                </tr>
+                <tr data-family="oracle">
+                  <th scope="row"><a href="/oracle/">Oracle Deneb</a></th>
+                  <td><span class="fam-pill">Oracle</span></td>
+                  <td>Inkling 2 Mini</td>
+                  <td>LoRA r16 (internal)</td>
+                  <td>Not released</td>
+                  <td class="num">&minus;0.26787 reward</td>
+                  <td class="num">1.30 credits</td>
                 </tr>
               </tbody>
             </table>
