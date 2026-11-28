@@ -599,8 +599,11 @@
           <section aria-labelledby="availability">
             <h2 id="availability">Availability</h2>
             <div class="oracle-availability">
-              <p><strong>What this release includes.</strong> Oracle is released as an article, figures and data. The models themselves stay internal.</p>
+              <p><strong>What this release includes.</strong> Oracle is released as source code, a research report and data. The models themselves stay internal.</p>
               <ul>
+                <li>On GitHub: the <a href="https://github.com/Laplace-AI-Research/oracle" target="_blank" rel="noopener noreferrer">Oracle repository</a> with the simulator, training and replay code, the
+                  <a href="https://github.com/Laplace-AI-Research/oracle/blob/main/docs/research-report.md" target="_blank" rel="noopener noreferrer">full research report</a> and the
+                  <a href="https://github.com/Laplace-AI-Research/oracle/blob/main/docs/results/scorecard.json" target="_blank" rel="noopener noreferrer">aggregate scorecard</a>.</li>
                 <li>Published with this page: the figures, the <a href="/oracle/data/results.json">aggregate results</a>, the
                   <a href="/oracle/data/figure-data.json">plotted values</a> and the disclosed scripted fixture used in the
                   <a href="/playground/oracle/">Playground</a>.</li>
@@ -610,7 +613,7 @@
                   4.0, within the scope stated with each artifact.</li>
                 <li>Model redistribution is a separate question and is not granted.</li>
               </ul>
-              <p class="oracle-availability-note">The simulator, training and replay code and the full report are not public yet. The figures and aggregate data on this page are the public record.</p>
+              <p class="oracle-availability-note">The repository lets anyone run the simulator and inspect the fixture and aggregate results. It does not reproduce the learned results on its own, because the original episodes and weights are private.</p>
             </div>
           </section>
 
@@ -632,7 +635,7 @@
             <h2 id="sources">Sources and data</h2>
             <p>
               Every aggregate number in this article comes from the evaluation scorecard, pinned to a fixed revision
-              of the Oracle research repository and extracted to <a href="/oracle/data/results.json">results.json</a>.
+              of the <a href="https://github.com/Laplace-AI-Research/oracle" target="_blank" rel="noopener noreferrer">Oracle repository</a> and extracted to <a href="/oracle/data/results.json">results.json</a>.
               The copy-sensor values come from the same fixture that drives the
               <a href="/playground/oracle/">Playground</a>. The figures are generated from those two files by a
               script, and <a href="/oracle/data/figure-data.json">figure-data.json</a> lists every plotted value.

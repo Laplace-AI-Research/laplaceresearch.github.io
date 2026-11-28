@@ -68,7 +68,7 @@ for p in bundle:
     check(p.suffix not in (".safetensors", ".bin", ".pt", ".gguf", ".jsonl", ".npz"), f"disallowed file type: {p}")
     if p.suffix in (".html", ".json", ".svg", ".md", ".css", ".py", ".sh"):
         s = p.read_text()
-        for pat in (r"github\.com/Laplace-AI-Research/oracle", r"tinker://", r"sk-[A-Za-z0-9]{16}", r"hf_[A-Za-z0-9]{20}",
+        for pat in (r"github\.com/Laplace-AI-Research/oracle(?!\"|/blob/main/docs/research-report\.md\"|/blob/main/docs/results/scorecard\.json\")", r"tinker://", r"sk-[A-Za-z0-9]{16}", r"hf_[A-Za-z0-9]{20}",
                     r"huggingface\.co/Laplace-AI-Research/Oracle", r"sealed", r"seed[_ -]?bank"):
             for m in re.finditer(pat, s, re.I):
                 ctx = s[max(0, m.start() - 40): m.end() + 40]
